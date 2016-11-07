@@ -1,0 +1,13 @@
+//
+//  LWMediaSourcesModel.h
+//  LW
+//
+//  Created by joymake on 16/7/4.
+//  Copyright © 2016年 joymake. All rights reserved.
+//
+
+#import "BaseInteractor.h"
+
+@interface LWMediaInteractor : BaseInteractor
+-(void)getMedisSourcesDataSource:(NORESULTSUCCESSED)successed;
+@end

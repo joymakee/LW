@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleAspectFill" id="Ssg-7o-TtI" customClass="TNACommentTableHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="338" height="175"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="joymakeHead.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="dFu-to-iqU">
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="dFu-to-iqU" secondAttribute="height" multiplier="1:1" id="FIQ-H3-vN8"/>
+                        <constraint firstAttribute="width" constant="60" id="xrI-bq-x6k"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="30"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joymake" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMJ-uN-ygp">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="BYP-xc-4fl"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评价得分:4.3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTv-27-fg2">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="iEA-GA-FbA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g0W-xp-sKG" customClass="CommonStarView">
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="Abi-ET-2yS"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejf-8n-9oJ">
+                    <color key="backgroundColor" red="0.85740214646464641" green="0.74613442412146591" blue="0.31911580346038898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="pTX-3D-zC8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="全部(1000)"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <real key="value" value="12.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="touchUpInside:" destination="Ssg-7o-TtI" eventType="touchUpInside" id="gSv-HE-BHg"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmP-BY-oG6">
+                    <color key="backgroundColor" red="0.85740214646464641" green="0.74613442412146591" blue="0.31911580346038898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="中评(60)"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <real key="value" value="12.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="touchUpInside:" destination="Ssg-7o-TtI" eventType="touchUpInside" id="vRw-oU-stj"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYn-lJ-hCd">
+                    <color key="backgroundColor" red="0.85740214646464641" green="0.74613442412146591" blue="0.31911580346038898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="差评(30)"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <real key="value" value="12.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="touchUpInside:" destination="Ssg-7o-TtI" eventType="touchUpInside" id="a4e-bo-QlY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyD-9L-Uuv">
+                    <color key="backgroundColor" red="0.85740214646464641" green="0.74613442412146591" blue="0.31911580346038898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="有图(68)"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <real key="value" value="12.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="touchUpInside:" destination="Ssg-7o-TtI" eventType="touchUpInside" id="Al4-00-9cf"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yAH-cs-iSX">
+                    <color key="backgroundColor" red="0.85740214646464641" green="0.74613442412146591" blue="0.31911580346038898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="DnY-Mj-d4a"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="好评(900)"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <real key="value" value="12.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="touchUpInside:" destination="Ssg-7o-TtI" eventType="touchUpInside" id="pl0-qB-WiO"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ejf-8n-9oJ" firstAttribute="leading" secondItem="Ssg-7o-TtI" secondAttribute="leading" constant="10" id="2ex-DD-I66"/>
+                <constraint firstItem="nYn-lJ-hCd" firstAttribute="height" secondItem="yAH-cs-iSX" secondAttribute="height" id="4QX-ko-Dvn"/>
+                <constraint firstItem="dFu-to-iqU" firstAttribute="top" secondItem="Ssg-7o-TtI" secondAttribute="top" constant="74" id="6Qf-fb-Rlh"/>
+                <constraint firstItem="nYn-lJ-hCd" firstAttribute="centerY" secondItem="ejf-8n-9oJ" secondAttribute="centerY" id="CZf-SL-QSk"/>
+                <constraint firstItem="yAH-cs-iSX" firstAttribute="centerY" secondItem="ejf-8n-9oJ" secondAttribute="centerY" id="Dd8-UF-r8j"/>
+                <constraint firstItem="kmP-BY-oG6" firstAttribute="leading" secondItem="yAH-cs-iSX" secondAttribute="trailing" constant="10" id="E1a-We-HaH"/>
+                <constraint firstItem="yAH-cs-iSX" firstAttribute="leading" secondItem="ejf-8n-9oJ" secondAttribute="trailing" constant="10" id="KT1-BE-fzm"/>
+                <constraint firstItem="rMJ-uN-ygp" firstAttribute="centerY" secondItem="dFu-to-iqU" secondAttribute="centerY" constant="-15" id="LGl-5N-HBh"/>
+                <constraint firstItem="gyD-9L-Uuv" firstAttribute="centerY" secondItem="ejf-8n-9oJ" secondAttribute="centerY" id="N5R-7c-hrE"/>
+                <constraint firstItem="gyD-9L-Uuv" firstAttribute="height" secondItem="yAH-cs-iSX" secondAttribute="height" id="QKf-8Z-Nga"/>
+                <constraint firstItem="nYn-lJ-hCd" firstAttribute="leading" secondItem="kmP-BY-oG6" secondAttribute="trailing" constant="10" id="QNr-Jf-5LG"/>
+                <constraint firstItem="g0W-xp-sKG" firstAttribute="centerY" secondItem="rMJ-uN-ygp" secondAttribute="centerY" id="QzY-1e-CYy"/>
+                <constraint firstItem="BTv-27-fg2" firstAttribute="centerY" secondItem="dFu-to-iqU" secondAttribute="centerY" constant="15" id="RsP-yL-0LU"/>
+                <constraint firstItem="g0W-xp-sKG" firstAttribute="leading" secondItem="rMJ-uN-ygp" secondAttribute="trailing" constant="10" id="UTU-iG-kJf"/>
+                <constraint firstItem="rMJ-uN-ygp" firstAttribute="leading" secondItem="dFu-to-iqU" secondAttribute="trailing" constant="10" id="ZtE-Cj-DCm"/>
+                <constraint firstItem="gyD-9L-Uuv" firstAttribute="leading" secondItem="nYn-lJ-hCd" secondAttribute="trailing" constant="10" id="anW-9u-dee"/>
+                <constraint firstItem="kmP-BY-oG6" firstAttribute="height" secondItem="yAH-cs-iSX" secondAttribute="height" id="e0r-Zd-zGM"/>
+                <constraint firstItem="ejf-8n-9oJ" firstAttribute="top" secondItem="dFu-to-iqU" secondAttribute="bottom" constant="10" id="eXk-gn-GfS"/>
+                <constraint firstItem="BTv-27-fg2" firstAttribute="leading" secondItem="dFu-to-iqU" secondAttribute="trailing" constant="10" id="hFD-Cl-F0U"/>
+                <constraint firstAttribute="trailing" secondItem="g0W-xp-sKG" secondAttribute="trailing" constant="105" id="luW-vq-JsC"/>
+                <constraint firstItem="dFu-to-iqU" firstAttribute="leading" secondItem="Ssg-7o-TtI" secondAttribute="leading" constant="15" id="xe8-ua-Zff"/>
+                <constraint firstItem="kmP-BY-oG6" firstAttribute="centerY" secondItem="ejf-8n-9oJ" secondAttribute="centerY" id="zhm-oh-Chs"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="headImageView" destination="dFu-to-iqU" id="vg9-1a-gKw"/>
+                <outlet property="scoreLabel" destination="BTv-27-fg2" id="iIj-9n-T8t"/>
+                <outlet property="starView" destination="g0W-xp-sKG" id="iKC-9M-qj9"/>
+            </connections>
+            <point key="canvasLocation" x="-20" y="-3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="joymakeHead.jpg" width="640" height="640"/>
+    </resources>
+</document>

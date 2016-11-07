@@ -1,0 +1,53 @@
+//
+//  LW.pch
+//  LW
+//
+//  Created by Joymake on 16/6/24.
+//  Copyright © 2016年 joymake. All rights reserved.
+//
+
+#ifndef LW_pch
+#define LW_pch
+#import "objc/runtime.h"
+#import <UIKit/UIKit.h>
+#import "LWNavigationController.h"
+#import "LWTabbarVC.h"
+#import "UIView+Extention.h"
+#define UmengAppkey @"5775cbcbe0f55aa631003118"
+#define SCREEN_W [UIScreen mainScreen].bounds.size.width
+#define SCREEN_H [UIScreen mainScreen].bounds.size.height
+#define IOS8_OR_LATER ([[UIDevice currentDevice] systemVersion].floatValue >= 8.0)
+#define  LW_PLACEHOLDER_IMAGE @"LifeWorkPlaceHolder"
+
+typedef NS_ENUM(NSInteger,ELwTouchActionType) {
+    ELwTouchActionSingleType,
+    ELwTouchActionDoubleType,
+    ELwTouchActionLongPressType
+};
+
+typedef NS_ENUM(NSInteger,ECellType) {
+    ECellXibType,
+    ECellCodeType
+};
+
+typedef NS_ENUM(NSInteger,ETextCellType) {
+    leftViewModel,
+    rightViewModel,
+    normalModel
+};
+
+typedef NS_ENUM(NSInteger,EImageType) {
+    EImageTypeRound,
+    EImageTypeSquare
+};
+
+typedef NS_ENUM(NSInteger,ERefreshScheme) {
+    ERefreshSchemeRow,      //单列
+    ERefreshSchemeSection,  //单section
+    ERefreshSchemeTable,    //整个table
+    ERefreshSchemeView      //整个view 扩展类使用
+};
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* LW_pch */

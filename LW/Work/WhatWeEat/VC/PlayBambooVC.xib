@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WhatWeEatVC">
+            <connections>
+                <outlet property="diceImageView" destination="m6d-kG-boR" id="L4U-IU-eQU"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hk9-eO-e33">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="SXi-8y-4wl"/>
+                    </constraints>
+                    <state key="normal" title="摇一摇"/>
+                    <connections>
+                        <action selector="diceTapAction:" destination="-1" eventType="touchUpInside" id="c5V-ZJ-c3o"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diceBack.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="FSn-dG-SWp">
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="FSn-dG-SWp" secondAttribute="height" id="ZZn-JN-VO1"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1.png" translatesAutoresizingMaskIntoConstraints="NO" id="m6d-kG-boR">
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="m6d-kG-boR" secondAttribute="height" id="fgh-iF-6xz"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Hk9-eO-e33" secondAttribute="bottom" constant="60" id="PI6-wi-MXW"/>
+                <constraint firstItem="m6d-kG-boR" firstAttribute="centerX" secondItem="FSn-dG-SWp" secondAttribute="centerX" id="Pvi-Ks-fWr"/>
+                <constraint firstAttribute="trailing" secondItem="FSn-dG-SWp" secondAttribute="trailing" id="YV4-jg-2bS"/>
+                <constraint firstItem="Hk9-eO-e33" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZfG-QH-Rtq"/>
+                <constraint firstItem="m6d-kG-boR" firstAttribute="centerY" secondItem="FSn-dG-SWp" secondAttribute="centerY" id="jfU-h9-6qJ"/>
+                <constraint firstItem="FSn-dG-SWp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mSq-3F-Cw9"/>
+                <constraint firstItem="m6d-kG-boR" firstAttribute="width" secondItem="FSn-dG-SWp" secondAttribute="width" multiplier="1:5" id="uha-KE-6fG"/>
+                <constraint firstItem="FSn-dG-SWp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xAT-h4-Tkv"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="131.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="1.png" width="42" height="43"/>
+        <image name="diceBack.jpg" width="184" height="182"/>
+    </resources>
+</document>

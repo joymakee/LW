@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommonStarView"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="lR1-in-BDF" customClass="CommonStarView">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="88"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ratingbar_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="NEm-qh-fT3">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="chN-d6-0TG"/>
+                        <constraint firstAttribute="width" constant="20" id="dlK-ct-B29"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ratingbar_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="Np6-FO-xWq"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ratingbar_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="Zum-64-6rJ"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="CommonStarView" image="ratingbar_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="zTk-zC-7GD"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ratingbar_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="wtj-yK-JnD"/>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.8022775472" blue="0.42724363360000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="NEm-qh-fT3" firstAttribute="leading" secondItem="lR1-in-BDF" secondAttribute="leading" id="1y1-XU-lDz"/>
+                <constraint firstItem="wtj-yK-JnD" firstAttribute="leading" secondItem="zTk-zC-7GD" secondAttribute="trailing" id="7Wu-l7-7ae"/>
+                <constraint firstItem="Zum-64-6rJ" firstAttribute="height" secondItem="NEm-qh-fT3" secondAttribute="height" id="A7i-tU-UuJ"/>
+                <constraint firstItem="NEm-qh-fT3" firstAttribute="centerY" secondItem="lR1-in-BDF" secondAttribute="centerY" id="Gcc-zv-KEM"/>
+                <constraint firstItem="zTk-zC-7GD" firstAttribute="width" secondItem="NEm-qh-fT3" secondAttribute="width" id="Hao-Jv-EHQ"/>
+                <constraint firstItem="Zum-64-6rJ" firstAttribute="leading" secondItem="Np6-FO-xWq" secondAttribute="trailing" id="Mzd-K9-H7H"/>
+                <constraint firstItem="NEm-qh-fT3" firstAttribute="width" secondItem="wtj-yK-JnD" secondAttribute="width" id="Q0V-ep-hLx"/>
+                <constraint firstItem="Zum-64-6rJ" firstAttribute="centerY" secondItem="lR1-in-BDF" secondAttribute="centerY" id="Qut-P1-2k0"/>
+                <constraint firstItem="zTk-zC-7GD" firstAttribute="height" secondItem="NEm-qh-fT3" secondAttribute="height" id="WPT-f6-k90"/>
+                <constraint firstItem="wtj-yK-JnD" firstAttribute="centerY" secondItem="lR1-in-BDF" secondAttribute="centerY" id="a2l-kG-8Et"/>
+                <constraint firstItem="Np6-FO-xWq" firstAttribute="height" secondItem="NEm-qh-fT3" secondAttribute="height" id="a6S-ju-Ofs"/>
+                <constraint firstItem="Np6-FO-xWq" firstAttribute="centerY" secondItem="lR1-in-BDF" secondAttribute="centerY" id="bsB-yP-zn7"/>
+                <constraint firstItem="Np6-FO-xWq" firstAttribute="width" secondItem="NEm-qh-fT3" secondAttribute="width" id="eXV-TR-Z7o"/>
+                <constraint firstItem="zTk-zC-7GD" firstAttribute="centerY" secondItem="lR1-in-BDF" secondAttribute="centerY" id="ivQ-8X-mbh"/>
+                <constraint firstItem="zTk-zC-7GD" firstAttribute="leading" secondItem="Zum-64-6rJ" secondAttribute="trailing" id="nfO-kN-NQV"/>
+                <constraint firstItem="Zum-64-6rJ" firstAttribute="width" secondItem="NEm-qh-fT3" secondAttribute="width" id="rvi-7I-DVU"/>
+                <constraint firstItem="NEm-qh-fT3" firstAttribute="height" secondItem="wtj-yK-JnD" secondAttribute="height" id="tca-6O-1qJ"/>
+                <constraint firstItem="Np6-FO-xWq" firstAttribute="leading" secondItem="NEm-qh-fT3" secondAttribute="trailing" id="wm3-Zu-3o9"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="391" y="-93"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ratingbar_unselected" width="23" height="22"/>
+    </resources>
+</document>
