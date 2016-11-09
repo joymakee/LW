@@ -6,9 +6,6 @@
 //  Copyright © 2016年 Joymake. All rights reserved.
 //
 
-#define KHeadSectionH 15
-#define KNormalSectionH 40
-
 #import "LWCompanyManageInteractor.h"
 #import "LWTableSectionBaseModel.h"
 #import "LWCellBaseModel.h"
@@ -45,6 +42,7 @@
     infoModel.title =@"个人信息管理";
     infoModel.placeHolderImageStr =@"poker";
     infoModel.cellName =@"LWLeftIconCell";
+    infoModel.tapAction = @"goColorTable";
     infoModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     infoModel.viewShape = EImageTypeSquare;
     [workArrayM addObject:infoModel];
@@ -87,7 +85,16 @@
     happyModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     happyModel.viewShape = EImageTypeSquare;
     [arrayM addObject:happyModel];
-
+    
+    LWCellBaseImageModel *spitslotModel = [[LWCellBaseImageModel alloc]init];
+    spitslotModel.title =@"吐槽一下";
+    spitslotModel.placeHolderImageStr =@"happy";
+    spitslotModel.cellName =@"LWLeftIconCell";
+    spitslotModel.tapAction = @"goSpitslot";
+    spitslotModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    spitslotModel.viewShape = EImageTypeSquare;
+    [arrayM addObject:spitslotModel];
+    
     LWTableSectionBaseModel *companySectionModel = [LWTableSectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:arrayM sectionH:KHeadSectionH sectionTitle:nil];
 
     [self.enterpriseCultureArrayM addObject:companySectionModel];

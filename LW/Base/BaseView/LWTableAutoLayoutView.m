@@ -12,6 +12,7 @@
 #import "LWBaseCell.h"
 #import "LWTableAutoLayoutView.h"
 #import <objc/message.h>
+#import "CAAnimation+HCAnimation.h"
 
 @interface LWTableAutoLayoutView ()<LWBaseCellDelegate>{
     NSMutableArray *registCellArrayM;
@@ -289,6 +290,8 @@ CGFloat tableRowH(id self, SEL _cmd, UITableView *tableView,NSIndexPath *indexPa
         [cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]?[cell setPreservesSuperviewLayoutMargins:NO]:nil;
     }
     
+    [CAAnimation showOpacityAnimationInView:cell.contentView fromAlpha:0.3 Alpha:1 Repeat:1 Duration:0.3 autoreverses:NO];
+    [CAAnimation showScaleAnimationInView:cell  fromValue:0.7 ScaleValue:1 Repeat:1 Duration:0.3 autoreverses:NO];
 }
 
 #pragma mark textDelegate

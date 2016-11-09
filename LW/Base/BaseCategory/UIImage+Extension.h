@@ -1,15 +1,16 @@
 //
-//  UIImage+Blur.h
-//  IOS-Categories (https://github.com/shaojiankui/iOS-Categories)
+//  UIImage+Extension.h
+//  LW
 //
-//  Created by Jakey on 15/6/5.
-//  Copyright (c) 2015年 www.skyfox.org. All rights reserved.
+//  Created by Joymake on 2016/11/9.
+//  Copyright © 2016年 joymake. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 FOUNDATION_EXPORT double ImageEffectsVersionNumber;
 FOUNDATION_EXPORT const unsigned char ImageEffectsVersionString[];
-@interface UIImage (Blur)
+
+@interface UIImage (Extension)
 - (UIImage *)lightImage;
 - (UIImage *)extraLightImage;
 - (UIImage *)darkImage;
@@ -22,4 +23,12 @@ FOUNDATION_EXPORT const unsigned char ImageEffectsVersionString[];
             saturationDeltaFactor:(CGFloat)saturationDeltaFactor
                         maskImage:(UIImage *)maskImage;
 - (UIImage *)screenShot;
+
+
++ (UIImage *)sd_animatedGIFNamed:(NSString *)name;
+
++ (UIImage *)sd_animatedGIFWithData:(NSData *)data;
+
+- (UIImage *)sd_animatedImageByScalingAndCroppingToSize:(CGSize)size;
+
 @end

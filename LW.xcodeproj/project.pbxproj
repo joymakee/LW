@@ -28,8 +28,6 @@
 		2F410EF71DC9BD9D00A650BB /* CAAnimation+HCAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410DDD1DC9BD9D00A650BB /* CAAnimation+HCAnimation.m */; };
 		2F410EF81DC9BD9D00A650BB /* CALayer+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410DDF1DC9BD9D00A650BB /* CALayer+Transition.m */; };
 		2F410EF91DC9BD9D00A650BB /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410DE11DC9BD9D00A650BB /* NSString+Extension.m */; };
-		2F410EFA1DC9BD9D00A650BB /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410DE31DC9BD9D00A650BB /* UIImage+Blur.m */; };
-		2F410EFB1DC9BD9D00A650BB /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410DE51DC9BD9D00A650BB /* UIImage+GIF.m */; };
 		2F410EFC1DC9BD9D00A650BB /* UITextField+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410DE71DC9BD9D00A650BB /* UITextField+Extension.m */; };
 		2F410EFD1DC9BD9E00A650BB /* UIView+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410DE91DC9BD9D00A650BB /* UIView+Extention.m */; };
 		2F410EFE1DC9BD9E00A650BB /* LoginHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410DEC1DC9BD9D00A650BB /* LoginHeadCell.m */; };
@@ -158,6 +156,10 @@
 		2F7A177A1DCC3BD600B71CC6 /* eat.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7A17791DCC3BD600B71CC6 /* eat.png */; };
 		2FAD6C211DC9C7EC00D6A60B /* shuye.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD6C201DC9C7EC00D6A60B /* shuye.jpg */; };
 		2FAD6C231DC9C8C600D6A60B /* qq.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD6C221DC9C8C600D6A60B /* qq.jpg */; };
+		2FFE751A1DD3106A004AD35A /* LWColorTabelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE75191DD3106A004AD35A /* LWColorTabelVC.m */; };
+		2FFE751D1DD310CE004AD35A /* LWColorTableInteracter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE751C1DD310CE004AD35A /* LWColorTableInteracter.m */; };
+		2FFE75201DD310E4004AD35A /* LWColorTablePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE751F1DD310E4004AD35A /* LWColorTablePresenter.m */; };
+		2FFE75231DD32677004AD35A /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE75221DD32677004AD35A /* UIImage+Extension.m */; };
 		4279C470372DDF64E48C2A40 /* libPods-LW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F432A7F57C2CF62DD905F551 /* libPods-LW.a */; };
 /* End PBXBuildFile section */
 
@@ -212,10 +214,6 @@
 		2F410DDF1DC9BD9D00A650BB /* CALayer+Transition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Transition.m"; sourceTree = "<group>"; };
 		2F410DE01DC9BD9D00A650BB /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
 		2F410DE11DC9BD9D00A650BB /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
-		2F410DE21DC9BD9D00A650BB /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
-		2F410DE31DC9BD9D00A650BB /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
-		2F410DE41DC9BD9D00A650BB /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
-		2F410DE51DC9BD9D00A650BB /* UIImage+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GIF.m"; sourceTree = "<group>"; };
 		2F410DE61DC9BD9D00A650BB /* UITextField+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Extension.h"; sourceTree = "<group>"; };
 		2F410DE71DC9BD9D00A650BB /* UITextField+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Extension.m"; sourceTree = "<group>"; };
 		2F410DE81DC9BD9D00A650BB /* UIView+Extention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extention.h"; sourceTree = "<group>"; };
@@ -411,6 +409,14 @@
 		2F7A17791DCC3BD600B71CC6 /* eat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eat.png; sourceTree = "<group>"; };
 		2FAD6C201DC9C7EC00D6A60B /* shuye.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shuye.jpg; sourceTree = "<group>"; };
 		2FAD6C221DC9C8C600D6A60B /* qq.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = qq.jpg; sourceTree = "<group>"; };
+		2FFE75181DD3106A004AD35A /* LWColorTabelVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWColorTabelVC.h; sourceTree = "<group>"; };
+		2FFE75191DD3106A004AD35A /* LWColorTabelVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWColorTabelVC.m; sourceTree = "<group>"; };
+		2FFE751B1DD310CE004AD35A /* LWColorTableInteracter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWColorTableInteracter.h; sourceTree = "<group>"; };
+		2FFE751C1DD310CE004AD35A /* LWColorTableInteracter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWColorTableInteracter.m; sourceTree = "<group>"; };
+		2FFE751E1DD310E4004AD35A /* LWColorTablePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWColorTablePresenter.h; sourceTree = "<group>"; };
+		2FFE751F1DD310E4004AD35A /* LWColorTablePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWColorTablePresenter.m; sourceTree = "<group>"; };
+		2FFE75211DD32677004AD35A /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		2FFE75221DD32677004AD35A /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		303A9620E7557E968C59CCDD /* Pods-LW.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LW.release.xcconfig"; path = "Pods/Target Support Files/Pods-LW/Pods-LW.release.xcconfig"; sourceTree = "<group>"; };
 		7792F10985A0A0DBE2B0A18D /* Pods-LW.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LW.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LW/Pods-LW.debug.xcconfig"; sourceTree = "<group>"; };
 		F432A7F57C2CF62DD905F551 /* libPods-LW.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LW.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -577,10 +583,8 @@
 				2F410DDF1DC9BD9D00A650BB /* CALayer+Transition.m */,
 				2F410DE01DC9BD9D00A650BB /* NSString+Extension.h */,
 				2F410DE11DC9BD9D00A650BB /* NSString+Extension.m */,
-				2F410DE21DC9BD9D00A650BB /* UIImage+Blur.h */,
-				2F410DE31DC9BD9D00A650BB /* UIImage+Blur.m */,
-				2F410DE41DC9BD9D00A650BB /* UIImage+GIF.h */,
-				2F410DE51DC9BD9D00A650BB /* UIImage+GIF.m */,
+				2FFE75211DD32677004AD35A /* UIImage+Extension.h */,
+				2FFE75221DD32677004AD35A /* UIImage+Extension.m */,
 				2F410DE61DC9BD9D00A650BB /* UITextField+Extension.h */,
 				2F410DE71DC9BD9D00A650BB /* UITextField+Extension.m */,
 				2F410DE81DC9BD9D00A650BB /* UIView+Extention.h */,
@@ -1088,6 +1092,7 @@
 		2F410EC71DC9BD9D00A650BB /* Work */ = {
 			isa = PBXGroup;
 			children = (
+				2FFE75141DD31025004AD35A /* Test */,
 				2F410EC81DC9BD9D00A650BB /* WhatWeEat */,
 				2F410EDB1DC9BD9D00A650BB /* Work */,
 			);
@@ -1191,6 +1196,43 @@
 			children = (
 				2F410EF31DC9BD9D00A650BB /* TNACompanyManageVC.h */,
 				2F410EF41DC9BD9D00A650BB /* TNACompanyManageVC.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2FFE75141DD31025004AD35A /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE75171DD31025004AD35A /* VC */,
+				2FFE75151DD31025004AD35A /* Interactor */,
+				2FFE75161DD31025004AD35A /* Presenter */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		2FFE75151DD31025004AD35A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE751B1DD310CE004AD35A /* LWColorTableInteracter.h */,
+				2FFE751C1DD310CE004AD35A /* LWColorTableInteracter.m */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		2FFE75161DD31025004AD35A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE751E1DD310E4004AD35A /* LWColorTablePresenter.h */,
+				2FFE751F1DD310E4004AD35A /* LWColorTablePresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		2FFE75171DD31025004AD35A /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE75181DD3106A004AD35A /* LWColorTabelVC.h */,
+				2FFE75191DD3106A004AD35A /* LWColorTabelVC.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1457,8 +1499,8 @@
 				2F410F041DC9BD9E00A650BB /* LWLeftIconCell.m in Sources */,
 				2F410F551DC9BD9E00A650BB /* LWLogin_wx&qqCell.m in Sources */,
 				2F410F421DC9BD9E00A650BB /* CommonImageCollectView.m in Sources */,
+				2FFE75201DD310E4004AD35A /* LWColorTablePresenter.m in Sources */,
 				2F410F0E1DC9BD9E00A650BB /* CommonImageCollectCell.m in Sources */,
-				2F410EFB1DC9BD9D00A650BB /* UIImage+GIF.m in Sources */,
 				2F410F511DC9BD9E00A650BB /* IntelligencePresentor.m in Sources */,
 				2F410F0A1DC9BD9E00A650BB /* LWTextFieldCell.m in Sources */,
 				2F410F271DC9BD9E00A650BB /* CommentPresenter.m in Sources */,
@@ -1467,6 +1509,7 @@
 				2F410F601DC9BD9E00A650BB /* LWMediaListCell.m in Sources */,
 				2F410F461DC9BD9E00A650BB /* TNACommentTableCell.m in Sources */,
 				2F410F4A1DC9BD9E00A650BB /* LWMonitoringCell.m in Sources */,
+				2FFE751D1DD310CE004AD35A /* LWColorTableInteracter.m in Sources */,
 				2F410F1A1DC9BD9E00A650BB /* BasePresentor.m in Sources */,
 				2F410EFE1DC9BD9E00A650BB /* LoginHeadCell.m in Sources */,
 				2F410F061DC9BD9E00A650BB /* LWSingleLabelCell.m in Sources */,
@@ -1474,7 +1517,6 @@
 				2F410EF71DC9BD9D00A650BB /* CAAnimation+HCAnimation.m in Sources */,
 				2F410F531DC9BD9E00A650BB /* IntelligenceControlHeadView.m in Sources */,
 				2F410A251DC9B85800A650BB /* AppDelegate.m in Sources */,
-				2F410EFA1DC9BD9D00A650BB /* UIImage+Blur.m in Sources */,
 				2F410F021DC9BD9E00A650BB /* LWLabelCell.m in Sources */,
 				2F410F081DC9BD9E00A650BB /* LWTextCell.m in Sources */,
 				2F410F4E1DC9BD9E00A650BB /* LWCBPeripheralModel.m in Sources */,
@@ -1485,6 +1527,7 @@
 				2F410F571DC9BD9E00A650BB /* LoginInteracter.m in Sources */,
 				2F410F131DC9BD9E00A650BB /* BaseInteractor.m in Sources */,
 				2F410F1F1DC9BD9E00A650BB /* LWTableBaseView.m in Sources */,
+				2FFE75231DD32677004AD35A /* UIImage+Extension.m in Sources */,
 				2F410F681DC9BD9E00A650BB /* LWNavigationController.m in Sources */,
 				2F410F201DC9BD9E00A650BB /* LWTableHeaderBaseView.m in Sources */,
 				2F410F231DC9BD9E00A650BB /* XHViewState.m in Sources */,
@@ -1499,6 +1542,7 @@
 				2F410F641DC9BD9E00A650BB /* LWMediaPresenter.m in Sources */,
 				2F410EFD1DC9BD9E00A650BB /* UIView+Extention.m in Sources */,
 				2F410F101DC9BD9E00A650BB /* LWBaseCollectionCell.m in Sources */,
+				2FFE751A1DD3106A004AD35A /* LWColorTabelVC.m in Sources */,
 				2F410F191DC9BD9E00A650BB /* LWTableSectionBaseModel.m in Sources */,
 				2F410F171DC9BD9E00A650BB /* LWTableFooterBaseModel.m in Sources */,
 				2F410F261DC9BD9E00A650BB /* CommentModel.m in Sources */,

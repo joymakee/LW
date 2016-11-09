@@ -13,6 +13,8 @@
 #import "LWTableSectionBaseModel.h"
 #import "LWCellBaseModel.h"
 #import "PlayBambooVC.h"
+#import "LWColorTabelVC.h"
+#import "LWCommentVC.h"
 
 @implementation LWCompanyManagePresenter
 
@@ -67,6 +69,16 @@
 - (void)goPlayBambooVC{
     PlayBambooVC *eatVC = [[PlayBambooVC alloc]init];
     [self goVC:eatVC];
+}
+
+- (void)goColorTable{
+    LWColorTabelVC *colorTable = [[LWColorTabelVC alloc]init];
+    [self goVC:colorTable];
+}
+
+- (void)goSpitslot{
+//    LWCommentVC *commentVC = [[LWCommentVC alloc]init];
+//    [self goVC:commentVC];
 }
 
 @end

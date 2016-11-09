@@ -7,7 +7,7 @@
 //
 
 #import "LWShareManager.h"
-#import "UIImage+Blur.h"
+#import "UIImage+Extension.h"
 #import "LWCommentVC.h"
 @interface LWShareManager ()
 

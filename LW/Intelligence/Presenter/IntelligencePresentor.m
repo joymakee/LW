@@ -28,8 +28,8 @@
     __weak __typeof (&*self)weakSelf = self;
     _intelligenceView.cellDidSelectBlock =^(NSIndexPath *indexPath,UICollectionView *collectionView){
         [collectionView bringSubviewToFront:[collectionView cellForItemAtIndexPath:indexPath]];
-        [CAAnimation showScaleAnimationInView:[collectionView cellForItemAtIndexPath:indexPath] ScaleValue:3 Repeat:1 Duration:1.0];
-        [CAAnimation showOpacityAnimationInView:[collectionView cellForItemAtIndexPath:indexPath] Alpha:0.6 Repeat:2 Duration:1];
+        [CAAnimation showScaleAnimationInView:[collectionView cellForItemAtIndexPath:indexPath] fromValue:1  ScaleValue:3 Repeat:1 Duration:1.0 autoreverses:YES];
+        [CAAnimation showOpacityAnimationInView:[collectionView cellForItemAtIndexPath:indexPath] fromAlpha:1 Alpha:0.6 Repeat:2 Duration:1 autoreverses:YES];
         if ([weakSelf.delegate respondsToSelector:@selector(intelligenceCellDidSelect)]) {
             [weakSelf.delegate intelligenceCellDidSelect];
         }

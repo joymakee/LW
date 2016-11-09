@@ -7,7 +7,7 @@
 //
 
 #import "BackGroundBlurView.h"
-#import "UIImage+Blur.h"
+#import "UIImage+Extension.h"
 #import "Masonry.h"
 
 @interface BackGroundBlurView ()
