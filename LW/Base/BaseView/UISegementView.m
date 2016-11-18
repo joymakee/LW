@@ -12,6 +12,7 @@
     UISegmentedControl *_segment;
     UIView *_bottomView;
     UIView *_separateLineSuperview;
+    UIView *_bottomSeparateLineSuperview;
 }
 
 @end
@@ -37,6 +38,11 @@
 
 -(void)setSelectColor:(UIColor *)selectColor{
     _selectColor = selectColor;
+    [self updateSegment];
+}
+
+- (void)setBottomSliderColor:(UIColor *)bottomSliderColor{
+    _bottomSliderColor = bottomSliderColor;
     [self updateSegment];
 }
 
@@ -104,6 +110,9 @@
     _bottomView = [[UIView alloc]initWithFrame:CGRectMake(20, CGRectGetHeight(_separateLineSuperview.frame)-2, SCREEN_W/_segmentItems.count-40, 2)];
     _bottomView.backgroundColor = [UIColor blueColor];
     [_separateLineSuperview addSubview:_bottomView];
+    _bottomSeparateLineSuperview = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(_separateLineSuperview.frame), SCREEN_W, 0.5)];
+    _bottomSeparateLineSuperview.backgroundColor = [UIColor lightTextColor];
+    [_separateLineSuperview addSubview:_bottomSeparateLineSuperview];
 }
 
 - (void)segmentTap:(UISegmentedControl *)segment{

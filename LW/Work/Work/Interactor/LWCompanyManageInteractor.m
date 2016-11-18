@@ -113,6 +113,15 @@
     cellModel.tapAction = @"goPlayBambooVC";
     [arrayM addObject:cellModel];
     
+    LWCellBaseImageModel *eatModel = [[LWCellBaseImageModel alloc]init];
+    eatModel.title =@"今天吃什么";
+    eatModel.placeHolderImageStr =@"poker";
+    eatModel.cellName =@"LWLeftIconCell";
+    eatModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    eatModel.viewShape = EImageTypeSquare;
+    eatModel.tapAction = @"goEatVC";
+    [arrayM addObject:eatModel];
+    
     LWCellBaseImageModel *pokerModel = [[LWCellBaseImageModel alloc]init];
     pokerModel.title =@"斗地主";
     pokerModel.placeHolderImageStr =@"poker";

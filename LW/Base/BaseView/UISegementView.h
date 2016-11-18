@@ -12,6 +12,7 @@
 @property (nonatomic,strong)NSArray *segmentItems;
 @property (nonatomic,strong)UIColor *separateColor;
 @property (nonatomic,strong)UIColor *selectColor;
+@property (nonatomic,strong)UIColor *bottomSliderColor;
 @property (nonatomic,strong)UIColor *deselectColor;
 
 @property (nonatomic,copy)void (^setmentValuechangedBlock)(NSInteger selectIndex);

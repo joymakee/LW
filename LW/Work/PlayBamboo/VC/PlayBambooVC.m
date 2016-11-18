@@ -32,6 +32,8 @@
         //设置旋转动画
         _transformAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
         [_transformAnimation setToValue:[NSNumber numberWithFloat:M_PI * 16.0]];
+        //速度函数
+        _transformAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         [_transformAnimation setDuration:2];
     }
     return _transformAnimation;
@@ -63,6 +65,11 @@
     [self becomeFirstResponder];
     //设置动画参数
     [self setDiceAnimationParameter];
+    CAShapeLayer *layer = [CAShapeLayer layer];
+    layer.path = self.dicePath.CGPath;
+    layer.strokeColor = [UIColor orangeColor].CGColor;
+    layer.fillColor = [UIColor clearColor].CGColor;
+    [self.view.layer addSublayer:layer];
 }
 
 - (void)setDiceAnimationParameter{
@@ -115,9 +122,9 @@
 }
 
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event{
-    if (event.subtype == UIEventSubtypeMotionShake) {
-        [CAAnimation showShakeAnimationInView:self.diceImageView Offset:80 Direction:ShakeDerectionAxisX Repeat:3 Duration:1];
-    }
+//    if (event.subtype == UIEventSubtypeMotionShake) {
+//        [CAAnimation showShakeAnimationInView:self.diceImageView Offset:80 Direction:ShakeDerectionAxisX Repeat:3 Duration:1];
+//    }
 }
 
 - (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event{

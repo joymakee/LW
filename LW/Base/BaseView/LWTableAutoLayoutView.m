@@ -61,7 +61,6 @@ CGFloat tableRowH(id self, SEL _cmd, UITableView *tableView,NSIndexPath *indexPa
         _tableView.dataSource = self;
         _tableView.sectionFooterHeight = 0;
         _tableView.rowHeight = UITableViewAutomaticDimension;
-        _tableView.estimatedRowHeight = 44;
     }
     return _tableView;
 }
@@ -132,11 +131,6 @@ CGFloat tableRowH(id self, SEL _cmd, UITableView *tableView,NSIndexPath *indexPa
     return sectionModel.sectionH?:([sectionModel.sectionTitle length]?KNormalSectionH:KNoInfoSectionH);
 }
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-//    LWTableSectionBaseModel *sectionModel = [self.dataArrayM objectAtIndex:section];
-//    return sectionModel.sectionTitle;
-//}
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     LWTableSectionBaseModel*sectionModel = [self.dataArrayM objectAtIndex:section];
     sectionModel.sectionH = sectionModel.sectionH?:sectionModel.sectionTitle?KNormalSectionH:KNoInfoSectionH;
@@ -162,26 +156,13 @@ CGFloat tableRowH(id self, SEL _cmd, UITableView *tableView,NSIndexPath *indexPa
     return sectionModel.sectionFootTitle;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    LWTableSectionBaseModel *sectionModel = [self.dataArrayM objectAtIndex:indexPath.section];
-//    LWCellBaseModel * model  = sectionModel.rowArrayM[indexPath.row];
-//    return model.cellH;
-//}
-
-
 //ios7系统需要计算cell的h
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
     LWTableSectionBaseModel*sectionModel = [self.dataArrayM objectAtIndex:indexPath.section];
     LWCellBaseModel * model  = sectionModel.rowArrayM[indexPath.row];
-    LWBaseCell *cell = [tableView dequeueReusableCellWithIdentifier:model.cellName];
-    
-    if (![registCellArrayM containsObject:model.cellName])
-    {
-        model.cellType == ECellCodeType?[tableView registerClass:NSClassFromString(model.cellName) forCellReuseIdentifier:model.cellName]:[tableView registerNib:[UINib nibWithNibName:model.cellName bundle:nil] forCellReuseIdentifier:model.cellName];
-        [registCellArrayM addObject:model.cellName];
-    }
-    cell = cell?: [tableView dequeueReusableCellWithIdentifier:model.cellName forIndexPath:indexPath];
     if(!model.cellH){
+        [self registTableCellWithCellModel:model];
+        LWBaseCell *cell = [tableView dequeueReusableCellWithIdentifier:model.cellName];
         [cell setCellWithModel:model];
         [cell.contentView setNeedsLayout];
         [cell.contentView layoutIfNeeded];
@@ -203,14 +184,8 @@ CGFloat tableRowH(id self, SEL _cmd, UITableView *tableView,NSIndexPath *indexPa
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LWTableSectionBaseModel*sectionModel = [self.dataArrayM objectAtIndex:indexPath.section];
     LWCellBaseModel * model  = sectionModel.rowArrayM[indexPath.row];
+    [self registTableCellWithCellModel:model];
     LWBaseCell *cell = [tableView dequeueReusableCellWithIdentifier:model.cellName];
-    if (![registCellArrayM containsObject:model.cellName])
-    {
-        model.cellType == ECellCodeType?[tableView registerClass:NSClassFromString(model.cellName) forCellReuseIdentifier:model.cellName]:[tableView registerNib:[UINib nibWithNibName:model.cellName bundle:nil] forCellReuseIdentifier:model.cellName];
-        [registCellArrayM addObject:model.cellName];
-    }
-    
-    cell = cell?: [tableView dequeueReusableCellWithIdentifier:model.cellName forIndexPath:indexPath];
     __weak __typeof (&*self)weakSelf = self;
     model.cellBlock =^(id obj,ERefreshScheme scheme){
         [weakSelf.tableView beginUpdates];
@@ -282,15 +257,12 @@ CGFloat tableRowH(id self, SEL _cmd, UITableView *tableView,NSIndexPath *indexPa
     if(sectionModel.sectionLeadingOffSet){
         [cell respondsToSelector:@selector(setSeparatorInset:)]?[cell setSeparatorInset:UIEdgeInsetsMake(0, sectionModel.sectionLeadingOffSet, 0, 0)]:nil;
         [cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]?[cell setPreservesSuperviewLayoutMargins:NO]:nil;
-        //        [cell respondsToSelector:@selector(setLayoutMargins:)]?[cell setLayoutMargins:UIEdgeInsetsMake(0, 0, 0, KLayoutMarginsTrailing)]:nil;
     }
     else
     {
         [cell respondsToSelector:@selector(setSeparatorInset:)]?[cell setSeparatorInset:UIEdgeInsetsMake(0, KNoInfoSectionH, 0, 0)]:nil;
         [cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]?[cell setPreservesSuperviewLayoutMargins:NO]:nil;
     }
-    
-    [CAAnimation showOpacityAnimationInView:cell.contentView fromAlpha:0.3 Alpha:1 Repeat:1 Duration:0.3 autoreverses:NO];
     [CAAnimation showScaleAnimationInView:cell  fromValue:0.7 ScaleValue:1 Repeat:1 Duration:0.3 autoreverses:NO];
 }
 
@@ -376,38 +348,15 @@ CGFloat tableRowH(id self, SEL _cmd, UITableView *tableView,NSIndexPath *indexPa
     [self.tableView setTableFooterView:footView];
 }
 
-#pragma mark table上下拉刷新
--  (void)setTableRefreshViewWithRefreshBlock:(void (^)(BOOL isDownRefresh))refreshBlock{
-//    // 下拉刷新
-//    MJRefreshGifHeader *refreshHeader = [MJRefreshGifHeader headerWithRefreshingBlock:^{
-//        refreshBlock?refreshBlock(YES):nil;
-//        //业务逻辑
-//    }];
-//    [refreshHeader setDefaultGifHeader];//使用统一gif
-//    
-//    self.tableView.mj_header = refreshHeader;
-//    
-//    MJRefreshBackGifFooter *refreshFooter = [MJRefreshBackGifFooter footerWithRefreshingBlock:^{
-//        refreshBlock?refreshBlock(NO):nil;
-//        //业务逻辑
-//    }];
-//    [refreshFooter setDefaultGifFooter];//使用统一gif
-//    // 上拉刷新
-//    self.tableView.mj_footer = refreshFooter;
-//    
-//    //    self.tableView.footer.hidden = YES;
-}
-//
--(void)endRefreshWithNoMoredata{
-//    self.tableView.mj_footer.hidden = !self.dataArrayM.count;
-//    [self.tableView.mj_header endRefreshing];
-//    [self.tableView.mj_footer endRefreshingWithNoMoreData];
-//    [self.tableView.mj_footer endRefreshingWithNoMoreData];
-}
-
 -(NSMutableArray *)dataArrayM{
     return _dataArrayM =_dataArrayM?:[NSMutableArray arrayWithCapacity:0];
 }
 
-
+- (void)registTableCellWithCellModel:(LWCellBaseModel *)cellModel{
+    if (![registCellArrayM containsObject:cellModel.cellName])
+    {
+        cellModel.cellType == ECellCodeType?[_tableView registerClass:NSClassFromString(cellModel.cellName) forCellReuseIdentifier:cellModel.cellName]:[_tableView registerNib:[UINib nibWithNibName:cellModel.cellName bundle:nil] forCellReuseIdentifier:cellModel.cellName];
+        [registCellArrayM addObject:cellModel.cellName];
+    }
+}
 @end

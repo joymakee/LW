@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,26 +16,30 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="60.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="micro_messenger.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ly1-fW-O00" customClass="LWimageView">
+                        <rect key="frame" x="220" y="10" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Ly1-fW-O00" secondAttribute="height" id="7Yc-vq-zgn"/>
                         </constraints>
                     </imageView>
-                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qq.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ObU-cy-iIT" customClass="LWimageView">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qq.png" translatesAutoresizingMaskIntoConstraints="NO" id="ObU-cy-iIT" customClass="LWimageView">
+                        <rect key="frame" x="270" y="10" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ObU-cy-iIT" secondAttribute="height" id="dRx-RJ-6Zd"/>
                             <constraint firstAttribute="height" constant="20" id="kBH-0c-XeB"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz1-uH-blq">
+                        <rect key="frame" x="211.5" y="35" width="37" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                         <color key="textColor" red="0.97820632129999996" green="1" blue="0.57009291220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="qq登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDd-mE-05j">
+                        <rect key="frame" x="265" y="35" width="30" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                         <color key="textColor" red="0.97820632129999996" green="1" blue="0.57009291220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -63,6 +70,6 @@
     </objects>
     <resources>
         <image name="micro_messenger.png" width="89" height="73"/>
-        <image name="qq.jpg" width="128" height="128"/>
+        <image name="qq.png" width="128" height="128"/>
     </resources>
 </document>

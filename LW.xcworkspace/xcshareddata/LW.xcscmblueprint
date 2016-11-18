@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1B05CF6224FA28A555E36F8BADF5154E1C6A6FBA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "bf05f968-5efa-9249-bdd3-66ce2a4bc4ca++5849" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "bf05f968-5efa-9249-bdd3-66ce2a4bc4ca++5849" : 0,
+    "1B05CF6224FA28A555E36F8BADF5154E1C6A6FBA" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "970B2EB9-93E5-4D45-BE1D-6D65B48793BF",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "bf05f968-5efa-9249-bdd3-66ce2a4bc4ca++5849" : "LW\/LW\/Base\/XHImageViewer\/",
+    "1B05CF6224FA28A555E36F8BADF5154E1C6A6FBA" : "LW\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "LW",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "LW.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:joymakee\/LW.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1B05CF6224FA28A555E36F8BADF5154E1C6A6FBA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/123.57.89.233:81\/svn\/yxck",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "bf05f968-5efa-9249-bdd3-66ce2a4bc4ca++5849"
+    }
+  ]
+}

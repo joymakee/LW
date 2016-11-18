@@ -45,6 +45,8 @@ typedef NS_ENUM(NSInteger,EIsAutoLayoutType) {
 @property (nonatomic,weak)id<ScrollDelegate> scrollDelegate;
 @property (nonatomic,strong)NSIndexPath *oldSelectIndexPath;
 @property (nonatomic,strong)NSIndexPath *currentSelectIndexPath;
+@property (nonatomic,strong)NSArray *xibCellArray;
+@property (nonatomic,strong)NSArray *codeCellArray;
 
 /**
  Description tablecell touch Action
@@ -62,12 +64,6 @@ typedef NS_ENUM(NSInteger,EIsAutoLayoutType) {
 
 #pragma mark table footview
 - (void)setTableFootView:(UIView *)footView;
-
-#pragma mark table 上啦下拉刷新
-- (void)setTableRefreshViewWithRefreshBlock:(void(^)(BOOL isDownRefresh))refreshBlock;
-
-#pragma mark 结束刷新
-- (void)endRefreshWithNoMoredata;
 
 #pragma mark 刷新整个table
 - (void)reloadTableView;

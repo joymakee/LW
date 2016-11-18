@@ -19,6 +19,18 @@
 #define IOS8_OR_LATER ([[UIDevice currentDevice] systemVersion].floatValue >= 8.0)
 #define  LW_PLACEHOLDER_IMAGE @"LifeWorkPlaceHolder"
 
+typedef void (^DICTBLOCK)(NSDictionary *dict);
+
+typedef void (^ERRORBLOCK)(NSError *error);
+
+typedef void (^LISTBLOCK)(NSArray *list);
+
+typedef void (^BOOLBLOCK)(BOOL boolValue);
+
+typedef void (^STRINGBLOCK)(NSString *str);
+
+typedef void (^VOIDBLOCK)();
+
 typedef NS_ENUM(NSInteger,ELwTouchActionType) {
     ELwTouchActionSingleType,
     ELwTouchActionDoubleType,
@@ -47,6 +59,7 @@ typedef NS_ENUM(NSInteger,ERefreshScheme) {
     ERefreshSchemeTable,    //整个table
     ERefreshSchemeView      //整个view 扩展类使用
 };
+
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 

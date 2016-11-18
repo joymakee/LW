@@ -27,7 +27,7 @@
     ///动画结束后保持的状态：开始状态(kCAFillModeRemoved/kCAFillModeBackwards)、结束状态(kCAFillModeForwards/kCAFillModeBoth)
     scaleAnimation.fillMode = kCAFillModeForwards;
     scaleAnimation.removedOnCompletion = NO;
-    
+    scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     ///动画循环次数(MAXFLOAT 意味无穷)
     scaleAnimation.repeatCount = repeat;
     ///一个动画持续时间
