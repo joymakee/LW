@@ -57,10 +57,6 @@
     }
     else if (index == 1 ) {
         self.webView.hidden = NO;
-//        NSError *error = nil;
-//        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"baidu" ofType:@"html"];
-//        NSString *html = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
-//        [self.webView loadHTMLString:html baseURL:[NSURL URLWithString:@"www.baidu.com"]];
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]]];
     }
     else if (index == 2){

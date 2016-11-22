@@ -65,11 +65,12 @@
 #pragma mark life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"吃饭选择困难户";
+    [self setDefaultConstraintWithView:self.customMealView andTitle:@"吃饭选择困难户"];
     [self setRightNavItemWithTitle:@"自定义菜单"];
     [self.featherView setFrame:CGRectMake(0, 0, SCREEN_W-20, SCREEN_W-20)];
     self.featherView.center = self.view.center;
     [self.pie setFrame:self.featherView.frame];
+    [self.customMealView setFrame:CGRectZero];
 
     [self reloadPieViewWithDataSource:@[@{@"宫保鸡丁":@1},@{@"西红柿炒鸡蛋":@1},@{@"干锅菜花":@1},@{@"鱼香肉丝":@1},@{@"麻辣香锅":@1},@{@"烩虾仁儿":@1},@{@"炸子蟹":@2},@{@"毛血旺":@1},@{@"麻婆豆腐":@1}]];
     [self.blurView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]

@@ -16,6 +16,7 @@
 #define UmengAppkey @"5775cbcbe0f55aa631003118"
 #define SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define SCREEN_H [UIScreen mainScreen].bounds.size.height
+#define SCREEN_HEIGHT_OF_IPHONE6PLUS 736
 #define IOS8_OR_LATER ([[UIDevice currentDevice] systemVersion].floatValue >= 8.0)
 #define  LW_PLACEHOLDER_IMAGE @"LifeWorkPlaceHolder"
 

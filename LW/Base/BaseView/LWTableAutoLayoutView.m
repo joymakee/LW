@@ -16,6 +16,7 @@
 
 @interface LWTableAutoLayoutView ()<LWBaseCellDelegate>{
     NSMutableArray *registCellArrayM;
+    BOOL _isHasTableFoot;
 }
 @end
 
@@ -220,8 +221,7 @@ CGFloat tableRowH(id self, SEL _cmd, UITableView *tableView,NSIndexPath *indexPa
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.oldSelectIndexPath = self.currentSelectIndexPath;
-    self.tableView.contentInset = UIEdgeInsetsZero;
-    HIDE_KEYBOARD;
+    [self hideKeyBoard];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     LWTableSectionBaseModel *sectionModel = [self.dataArrayM objectAtIndex:indexPath.section];
     LWCellBaseModel * model  = sectionModel.rowArrayM[indexPath.row];
@@ -282,10 +282,18 @@ CGFloat tableRowH(id self, SEL _cmd, UITableView *tableView,NSIndexPath *indexPa
 
 -(void)textshouldBeginEditWithTextContainter:(id)textContainer andIndexPath:(NSIndexPath *)indexPath{
     self.currentSelectIndexPath = indexPath;
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 300, 0);
+    CGFloat footH = SCREEN_H>= SCREEN_HEIGHT_OF_IPHONE6PLUS?190:120;
+    CGFloat contentInsetBottom = SCREEN_H>= SCREEN_HEIGHT_OF_IPHONE6PLUS?340:280;
+    _isHasTableFoot?:[self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, footH)]];
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, contentInsetBottom, 0);
     [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
+- (void)hideKeyBoard{
+    _isHasTableFoot?:[self.tableView setTableFooterView:[[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 20)]];
+    self.tableView.contentInset = UIEdgeInsetsZero;
+    HIDE_KEYBOARD;
+}
 -(void)textshouldEndEditWithTextContainter:(id)textContainer andIndexPath:(NSIndexPath *)indexPath{
     
 }
@@ -303,8 +311,7 @@ CGFloat tableRowH(id self, SEL _cmd, UITableView *tableView,NSIndexPath *indexPa
 #pragma mark scrollDelegate
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     if (scrollView == self.tableView) {
-        self.tableView.contentInset = UIEdgeInsetsZero;
-        HIDE_KEYBOARD;
+        [self hideKeyBoard];
     }
 }
 
@@ -314,8 +321,8 @@ CGFloat tableRowH(id self, SEL _cmd, UITableView *tableView,NSIndexPath *indexPa
 
 #pragma mark 手势触摸
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    self.tableView.contentInset = UIEdgeInsetsZero;
-    HIDE_KEYBOARD;
+    [self hideKeyBoard];
+
 }
 
 #pragma mark 回刷数据 cellmodel使用
