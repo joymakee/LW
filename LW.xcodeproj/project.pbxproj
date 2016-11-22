@@ -154,6 +154,7 @@
 		2F410F7B1DC9BD9E00A650BB /* LWCompanyManageInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410EDE1DC9BD9D00A650BB /* LWCompanyManageInteractor.m */; };
 		2F410F7C1DC9BD9E00A650BB /* LWCompanyManagePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410EE11DC9BD9D00A650BB /* LWCompanyManagePresenter.m */; };
 		2F410F8C1DC9BD9E00A650BB /* TNACompanyManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410EF41DC9BD9D00A650BB /* TNACompanyManageVC.m */; };
+		2F51E3941DE2D3E10034AEDA /* CustomMealInteracter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F51E3931DE2D3E10034AEDA /* CustomMealInteracter.m */; };
 		2F7A17721DCC26C500B71CC6 /* bamboo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7A17711DCC26C500B71CC6 /* bamboo.png */; };
 		2F7A17761DCC3AC100B71CC6 /* poker.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7A17751DCC3AC100B71CC6 /* poker.png */; };
 		2F7A17781DCC3B5B00B71CC6 /* happy.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7A17771DCC3B5B00B71CC6 /* happy.png */; };
@@ -418,6 +419,8 @@
 		2F410EE11DC9BD9D00A650BB /* LWCompanyManagePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWCompanyManagePresenter.m; sourceTree = "<group>"; };
 		2F410EF31DC9BD9D00A650BB /* TNACompanyManageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNACompanyManageVC.h; sourceTree = "<group>"; };
 		2F410EF41DC9BD9D00A650BB /* TNACompanyManageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNACompanyManageVC.m; sourceTree = "<group>"; };
+		2F51E3921DE2D3E10034AEDA /* CustomMealInteracter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMealInteracter.h; sourceTree = "<group>"; };
+		2F51E3931DE2D3E10034AEDA /* CustomMealInteracter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMealInteracter.m; sourceTree = "<group>"; };
 		2F7A17711DCC26C500B71CC6 /* bamboo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bamboo.png; sourceTree = "<group>"; };
 		2F7A17751DCC3AC100B71CC6 /* poker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poker.png; sourceTree = "<group>"; };
 		2F7A17771DCC3B5B00B71CC6 /* happy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = happy.png; sourceTree = "<group>"; };
@@ -543,6 +546,8 @@
 			children = (
 				2F0C3D5D1DDECC3700A3571F /* WhatWeEatTodayInteracter.h */,
 				2F0C3D5E1DDECC3700A3571F /* WhatWeEatTodayInteracter.m */,
+				2F51E3921DE2D3E10034AEDA /* CustomMealInteracter.h */,
+				2F51E3931DE2D3E10034AEDA /* CustomMealInteracter.m */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -1598,6 +1603,7 @@
 				2F410F131DC9BD9E00A650BB /* BaseInteractor.m in Sources */,
 				2F410F1F1DC9BD9E00A650BB /* LWTableBaseView.m in Sources */,
 				2FFE75231DD32677004AD35A /* UIImage+Extension.m in Sources */,
+				2F51E3941DE2D3E10034AEDA /* CustomMealInteracter.m in Sources */,
 				2F410F681DC9BD9E00A650BB /* LWNavigationController.m in Sources */,
 				2F410F201DC9BD9E00A650BB /* LWTableHeaderBaseView.m in Sources */,
 				2F410F231DC9BD9E00A650BB /* XHViewState.m in Sources */,

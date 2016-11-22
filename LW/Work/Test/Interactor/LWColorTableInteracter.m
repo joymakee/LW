@@ -16,7 +16,7 @@
 
     NSArray *colorarray = @[[UIColor cyanColor],[UIColor orangeColor],[UIColor purpleColor],[UIColor redColor],[UIColor brownColor],[UIColor whiteColor],[UIColor cyanColor],[UIColor blackColor],[UIColor greenColor],[UIColor yellowColor],[UIColor magentaColor],[UIColor darkGrayColor],[UIColor blueColor]];
     
-    NSArray *titleArray = @[@"\n\n听说程序员钱多话少死的早\n\n",@"\n\n是真的吗\n\n",@"\n\n是,那为什么你还要做\n\n",@"\n\n不是,那为什么你天天没钱花\n\n",@"\n\n你说你不想讨论这个话题?\n\n",@"\n\n好吧,我们换个话题\n\n",@"\n\nxxx程序员加班没加班费\n\n",@"\n\nxxx程序员都是单身狗\n\n",@"\n\nxxx公司的程序员又猝死一个\n\n",@"😢我们还是换个话题吧"];
+    NSArray *titleArray = @[@"\n\n听说程序员钱多话少死的早\n\n",@"\n\n是真的吗\n\n",@"\n\n是,那为什么你还要做程序员呢\n\n",@"\n\n不是,那为什么你天天没钱花\n\n",@"\n\n不想讨论这个话题？好吧,我们换个话题\n\n",@"\n\nxxx为什么程序员黑眼圈呢\n\n",@"\n\nxxx为什么程序员单身狗呢\n\n",@"\n\n为什么程序员腰间盘突出呢\n\n",@"😢我们还是换个话题吧"];
 
     for (NSInteger i = 0; i<=20; i++) {
         @autoreleasepool {

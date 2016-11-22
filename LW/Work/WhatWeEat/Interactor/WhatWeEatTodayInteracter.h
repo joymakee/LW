@@ -10,5 +10,5 @@
 
 @interface WhatWeEatTodayInteracter : BaseInteractor
 @property (nonatomic,assign)CGFloat totalRadious;
-- (void)getMealDataSource;
+- (void)getMealDataSourceWithDataSouce:(NSArray *)mealDicArray;
 @end

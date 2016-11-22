@@ -10,8 +10,7 @@
 #import "MealModel.h"
 
 @implementation WhatWeEatTodayInteracter
-- (void)getMealDataSource{
-    NSArray *mealDicArray =@[@{@"宫保鸡丁":@1},@{@"西红柿炒鸡蛋":@1},@{@"干锅菜花":@1},@{@"鱼香肉丝":@1},@{@"麻辣香锅":@1},@{@"烩虾仁儿":@1},@{@"炸子蟹":@2},@{@"毛血旺":@1},@{@"麻婆豆腐":@1}];
+- (void)getMealDataSourceWithDataSouce:(NSArray *)mealDicArray{
     
     self.totalRadious = 0.0;
     [self.dataArrayM removeAllObjects];

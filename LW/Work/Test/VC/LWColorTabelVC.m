@@ -39,7 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setDefaultConstraintWithView:self.colorView andTitle:@"多彩🐒"];
+    [self setDefaultConstraintWithView:self.colorView andTitle:@"多彩程序🐒"];
     [self.presenter reloadDataSource];
 }
 

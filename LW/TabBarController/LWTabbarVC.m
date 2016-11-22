@@ -12,6 +12,7 @@
 #import "IntelligenceVC.h"
 #import "LWNavigationController.h"
 #import "TNACompanyManageVC.h"
+
 @interface LWTabbarVC ()<UITabBarControllerDelegate>
 
 @end
