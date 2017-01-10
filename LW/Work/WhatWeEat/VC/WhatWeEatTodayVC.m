@@ -16,6 +16,7 @@
 #import "LWTableSectionBaseModel.h"     //table的section模型
 #import "CustomMealInteracter.h"        //table的cell模型
 #import "CAAnimation+HCAnimation.h"
+#import "CALayer+Transition.h"
 
 @interface WhatWeEatTodayVC ()<CAAnimationDelegate>{
     CGFloat _roatedValue ;
@@ -37,8 +38,19 @@
 
 #pragma mark lazyload method
 
+-(void)dealloc{
+    [self.customMealView.layer removeAllAnimations];
+    [self.pie.layer removeAllAnimations];
+    [self.pie.layer removeFromSuperlayer];
+    [self.featherView.layer removeFromSuperlayer];
+}
+
 -(LWTableAutoLayoutView *)customMealView{
-    return _customMealView = _customMealView?:[[LWTableAutoLayoutView alloc]initWithFrame:CGRectZero];
+    if (!_customMealView) {
+        _customMealView = [[LWTableAutoLayoutView alloc]initWithFrame:CGRectZero];
+        [self.view addSubview:_customMealView];
+    }
+    return _customMealView;
 }
 
 -(CustomMealInteracter *)customMealInteracter{
@@ -65,13 +77,10 @@
 #pragma mark life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setDefaultConstraintWithView:self.customMealView andTitle:@"吃饭选择困难户"];
+    self.title = @"吃饭选择困难户";
     [self setRightNavItemWithTitle:@"自定义菜单"];
-    [self.featherView setFrame:CGRectMake(0, 0, SCREEN_W-20, SCREEN_W-20)];
     self.featherView.center = self.view.center;
     [self.pie setFrame:self.featherView.frame];
-    [self.customMealView setFrame:CGRectZero];
-
     [self reloadPieViewWithDataSource:@[@{@"宫保鸡丁":@1},@{@"西红柿炒鸡蛋":@1},@{@"干锅菜花":@1},@{@"鱼香肉丝":@1},@{@"麻辣香锅":@1},@{@"烩虾仁儿":@1},@{@"炸子蟹":@2},@{@"毛血旺":@1},@{@"麻婆豆腐":@1}]];
     [self.blurView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]
                                                               pathForResource:@"shuye"
@@ -80,8 +89,6 @@
 
     __weak __typeof (&*self)weakSelf = self;
     [self.featherView drawFeatherViewTouchBlock:^{[weakSelf roate];}];
-    [self.view addSubview:self.customMealView];
-
 }
 
 -(void)reloadPieViewWithDataSource:(NSArray *)dataSource{
@@ -104,7 +111,7 @@
     __weak __typeof (&*self)weakSelf = self;
     [self.interacter.dataArrayM enumerateObjectsUsingBlock:^(MealModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
         totalValue += model.mealRadius;
-        if (2*M_PI * totalValue/weakSelf.self.interacter.totalRadious + _roatedValue>=2*M_PI)
+        if (2*M_PI * totalValue/weakSelf.interacter.totalRadious + _roatedValue>=2*M_PI)
         {
         MealModel *model = weakSelf.pie.dataArrayM[idx];
         NSLog(@"你选中了%@",model.title);
@@ -118,13 +125,10 @@ static BOOL isSaved = NO;
 -(void)rightNavItemClickAction{
     [super rightNavItemClickAction];
     isSaved?[self saveCustomMealAndReloadPie]:[self showCustomTable];
-    [self.customMealView setFrame:CGRectMake(0, 0, SCREEN_W, isSaved?0:SCREEN_H)];
-    [CAAnimation showScaleAnimationInView:self.customMealView
-                                fromValue:isSaved?1:0
-                               ScaleValue:isSaved?0:1
-                                   Repeat:1
-                                 Duration:0.8
-                             autoreverses:NO];
+    __weak __typeof (&*self)weakSelf = self;
+    [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^{
+        [weakSelf.customMealView setFrame:CGRectMake(0, 0, SCREEN_W, isSaved?0:SCREEN_H)];
+    } completion:nil];
     isSaved = !isSaved;
     [self setRightNavItemWithTitle:isSaved?@"保存":@"自定义菜单"];
 }
@@ -138,7 +142,6 @@ static BOOL isSaved = NO;
     obj.title.length?[array addObject:@{obj.title:@1}]:nil;
     }];
     array.count?[weakSelf reloadPieViewWithDataSource:array]:nil;
-
 }
 
 - (void)showCustomTable{

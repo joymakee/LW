@@ -12,15 +12,23 @@
 
 @interface FeatherView ()
 @property (nonatomic,strong)UIBezierPath *centerPath;
+@property (nonatomic,strong)NSMutableArray *layerArrayM;
 @end
 
 @implementation FeatherView
+
+- (NSMutableArray *)layerArrayM{
+    return _layerArrayM = _layerArrayM?:[NSMutableArray array];
+}
 
 - (UIBezierPath *)centerPath{
     return _centerPath = _centerPath?:[[UIBezierPath alloc]init];
 }
 
 - (void)drawFeatherViewTouchBlock:(VOIDBLOCK)touchBlock{
+    [self.layerArrayM enumerateObjectsUsingBlock:^(CALayer *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj removeFromSuperlayer];
+    }];
     objc_setAssociatedObject(self, @selector(touchesEnded:withEvent:), touchBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
     CGPoint center = CGPointMake(self.center.x-(CGRectGetMaxX(self.frame)-CGRectGetMaxX(self.bounds)),self.center.y-(CGRectGetMaxY(self.frame)-CGRectGetMaxY(self.bounds)) );
     UIBezierPath *path = [[UIBezierPath alloc]init];
@@ -46,6 +54,11 @@
     
     CATextLayer *txtLayer = [self textLayer:@"Go" rotate:0];
     [self.layer addSublayer:txtLayer];
+    
+    [self.layerArrayM addObject:layer];
+    [self.layerArrayM addObject:centerLayer];
+    [self.layerArrayM addObject:txtLayer];
+
 }
 
 - (CATextLayer*)textLayer:(NSString*)text rotate:(CGFloat)angel

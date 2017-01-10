@@ -14,9 +14,7 @@
 @implementation CustomMealInteracter
 - (void)getViewDataSourceWithDataSource:(NSArray *)dataArrayM{
     [self.dataArrayM removeAllObjects];
-    NSMutableArray *colorCellModelSource = [NSMutableArray array];
-    
-//    NSArray *colorarray = @[[UIColor cyanColor],[UIColor orangeColor],[UIColor purpleColor],[UIColor redColor],[UIColor brownColor],[UIColor whiteColor],[UIColor cyanColor],[UIColor blackColor],[UIColor greenColor],[UIColor yellowColor],[UIColor magentaColor],[UIColor darkGrayColor],[UIColor blueColor]];
+    __block NSMutableArray *colorCellModelSource = [NSMutableArray array];
     
     [dataArrayM enumerateObjectsUsingBlock:^(MealModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         @autoreleasepool {
@@ -25,18 +23,19 @@
             colorModel.placeHolder = @"请输入自定义名称";
             colorModel.maxNumber = 16;
             colorModel.title = obj.title;
-            //            colorModel.backgroundColor = colorarray[i%colorarray.count];
+            colorModel.cellH = 44;
             [colorCellModelSource addObject:colorModel];
         }
     }];
     
     //补够10个
-    for (NSInteger i = 0; i<=10-dataArrayM.count; i++) {
+    for (NSInteger i = 0; i<11-dataArrayM.count; i++) {
         @autoreleasepool {
             LWCellBaseTextModel *colorModel = [[LWCellBaseTextModel alloc]init];
             colorModel.cellName =@"LWTextFieldCell";
             colorModel.placeHolder = @"请输入自定义名称";
             colorModel.maxNumber = 16;
+            colorModel.cellH = 44;
 //            colorModel.title = ;
 //            colorModel.backgroundColor = colorarray[i%colorarray.count];
             [colorCellModelSource addObject:colorModel];

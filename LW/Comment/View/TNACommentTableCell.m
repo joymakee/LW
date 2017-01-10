@@ -40,6 +40,7 @@
     self.commentLabel.text = model.subTitle;
     self.nameLabel.text = model.title;
     self.starView.rating = model.starNumber;
+    self.contentView.clipsToBounds = YES;
 }
 
 - (void)imageBtnClick:(NSIndexPath *)indexPath andSource:(NSArray *)array {

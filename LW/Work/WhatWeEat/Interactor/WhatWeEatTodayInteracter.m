@@ -14,13 +14,15 @@
     
     self.totalRadious = 0.0;
     [self.dataArrayM removeAllObjects];
+    __weak __typeof (&*self)weakSelf = self;
+
     [mealDicArray enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL * _Nonnull stop) {
         @autoreleasepool {
             MealModel *model = [[MealModel alloc]init];
             model.title = [dict allKeys][0];
             model.mealRadius = [[dict allValues][0] floatValue];
-            [self.dataArrayM addObject:model];
-            _totalRadious +=model.mealRadius;
+            [weakSelf.dataArrayM addObject:model];
+            weakSelf.totalRadious +=model.mealRadius;
         }
     }];
 }

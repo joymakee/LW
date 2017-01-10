@@ -20,9 +20,7 @@
     dispatch_queue_t queue =dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
         NSMutableArray *sourceArray = [NSMutableArray arrayWithCapacity:0];
-//        dispatch_apply(20, queue, ^(size_t index) {
         for(NSInteger index = 0;index<20;index++){
-
             @autoreleasepool {
                 CommentModel *comment = [[CommentModel alloc]init];
                 comment.title = nameArray[arc4random()%nameArray.count];
@@ -34,7 +32,6 @@
                 comment.backgroundColor = [UIColor clearColor];
                 [sourceArray addObject:comment];
             }
-//        });
         }
         LWTableSectionBaseModel *topicSectionModel = [LWTableSectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:sourceArray sectionH:15 sectionTitle:nil];
         [weakSelf.dataArrayM addObject:topicSectionModel];
