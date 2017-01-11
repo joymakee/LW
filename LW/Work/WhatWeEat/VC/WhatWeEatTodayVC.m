@@ -79,8 +79,9 @@
     [super viewDidLoad];
     self.title = @"吃饭选择困难户";
     [self setRightNavItemWithTitle:@"自定义菜单"];
-    self.featherView.center = self.view.center;
-    [self.pie setFrame:self.featherView.frame];
+    [self.featherView setBounds:CGRectMake(0, 0, 300, 300)];
+    [self.pie setBounds:self.featherView.bounds];
+//    [self.pie setFrame:self.featherView.frame];
     [self reloadPieViewWithDataSource:@[@{@"宫保鸡丁":@1},@{@"西红柿炒鸡蛋":@1},@{@"干锅菜花":@1},@{@"鱼香肉丝":@1},@{@"麻辣香锅":@1},@{@"烩虾仁儿":@1},@{@"炸子蟹":@2},@{@"毛血旺":@1},@{@"麻婆豆腐":@1}]];
     [self.blurView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]
                                                               pathForResource:@"shuye"
@@ -127,7 +128,7 @@ static BOOL isSaved = NO;
     isSaved?[self saveCustomMealAndReloadPie]:[self showCustomTable];
     __weak __typeof (&*self)weakSelf = self;
     [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^{
-        [weakSelf.customMealView setFrame:CGRectMake(0, 0, SCREEN_W, isSaved?0:SCREEN_H)];
+        [weakSelf.customMealView setFrame:CGRectMake(0, 0, SCREEN_W, isSaved?0:SCREEN_H-64)];
     } completion:nil];
     isSaved = !isSaved;
     [self setRightNavItemWithTitle:isSaved?@"保存":@"自定义菜单"];

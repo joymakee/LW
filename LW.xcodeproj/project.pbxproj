@@ -1388,7 +1388,7 @@
 				TargetAttributes = {
 					2F410A1C1DC9B85800A650BB = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = TLWP697Z5D;
+						DevelopmentTeam = 6MDXBHF3DG;
 						ProvisioningStyle = Automatic;
 					};
 					2F410A351DC9B85800A650BB = {
@@ -1801,13 +1801,17 @@
 			baseConfigurationReference = 7792F10985A0A0DBE2B0A18D /* Pods-LW.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TLWP697Z5D;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6MDXBHF3DG;
 				GCC_PREFIX_HEADER = LW.pch;
 				INFOPLIST_FILE = LW/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.systoon.enterprise.developer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.systoon.toon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -1816,13 +1820,17 @@
 			baseConfigurationReference = 303A9620E7557E968C59CCDD /* Pods-LW.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TLWP697Z5D;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6MDXBHF3DG;
 				GCC_PREFIX_HEADER = LW.pch;
 				INFOPLIST_FILE = LW/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.systoon.enterprise.developer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.systoon.toon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
