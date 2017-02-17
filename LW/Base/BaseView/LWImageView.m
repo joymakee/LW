@@ -1,14 +1,14 @@
 //
-//  LWimageView.m
+//  LWImageView.m
 //  LW
 //
 //  Created by Joymake on 16/6/30.
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "LWimageView.h"
+#import "LWImageView.h"
 
-@implementation LWimageView
+@implementation LWImageView
 
 -(instancetype)init{
     if (self = [super init]) {

@@ -6,6 +6,10 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#endif
+
 #ifndef LW_pch
 #define LW_pch
 #import "objc/runtime.h"
@@ -19,6 +23,8 @@
 #define SCREEN_HEIGHT_OF_IPHONE6PLUS 736
 #define IOS8_OR_LATER ([[UIDevice currentDevice] systemVersion].floatValue >= 8.0)
 #define  LW_PLACEHOLDER_IMAGE @"LifeWorkPlaceHolder"
+
+#define  KZERO  0.0
 
 typedef void (^DICTBLOCK)(NSDictionary *dict);
 

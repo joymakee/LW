@@ -53,7 +53,7 @@
 //        isFirst = NO;
 //        return YES;
         //这里的规则是：连接第一个P打头的设备
-                if(isFirst && [peripheralName hasPrefix:@"MiniBeacon_00174"]){
+                if(isFirst && [peripheralName hasPrefix:@"beacon00491"]){
                     isFirst = NO;
                     return YES;
                 }

@@ -7,8 +7,8 @@
 //
 
 #import "LWTextFieldCell.h"
-#import "LWimageView.h"
+#import "LWImageView.h"
 @interface LoginHeadCell : LWTextFieldCell
-@property (weak, nonatomic) IBOutlet LWimageView *headImage;
+@property (weak, nonatomic) IBOutlet LWImageView *headImage;
 
 @end

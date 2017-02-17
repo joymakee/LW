@@ -7,11 +7,11 @@
 //
 
 #import "LWLogin_wx&qqCell.h"
-#import "LWimageView.h"
+#import "LWImageView.h"
 @interface LWLogin_wx_qqCell  ()
 
-@property (weak, nonatomic) IBOutlet LWimageView *wxImageView;
-@property (weak, nonatomic) IBOutlet LWimageView *qqImageView;
+@property (weak, nonatomic) IBOutlet LWImageView *wxImageView;
+@property (weak, nonatomic) IBOutlet LWImageView *qqImageView;
 
 @end
 static const void *loginPath = &loginPath;

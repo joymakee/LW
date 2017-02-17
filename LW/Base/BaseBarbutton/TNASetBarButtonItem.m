@@ -7,7 +7,7 @@
 //
 
 #import "TNASetBarButtonItem.h"
-
+#import "UIImage+Extension.h"
 @implementation TNASetBarButtonItem
 + (UIBarButtonItem *)barButtonItemWithTarget:(id)target
                                       action:(SEL)selector
@@ -19,8 +19,12 @@
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setFrame:frame];
-    UIImage* rendingNormalImage = [[UIImage imageNamed:normalImgName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    UIImage* rendingHighlightImage = [[UIImage imageNamed:highLightImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    UIImage* rendingNormalImage = [[UIImage imageNamed:normalImgName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage* rendingHighlightImage = [[UIImage imageNamed:highLightImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    rendingNormalImage = [UIImage UIBezierPathClip:rendingNormalImage cornerRadius:rendingNormalImage.size.width];
+    rendingNormalImage = [UIImage scaleToSize:rendingNormalImage size:CGSizeMake(35, 35)];
+    rendingHighlightImage = [UIImage scaleToSize:rendingHighlightImage size:CGSizeMake(35, 35)];
+
     [button setImage:rendingNormalImage forState:UIControlStateNormal];
     [button setImage:rendingHighlightImage forState:UIControlStateHighlighted];
     [button setTitle:title forState:UIControlStateNormal];
@@ -45,8 +49,8 @@
     imageview.layer.masksToBounds = YES;
     [imageview.layer setBorderColor:[[UIColor whiteColor] CGColor]];
     [imageview.layer setBorderWidth:1];
-    imageview.image =[UIImage imageNamed:@"default_self_card_icon.png"];
-//    [imageview setImageWithURL:[NSURL URLWithString:normalImgName] refreshCache:YES placeholderImage:[UIImage imageNamed:@"default_self_card_icon.png"]];
     return [[UIBarButtonItem alloc]initWithCustomView:imageview];
 }
+
+
 @end

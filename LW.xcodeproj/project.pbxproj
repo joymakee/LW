@@ -80,7 +80,7 @@
 		2F410F1A1DC9BD9E00A650BB /* BasePresentor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410E231DC9BD9D00A650BB /* BasePresentor.m */; };
 		2F410F1B1DC9BD9E00A650BB /* LWBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410E261DC9BD9D00A650BB /* LWBaseVC.m */; };
 		2F410F1C1DC9BD9E00A650BB /* BackGroundBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410E291DC9BD9D00A650BB /* BackGroundBlurView.m */; };
-		2F410F1D1DC9BD9E00A650BB /* LWimageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410E2B1DC9BD9D00A650BB /* LWimageView.m */; };
+		2F410F1D1DC9BD9E00A650BB /* LWImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410E2B1DC9BD9D00A650BB /* LWImageView.m */; };
 		2F410F1E1DC9BD9E00A650BB /* LWTableAutoLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410E2D1DC9BD9D00A650BB /* LWTableAutoLayoutView.m */; };
 		2F410F1F1DC9BD9E00A650BB /* LWTableBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410E2F1DC9BD9D00A650BB /* LWTableBaseView.m */; };
 		2F410F201DC9BD9E00A650BB /* LWTableHeaderBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410E311DC9BD9D00A650BB /* LWTableHeaderBaseView.m */; };
@@ -154,6 +154,14 @@
 		2F410F7B1DC9BD9E00A650BB /* LWCompanyManageInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410EDE1DC9BD9D00A650BB /* LWCompanyManageInteractor.m */; };
 		2F410F7C1DC9BD9E00A650BB /* LWCompanyManagePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410EE11DC9BD9D00A650BB /* LWCompanyManagePresenter.m */; };
 		2F410F8C1DC9BD9E00A650BB /* TNACompanyManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410EF41DC9BD9D00A650BB /* TNACompanyManageVC.m */; };
+		2F4ED61F1E518EF8007C71D3 /* LWChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4ED61A1E518EF8007C71D3 /* LWChatVC.m */; };
+		2F4ED6221E518F93007C71D3 /* LWChatPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4ED6211E518F93007C71D3 /* LWChatPresenter.m */; };
+		2F4ED6281E518FF7007C71D3 /* LWChatInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4ED6271E518FF7007C71D3 /* LWChatInteractor.m */; };
+		2F4ED62E1E519381007C71D3 /* LWChatLeftIconLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4ED62C1E519381007C71D3 /* LWChatLeftIconLabelCell.m */; };
+		2F4ED62F1E519381007C71D3 /* LWChatRightIconLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F4ED62D1E519381007C71D3 /* LWChatRightIconLabelCell.xib */; };
+		2F4ED6331E5193A7007C71D3 /* LWChatRightIconLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4ED6311E5193A7007C71D3 /* LWChatRightIconLabelCell.m */; };
+		2F4ED6341E5193A7007C71D3 /* LWChatLeftIconLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F4ED6321E5193A7007C71D3 /* LWChatLeftIconLabelCell.xib */; };
+		2F4ED6391E51B03A007C71D3 /* bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F4ED6381E51B03A007C71D3 /* bubble.png */; };
 		2F51E3941DE2D3E10034AEDA /* CustomMealInteracter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F51E3931DE2D3E10034AEDA /* CustomMealInteracter.m */; };
 		2F7A17721DCC26C500B71CC6 /* bamboo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7A17711DCC26C500B71CC6 /* bamboo.png */; };
 		2F7A17761DCC3AC100B71CC6 /* poker.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7A17751DCC3AC100B71CC6 /* poker.png */; };
@@ -161,6 +169,19 @@
 		2F7A177A1DCC3BD600B71CC6 /* eat.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7A17791DCC3BD600B71CC6 /* eat.png */; };
 		2F7D25FF1DD426CA008F3FDF /* qq.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7D25FE1DD426CA008F3FDF /* qq.png */; };
 		2F7D26011DD427F8008F3FDF /* micro_messenger.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F7D26001DD427F8008F3FDF /* micro_messenger.png */; };
+		2F8806BD1E52A14D0029FB4B /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8806BA1E52A14D0029FB4B /* GCDAsyncSocket.m */; };
+		2F8806BE1E52A14D0029FB4B /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8806BC1E52A14D0029FB4B /* GCDAsyncUdpSocket.m */; };
+		2F8806C11E52A29E0029FB4B /* LWSocketClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8806C01E52A29E0029FB4B /* LWSocketClient.m */; };
+		2F8806CA1E52E75C0029FB4B /* LWChatListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8806C91E52E75C0029FB4B /* LWChatListVC.m */; };
+		2F8806CD1E52E7840029FB4B /* LWChatListPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8806CC1E52E7840029FB4B /* LWChatListPresenter.m */; };
+		2F8806D01E52E7980029FB4B /* LWChatListInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8806CF1E52E7980029FB4B /* LWChatListInteractor.m */; };
+		2F8806DC1E52EB620029FB4B /* LWChatListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8806DA1E52EB620029FB4B /* LWChatListCell.m */; };
+		2F8806DD1E52EB620029FB4B /* LWChatListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F8806DB1E52EB620029FB4B /* LWChatListCell.xib */; };
+		2F8806E11E52F01F0029FB4B /* LWChatListCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8806E01E52F01F0029FB4B /* LWChatListCellModel.m */; };
+		2F8806E51E53061A0029FB4B /* InputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8806E41E53061A0029FB4B /* InputView.m */; };
+		2F8806EC1E53EBC90029FB4B /* LWChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8806EB1E53EBC90029FB4B /* LWChatView.m */; };
+		2F88072B1E553C700029FB4B /* UIView+FrameUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F88072A1E553C700029FB4B /* UIView+FrameUpdate.m */; };
+		2F88072E1E569EB50029FB4B /* ClientObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F88072D1E569EB50029FB4B /* ClientObj.m */; };
 		2FAD6C211DC9C7EC00D6A60B /* shuye.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD6C201DC9C7EC00D6A60B /* shuye.jpg */; };
 		2FFE751A1DD3106A004AD35A /* LWColorTabelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE75191DD3106A004AD35A /* LWColorTabelVC.m */; };
 		2FFE751D1DD310CE004AD35A /* LWColorTableInteracter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE751C1DD310CE004AD35A /* LWColorTableInteracter.m */; };
@@ -303,8 +324,8 @@
 		2F410E261DC9BD9D00A650BB /* LWBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWBaseVC.m; sourceTree = "<group>"; };
 		2F410E281DC9BD9D00A650BB /* BackGroundBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackGroundBlurView.h; sourceTree = "<group>"; };
 		2F410E291DC9BD9D00A650BB /* BackGroundBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackGroundBlurView.m; sourceTree = "<group>"; };
-		2F410E2A1DC9BD9D00A650BB /* LWimageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWimageView.h; sourceTree = "<group>"; };
-		2F410E2B1DC9BD9D00A650BB /* LWimageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWimageView.m; sourceTree = "<group>"; };
+		2F410E2A1DC9BD9D00A650BB /* LWImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWImageView.h; sourceTree = "<group>"; };
+		2F410E2B1DC9BD9D00A650BB /* LWImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWImageView.m; sourceTree = "<group>"; };
 		2F410E2C1DC9BD9D00A650BB /* LWTableAutoLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTableAutoLayoutView.h; sourceTree = "<group>"; };
 		2F410E2D1DC9BD9D00A650BB /* LWTableAutoLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTableAutoLayoutView.m; sourceTree = "<group>"; };
 		2F410E2E1DC9BD9D00A650BB /* LWTableBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTableBaseView.h; sourceTree = "<group>"; };
@@ -419,6 +440,19 @@
 		2F410EE11DC9BD9D00A650BB /* LWCompanyManagePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWCompanyManagePresenter.m; sourceTree = "<group>"; };
 		2F410EF31DC9BD9D00A650BB /* TNACompanyManageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNACompanyManageVC.h; sourceTree = "<group>"; };
 		2F410EF41DC9BD9D00A650BB /* TNACompanyManageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNACompanyManageVC.m; sourceTree = "<group>"; };
+		2F4ED6191E518EF8007C71D3 /* LWChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatVC.h; sourceTree = "<group>"; };
+		2F4ED61A1E518EF8007C71D3 /* LWChatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatVC.m; sourceTree = "<group>"; };
+		2F4ED6201E518F93007C71D3 /* LWChatPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatPresenter.h; sourceTree = "<group>"; };
+		2F4ED6211E518F93007C71D3 /* LWChatPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatPresenter.m; sourceTree = "<group>"; };
+		2F4ED6261E518FF7007C71D3 /* LWChatInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatInteractor.h; sourceTree = "<group>"; };
+		2F4ED6271E518FF7007C71D3 /* LWChatInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatInteractor.m; sourceTree = "<group>"; };
+		2F4ED62B1E519381007C71D3 /* LWChatLeftIconLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatLeftIconLabelCell.h; sourceTree = "<group>"; };
+		2F4ED62C1E519381007C71D3 /* LWChatLeftIconLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatLeftIconLabelCell.m; sourceTree = "<group>"; };
+		2F4ED62D1E519381007C71D3 /* LWChatRightIconLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LWChatRightIconLabelCell.xib; sourceTree = "<group>"; };
+		2F4ED6301E5193A7007C71D3 /* LWChatRightIconLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatRightIconLabelCell.h; sourceTree = "<group>"; };
+		2F4ED6311E5193A7007C71D3 /* LWChatRightIconLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatRightIconLabelCell.m; sourceTree = "<group>"; };
+		2F4ED6321E5193A7007C71D3 /* LWChatLeftIconLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LWChatLeftIconLabelCell.xib; sourceTree = "<group>"; };
+		2F4ED6381E51B03A007C71D3 /* bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble.png; sourceTree = "<group>"; };
 		2F51E3921DE2D3E10034AEDA /* CustomMealInteracter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMealInteracter.h; sourceTree = "<group>"; };
 		2F51E3931DE2D3E10034AEDA /* CustomMealInteracter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMealInteracter.m; sourceTree = "<group>"; };
 		2F7A17711DCC26C500B71CC6 /* bamboo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bamboo.png; sourceTree = "<group>"; };
@@ -427,6 +461,31 @@
 		2F7A17791DCC3BD600B71CC6 /* eat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eat.png; sourceTree = "<group>"; };
 		2F7D25FE1DD426CA008F3FDF /* qq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qq.png; sourceTree = "<group>"; };
 		2F7D26001DD427F8008F3FDF /* micro_messenger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = micro_messenger.png; sourceTree = "<group>"; };
+		2F8806B91E52A14D0029FB4B /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		2F8806BA1E52A14D0029FB4B /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		2F8806BB1E52A14D0029FB4B /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		2F8806BC1E52A14D0029FB4B /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		2F8806BF1E52A29E0029FB4B /* LWSocketClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWSocketClient.h; sourceTree = "<group>"; };
+		2F8806C01E52A29E0029FB4B /* LWSocketClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWSocketClient.m; sourceTree = "<group>"; };
+		2F8806C81E52E75C0029FB4B /* LWChatListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatListVC.h; sourceTree = "<group>"; };
+		2F8806C91E52E75C0029FB4B /* LWChatListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatListVC.m; sourceTree = "<group>"; };
+		2F8806CB1E52E7840029FB4B /* LWChatListPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatListPresenter.h; sourceTree = "<group>"; };
+		2F8806CC1E52E7840029FB4B /* LWChatListPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatListPresenter.m; sourceTree = "<group>"; };
+		2F8806CE1E52E7980029FB4B /* LWChatListInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatListInteractor.h; sourceTree = "<group>"; };
+		2F8806CF1E52E7980029FB4B /* LWChatListInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatListInteractor.m; sourceTree = "<group>"; };
+		2F8806D91E52EB620029FB4B /* LWChatListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatListCell.h; sourceTree = "<group>"; };
+		2F8806DA1E52EB620029FB4B /* LWChatListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatListCell.m; sourceTree = "<group>"; };
+		2F8806DB1E52EB620029FB4B /* LWChatListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LWChatListCell.xib; sourceTree = "<group>"; };
+		2F8806DF1E52F01F0029FB4B /* LWChatListCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatListCellModel.h; sourceTree = "<group>"; };
+		2F8806E01E52F01F0029FB4B /* LWChatListCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatListCellModel.m; sourceTree = "<group>"; };
+		2F8806E31E53061A0029FB4B /* InputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputView.h; sourceTree = "<group>"; };
+		2F8806E41E53061A0029FB4B /* InputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputView.m; sourceTree = "<group>"; };
+		2F8806EA1E53EBC90029FB4B /* LWChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatView.h; sourceTree = "<group>"; };
+		2F8806EB1E53EBC90029FB4B /* LWChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatView.m; sourceTree = "<group>"; };
+		2F8807291E553C700029FB4B /* UIView+FrameUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameUpdate.h"; sourceTree = "<group>"; };
+		2F88072A1E553C700029FB4B /* UIView+FrameUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameUpdate.m"; sourceTree = "<group>"; };
+		2F88072C1E569EB50029FB4B /* ClientObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientObj.h; sourceTree = "<group>"; };
+		2F88072D1E569EB50029FB4B /* ClientObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientObj.m; sourceTree = "<group>"; };
 		2FAD6C201DC9C7EC00D6A60B /* shuye.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shuye.jpg; sourceTree = "<group>"; };
 		2FFE75181DD3106A004AD35A /* LWColorTabelVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWColorTabelVC.h; sourceTree = "<group>"; };
 		2FFE75191DD3106A004AD35A /* LWColorTabelVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWColorTabelVC.m; sourceTree = "<group>"; };
@@ -622,6 +681,7 @@
 				2F410EA81DC9BD9D00A650BB /* MediaPlay */,
 				2F410EBD1DC9BD9D00A650BB /* TabBarController */,
 				2F410EC71DC9BD9D00A650BB /* Work */,
+				2F4ED60E1E518E2B007C71D3 /* Chat */,
 				2F410A231DC9B85800A650BB /* AppDelegate.h */,
 				2F410A241DC9B85800A650BB /* AppDelegate.m */,
 				2F410A291DC9B85800A650BB /* Main.storyboard */,
@@ -830,8 +890,8 @@
 			children = (
 				2F410E281DC9BD9D00A650BB /* BackGroundBlurView.h */,
 				2F410E291DC9BD9D00A650BB /* BackGroundBlurView.m */,
-				2F410E2A1DC9BD9D00A650BB /* LWimageView.h */,
-				2F410E2B1DC9BD9D00A650BB /* LWimageView.m */,
+				2F410E2A1DC9BD9D00A650BB /* LWImageView.h */,
+				2F410E2B1DC9BD9D00A650BB /* LWImageView.m */,
 				2F410E2C1DC9BD9D00A650BB /* LWTableAutoLayoutView.h */,
 				2F410E2D1DC9BD9D00A650BB /* LWTableAutoLayoutView.m */,
 				2F410E2E1DC9BD9D00A650BB /* LWTableBaseView.h */,
@@ -840,6 +900,8 @@
 				2F410E311DC9BD9D00A650BB /* LWTableHeaderBaseView.m */,
 				2F410E321DC9BD9D00A650BB /* UISegementView.h */,
 				2F410E331DC9BD9D00A650BB /* UISegementView.m */,
+				2F8807291E553C700029FB4B /* UIView+FrameUpdate.h */,
+				2F88072A1E553C700029FB4B /* UIView+FrameUpdate.m */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -1272,6 +1334,185 @@
 			path = VC;
 			sourceTree = "<group>";
 		};
+		2F4ED60E1E518E2B007C71D3 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				2F4ED6151E518EF8007C71D3 /* Chat */,
+				2F4ED61B1E518EF8007C71D3 /* ChatList */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		2F4ED6151E518EF8007C71D3 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				2F8806B81E52A14D0029FB4B /* SocketComponent */,
+				2F4ED6351E51A8A6007C71D3 /* resources */,
+				2F4ED6291E51932E007C71D3 /* View */,
+				2F4ED6161E518EF8007C71D3 /* Interacter */,
+				2F4ED6171E518EF8007C71D3 /* Presentor */,
+				2F4ED6181E518EF8007C71D3 /* VC */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		2F4ED6161E518EF8007C71D3 /* Interacter */ = {
+			isa = PBXGroup;
+			children = (
+				2F4ED6261E518FF7007C71D3 /* LWChatInteractor.h */,
+				2F4ED6271E518FF7007C71D3 /* LWChatInteractor.m */,
+			);
+			path = Interacter;
+			sourceTree = "<group>";
+		};
+		2F4ED6171E518EF8007C71D3 /* Presentor */ = {
+			isa = PBXGroup;
+			children = (
+				2F4ED6201E518F93007C71D3 /* LWChatPresenter.h */,
+				2F4ED6211E518F93007C71D3 /* LWChatPresenter.m */,
+			);
+			path = Presentor;
+			sourceTree = "<group>";
+		};
+		2F4ED6181E518EF8007C71D3 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2F4ED6191E518EF8007C71D3 /* LWChatVC.h */,
+				2F4ED61A1E518EF8007C71D3 /* LWChatVC.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2F4ED61B1E518EF8007C71D3 /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				2F8806DE1E52EFFB0029FB4B /* Model */,
+				2F8806D11E52EA660029FB4B /* View */,
+				2F4ED61C1E518EF8007C71D3 /* Interacter */,
+				2F4ED61D1E518EF8007C71D3 /* Presentor */,
+				2F4ED61E1E518EF8007C71D3 /* VC */,
+			);
+			path = ChatList;
+			sourceTree = "<group>";
+		};
+		2F4ED61C1E518EF8007C71D3 /* Interacter */ = {
+			isa = PBXGroup;
+			children = (
+				2F8806CE1E52E7980029FB4B /* LWChatListInteractor.h */,
+				2F8806CF1E52E7980029FB4B /* LWChatListInteractor.m */,
+			);
+			path = Interacter;
+			sourceTree = "<group>";
+		};
+		2F4ED61D1E518EF8007C71D3 /* Presentor */ = {
+			isa = PBXGroup;
+			children = (
+				2F8806CB1E52E7840029FB4B /* LWChatListPresenter.h */,
+				2F8806CC1E52E7840029FB4B /* LWChatListPresenter.m */,
+			);
+			path = Presentor;
+			sourceTree = "<group>";
+		};
+		2F4ED61E1E518EF8007C71D3 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				2F8806C81E52E75C0029FB4B /* LWChatListVC.h */,
+				2F8806C91E52E75C0029FB4B /* LWChatListVC.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		2F4ED6291E51932E007C71D3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F8806E61E5314610029FB4B /* View */,
+				2F8806E21E5305E60029FB4B /* InputView */,
+				2F4ED62A1E51932E007C71D3 /* TableCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F4ED62A1E51932E007C71D3 /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				2F4ED62B1E519381007C71D3 /* LWChatLeftIconLabelCell.h */,
+				2F4ED62C1E519381007C71D3 /* LWChatLeftIconLabelCell.m */,
+				2F4ED6321E5193A7007C71D3 /* LWChatLeftIconLabelCell.xib */,
+				2F4ED6301E5193A7007C71D3 /* LWChatRightIconLabelCell.h */,
+				2F4ED6311E5193A7007C71D3 /* LWChatRightIconLabelCell.m */,
+				2F4ED62D1E519381007C71D3 /* LWChatRightIconLabelCell.xib */,
+			);
+			path = TableCell;
+			sourceTree = "<group>";
+		};
+		2F4ED6351E51A8A6007C71D3 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				2F4ED6381E51B03A007C71D3 /* bubble.png */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		2F8806B81E52A14D0029FB4B /* SocketComponent */ = {
+			isa = PBXGroup;
+			children = (
+				2F8806B91E52A14D0029FB4B /* GCDAsyncSocket.h */,
+				2F8806BA1E52A14D0029FB4B /* GCDAsyncSocket.m */,
+				2F8806BB1E52A14D0029FB4B /* GCDAsyncUdpSocket.h */,
+				2F8806BC1E52A14D0029FB4B /* GCDAsyncUdpSocket.m */,
+				2F8806BF1E52A29E0029FB4B /* LWSocketClient.h */,
+				2F8806C01E52A29E0029FB4B /* LWSocketClient.m */,
+				2F88072C1E569EB50029FB4B /* ClientObj.h */,
+				2F88072D1E569EB50029FB4B /* ClientObj.m */,
+			);
+			path = SocketComponent;
+			sourceTree = "<group>";
+		};
+		2F8806D11E52EA660029FB4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F8806D81E52EB620029FB4B /* TableViewCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F8806D81E52EB620029FB4B /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2F8806D91E52EB620029FB4B /* LWChatListCell.h */,
+				2F8806DA1E52EB620029FB4B /* LWChatListCell.m */,
+				2F8806DB1E52EB620029FB4B /* LWChatListCell.xib */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		2F8806DE1E52EFFB0029FB4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2F8806DF1E52F01F0029FB4B /* LWChatListCellModel.h */,
+				2F8806E01E52F01F0029FB4B /* LWChatListCellModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2F8806E21E5305E60029FB4B /* InputView */ = {
+			isa = PBXGroup;
+			children = (
+				2F8806E31E53061A0029FB4B /* InputView.h */,
+				2F8806E41E53061A0029FB4B /* InputView.m */,
+			);
+			name = InputView;
+			sourceTree = "<group>";
+		};
+		2F8806E61E5314610029FB4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F8806EA1E53EBC90029FB4B /* LWChatView.h */,
+				2F8806EB1E53EBC90029FB4B /* LWChatView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		2FFE75141DD31025004AD35A /* Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -1388,8 +1629,8 @@
 				TargetAttributes = {
 					2F410A1C1DC9B85800A650BB = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 6MDXBHF3DG;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = TLWP697Z5D;
+						ProvisioningStyle = Manual;
 					};
 					2F410A351DC9B85800A650BB = {
 						CreatedOnToolsVersion = 8.0;
@@ -1439,8 +1680,10 @@
 				2F410F391DC9BD9E00A650BB /* tuzi.gif in Resources */,
 				2F362A8F1DDE9A7400B58076 /* dong3@2x.png in Resources */,
 				2F410EFF1DC9BD9E00A650BB /* LoginHeadCell.xib in Resources */,
+				2F8806DD1E52EB620029FB4B /* LWChatListCell.xib in Resources */,
 				2F410A2D1DC9B85800A650BB /* Assets.xcassets in Resources */,
 				2F7D26011DD427F8008F3FDF /* micro_messenger.png in Resources */,
+				2F4ED6341E5193A7007C71D3 /* LWChatLeftIconLabelCell.xib in Resources */,
 				2F410F561DC9BD9E00A650BB /* LWLogin_wx&qqCell.xib in Resources */,
 				2F410F6B1DC9BD9E00A650BB /* tabBar_ intelligence_selected@3x.png in Resources */,
 				2F410F591DC9BD9E00A650BB /* joymakeHead.jpg in Resources */,
@@ -1462,6 +1705,7 @@
 				2F7D25FF1DD426CA008F3FDF /* qq.png in Resources */,
 				2F7A17761DCC3AC100B71CC6 /* poker.png in Resources */,
 				2F362A8C1DDE9A7400B58076 /* diceSound.wav in Resources */,
+				2F4ED6391E51B03A007C71D3 /* bubble.png in Resources */,
 				2F410A2B1DC9B85800A650BB /* Main.storyboard in Resources */,
 				2F410F3B1DC9BD9E00A650BB /* zz.png in Resources */,
 				2F410F281DC9BD9E00A650BB /* birdBack.gif in Resources */,
@@ -1475,6 +1719,7 @@
 				2F410F5F1DC9BD9E00A650BB /* LWCopyRightView.xib in Resources */,
 				2F410F091DC9BD9E00A650BB /* LWTextCell.xib in Resources */,
 				2F410F121DC9BD9E00A650BB /* RadomLabelCollectionCell.xib in Resources */,
+				2F4ED62F1E519381007C71D3 /* LWChatRightIconLabelCell.xib in Resources */,
 				2F410F011DC9BD9E00A650BB /* LWBaseCell.xib in Resources */,
 				2F410F2D1DC9BD9E00A650BB /* commentUnselect.png in Resources */,
 				2F410F411DC9BD9E00A650BB /* AddCommentTableCellTableViewCell.xib in Resources */,
@@ -1568,18 +1813,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F410F451DC9BD9E00A650BB /* TapImageView.m in Sources */,
+				2F8806EC1E53EBC90029FB4B /* LWChatView.m in Sources */,
 				2F410F041DC9BD9E00A650BB /* LWLeftIconCell.m in Sources */,
 				2F410F551DC9BD9E00A650BB /* LWLogin_wx&qqCell.m in Sources */,
 				2F0C3D661DDEDF2000A3571F /* WhatWeEatTodayVC.m in Sources */,
 				2F410F421DC9BD9E00A650BB /* CommonImageCollectView.m in Sources */,
 				2FFE75201DD310E4004AD35A /* LWColorTablePresenter.m in Sources */,
+				2F8806D01E52E7980029FB4B /* LWChatListInteractor.m in Sources */,
+				2F8806BD1E52A14D0029FB4B /* GCDAsyncSocket.m in Sources */,
 				2F410F0E1DC9BD9E00A650BB /* CommonImageCollectCell.m in Sources */,
 				2F410F511DC9BD9E00A650BB /* IntelligencePresentor.m in Sources */,
+				2F8806DC1E52EB620029FB4B /* LWChatListCell.m in Sources */,
+				2F8806E11E52F01F0029FB4B /* LWChatListCellModel.m in Sources */,
 				2F410F0A1DC9BD9E00A650BB /* LWTextFieldCell.m in Sources */,
+				2F4ED6331E5193A7007C71D3 /* LWChatRightIconLabelCell.m in Sources */,
+				2F8806BE1E52A14D0029FB4B /* GCDAsyncUdpSocket.m in Sources */,
 				2F410F271DC9BD9E00A650BB /* CommentPresenter.m in Sources */,
 				2F410F111DC9BD9E00A650BB /* RadomLabelCollectionCell.m in Sources */,
+				2F4ED61F1E518EF8007C71D3 /* LWChatVC.m in Sources */,
 				2F410F481DC9BD9E00A650BB /* TNACommentTableHeaderView.m in Sources */,
 				2F410F601DC9BD9E00A650BB /* LWMediaListCell.m in Sources */,
+				2F88072B1E553C700029FB4B /* UIView+FrameUpdate.m in Sources */,
 				2F410F461DC9BD9E00A650BB /* TNACommentTableCell.m in Sources */,
 				2F410F4A1DC9BD9E00A650BB /* LWMonitoringCell.m in Sources */,
 				2FFE751D1DD310CE004AD35A /* LWColorTableInteracter.m in Sources */,
@@ -1600,13 +1854,16 @@
 				2F362AA31DDEA19600B58076 /* PieView.m in Sources */,
 				2F410F251DC9BD9E00A650BB /* CommentInteractor.m in Sources */,
 				2F410F571DC9BD9E00A650BB /* LoginInteracter.m in Sources */,
+				2F8806CD1E52E7840029FB4B /* LWChatListPresenter.m in Sources */,
 				2F410F131DC9BD9E00A650BB /* BaseInteractor.m in Sources */,
 				2F410F1F1DC9BD9E00A650BB /* LWTableBaseView.m in Sources */,
+				2F4ED6281E518FF7007C71D3 /* LWChatInteractor.m in Sources */,
 				2FFE75231DD32677004AD35A /* UIImage+Extension.m in Sources */,
 				2F51E3941DE2D3E10034AEDA /* CustomMealInteracter.m in Sources */,
 				2F410F681DC9BD9E00A650BB /* LWNavigationController.m in Sources */,
 				2F410F201DC9BD9E00A650BB /* LWTableHeaderBaseView.m in Sources */,
 				2F410F231DC9BD9E00A650BB /* XHViewState.m in Sources */,
+				2F4ED6221E518F93007C71D3 /* LWChatPresenter.m in Sources */,
 				2F410EF51DC9BD9D00A650BB /* TNASetBarButtonItem.m in Sources */,
 				2F410F621DC9BD9E00A650BB /* LWMediaInteractor.m in Sources */,
 				2F410EF61DC9BD9D00A650BB /* AVAudioSession+manager.m in Sources */,
@@ -1621,6 +1878,7 @@
 				2F410F191DC9BD9E00A650BB /* LWTableSectionBaseModel.m in Sources */,
 				2F410F171DC9BD9E00A650BB /* LWTableFooterBaseModel.m in Sources */,
 				2F410F261DC9BD9E00A650BB /* CommentModel.m in Sources */,
+				2F8806CA1E52E75C0029FB4B /* LWChatListVC.m in Sources */,
 				2F410EF81DC9BD9D00A650BB /* CALayer+Transition.m in Sources */,
 				2F410F161DC9BD9E00A650BB /* LWDataBaseModel.m in Sources */,
 				2F410F211DC9BD9E00A650BB /* UISegementView.m in Sources */,
@@ -1635,10 +1893,12 @@
 				2F410F1E1DC9BD9E00A650BB /* LWTableAutoLayoutView.m in Sources */,
 				2F410F7B1DC9BD9E00A650BB /* LWCompanyManageInteractor.m in Sources */,
 				2F410F151DC9BD9E00A650BB /* LWCellBaseModel.m in Sources */,
+				2F8806E51E53061A0029FB4B /* InputView.m in Sources */,
 				2F410F4F1DC9BD9E00A650BB /* LWIntelligenceModel.m in Sources */,
 				2F0C3D6A1DDEE04100A3571F /* CALayer+CateGory.m in Sources */,
 				2F410F5E1DC9BD9E00A650BB /* LoginVC.m in Sources */,
 				2F410F401DC9BD9E00A650BB /* AddCommentTableCellTableViewCell.m in Sources */,
+				2F8806C11E52A29E0029FB4B /* LWSocketClient.m in Sources */,
 				2F410A221DC9B85800A650BB /* main.m in Sources */,
 				2F410F3E1DC9BD9E00A650BB /* TNAAssessVC.m in Sources */,
 				2F410F3D1DC9BD9E00A650BB /* LWCommentVC.m in Sources */,
@@ -1646,7 +1906,9 @@
 				2F410F521DC9BD9E00A650BB /* IntelligenceVC.m in Sources */,
 				2F410EF91DC9BD9D00A650BB /* NSString+Extension.m in Sources */,
 				2F410F8C1DC9BD9E00A650BB /* TNACompanyManageVC.m in Sources */,
-				2F410F1D1DC9BD9E00A650BB /* LWimageView.m in Sources */,
+				2F410F1D1DC9BD9E00A650BB /* LWImageView.m in Sources */,
+				2F88072E1E569EB50029FB4B /* ClientObj.m in Sources */,
+				2F4ED62E1E519381007C71D3 /* LWChatLeftIconLabelCell.m in Sources */,
 				2F410F0C1DC9BD9E00A650BB /* SwitchCell.m in Sources */,
 				2F410F1C1DC9BD9E00A650BB /* BackGroundBlurView.m in Sources */,
 				2F362AA61DDEA1A000B58076 /* MealModel.m in Sources */,
@@ -1801,17 +2063,17 @@
 			baseConfigurationReference = 7792F10985A0A0DBE2B0A18D /* Pods-LW.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: chen wenxi (29E44R9FG2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6MDXBHF3DG;
+				DEVELOPMENT_TEAM = TLWP697Z5D;
 				GCC_PREFIX_HEADER = LW.pch;
 				INFOPLIST_FILE = LW/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.systoon.toon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.systoon.toonmm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c415210e-19b7-4359-bfbf-737e2faff0cf";
+				PROVISIONING_PROFILE_SPECIFIER = 6ceng.Common.DeveloperCer;
 			};
 			name = Debug;
 		};
@@ -1820,17 +2082,17 @@
 			baseConfigurationReference = 303A9620E7557E968C59CCDD /* Pods-LW.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: chen wenxi (29E44R9FG2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6MDXBHF3DG;
+				DEVELOPMENT_TEAM = TLWP697Z5D;
 				GCC_PREFIX_HEADER = LW.pch;
 				INFOPLIST_FILE = LW/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.systoon.toon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.systoon.toonmm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c415210e-19b7-4359-bfbf-737e2faff0cf";
+				PROVISIONING_PROFILE_SPECIFIER = 6ceng.Common.DeveloperCer;
 			};
 			name = Release;
 		};

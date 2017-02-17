@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "LoginVC.h"
-
+#import "IntelligenceVC.h"
 @interface AppDelegate ()
 
 @end
@@ -19,6 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window.backgroundColor = [UIColor whiteColor];
     LoginVC *vc = [[LoginVC alloc]init];
+    
     self.window.rootViewController = vc;
     [self.window makeKeyWindow];
     return YES;

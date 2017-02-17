@@ -429,4 +429,26 @@ void cleanupBuffer(void *userData, void *buf_data)
     
     return [UIImage animatedImageWithImages:scaledImages duration:self.duration];
 }
+
++ (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size{
+    UIGraphicsBeginImageContext(size);
+    [img drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    return scaledImage;
+}
+
+#pragma markUIBezierPath 裁剪
++ (UIImage *)UIBezierPathClip:(UIImage *)img cornerRadius:(CGFloat)c {
+    int w = img.size.width * img.scale;
+    int h = img.size.height * img.scale;
+    CGRect rect = CGRectMake(0, 0, w, h);
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(w, h), false, 1.0);
+    [[UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:c] addClip];
+    [img drawInRect:rect];
+    UIImage *ret = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return ret;
+}
+
 @end

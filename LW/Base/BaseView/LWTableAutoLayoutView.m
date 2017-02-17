@@ -71,10 +71,28 @@ CGFloat tableRowH(id self, SEL _cmd, UITableView *tableView,NSIndexPath *indexPa
     _tableView.backgroundView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
--(void)updateConstraints{
-    [super updateConstraints];
+//-(void)updateConstraints{
+//    [super updateConstraints];
+//    __weak __typeof (&*self)weakSelf = self;
+//    [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.leading.equalTo(weakSelf.mas_leading);
+//        make.top.equalTo(weakSelf.mas_top);
+//        make.trailing.equalTo(weakSelf.mas_trailing);
+//        make.bottom.equalTo(weakSelf.mas_bottom);
+//    }];
+//    if (_backView) {
+//        [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.leading.equalTo(weakSelf.tableView.mas_leading);
+//            make.top.equalTo(weakSelf.tableView.mas_top);
+//            make.trailing.equalTo(weakSelf.tableView.mas_trailing);
+//            make.bottom.equalTo(weakSelf.tableView.mas_bottom);
+//        }];
+//    }
+//}
+#pragma mark 设置约束
+-(void)setConstraint{
     __weak __typeof (&*self)weakSelf = self;
-    [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(weakSelf.mas_leading);
         make.top.equalTo(weakSelf.mas_top);
         make.trailing.equalTo(weakSelf.mas_trailing);
@@ -88,16 +106,6 @@ CGFloat tableRowH(id self, SEL _cmd, UITableView *tableView,NSIndexPath *indexPa
             make.bottom.equalTo(weakSelf.tableView.mas_bottom);
         }];
     }
-}
-#pragma mark 设置约束
--(void)setConstraint{
-    __weak __typeof (&*self)weakSelf = self;
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(weakSelf.mas_leading);
-        make.top.equalTo(weakSelf.mas_top);
-        make.trailing.equalTo(weakSelf.mas_trailing);
-        make.bottom.equalTo(weakSelf.mas_bottom);
-    }];
 }
 
 #pragma mark 准备刷新

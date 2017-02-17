@@ -57,14 +57,6 @@ const int KCommon_min_cellInset = 10;
 
 -(void)drawRect:(CGRect)rect{
     [super drawRect:rect];
-    __weak __typeof(self)weakSelf  = self;
-    [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(weakSelf.mas_top).offset(0);
-        make.bottom.mas_equalTo(weakSelf.mas_bottom).offset(0);
-        make.left.mas_equalTo(weakSelf.mas_left).offset(0);
-        make.right.mas_equalTo(weakSelf.mas_right).offset(0);
-    }];
-    [self updateConstraintsIfNeeded];
 }
 
 -(void)setUrlStrData:(NSMutableArray *)dataArray{
@@ -93,6 +85,7 @@ const int KCommon_min_cellInset = 10;
         self.isHideDeleteImage = YES;
         self.isShake = NO;
         [self addSubview:self.collectionView];
+        [self setConstraint];
     }
     return self;
 }
@@ -104,7 +97,20 @@ const int KCommon_min_cellInset = 10;
     self.isHideDeleteImage = YES;
     self.isShake = NO;
     [self addSubview:self.collectionView];
+    [self setConstraint];
     return self;
+}
+
+- (void)setConstraint{
+    __weak __typeof(self)weakSelf  = self;
+    [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(weakSelf.mas_top).offset(0);
+        make.bottom.mas_equalTo(weakSelf.mas_bottom).offset(0);
+        make.left.mas_equalTo(weakSelf.mas_left).offset(0);
+        make.right.mas_equalTo(weakSelf.mas_right).offset(0);
+    }];
+    [self updateConstraintsIfNeeded];
+
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{

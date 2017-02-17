@@ -6,9 +6,9 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "LWimageView.h"
+#import "LWImageView.h"
 
 @interface IntelligenceControlHeadView : UIView
-@property (weak, nonatomic) IBOutlet LWimageView *headImageView;
+@property (weak, nonatomic) IBOutlet LWImageView *headImageView;
 
 @end

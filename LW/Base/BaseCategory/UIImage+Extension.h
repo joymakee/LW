@@ -31,4 +31,8 @@ FOUNDATION_EXPORT const unsigned char ImageEffectsVersionString[];
 
 - (UIImage *)sd_animatedImageByScalingAndCroppingToSize:(CGSize)size;
 
++ (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size;
+
+#pragma markUIBezierPath 裁剪
++ (UIImage *)UIBezierPathClip:(UIImage *)img cornerRadius:(CGFloat)c;
 @end

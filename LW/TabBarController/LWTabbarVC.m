@@ -12,6 +12,7 @@
 #import "IntelligenceVC.h"
 #import "LWNavigationController.h"
 #import "TNACompanyManageVC.h"
+#import "LWChatListVC.h"
 
 @interface LWTabbarVC ()<UITabBarControllerDelegate>
 
@@ -22,6 +23,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.delegate = self;
+    
+    LWChatListVC *chatVC = [[LWChatListVC alloc]init];
+    chatVC.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"聊天" image:[[UIImage imageNamed:@"tabBar_live_deselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"tabBar_live_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    chatVC.tabBarItem.badgeValue = @"99+";
+    LWNavigationController *chatNav = [[LWNavigationController alloc]initWithRootViewController:chatVC];
+
     LWMediaListVC *mediaListVC = [[LWMediaListVC alloc]init];
     mediaListVC.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"休闲" image:[[UIImage imageNamed:@"tabBar_live_deselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"tabBar_live_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     LWNavigationController *mediaNav = [[LWNavigationController alloc]initWithRootViewController:mediaListVC];
@@ -42,7 +49,7 @@
     
     LWNavigationController *intelligenceNav = [[LWNavigationController alloc]initWithRootViewController:intelligenceVC];
 
-    self.viewControllers = @[mediaNav,workNav,intelligenceNav];
+    self.viewControllers = @[chatNav,mediaNav,workNav,intelligenceNav];
     self.tabBar.tintColor = [UIColor orangeColor];
 }
 

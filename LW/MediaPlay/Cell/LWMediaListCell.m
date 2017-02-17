@@ -8,7 +8,7 @@
 
 #import "LWMediaListCell.h"
 #import "LWMediaModel.h"
-#import "LWimageView.H"
+#import "LWImageView.H"
 @interface LWMediaListCell ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeDurationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playBtn;
-@property (weak, nonatomic) IBOutlet LWimageView *commentImageView;
+@property (weak, nonatomic) IBOutlet LWImageView *commentImageView;
 
 @end
 @implementation LWMediaListCell

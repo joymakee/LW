@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LWChatLeftIconLabelCell" rowHeight="99" id="KGk-i7-Jjw" customClass="LWChatLeftIconLabelCell">
+            <rect key="frame" x="0.0" y="0.0" width="324" height="99"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="324" height="98"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="joymakeHead.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="wt4-GB-sVy" userLabel="headImageView" customClass="LWImageView">
+                        <rect key="frame" x="15" y="10" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="6AX-CX-znD"/>
+                            <constraint firstAttribute="width" secondItem="wt4-GB-sVy" secondAttribute="height" multiplier="1:1" id="nwM-gW-C0f"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUi-oe-h3B" userLabel="nameLabel">
+                        <rect key="frame" x="65" y="10" width="236" height="20.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.58431372550000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJj-HW-fhy" userLabel="chatLabel">
+                        <rect key="frame" x="65" y="40" width="199" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="wt4-GB-sVy" secondAttribute="bottom" constant="10" id="65n-Pu-hSZ"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eJj-HW-fhy" secondAttribute="bottom" constant="10" id="BPz-UW-LWj"/>
+                    <constraint firstItem="DUi-oe-h3B" firstAttribute="leading" secondItem="wt4-GB-sVy" secondAttribute="trailing" constant="10" id="GZo-BM-Od0"/>
+                    <constraint firstAttribute="trailing" secondItem="eJj-HW-fhy" secondAttribute="trailing" constant="60" id="Lfv-Rg-xhk"/>
+                    <constraint firstItem="DUi-oe-h3B" firstAttribute="top" secondItem="wt4-GB-sVy" secondAttribute="top" id="YYm-WL-zNg"/>
+                    <constraint firstItem="wt4-GB-sVy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="b6y-i0-DdZ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="DUi-oe-h3B" secondAttribute="trailing" constant="15" id="iqQ-1U-ELf"/>
+                    <constraint firstItem="eJj-HW-fhy" firstAttribute="leading" secondItem="wt4-GB-sVy" secondAttribute="trailing" constant="10" id="lc8-Oq-Zvt"/>
+                    <constraint firstItem="eJj-HW-fhy" firstAttribute="top" secondItem="DUi-oe-h3B" secondAttribute="bottom" constant="10" id="qLb-ix-hx8"/>
+                    <constraint firstItem="wt4-GB-sVy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="tKp-v7-pP7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="avatar" destination="wt4-GB-sVy" id="A1e-Sr-Rda"/>
+                <outlet property="chatInfoLabel" destination="eJj-HW-fhy" id="WO3-IR-RNh"/>
+                <outlet property="nameLabel" destination="DUi-oe-h3B" id="hAM-3z-OF8"/>
+            </connections>
+            <point key="canvasLocation" x="64" y="81.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="joymakeHead.jpg" width="640" height="640"/>
+    </resources>
+</document>
