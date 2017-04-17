@@ -1,1 +1,0 @@
-../../../JoyTool/JoyTool/CellsLibruary/TableLTextCell/JoyTextNoLabelCell.h
