@@ -22,8 +22,8 @@
 -(void)setCellWithModel:(NSObject *)model{
     __weak __typeof (&*self)weakSelf = self;
     self.headImage.lwImageTouchBlock = ^(ELwTouchActionType touchType){
-        if([weakSelf.delegate respondsToSelector:@selector(cellDidSelectWithIndexPath:)]){
-            [weakSelf.delegate cellDidSelectWithIndexPath:weakSelf.index];
+        if([weakSelf.delegate respondsToSelector:@selector(cellDidSelectWithIndexPath:action:)]){
+            [weakSelf.delegate cellDidSelectWithIndexPath:weakSelf.index action:nil];
         }
     };
 }

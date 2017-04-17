@@ -6,8 +6,8 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "LWBaseCell.h"
+#import "UITableViewCell+JoyCell.h"
 
-@interface LWMediaListCell : LWBaseCell
+@interface LWMediaListCell : UITableViewCell
 
 @end

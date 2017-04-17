@@ -29,9 +29,9 @@ static const void *loginPath = &loginPath;
 }
 
 - (void)tapActionWithPlatform:(NSString *)platform{
-    if ([self.delegate respondsToSelector:@selector(viewAction:IndexPath:object:)]) {
-        [self.delegate viewAction:@"wxLoginAction" IndexPath:self.index object:platform];
-    }
+//    if ([self.delegate respondsToSelector:@selector(viewAction:IndexPath:object:)]) {
+//        [self.delegate viewAction:@"wxLoginAction" IndexPath:self.index object:platform];
+//    }
 
 }
 @end

@@ -9,11 +9,11 @@
 #import "LoginVC.h"
 #import "LoginPresenter.h"
 #import "LoginInteracter.h"
-#import "LWTableAutoLayoutView.h"
+#import <JoyTableAutoLayoutView.h>
 #import "BackGroundBlurView.h"
 
 @interface LoginVC ()
-@property (nonatomic,strong)LWTableAutoLayoutView *loginView;
+@property (nonatomic,strong)JoyTableAutoLayoutView *loginView;
 @property (nonatomic,strong)UIView *copyrightView;
 @property (nonatomic,strong)LoginInteracter *interactor;
 @property (nonatomic,strong)LoginPresenter *presenter;
@@ -36,9 +36,9 @@
     return  _presenter;
 }
 
--(LWTableAutoLayoutView *)loginView{
+-(JoyTableAutoLayoutView *)loginView{
     if (!_loginView) {
-    _loginView = [[LWTableAutoLayoutView alloc]init];
+    _loginView = [[JoyTableAutoLayoutView alloc]init];
     BackGroundBlurView *backView = [[BackGroundBlurView alloc]init];
     [backView setImage:[UIImage imageNamed:@"loginBack.jpg"] andBlur:1];
     _loginView.backView = backView;

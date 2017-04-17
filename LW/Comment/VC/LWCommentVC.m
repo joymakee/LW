@@ -7,12 +7,12 @@
 //
 
 #import "LWCommentVC.h"
-#import "LWTableAutoLayoutView.h"
+#import <JoyTableAutoLayoutView.h>
 #import "CommentInteractor.h"
 #import "CommentPresenter.h"
 
 @interface LWCommentVC ()
-@property (nonatomic,strong)LWTableAutoLayoutView *commentView;
+@property (nonatomic,strong)JoyTableAutoLayoutView *commentView;
 @property (nonatomic,strong)UIView *statuBarView;
 @property (nonatomic,strong)CommentPresenter *presenter;
 @property (nonatomic,strong)CommentInteractor *interactor;
@@ -40,8 +40,8 @@
     return _interactor = _interactor?:[[CommentInteractor alloc]init];
 }
 
--(LWTableAutoLayoutView *)commentView{
-   return _commentView = _commentView?:[[LWTableAutoLayoutView alloc]init];
+-(JoyTableAutoLayoutView *)commentView{
+   return _commentView = _commentView?:[[JoyTableAutoLayoutView alloc]init];
 }
 
 - (void)viewDidLoad {
@@ -49,7 +49,7 @@
     [self.navigationController.navigationBar addSubview:self.statuBarView];
     self.edgesForExtendedLayout = UIRectEdgeAll;
     [self setDefaultConstraintWithView:self.commentView andTitle:@"评论"];
-    [self setLeftNaviItemWithTitle:nil];
+    [self setLeftNavItemWithTitle:nil andImageStr:@"header_icon_back" andHighLightImageStr:@"header_icon_back" action:nil bundle:JoyToolBundle];
     [self setRightNavWithGifStr:@"go"];
     [self.presenter reloadDataSource];
 }

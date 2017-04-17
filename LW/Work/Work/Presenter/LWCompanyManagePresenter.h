@@ -8,9 +8,9 @@
 
 #import "BasePresentor.h"
 
-@class LWTableAutoLayoutView,UISegementView,LWCompanyManageInteractor;
+@class JoyTableAutoLayoutView,JoyUISegementView,LWCompanyManageInteractor;
 @interface LWCompanyManagePresenter : BasePresentor
-@property (nonatomic, strong) LWTableAutoLayoutView *staffManageView;
-@property (nonatomic,strong)UISegementView *segmentView;
+@property (nonatomic, strong) JoyTableAutoLayoutView *staffManageView;
+@property (nonatomic,strong)JoyUISegementView *segmentView;
 @property (nonatomic,strong)LWCompanyManageInteractor *interactor;
 @end

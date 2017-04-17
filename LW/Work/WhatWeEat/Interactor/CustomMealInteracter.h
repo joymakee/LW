@@ -6,8 +6,10 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "BaseInteractor.h"
+#import "JoyInteractorBase.h"
 
-@interface CustomMealInteracter : BaseInteractor
+@interface CustomMealInteracter : JoyInteractorBase
+@property (nonatomic,strong)NSMutableArray *dataArrayM;
+
 - (void)getViewDataSourceWithDataSource:(NSArray *)dataArrayM;
 @end

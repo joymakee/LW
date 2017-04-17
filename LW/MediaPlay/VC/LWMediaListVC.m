@@ -9,22 +9,22 @@
 #import "LWMediaListVC.h"
 #import "LWMediaInteractor.h"
 #import "LWMediaPresenter.h"
-#import "LWTableAutoLayoutView.h"
-#import "UISegementView.h"
+#import <JoyTableAutoLayoutView.h>
+#import <JoyUISegementView.h>
 #import <WebKit/WebKit.h>
 
 @interface LWMediaListVC ()
-@property (nonatomic,strong)LWTableAutoLayoutView *mediaListView;
-@property (nonatomic,strong)UISegementView *segmentView;
+@property (nonatomic,strong)JoyTableAutoLayoutView *mediaListView;
+@property (nonatomic,strong)JoyUISegementView *segmentView;
 @property (nonatomic,strong)LWMediaInteractor *interactor;
 @property (nonatomic,strong)LWMediaPresenter *presenter;
 @property (nonatomic,strong)WKWebView *webView;
 @end
 
 @implementation LWMediaListVC
--(UISegementView *)segmentView{
+-(JoyUISegementView *)segmentView{
     if (!_segmentView) {
-        _segmentView = [[UISegementView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W, 40)];
+        _segmentView = [[JoyUISegementView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W, 40)];
         _segmentView.segmentItems = @[@"影视",@"新闻",@"娱乐"];
         _segmentView.selectColor = [UIColor purpleColor];
         _segmentView.deselectColor = [UIColor lightGrayColor];
@@ -36,8 +36,8 @@
     return _webView = _webView?:[[WKWebView alloc]init];
 }
 
--(LWTableAutoLayoutView *)mediaListView{
-    _mediaListView = _mediaListView?:[[LWTableAutoLayoutView alloc]init];
+-(JoyTableAutoLayoutView *)mediaListView{
+    _mediaListView = _mediaListView?:[[JoyTableAutoLayoutView alloc]init];
     _mediaListView.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     _mediaListView.tableView.tableHeaderView = self.segmentView;
     return _mediaListView;

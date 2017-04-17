@@ -6,8 +6,8 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "LWBaseVC.h"
+#import "JoyBaseVC.h"
 
-@interface PlayBambooVC : LWBaseVC
+@interface PlayBambooVC : JoyBaseVC
 
 @end

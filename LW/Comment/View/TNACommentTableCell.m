@@ -10,8 +10,7 @@
 #import "CommonStarView.h"
 #import "XHImageViewer.h"
 #import "CommentModel.h"
-#import "LWCellBaseModel.h"
-#import "UIImageView+WebCache.h"
+#import <JoyTool.h>
 
 @interface TNACommentTableCell()<UIGestureRecognizerDelegate>{
     float lastScale;
@@ -45,9 +44,9 @@
 
 - (void)imageBtnClick:(NSIndexPath *)indexPath andSource:(NSArray *)array {
     __block NSMutableArray *datasArray = [NSMutableArray arrayWithCapacity:0];
-    [array enumerateObjectsUsingBlock:^(LWCellBaseImageModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [array enumerateObjectsUsingBlock:^(JoyImageCellBaseModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(-1, -1, 1, 1)];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:obj.avatar] placeholderImage:[UIImage imageNamed:obj.placeHolderImageStr]];
+        SDIMAGE_LOAD(imageView, obj.avatar, obj.placeHolderImageStr);
         [datasArray addObject:imageView];
     }];
     XHImageViewer *image = [[XHImageViewer alloc] init];

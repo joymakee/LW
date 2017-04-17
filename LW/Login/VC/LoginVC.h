@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LWBaseVC.h"
-@interface LoginVC : LWBaseVC
+#import "JoyBaseVC.h"
+@interface LoginVC : JoyBaseVC
 
 @end

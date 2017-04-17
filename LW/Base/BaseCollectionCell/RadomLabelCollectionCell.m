@@ -7,19 +7,18 @@
 //
 
 #import "RadomLabelCollectionCell.h"
-#import "LWCellBaseModel.h"
+#import <JoyTool.h>
 @interface RadomLabelCollectionCell ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 @implementation RadomLabelCollectionCell
--(void)setCellWithModel:(LWCellBaseModel *)cellModel{
+-(void)setCellWithModel:(JoyCellBaseModel *)cellModel{
     self.contentView.backgroundColor=self.backgroundColor = cellModel.backgroundColor;
     self.titleLabel.text = cellModel.title;
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 @end

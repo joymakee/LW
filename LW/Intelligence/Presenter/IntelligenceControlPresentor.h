@@ -7,12 +7,12 @@
 //
 
 #import "BasePresentor.h"
-#import "LWTableAutoLayoutView.h"
+#import <JoyTableAutoLayoutView.h>
 #import "IntelligenceControlnteractor.h"
 #import "IntelligencePresentor.h"
 
 @interface IntelligenceControlPresentor : BasePresentor<IntelligenceDelegate>
-@property (nonatomic,strong)LWTableAutoLayoutView *intelligenceTableView;
+@property (nonatomic,strong)JoyTableAutoLayoutView *intelligenceTableView;
 @property (nonatomic,strong)IntelligenceControlnteractor *intelligenceControlnteractor;
 
 - (void)scanBluetoothDevice;

@@ -9,9 +9,9 @@
 #import "BasePresentor.h"
 
 @class LoginInteracter;
-@class LWTableAutoLayoutView;
+@class JoyTableAutoLayoutView;
 @interface LoginPresenter : BasePresentor
 @property (nonatomic,strong)LoginInteracter *interactor;
-@property (nonatomic,strong)LWTableAutoLayoutView *loginView;
+@property (nonatomic,strong)JoyTableAutoLayoutView *loginView;
 
 @end

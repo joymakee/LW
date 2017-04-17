@@ -6,8 +6,8 @@
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
-#import "LWBaseVC.h"
+#import "JoyBaseVC.h"
 
-@interface LWChatListVC : LWBaseVC
+@interface LWChatListVC : JoyBaseVC
 
 @end

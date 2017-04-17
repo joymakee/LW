@@ -10,14 +10,14 @@
 #import "CommonImageCollectView.h"
 #import "IntelligencePresentor.h"
 #import "Intelligencelnteractor.h"
-#import "LWTableAutoLayoutView.h"
+#import <JoyTableAutoLayoutView.h>
 #import "IntelligenceControlnteractor.h"
 #import "IntelligenceControlPresentor.h"
 
 @interface IntelligenceVC ()
 
 @property (nonatomic,strong)CommonImageCollectView *intelligenceView;
-@property (nonatomic,strong)LWTableAutoLayoutView *intelligenceTableView;
+@property (nonatomic,strong)JoyTableAutoLayoutView *intelligenceTableView;
 @property (nonatomic,strong)Intelligencelnteractor *intelligencelnteractor;
 @property (nonatomic,strong)IntelligencePresentor *intelligencePresentor;
 @property (nonatomic,strong)IntelligenceControlnteractor *intelligenceControlnteractor;
@@ -44,8 +44,8 @@
 }
 
 
--(LWTableAutoLayoutView *)intelligenceTableView{
-    _intelligenceTableView = _intelligenceTableView?:[[LWTableAutoLayoutView alloc]init];
+-(JoyTableAutoLayoutView *)intelligenceTableView{
+    _intelligenceTableView = _intelligenceTableView?:[[JoyTableAutoLayoutView alloc]init];
     _intelligenceTableView.backgroundColor =  _intelligenceTableView.tableView.backgroundColor =[UIColor orangeColor];
     return _intelligenceTableView;
 }

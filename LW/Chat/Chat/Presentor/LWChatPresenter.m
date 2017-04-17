@@ -9,7 +9,7 @@
 #import "LWChatPresenter.h"
 #import "LWChatInteractor.h"
 #import "LWChatView.h"
-#import "LWTableSectionBaseModel.h"
+#import <JoyTool.h>
 
 extern NSString *KHostAddressUserdefaultStr;
 
@@ -43,7 +43,7 @@ extern NSString *KHostAddressUserdefaultStr;
 }
 
 - (void)receivedMessage:(NSString *)message{
-    LWTableSectionBaseModel *sectionModel = self.chatInteractor.dataArrayM.firstObject;
+    JoySectionBaseModel *sectionModel = self.chatInteractor.dataArrayM.firstObject;
     unsigned long count =sectionModel.rowArrayM.count;
     NSIndexPath *lastIndex = [NSIndexPath indexPathForRow:count-1 inSection:0];
     dispatch_group_t downloadGroup = dispatch_group_create();

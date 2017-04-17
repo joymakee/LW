@@ -7,7 +7,7 @@
 //
 
 #import "BasePresentor.h"
-#import "LWBaseVC.h"
+#import "JoyBaseVC.h"
 #import "LWTabbarVC.h"
 @implementation BasePresentor
 -(instancetype)initWithView:(UIView *)view{
@@ -16,8 +16,8 @@
     }
     return self;
 }
--(LWBaseVC *)currentVC{
-    return _currentVC?:(LWBaseVC *)[self rootVC].viewControllers.lastObject;
+-(JoyBaseVC *)currentVC{
+    return _currentVC?:(JoyBaseVC *)[self rootVC].viewControllers.lastObject;
 }
 
 #pragma mark 返回

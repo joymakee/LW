@@ -9,18 +9,18 @@
 #import "LWChatListVC.h"
 #import "LWChatListPresenter.h"
 #import "LWChatListInteractor.h"
-#import "LWTableAutoLayoutView.h"
+#import <JoyTableAutoLayoutView.h>
 
 @interface LWChatListVC ()
 @property (nonatomic,strong)LWChatListPresenter *chatPresenter;
 @property (nonatomic,strong)LWChatListInteractor *chatInteractor;
-@property (nonatomic,strong)LWTableAutoLayoutView *chatView;
+@property (nonatomic,strong)JoyTableAutoLayoutView *chatView;
 
 @end
 
 @implementation LWChatListVC
--(LWTableAutoLayoutView *)chatView{
-    return _chatView = _chatView?:[[LWTableAutoLayoutView alloc]initWithFrame:CGRectZero];;
+-(JoyTableAutoLayoutView *)chatView{
+    return _chatView = _chatView?:[[JoyTableAutoLayoutView alloc]initWithFrame:CGRectZero];;
 }
 
 -(LWChatListInteractor *)chatInteractor{
@@ -39,7 +39,7 @@
     [super viewDidLoad];
     [self setDefaultConstraintWithView:self.chatView andTitle:@"消息"];
     [self.chatPresenter reloadDataSource];
-    [self setLeftNavItemWithTitle:nil andImageStr:@"joymakeHead.jpg" andHighLightImageStr:@"joymakeHead.jpg" action:nil];
+    [self setLeftNavItemWithTitle:nil andImageStr:@"joymakeHead.jpg" andHighLightImageStr:@"joymakeHead.jpg" action:nil bundle:nil];
 }
 
 - (void)didReceiveMemoryWarning {

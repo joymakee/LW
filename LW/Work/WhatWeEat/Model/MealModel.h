@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LWCellBaseModel.h"
-@interface MealModel : LWCellBaseModel
+#import <JoyTool.h>
+@interface MealModel : JoyCellBaseModel
 @property (nonatomic,assign)float  mealRadius;
 
 @end

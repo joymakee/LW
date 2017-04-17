@@ -26,4 +26,8 @@
         }
     }];
 }
+
+-(NSMutableArray *)dataArrayM{
+    return _dataArrayM = _dataArrayM?:[NSMutableArray arrayWithCapacity:0];
+}
 @end

@@ -6,8 +6,10 @@
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
-#import "BaseInteractor.h"
+#import "JoyInteractorBase.h"
 
-@interface LWChatListInteractor : BaseInteractor
+@interface LWChatListInteractor : JoyInteractorBase
+@property (nonatomic,strong)NSMutableArray *dataArrayM;
+
 - (void)getChatListInfo:(VOIDBLOCK)block;
 @end

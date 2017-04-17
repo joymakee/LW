@@ -27,7 +27,6 @@
                              @"吸尘器",
                              @"导航",
                              @"运动"];
-    __block NSArray *colorarray = @[[UIColor blueColor],[UIColor orangeColor],[UIColor purpleColor],[UIColor redColor],[UIColor brownColor],[UIColor whiteColor],[UIColor cyanColor],[UIColor blackColor],[UIColor greenColor],[UIColor yellowColor],[UIColor magentaColor],[UIColor darkGrayColor],[UIColor cyanColor]];
     
     __weak __typeof (&*self)weakSelf = self;
     [titleSource enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -37,8 +36,9 @@
             model.title = title;
             model.igenceControlType = idx;
             model.tapAction = @"goControl";
-            model.backgroundColor = colorarray[idx%colorarray.count];
+            model.backgroundColor = JOY_colorList[idx%JOY_colorList.count];
             [weakSelf.dataArrayM addObject:model];
+            
         }
     }];
 }

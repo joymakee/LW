@@ -8,8 +8,8 @@
 
 #import "IntelligenceControlnteractor.h"
 #import "BabyBluetooth.h"
-#import "LWCellBaseModel.h"
-#import "LWTableSectionBaseModel.h"
+#import <JoyTool.h>
+#import <JoyTool.h>
 #import "LWCBPeripheralModel.h"
 
 @implementation IntelligenceControlnteractor
@@ -120,14 +120,15 @@
 -(void)getBluetoothList{
     [self.dataArrayM removeAllObjects];
     NSMutableArray *sourceArray = [NSMutableArray arrayWithCapacity:0];
-    LWTableSectionBaseModel *topicSectionModel = [LWTableSectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:sourceArray sectionH:15 sectionTitle:nil];
+    JoySectionBaseModel *topicSectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:sourceArray sectionH:15 sectionTitle:nil];
     [self.dataArrayM addObject:topicSectionModel];
 }
 
 -(void)getBluetoothListWithBluetoothName:(NSString *)name{
-    LWTableSectionBaseModel *topicSectionModel = [self.dataArrayM firstObject];
-    LWCellBaseModel *cellModel =  [LWCellBaseModel alloc];
-    cellModel.cellName = @"SwitchCell";
+    JoySectionBaseModel *topicSectionModel = [self.dataArrayM firstObject];
+    JoySwitchCellBaseModel *cellModel =  [JoySwitchCellBaseModel alloc];
+    cellModel.cellName = @"JoySwitchCell";
+    cellModel.bundleName = JoyToolBundle;
     cellModel.title = name;
     [topicSectionModel.rowArrayM addObject:cellModel];
 }

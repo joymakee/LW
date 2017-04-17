@@ -7,12 +7,12 @@
 //
 
 #import "CommentInteractor.h"
-#import "LWTableSectionBaseModel.h"
+#import <JoyTool.h>
 #import "CommentModel.h"
-#import "LWCellBaseModel.h"
+#import <JoyTool.h>
 
 @implementation CommentInteractor
-- (void)getCommentViewDataSource:(NORESULTSUCCESSED)successed{
+- (void)getCommentViewDataSource:(VOIDBLOCK)successed{
     __block NSArray *nameArray = @[@"赵子龙",@"赵本山",@"小生样",@"joymake",@"🐯👀",@"Mr.Liu"];
     __block NSArray *commentArray = @[@"人非常nice,我感受到发自内心的温情,必须给予好评!我感受到发自内心的温情,必须给予好评我感受到发自内心的温情,必须给予好评",@"还好吧",@"不想说",@"100个👍"];
     
@@ -33,7 +33,7 @@
                 [sourceArray addObject:comment];
             }
         }
-        LWTableSectionBaseModel *topicSectionModel = [LWTableSectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:sourceArray sectionH:15 sectionTitle:nil];
+        JoySectionBaseModel *topicSectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:sourceArray sectionH:15 sectionTitle:nil];
         [weakSelf.dataArrayM addObject:topicSectionModel];
         dispatch_async(dispatch_get_main_queue(), ^{
             successed?successed():nil;
@@ -47,7 +47,7 @@
 
     for(int i=0;i<count;i++){
         @autoreleasepool {
-        LWCellBaseImageModel *cellModel = [[LWCellBaseImageModel alloc]init];
+        JoyImageCellBaseModel *cellModel = [[JoyImageCellBaseModel alloc]init];
         cellModel.placeHolderImageStr = picStrArray[arc4random()%picStrArray.count];
         cellModel.cellName = @"CommonImageCollectCell";
         [sourceArray addObject:cellModel];
@@ -56,4 +56,7 @@
     return sourceArray;
 }
 
+-(NSMutableArray *)dataArrayM{
+    return _dataArrayM = _dataArrayM?:[NSMutableArray array];
+}
 @end

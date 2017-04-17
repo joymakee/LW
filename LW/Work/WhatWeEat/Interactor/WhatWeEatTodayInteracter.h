@@ -6,9 +6,11 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "BaseInteractor.h"
+#import "JoyInteractorBase.h"
 
-@interface WhatWeEatTodayInteracter : BaseInteractor
+@interface WhatWeEatTodayInteracter : JoyInteractorBase
+
+@property (nonatomic,strong)NSMutableArray *dataArrayM;
 @property (nonatomic,assign)CGFloat totalRadious;
 - (void)getMealDataSourceWithDataSouce:(NSArray *)mealDicArray;
 @end

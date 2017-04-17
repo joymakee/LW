@@ -7,8 +7,8 @@
 //
 
 #import "CommonImageCollectCell.h"
-#import "LWCellBaseModel.h"
-#import "UIImageView+WebCache.h"
+#import <JoyTool.h>
+#import "UIImageView+AFNetworking.h"
 
 @interface CommonImageCollectCell ()<TapImageViewDelegate>
 @property (weak, nonatomic) IBOutlet TapImageView *tapImageView;
@@ -17,8 +17,8 @@
 @end
 
 @implementation CommonImageCollectCell
--(void)setCellWithModel:(LWCellBaseImageModel *)cellModel{
-    [self.tapImageView sd_setImageWithURL:[NSURL URLWithString:cellModel.avatar] placeholderImage:[UIImage imageNamed:cellModel.placeHolderImageStr]];
+-(void)setCellWithModel:(JoyImageCellBaseModel *)cellModel{
+    SDIMAGE_LOAD(self.tapImageView, cellModel.avatar, cellModel.placeHolderImageStr)
     self.tapImageView.delegate = self;
     self.deleteImageView.delegate = self;
 }

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LWBaseVC.h"
+#import "JoyBaseVC.h"
 @class CommentModel;
-@interface TNAAssessVC : LWBaseVC
+@interface TNAAssessVC : JoyBaseVC
 @property (nonatomic,copy)void (^commentBlock)(CommentModel *comment);
 @end

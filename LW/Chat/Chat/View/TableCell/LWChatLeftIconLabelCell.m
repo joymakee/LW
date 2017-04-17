@@ -7,7 +7,7 @@
 //
 
 #import "LWChatLeftIconLabelCell.h"
-#import "LWCellBaseModel.h"
+#import <JoyTool.h>
 #import "LWImageView.h"
 @interface LWChatLeftIconLabelCell ()
 @property (weak, nonatomic) IBOutlet LWImageView *avatar;
@@ -22,7 +22,7 @@
 }
 
 
--(void)setCellWithModel:(LWCellBaseModel *)model{
+-(void)setCellWithModel:(JoyCellBaseModel *)model{
     _nameLabel.text = model.title;
     _chatInfoLabel.text = model.subTitle;
     _chatInfoLabel.layer.cornerRadius = 5;

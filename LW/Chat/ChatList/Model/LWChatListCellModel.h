@@ -6,8 +6,8 @@
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
-#import "LWCellBaseModel.h"
+#import <JoyTool.h>
 
-@interface LWChatListCellModel : LWCellBaseModel
+@interface LWChatListCellModel : JoyCellBaseModel
 @property (nonatomic,assign)NSInteger messageCount;
 @end

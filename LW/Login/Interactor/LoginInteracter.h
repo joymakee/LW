@@ -6,9 +6,10 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "BaseInteractor.h"
+#import "JoyInteractorBase.h"
 
-@interface LoginInteracter : BaseInteractor
+@interface LoginInteracter : JoyInteractorBase
+@property (nonatomic,strong)NSMutableArray *dataArrayM;
 
 -(void)getLoginDataSource;
 

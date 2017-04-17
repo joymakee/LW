@@ -6,17 +6,17 @@
 //  Copyright © 2016年 Joymake. All rights reserved.
 //
 
-#import "BaseInteractor.h"
+#import "JoyInteractorBase.h"
 
-@class LWTableSectionBaseModel;
+@class JoySectionBaseModel;
 
-@interface LWCompanyManageInteractor : BaseInteractor
+@interface LWCompanyManageInteractor : JoyInteractorBase
 
-@property (nonatomic,strong)NSMutableArray <LWTableSectionBaseModel *>*easyWorkArrayM;
+@property (nonatomic,strong)NSMutableArray <JoySectionBaseModel *>*easyWorkArrayM;
 
-@property (nonatomic,strong)NSMutableArray <LWTableSectionBaseModel *>* enterpriseCultureArrayM;
+@property (nonatomic,strong)NSMutableArray <JoySectionBaseModel *>* enterpriseCultureArrayM;
 
-@property (nonatomic,strong)NSMutableArray <LWTableSectionBaseModel *>* restArrayM;
+@property (nonatomic,strong)NSMutableArray <JoySectionBaseModel *>* restArrayM;
 
 - (void)getWorkDataSource;
 

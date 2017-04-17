@@ -7,12 +7,12 @@
 //
 
 #import "LWColorTabelVC.h"
-#import "LWTableAutoLayoutView.h"
+#import <JoyTableAutoLayoutView.h>
 #import "LWColorTableInteracter.h"
 #import "LWColorTablePresenter.h"
 
 @interface LWColorTabelVC ()
-@property (nonatomic, strong) LWTableAutoLayoutView     *colorView;
+@property (nonatomic, strong) JoyTableAutoLayoutView     *colorView;
 @property (nonatomic, strong) LWColorTableInteracter    *interacter;
 @property (nonatomic, strong) LWColorTablePresenter     *presenter;
 
@@ -20,8 +20,8 @@
 
 @implementation LWColorTabelVC
 
--(LWTableAutoLayoutView *)colorView{
-    return _colorView = _colorView?:[[LWTableAutoLayoutView alloc]initWithFrame:CGRectZero];
+-(JoyTableAutoLayoutView *)colorView{
+    return _colorView = _colorView?:[[JoyTableAutoLayoutView alloc]initWithFrame:CGRectZero];
 }
 
 -(LWColorTableInteracter *)interacter{

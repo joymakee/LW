@@ -7,11 +7,11 @@
 //
 
 #import "LWMediaInteractor.h"
-#import "LWTableSectionBaseModel.h"
+#import <JoyTool.h>
 #import "LWMediaModel.h"
 
 @implementation LWMediaInteractor
-- (void)getMedisSourcesDataSource:(NORESULTSUCCESSED)successed{
+- (void)getMedisSourcesDataSource:(VOIDBLOCK)successed{
     [self.dataArrayM removeAllObjects];
     __block NSArray *nameArray = @[@"蜘蛛侠大战超人",@"赵本山",@"小生样",@"joymake",@"🐯👀",@"Mr.Liu",@"赵子龙"];
     __block NSArray *mediaArray = @[@"http://wvideo.spriteapp.cn/video/2016/0328/56f8ec01d9bfe_wpd.mp4",
@@ -45,10 +45,10 @@
             comment.tapAction = @"goPlayMedia";
             comment.playCount = arc4random()%1000000;
             [sourceArray addObject:comment];
-            NSLog(@"%zu\n",index);
+            NSLog(@"%zu\n",(long)index);
 //        });
         }
-        LWTableSectionBaseModel *topicSectionModel = [LWTableSectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:sourceArray sectionH:15 sectionTitle:nil];
+        JoySectionBaseModel *topicSectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:sourceArray sectionH:15 sectionTitle:nil];
         
         [weakSelf.dataArrayM addObject:topicSectionModel];
 
@@ -56,5 +56,9 @@
             successed?successed():nil;
         });
     });
+}
+
+-(NSMutableArray *)dataArrayM{
+    return _dataArrayM = _dataArrayM?:[NSMutableArray array];
 }
 @end

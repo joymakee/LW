@@ -8,10 +8,10 @@
 
 #import "LWMediaPresenter.h"
 #import "LWMediaInteractor.h"
-#import "LWTableSectionBaseModel.h"
+#import <JoyTool.h>
 #import "LWMediaModel.h"
-#import "LWTableAutoLayoutView.h"
-#import "UISegementView.h"
+#import <JoyTableAutoLayoutView.h>
+#import <JoyUISegementView.h>
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVKit/AVKit.h>
@@ -41,7 +41,7 @@
     _webView.navigationDelegate = self;
 }
 
--(void)setSegmentView:(UISegementView *)segmentView{
+-(void)setSegmentView:(JoyUISegementView *)segmentView{
     _segmentView = segmentView;
     __weak __typeof (&*self)weakSelf = self;
     _segmentView.setmentValuechangedBlock=^(NSInteger touchIndex){
@@ -65,32 +65,22 @@
     }
 }
 
--(void)setMediaListView:(LWTableAutoLayoutView *)mediaListView{
+-(void)setMediaListView:(JoyTableAutoLayoutView *)mediaListView{
     _mediaListView = mediaListView;
     __weak __typeof (&*self)weakSelf = self;
-    _mediaListView.tableDidSelectBlock =^(NSIndexPath *indexPath){
-        [weakSelf tableVIewDidSelect:indexPath];
-    };
-    _mediaListView.tableCellActionBlock =^(NSString *action,NSIndexPath *indexPath,id obj){
-        [weakSelf performAction:action :indexPath :obj];
+    _mediaListView.tableDidSelectBlock =^(NSIndexPath *indexPath,NSString *tapAction){
+        [super performTapAction:tapAction];
     };
 }
 
-
--(void)tableVIewDidSelect:(NSIndexPath *)indexPath{
-    LWTableSectionBaseModel *sectionModel = [self.interactor.dataArrayM objectAtIndex:indexPath.section];
-    LWCellBaseModel * selectModel  = sectionModel.rowArrayM[indexPath.row];
-    [super performTapAction:selectModel.tapAction];
-}
-
--(void)viewAction:(NSString *)action indexPath:(NSIndexPath *)indexPath object:(id)obj{
+- (void)goCommentVC{
     LWCommentVC *commentVC = [[LWCommentVC alloc]init];
-    LWNavigationController *nav = [[LWNavigationController alloc]initWithRootViewController:commentVC];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:commentVC];
     [self presentVC:nav];
 }
 
 - (void)goPlayMedia{
-    LWTableSectionBaseModel *sectionModel = [self.interactor.dataArrayM objectAtIndex:self.mediaListView.currentSelectIndexPath.section];
+    JoySectionBaseModel *sectionModel = [self.interactor.dataArrayM objectAtIndex:self.mediaListView.currentSelectIndexPath.section];
     LWMediaModel * selectModel  = sectionModel.rowArrayM[self.mediaListView.currentSelectIndexPath.row];
     AVPlayerItem *playitem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:selectModel.mediaUrlStr]];
     AVPlayer *player = [AVPlayer playerWithPlayerItem:playitem];

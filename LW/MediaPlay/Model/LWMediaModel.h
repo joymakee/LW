@@ -6,9 +6,9 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "LWCellBaseModel.h"
+#import <JoyTool.h>
 
-@interface LWMediaModel : LWCellBaseModel
+@interface LWMediaModel : JoyCellBaseModel
 @property (nonatomic,assign)NSInteger playCount;
 @property (nonatomic,copy)NSString    *dateStr;
 @property (nonatomic,copy)NSString    *mediaUrlStr;

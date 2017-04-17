@@ -7,9 +7,9 @@
 //
 
 #import "LWTextFieldCell.h"
-#import "LWCellBaseModel.h"
-#import "NSString+Extension.h"
-#import "UITextField+Extension.h"
+#import <JoyTool.h>
+#import <NSString+JoyCategory.h>
+#import <UITextField+JoyCategory.h>
 
 @interface LWTextFieldCell()<UITextFieldDelegate>{
     NSInteger _time;
@@ -62,17 +62,20 @@
     return _sendCheckCode;
 }
 
-- (void)setCellWithModel:(LWCellBaseTextModel *)model{
+- (void)setCellWithModel:(JoyTextCellBaseModel *)model{
     __weak __typeof (&*self)weakSelf = self;
-    [self.textFieldText textFieldHasChanged:^{
+    [self.textFieldText textHasChanged:^{
         [weakSelf textFieldHasChanged];
     }];
-    LWCellBaseTextModel *setModel = (LWCellBaseTextModel *)model;
+    JoyTextCellBaseModel *setModel = (JoyTextCellBaseModel *)model;
     objc_setAssociatedObject(self, @selector(editingEnd:), setModel, OBJC_ASSOCIATION_RETAIN);
     self.changeTextKey = model.changeKey;
     self.textFieldText.keyboardType = model.keyboardType?model.keyboardType:UIKeyboardTypeDefault;
-    [self.textFieldText setMaxNum:setModel.maxNumber];
+    [self.textFieldText setTextMaxNum:setModel.maxNumber];
     self.textFieldText.text = setModel.title;
+    if (model.titleColor) {
+        self.textFieldText.textColor = model.titleColor;
+    }
     self.textFieldText.secureTextEntry = model.secureTextEntry;
     self.textFieldText.placeholder = setModel.placeHolder;
     self.userInteractionEnabled =!setModel.disable;
@@ -96,7 +99,7 @@
 
 - (void)sendCheckCodeAction:(UIButton *)sendBtn{
     
-//    LWCellBaseModel *model = objc_getAssociatedObject(self, @"checkCode");
+//    JoyCellBaseModel *model = objc_getAssociatedObject(self, @"checkCode");
 //    if (model) {
 //        model.sendCkeckCodeBlock?model.sendCkeckCodeBlock():nil;
 //        if( model.isAccountValid){
@@ -133,7 +136,7 @@
 }
 
 - (IBAction)editingEnd:(UITextField *)textField {
-        LWCellBaseTextModel *setModel = objc_getAssociatedObject(self, _cmd);
+        JoyTextCellBaseModel *setModel = objc_getAssociatedObject(self, _cmd);
         setModel.title = textField.text;
     if ([self.delegate respondsToSelector:@selector(textChanged:andText:andChangedKey:)]) {
         [self.delegate textChanged:self.index andText:textField.text andChangedKey:self.changeTextKey];

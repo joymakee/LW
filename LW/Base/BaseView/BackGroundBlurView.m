@@ -16,14 +16,6 @@
 
 @implementation BackGroundBlurView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 -(UIImageView *)blurView{
     if (!_blurView) {
         _blurView = [[UIImageView alloc]initWithFrame:CGRectZero];

@@ -6,8 +6,10 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "BaseInteractor.h"
+#import "JoyInteractorBase.h"
 
-@interface LWMediaInteractor : BaseInteractor
--(void)getMedisSourcesDataSource:(NORESULTSUCCESSED)successed;
+@interface LWMediaInteractor : JoyInteractorBase
+@property (nonatomic,strong)NSMutableArray *dataArrayM;
+
+-(void)getMedisSourcesDataSource:(VOIDBLOCK)successed;
 @end

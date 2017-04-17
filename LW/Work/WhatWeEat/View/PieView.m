@@ -8,7 +8,7 @@
 
 #import "PieView.h"
 #import "MealModel.h"
-#import "CALayer+CateGory.h"
+#import <CALayer+JoyLayer.h>
 
 @interface PieView ()
 @property (nonatomic,strong)NSMutableArray *layerArrayM;

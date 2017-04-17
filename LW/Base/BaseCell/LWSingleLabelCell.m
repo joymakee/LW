@@ -8,6 +8,7 @@
 
 #import "LWSingleLabelCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import "JoyCellBaseModel.h"
 
 @interface LWSingleLabelCell (){
     NSTimer *_timer;
@@ -50,8 +51,8 @@
     return _gradientLayer;
 }
 
-- (void)setCellWithModel:(LWCellBaseModel *)model{
-    LWCellBaseModel *setModel = (LWCellBaseModel *)model;
+- (void)setCellWithModel:(JoyCellBaseModel *)model{
+    JoyCellBaseModel *setModel = (JoyCellBaseModel *)model;
     self.titleLabel.text = setModel.title;
     [_timer setFireDate:[NSDate distantFuture]];
     [_timer setFireDate:[NSDate distantPast]];

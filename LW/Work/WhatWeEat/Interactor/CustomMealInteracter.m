@@ -7,8 +7,8 @@
 //
 
 #import "CustomMealInteracter.h"
-#import "LWTableSectionBaseModel.h"
-#import "LWCellBaseModel.h"
+#import <JoyTool.h>
+#import <JoyTool.h>
 #import "MealModel.h"
 
 @implementation CustomMealInteracter
@@ -18,12 +18,14 @@
     
     [dataArrayM enumerateObjectsUsingBlock:^(MealModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         @autoreleasepool {
-            LWCellBaseTextModel *colorModel = [[LWCellBaseTextModel alloc]init];
+            JoyTextCellBaseModel *colorModel = [[JoyTextCellBaseModel alloc]init];
             colorModel.cellName =@"LWTextFieldCell";
             colorModel.placeHolder = @"请输入自定义名称";
             colorModel.maxNumber = 16;
             colorModel.title = obj.title;
-            colorModel.cellH = 44;
+            colorModel.borderStyle = UITextBorderStyleRoundedRect;
+            colorModel.editingStyle = UITableViewCellEditingStyleDelete;
+            colorModel.titleColor = JOY_RandomColor;
             [colorCellModelSource addObject:colorModel];
         }
     }];
@@ -31,19 +33,25 @@
     //补够10个
     for (NSInteger i = 0; i<11-dataArrayM.count; i++) {
         @autoreleasepool {
-            LWCellBaseTextModel *colorModel = [[LWCellBaseTextModel alloc]init];
+            JoyTextCellBaseModel *colorModel = [[JoyTextCellBaseModel alloc]init];
             colorModel.cellName =@"LWTextFieldCell";
             colorModel.placeHolder = @"请输入自定义名称";
             colorModel.maxNumber = 16;
-            colorModel.cellH = 44;
+            colorModel.borderStyle = UITextBorderStyleRoundedRect;
+            colorModel.editingStyle = UITableViewCellEditingStyleDelete;
+            colorModel.titleColor = JOY_RandomColor;
 //            colorModel.title = ;
 //            colorModel.backgroundColor = colorarray[i%colorarray.count];
             [colorCellModelSource addObject:colorModel];
         }
     }
     
-    LWTableSectionBaseModel *colorSectionModel = [LWTableSectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:colorCellModelSource sectionH:KHeadSectionH sectionTitle:nil];
+    JoySectionBaseModel *colorSectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:colorCellModelSource sectionH:KHeadSectionH sectionTitle:nil];
     
     [self.dataArrayM addObject:colorSectionModel];
+}
+
+-(NSMutableArray *)dataArrayM{
+    return _dataArrayM = _dataArrayM?:[NSMutableArray array];
 }
 @end

@@ -6,9 +6,9 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "LWTextFieldCell.h"
+#import "UITableViewCell+JoyCell.h"
 #import "LWImageView.h"
-@interface LoginHeadCell : LWTextFieldCell
+@interface LoginHeadCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet LWImageView *headImage;
 
 @end

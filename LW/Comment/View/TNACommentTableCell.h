@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LWBaseCell.h"
+#import "UITableViewCell+JoyCell.h"
 #import "CommonImageCollectView.h"
-@interface TNACommentTableCell : LWBaseCell
+@interface TNACommentTableCell : UITableViewCell
 - (void)setCellWithModel:(id)model;
 @property (nonatomic,weak)void (^deleteBlock)();
 @end

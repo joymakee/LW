@@ -7,7 +7,7 @@
 //
 
 #import "LWChatListInteractor.h"
-#import "LWTableSectionBaseModel.h"
+#import <JoyTool.h>
 #import "LWChatListCellModel.h"
 
 @implementation LWChatListInteractor
@@ -23,10 +23,13 @@
         model.messageCount = arc4random()%100;
         [chatListDataArrayM addObject:model];
     }
-    LWTableSectionBaseModel *sectionModel = [LWTableSectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:chatListDataArrayM sectionH:0 sectionTitle:nil];
+    JoySectionBaseModel *sectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:chatListDataArrayM sectionH:0 sectionTitle:nil];
     sectionModel.sectionLeadingOffSet = 60;
     [self.dataArrayM addObject:sectionModel];
     block?block():nil;
 }
 
+-(NSMutableArray *)dataArrayM{
+    return _dataArrayM = _dataArrayM?:[NSMutableArray array];
+}
 @end

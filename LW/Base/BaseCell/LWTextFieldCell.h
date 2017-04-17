@@ -6,8 +6,8 @@
 //  Copyright © 2016年 Joymake. All rights reserved.
 //
 
-#import "LWBaseCell.h"
+#import "JoyBaseCell.h"
 
-@interface LWTextFieldCell : LWBaseCell
+@interface LWTextFieldCell : JoyBaseCell
 
 @end

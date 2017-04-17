@@ -9,10 +9,11 @@
 #import "TNAAssessVC.h"
 #import "CommonStarView.h"
 #import "CommonImageCollectView.h"
-#import "NSString+Extension.h"
+#import <NSString+JoyCategory.h>
 #import "CommentModel.h"
 #import "BackGroundBlurView.h"
 #import <AFNetworking.h>
+#import <UIImage+Extension.h>
 
 @interface TNAAssessVC ()<UITextViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView     *commentTextView;
@@ -43,7 +44,7 @@ static const  NSInteger  KCommentMaxNumber = 500;
 -(NSMutableArray *)imageSourcesArray{
     if (!_imageSourcesArray) {
         _imageSourcesArray = [NSMutableArray arrayWithCapacity:0];
-        LWCellBaseImageModel *cellModel = [[LWCellBaseImageModel alloc]init];
+        JoyImageCellBaseModel *cellModel = [[JoyImageCellBaseModel alloc]init];
         cellModel.placeHolderImageStr = @"add";
         cellModel.cellName = @"CommonImageCollectCell";
         [_imageSourcesArray addObject:cellModel];
@@ -72,7 +73,7 @@ static const  NSInteger  KCommentMaxNumber = 500;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavItemAndTitle];
-    self.gitimageview.image = [self getGifImageWithStr:@"luck"];
+    self.gitimageview.image = [UIImage sd_animatedGIFNamed:@"luck"];
     self.commentStarView.canComment = YES;
     self.commentStarView.rating = 1.0f;
     self.commentTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -141,7 +142,7 @@ static const  NSInteger  KCommentMaxNumber = 500;
 
 - (void)textViewDidChange:(UITextView *)textView{
     self.commentLabel.hidden = textView.text.length>0;
-    self.countLabel.text = [NSString stringWithFormat:@"%ld/%ld",(long)textView.text.lengthAndChinese,(long)KCommentMaxNumber];
+    self.countLabel.text = [NSString stringWithFormat:@"%ld/%ld",(long)textView.text.joy_lengthAndChinese,(long)KCommentMaxNumber];
 }
 
 - (IBAction)btnClick:(UIButton *)sender {
@@ -178,44 +179,44 @@ static const  NSInteger  KCommentMaxNumber = 500;
     [picker dismissViewControllerAnimated:YES completion:nil];
     picker.delegate=nil;
     [self reloadSelectPic];
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    //接收类型不一致请替换一致text/html或别的
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",
-//                                                         @"text/html",
-//                                                         @"image/jpeg",
-//                                                         @"image/png",
-//                                                         @"application/octet-stream",
-//                                                         @"text/json",
-//                                                         nil];
-//    __weak __typeof (&*self)weakSelf = self;
-//    NSURLSessionDataTask *task = [manager POST:@"https://www.douban.com" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
-//        
-//        NSData *imageData =UIImageJPEGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"],1);
-//        
-//        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//        formatter.dateFormat =@"yyyyMMddHHmmss";
-//        NSString *str = [formatter stringFromDate:[NSDate date]];
-//        NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
-//        
-//        //上传的参数(上传图片，以文件流的格式)
-//        [formData appendPartWithFileData:imageData
-//                                    name:@"file"
-//                                fileName:fileName
-//                                mimeType:@"image/jpeg"];
-//        
-//    } progress:^(NSProgress *_Nonnull uploadProgress) {
-//        //打印下上传进度
-//    } success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
-//        //上传成功
-//    } failure:^(NSURLSessionDataTask *_Nullable task, NSError * _Nonnull error) {
-//        //上传失败
-//        [weakSelf reloadSelectPic];
-//    }];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    //接收类型不一致请替换一致text/html或别的
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",
+                                                         @"text/html",
+                                                         @"image/jpeg",
+                                                         @"image/png",
+                                                         @"application/octet-stream",
+                                                         @"text/json",
+                                                         nil];
+    __weak __typeof (&*self)weakSelf = self;
+    NSURLSessionDataTask *task = [manager POST:@"https://www.douban.com" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+        
+        NSData *imageData =UIImageJPEGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"],1);
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat =@"yyyyMMddHHmmss";
+        NSString *str = [formatter stringFromDate:[NSDate date]];
+        NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
+        
+        //上传的参数(上传图片，以文件流的格式)
+        [formData appendPartWithFileData:imageData
+                                    name:@"file"
+                                fileName:fileName
+                                mimeType:@"image/jpeg"];
+        
+    } progress:^(NSProgress *_Nonnull uploadProgress) {
+        //打印下上传进度
+    } success:^(NSURLSessionDataTask *_Nonnull task, id _Nullable responseObject) {
+        //上传成功
+    } failure:^(NSURLSessionDataTask *_Nullable task, NSError * _Nonnull error) {
+        //上传失败
+        [weakSelf reloadSelectPic];
+    }];
 }
 
 - (void)reloadSelectPic{
     NSArray *picArray = @[@"http://i3.cqnews.net/news/attachement/jpg/site82/2015-03-19/8400860186010566648.jpg",@"http://img05.tooopen.com/images/20140707/sy_65083131415.jpg",@"http://img4.imgtn.bdimg.com/it/u=3890107931,3505620483&fm=21&gp=0.jpg"];
-    LWCellBaseImageModel *cellModel = [[LWCellBaseImageModel alloc]init];
+    JoyImageCellBaseModel *cellModel = [[JoyImageCellBaseModel alloc]init];
     cellModel.cellName = @"CommonImageCollectCell";
     cellModel.avatar = picArray[arc4random()%picArray.count];
     cellModel.placeHolderImageStr = LW_PLACEHOLDER_IMAGE;

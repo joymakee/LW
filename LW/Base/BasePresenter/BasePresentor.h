@@ -9,11 +9,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class LWBaseVC;
+@class JoyBaseVC;
 @interface BasePresentor : NSObject
 @property (nonatomic,strong)UIView *rootView;
 - (instancetype)initWithView:(UIView *)view;
-@property (nonatomic,strong) LWBaseVC *currentVC;
+@property (nonatomic,strong) JoyBaseVC *currentVC;
 #pragma mark 屏蔽右导航
 - (void)disableRightNavItem;
 

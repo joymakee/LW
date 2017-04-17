@@ -6,9 +6,9 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "LWCellBaseModel.h"
+#import <JoyTool.h>
 
-@interface CommentModel : LWCellBaseModel
+@interface CommentModel : JoyCellBaseModel
 @property (nonatomic,strong)NSMutableArray *imageArray;
 @property (nonatomic,copy)NSString *dateStr;
 @property (nonatomic,assign)float  starNumber;

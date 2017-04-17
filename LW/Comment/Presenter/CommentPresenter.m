@@ -8,15 +8,14 @@
 
 #import "CommentPresenter.h"
 #import "CommentInteractor.h"
-#import "LWTableAutoLayoutView.h"
+#import <JoyTableAutoLayoutView.h>
 #import "TNACommentTableHeaderView.h"
 #import "BackGroundBlurView.h"
 #import "TNACommentTableHeaderView.h"
-//#import <AVFoundation/AVFoundation.h>
-#import "CALayer+Transition.h"
+#import <CALayer+JoyLayer.h>
 #import "AVAudioSession+manager.h"
 #import "TNAAssessVC.h"
-#import "LWTableSectionBaseModel.h"
+#import <JoyTool.h>
 #import "CommentModel.h"
 
 @interface CommentPresenter()
@@ -26,7 +25,7 @@
 @implementation CommentPresenter
 
 #pragma mark set method
--(void)setCommentView:(LWTableAutoLayoutView *)commentView{
+-(void)setCommentView:(JoyTableAutoLayoutView *)commentView{
     _commentView = commentView;
     _commentView.backgroundColor = [UIColor clearColor];
     BackGroundBlurView *backView = [[BackGroundBlurView alloc]init];
@@ -41,7 +40,8 @@
     if (!_headerView) {
         _headerView = [[[NSBundle mainBundle] loadNibNamed:@"TNACommentTableHeaderView" owner:self options:nil] lastObject];
         __weak __typeof (&*self)weakSelf = self;
-        _headerView.commentBlock = ^(KScoreNumType scoreType){
+        _headerView.commentBlock = ^(KScoreNumType scoreType)
+        {
             [[AVAudioSession sharedInstance] playSoundWithResource:@"messageReceived" ofType:@"caf"];
             [weakSelf.commentView.layer transitionWithAnimType:TransitionAnimTypeRamdom subType:TransitionSubtypesFromRamdom curve:TransitionCurveRamdom duration:0.8];
         };
@@ -74,7 +74,7 @@
 }
 
 - (void)insertCommentModel:(CommentModel *)comment{
-    LWTableSectionBaseModel *sectionModel = self.interactor.dataArrayM[0];
+    JoySectionBaseModel *sectionModel = self.interactor.dataArrayM[0];
     comment.cellName = @"TNACommentTableCell";
     comment.backgroundColor = [UIColor clearColor];
     [sectionModel.rowArrayM insertObject:comment atIndex:0];

@@ -6,9 +6,9 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "LWCellBaseModel.h"
+#import <JoyTool.h>
 
 @class CBPeripheral;
-@interface LWCBPeripheralModel : LWCellBaseModel
+@interface LWCBPeripheralModel : JoyCellBaseModel
 @property (nonatomic,strong)CBPeripheral *peripheral;
 @end

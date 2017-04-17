@@ -8,9 +8,9 @@
 
 #import "BasePresentor.h"
 
-@class LWTableAutoLayoutView;
+@class JoyTableAutoLayoutView;
 @class CommentInteractor;
 @interface CommentPresenter : BasePresentor
-@property (nonatomic,strong)LWTableAutoLayoutView *commentView;
+@property (nonatomic,strong)JoyTableAutoLayoutView *commentView;
 @property (nonatomic,strong)CommentInteractor *interactor;
 @end

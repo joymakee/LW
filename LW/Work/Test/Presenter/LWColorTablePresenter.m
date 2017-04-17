@@ -7,7 +7,7 @@
 //
 
 #import "LWColorTablePresenter.h"
-#import "LWTableAutoLayoutView.h"
+#import <JoyTableAutoLayoutView.h>
 #import "LWColorTableInteracter.h"
 
 @implementation LWColorTablePresenter

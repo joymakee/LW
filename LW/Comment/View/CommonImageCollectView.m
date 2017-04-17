@@ -11,7 +11,7 @@
 #import "CommonImageCollectView.h"
 #import "LWBaseCollectionCell.h"
 #import "Masonry.h"
-#import "LWCellBaseModel.h"
+#import <JoyTool.h>
 const int KCommon_min_cellSpace = 20;
 const int KCommon_min_cellInset = 10;
 
@@ -114,7 +114,7 @@ const int KCommon_min_cellInset = 10;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    LWCellBaseModel *cellModel = [self.dataArray objectAtIndex:indexPath.row];
+    JoyCellBaseModel *cellModel = [self.dataArray objectAtIndex:indexPath.row];
     [_collectionView registerNib:[UINib nibWithNibName:cellModel.cellName bundle:nil] forCellWithReuseIdentifier:cellModel.cellName];
     LWBaseCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellModel.cellName forIndexPath:indexPath];
 //
@@ -134,7 +134,7 @@ const int KCommon_min_cellInset = 10;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    LWCellBaseModel *cellModel = [self.dataArray objectAtIndex:indexPath.row];
+    JoyCellBaseModel *cellModel = [self.dataArray objectAtIndex:indexPath.row];
     [cellModel didSelect];
     self.cellDidSelectBlock?self.cellDidSelectBlock(indexPath,collectionView):nil;
 }

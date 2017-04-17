@@ -12,11 +12,10 @@
 #import "MealModel.h"       //转盘上的每一个菜单模型
 #import "WhatWeEatTodayInteracter.h"    //数据处理源
 #import "BackGroundBlurView.h"          //模糊背景
-#import "LWTableAutoLayoutView.h"       //弹出的table
-#import "LWTableSectionBaseModel.h"     //table的section模型
+#import <JoyTableAutoLayoutView.h>       //弹出的table
+#import <JoyTool.h>     //table的section模型
 #import "CustomMealInteracter.h"        //table的cell模型
-#import "CAAnimation+HCAnimation.h"
-#import "CALayer+Transition.h"
+#import <CALayer+JoyLayer.h>
 
 @interface WhatWeEatTodayVC ()<CAAnimationDelegate>{
     CGFloat _roatedValue ;
@@ -29,7 +28,7 @@
 
 @property (nonatomic,strong)WhatWeEatTodayInteracter *interacter;
 
-@property (nonatomic, strong) LWTableAutoLayoutView  *customMealView;
+@property (nonatomic, strong) JoyTableAutoLayoutView  *customMealView;
 
 @property (nonatomic,strong)CustomMealInteracter *customMealInteracter;
 @end
@@ -45,9 +44,13 @@
     [self.featherView.layer removeFromSuperlayer];
 }
 
--(LWTableAutoLayoutView *)customMealView{
+-(JoyTableAutoLayoutView *)customMealView{
     if (!_customMealView) {
-        _customMealView = [[LWTableAutoLayoutView alloc]initWithFrame:CGRectZero];
+        _customMealView = [[JoyTableAutoLayoutView alloc]initWithFrame:CGRectZero];
+        _customMealView.tableView.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.3 alpha:0.8];
+        _customMealView.backgroundColor = JOY_clearColor;
+        _customMealView.layer.masksToBounds = YES;
+        _customMealView.layer.cornerRadius = SCREEN_W*2/6;
         [self.view addSubview:_customMealView];
     }
     return _customMealView;
@@ -78,6 +81,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"吃饭选择困难户";
+    self.navigationController.navigationBar.backgroundColor = JOY_greenColor;
     [self setRightNavItemWithTitle:@"自定义菜单"];
     [self.featherView setBounds:CGRectMake(0, 0, 300, 300)];
     [self.pie setBounds:self.featherView.bounds];
@@ -128,7 +132,9 @@ static BOOL isSaved = NO;
     isSaved?[self saveCustomMealAndReloadPie]:[self showCustomTable];
     __weak __typeof (&*self)weakSelf = self;
     [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^{
-        [weakSelf.customMealView setFrame:CGRectMake(0, 0, SCREEN_W, isSaved?0:SCREEN_H-64)];
+        [weakSelf.customMealView setFrame:CGRectMake(0, 0, SCREEN_W*2/3, isSaved?0:SCREEN_H-64)];
+        weakSelf.customMealView.centerX = weakSelf.view.centerX;
+        
     } completion:nil];
     isSaved = !isSaved;
     [self setRightNavItemWithTitle:isSaved?@"保存":@"自定义菜单"];
@@ -138,8 +144,8 @@ static BOOL isSaved = NO;
     if (!self.customMealView.dataArrayM.count) return;
     __weak __typeof (&*self)weakSelf = self;
     __block NSMutableArray *array = [NSMutableArray array];
-    LWTableSectionBaseModel *sectionModel = self.customMealView.dataArrayM[0];
-    [sectionModel.rowArrayM enumerateObjectsUsingBlock:^(LWCellBaseTextModel   *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    JoySectionBaseModel *sectionModel = self.customMealView.dataArrayM[0];
+    [sectionModel.rowArrayM enumerateObjectsUsingBlock:^(JoyTextCellBaseModel   *obj, NSUInteger idx, BOOL * _Nonnull stop) {
     obj.title.length?[array addObject:@{obj.title:@1}]:nil;
     }];
     array.count?[weakSelf reloadPieViewWithDataSource:array]:nil;

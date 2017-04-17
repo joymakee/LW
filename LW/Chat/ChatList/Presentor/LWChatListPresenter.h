@@ -9,9 +9,9 @@
 #import "BasePresentor.h"
 
 @class LWChatListInteractor;
-@class LWTableAutoLayoutView;
+@class JoyTableAutoLayoutView;
 @interface LWChatListPresenter : BasePresentor
 @property (nonatomic,strong)LWChatListInteractor *chatInteractor;
-@property (nonatomic,strong)LWTableAutoLayoutView *chatView;
+@property (nonatomic,strong)JoyTableAutoLayoutView *chatView;
 
 @end

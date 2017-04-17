@@ -8,9 +8,9 @@
 
 #import "LoginPresenter.h"
 #import "LoginInteracter.h"
-#import "LWTableAutoLayoutView.h"
-#import "LWTableSectionBaseModel.h"
-#import "LWCellBaseModel.h"
+#import <JoyTableAutoLayoutView.h>
+#import <JoyTool.h>
+#import <JoyTool.h>
 #import "LWShareManager.h"
 #import "LWTabbarVC.h"
 #import <LocalAuthentication/LocalAuthentication.h>
@@ -22,22 +22,22 @@
     [self.loginView reloadTableView];
 }
 
--(void)setLoginView:(LWTableAutoLayoutView *)loginView{
+-(void)setLoginView:(JoyTableAutoLayoutView *)loginView{
     _loginView = loginView;
     __weak __typeof (&*self)weakSelf = self;
-    _loginView.tableDidSelectBlock = ^(NSIndexPath *indexPath){
+    _loginView.tableDidSelectBlock = ^(NSIndexPath *indexPath,NSString *tapAction){
         [weakSelf tableVIewDidSelect:indexPath];
     };
 
-    _loginView.tableCellActionBlock =^(NSString *action,NSIndexPath *indexPath,id obj){
-        [super performAction:action :indexPath :obj];
-    };
+//    _loginView.tableCellActionBlock =^(NSString *action,NSIndexPath *indexPath,id obj){
+//        [super performAction:action :indexPath :obj];
+//    };
     
 }
 
 -(void)tableVIewDidSelect:(NSIndexPath *)indexPath{
-    LWTableSectionBaseModel *sectionModel = [self.interactor.dataArrayM objectAtIndex:indexPath.section];
-    LWCellBaseModel * selectModel  = sectionModel.rowArrayM[indexPath.row];
+    JoySectionBaseModel *sectionModel = [self.interactor.dataArrayM objectAtIndex:indexPath.section];
+    JoyCellBaseModel * selectModel  = sectionModel.rowArrayM[indexPath.row];
     [super performTapAction:selectModel.tapAction];
 }
 

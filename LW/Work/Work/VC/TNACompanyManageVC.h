@@ -6,8 +6,8 @@
 //  Copyright © 2016年 Joymake. All rights reserved.
 //
 
-#import "LWBaseVC.h"
+#import "JoyBaseVC.h"
 
-@interface TNACompanyManageVC : LWBaseVC
+@interface TNACompanyManageVC : JoyBaseVC
 
 @end

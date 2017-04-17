@@ -7,8 +7,8 @@
 //
 
 #import "LWColorTableInteracter.h"
-#import "LWTableSectionBaseModel.h"
-#import "LWCellBaseModel.h"
+#import <JoyTool.h>
+#import <JoyTool.h>
 @implementation LWColorTableInteracter
 
 - (void)getViewDataSource{
@@ -20,7 +20,7 @@
 
     for (NSInteger i = 0; i<=20; i++) {
         @autoreleasepool {
-            LWCellBaseImageModel *colorModel = [[LWCellBaseImageModel alloc]init];
+            JoyImageCellBaseModel *colorModel = [[JoyImageCellBaseModel alloc]init];
             colorModel.cellName =@"LWSingleLabelCell";
             colorModel.title = titleArray[i%titleArray.count];
             colorModel.backgroundColor = colorarray[i%colorarray.count];
@@ -28,8 +28,12 @@
         }
     }
 
-    LWTableSectionBaseModel *colorSectionModel = [LWTableSectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:colorCellModelSource sectionH:KHeadSectionH sectionTitle:nil];
+    JoySectionBaseModel *colorSectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:colorCellModelSource sectionH:KHeadSectionH sectionTitle:nil];
     
     [self.dataArrayM addObject:colorSectionModel];
+}
+
+-(NSMutableArray *)dataArrayM{
+    return _dataArrayM = _dataArrayM?:[NSMutableArray array];
 }
 @end

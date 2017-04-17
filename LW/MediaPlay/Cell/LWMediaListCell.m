@@ -26,8 +26,8 @@
     self.countLabel.text = [NSString stringWithFormat:@"%ld.%ld万",model.playCount/10000,model.playCount/1000-model.playCount/10000];
 }
 - (IBAction)commentAction:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(viewAction:IndexPath:object:)]) {
-        [self.delegate viewAction:@"" IndexPath:self.index object:@"goCommentVC"];
+    if ([self.delegate respondsToSelector:@selector(cellDidSelectWithIndexPath:action:)]) {
+        [self.delegate cellDidSelectWithIndexPath:self.index action:@"goCommentVC"];
     }
 }
 

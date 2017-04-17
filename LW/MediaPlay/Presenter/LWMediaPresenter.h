@@ -6,14 +6,14 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "BasePresentor.h"
+#import "JoyPresenterBase.h"
 
-@class LWMediaInteractor,LWTableAutoLayoutView,WKWebView,UISegementView;
+@class LWMediaInteractor,JoyTableAutoLayoutView,WKWebView,JoyUISegementView;
 
-@interface LWMediaPresenter : BasePresentor
+@interface LWMediaPresenter : JoyPresenterBase
 @property (nonatomic,strong)LWMediaInteractor *interactor;
-@property (nonatomic,strong)LWTableAutoLayoutView *mediaListView;
+@property (nonatomic,strong)JoyTableAutoLayoutView *mediaListView;
 @property (nonatomic,strong)WKWebView *webView;
-@property (nonatomic,strong)UISegementView *segmentView;
+@property (nonatomic,strong)JoyUISegementView *segmentView;
 
 @end

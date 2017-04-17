@@ -6,9 +6,9 @@
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
-#import "LWTableAutoLayoutView.h"
+#import <JoyTableAutoLayoutView.h>
 
-@interface LWChatView : LWTableAutoLayoutView
+@interface LWChatView : JoyTableAutoLayoutView
 @property (nonatomic,copy)STRINGBLOCK messageSendAction;
 
 @end

@@ -8,7 +8,7 @@
 
 #import "FeatherView.h"
 #import <objc/runtime.h>
-#import "CALayer+CateGory.h"
+#import <CALayer+JoyLayer.h>
 
 @interface FeatherView ()
 @property (nonatomic,strong)UIBezierPath *centerPath;
@@ -43,12 +43,12 @@
     layer.strokeColor = [[UIColor purpleColor] CGColor];
     [self.layer addSublayer:layer];
     
-    [self.centerPath addArcWithCenter:center radius:CGRectGetWidth(self.frame)/30 startAngle:0 endAngle:M_PI*2 clockwise:YES];
+    [self.centerPath addArcWithCenter:center radius:CGRectGetWidth(self.frame)/25 startAngle:0 endAngle:M_PI*2 clockwise:YES];
     [self.centerPath addLineToPoint:CGPointMake(center.x+CGRectGetWidth(self.bounds)/3, center.y)];
     [self.centerPath closePath];
     CAShapeLayer *centerLayer = [CAShapeLayer layer];
     centerLayer.path = self.centerPath.CGPath;
-    centerLayer.fillColor = [UIColor purpleColor].CGColor;
+    centerLayer.fillColor = [UIColor yellowColor].CGColor;
     centerLayer.strokeColor = [UIColor purpleColor].CGColor;
     [self.layer addSublayer:centerLayer];
     

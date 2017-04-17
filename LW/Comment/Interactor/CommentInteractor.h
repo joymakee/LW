@@ -6,9 +6,10 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "BaseInteractor.h"
+#import "JoyInteractorBase.h"
+@interface CommentInteractor : JoyInteractorBase
+@property (nonatomic,strong)NSMutableArray *dataArrayM;
 
-@interface CommentInteractor : BaseInteractor
-- (void)getCommentViewDataSource:(NORESULTSUCCESSED)successed;
+- (void)getCommentViewDataSource:(VOIDBLOCK)successed;
 
 @end

@@ -7,9 +7,9 @@
 //
 
 #import "BasePresentor.h"
-@class LWTableAutoLayoutView,LWColorTableInteracter;
+@class JoyTableAutoLayoutView,LWColorTableInteracter;
 @interface LWColorTablePresenter : BasePresentor
-@property (nonatomic, strong) LWTableAutoLayoutView     *colorView;
+@property (nonatomic, strong) JoyTableAutoLayoutView     *colorView;
 @property (nonatomic, strong) LWColorTableInteracter    *interacter;
 
 @end

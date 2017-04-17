@@ -8,13 +8,13 @@
 
 #import "TNACompanyManageVC.h"
 #import "LWCompanyManageInteractor.h"
-#import "LWTableAutoLayoutView.h"
-#import "UISegementView.h"
+#import <JoyTableAutoLayoutView.h>
+#import <JoyUISegementView.h>
 #import "LWCompanyManagePresenter.h"
 
 @interface TNACompanyManageVC ()
-@property (nonatomic, strong) LWTableAutoLayoutView *staffManageView;
-@property (nonatomic,strong)UISegementView *segmentView;
+@property (nonatomic, strong) JoyTableAutoLayoutView *staffManageView;
+@property (nonatomic,strong)JoyUISegementView *segmentView;
 @property (nonatomic,strong)LWCompanyManageInteractor *interactor;
 @property (nonatomic,strong)LWCompanyManagePresenter *presenter;
 
@@ -22,8 +22,8 @@
 
 @implementation TNACompanyManageVC
 
--(LWTableAutoLayoutView *)staffManageView{
-   return _staffManageView =_staffManageView?:[[LWTableAutoLayoutView alloc] init];
+-(JoyTableAutoLayoutView *)staffManageView{
+   return _staffManageView =_staffManageView?:[[JoyTableAutoLayoutView alloc] init];
 }
 
 -(LWCompanyManageInteractor *)interactor{
@@ -40,8 +40,8 @@
     return _presenter;
 }
 
--(UISegementView *)segmentView{
-    return  _segmentView = _segmentView?: [[UISegementView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W, 40)];
+-(JoyUISegementView *)segmentView{
+    return  _segmentView = _segmentView?: [[JoyUISegementView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W, 40)];
 }
 
 - (void)viewDidLoad {

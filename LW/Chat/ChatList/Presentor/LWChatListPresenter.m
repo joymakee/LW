@@ -8,10 +8,10 @@
 
 #import "LWChatListPresenter.h"
 #import "LWChatListInteractor.h"
-#import "LWTableAutoLayoutView.h"
+#import <JoyTableAutoLayoutView.h>
 #import "LWChatVC.h"
 #import "LWChatListCellModel.h"
-#import "LWTableSectionBaseModel.h"
+#import <JoyTool.h>
 
 @interface LWChatListPresenter ()<UITextFieldDelegate>
 @property (nonatomic,weak)UITextField *hostAddressText;
@@ -27,16 +27,16 @@ NSString *KHostAddressUserdefaultStr = @"hostAddressStr";
     }];
 }
 
--(void)setChatView:(LWTableAutoLayoutView *)chatView{
+-(void)setChatView:(JoyTableAutoLayoutView *)chatView{
     _chatView = chatView;
     __weak typeof (&*self)weakSelf = self;
-    _chatView.tableDidSelectBlock = ^(NSIndexPath *indexPath){
+    _chatView.tableDidSelectBlock = ^(NSIndexPath *indexPath,NSString *tapAction){
         [weakSelf tableVIewDidSelect:indexPath];
     };
 }
 
 -(void)tableVIewDidSelect:(NSIndexPath *)indexPath{
-    LWTableSectionBaseModel *sectionModel = [self.chatInteractor.dataArrayM objectAtIndex:indexPath.section];
+    JoySectionBaseModel *sectionModel = [self.chatInteractor.dataArrayM objectAtIndex:indexPath.section];
     LWChatListCellModel * selectModel  = sectionModel.rowArrayM[indexPath.row];
     [super performTapAction:selectModel.tapAction];
     if (selectModel.messageCount) {

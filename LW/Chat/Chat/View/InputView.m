@@ -20,7 +20,6 @@
 
 @end
 
-static const float customKeyboardH = 250;
 static const float padding = 10;
 const float KDefaultInputViewH = 33;
 

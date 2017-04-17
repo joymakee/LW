@@ -7,18 +7,17 @@
 //
 
 #import "LWCompanyManagePresenter.h"
-#import "LWTableAutoLayoutView.h"
-#import "UISegementView.h"
+#import <JoyTableAutoLayoutView.h>
+#import <JoyUISegementView.h>
 #import "LWCompanyManageInteractor.h"
-#import "LWTableSectionBaseModel.h"
-#import "LWCellBaseModel.h"
+#import <JoyTool.h>
 #import "PlayBambooVC.h"
 #import "LWColorTabelVC.h"
 #import "WhatWeEatTodayVC.h"
 
 @implementation LWCompanyManagePresenter
 
--(void)setSegmentView:(UISegementView *)segmentView{
+-(void)setSegmentView:(JoyUISegementView *)segmentView{
     _segmentView = segmentView;
     _segmentView.segmentItems = @[@"轻松工作",@"企业文化",@"歇一歇"];
     _segmentView.selectColor = [UIColor purpleColor];
@@ -29,18 +28,18 @@
     };
 }
 
--(void)setStaffManageView:(LWTableAutoLayoutView *)staffManageView{
+-(void)setStaffManageView:(JoyTableAutoLayoutView *)staffManageView{
     _staffManageView = staffManageView;
     [self.staffManageView.tableView setTableHeaderView:self.segmentView];
     __weak __typeof (&*self)weakSelf = self;
-    staffManageView.tableDidSelectBlock = ^(NSIndexPath *indexPath){
+    staffManageView.tableDidSelectBlock = ^(NSIndexPath *indexPath,NSString *tapAction){
         [weakSelf tableVIewDidSelect:indexPath];
     };
 }
 
 -(void)tableVIewDidSelect:(NSIndexPath *)indexPath{
-    LWTableSectionBaseModel *sectionModel = [self.staffManageView.dataArrayM objectAtIndex:indexPath.section];
-    LWCellBaseModel * selectModel  = sectionModel.rowArrayM[indexPath.row];
+    JoySectionBaseModel *sectionModel = [self.staffManageView.dataArrayM objectAtIndex:indexPath.section];
+    JoyCellBaseModel * selectModel  = sectionModel.rowArrayM[indexPath.row];
     [super performTapAction:selectModel.tapAction];
 }
 

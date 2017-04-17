@@ -12,7 +12,7 @@
 @implementation IntelligenceControlPresentor
 
 
--(void)setIntelligenceTableView:(LWTableAutoLayoutView *)intelligenceTableView{
+-(void)setIntelligenceTableView:(JoyTableAutoLayoutView *)intelligenceTableView{
     _intelligenceTableView = intelligenceTableView;
     IntelligenceControlHeadView *headView = [[[NSBundle mainBundle] loadNibNamed:@"IntelligenceControlHeadView" owner:self options:nil] lastObject];
     [_intelligenceTableView.tableView setTableHeaderView:headView];

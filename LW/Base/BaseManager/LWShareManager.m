@@ -64,14 +64,4 @@
 //    });
 }
 
-- (void)goCommentVC{
-    LWCommentVC *commentVC = [[LWCommentVC alloc]init];
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:commentVC];
-    nav.navigationBar.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.6];
-    [nav.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    nav.navigationBar.shadowImage = [UIImage new];
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:nav animated:YES completion:nil];
-}
-
-
 @end

@@ -6,8 +6,10 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "BaseInteractor.h"
+#import "JoyInteractorBase.h"
 
-@interface LWColorTableInteracter : BaseInteractor
+@interface LWColorTableInteracter : JoyInteractorBase
+@property (nonatomic,strong)NSMutableArray *dataArrayM;
+
 - (void)getViewDataSource;
 @end
