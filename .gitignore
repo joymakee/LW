@@ -1,7 +1,17 @@
 # Xcode
-.DS_Store
-Build/
-*/build/*
-# LW
-Pods
+
+*.xccheckout
+UserInterfaceState.xcuserstate
+contents.xcworkspacedata
+build/
+
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+
+# CocoaPods
 *.lock
+Pods/
+.idea/
+*.xcbkptlist
