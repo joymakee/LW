@@ -1,5 +1,7 @@
+# Xcode
+.DS_Store
+Build/
+*/build/*
 # LW
 Pods
 *.lock
-#CocoaPods
-Pods
