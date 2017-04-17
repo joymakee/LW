@@ -16,7 +16,7 @@
 #import <UIKit/UIKit.h>
 #import "LWNavigationController.h"
 #import "LWTabbarVC.h"
-#import "UIView+Extention.h"
+#import <UIView+JoyCategory.h>
 #define UmengAppkey @"5775cbcbe0f55aa631003118"
 #define SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define SCREEN_H [UIScreen mainScreen].bounds.size.height
@@ -44,28 +44,24 @@ typedef NS_ENUM(NSInteger,ELwTouchActionType) {
     ELwTouchActionLongPressType
 };
 
-typedef NS_ENUM(NSInteger,ECellType) {
-    ECellXibType,
-    ECellCodeType
-};
 
-typedef NS_ENUM(NSInteger,ETextCellType) {
-    leftViewModel,
-    rightViewModel,
-    normalModel
-};
-
-typedef NS_ENUM(NSInteger,EImageType) {
-    EImageTypeRound,
-    EImageTypeSquare
-};
-
-typedef NS_ENUM(NSInteger,ERefreshScheme) {
-    ERefreshSchemeRow,      //单列
-    ERefreshSchemeSection,  //单section
-    ERefreshSchemeTable,    //整个table
-    ERefreshSchemeView      //整个view 扩展类使用
-};
+//typedef NS_ENUM(NSInteger,ETextCellType) {
+//    leftViewModel,
+//    rightViewModel,
+//    normalModel
+//};
+//
+//typedef NS_ENUM(NSInteger,EImageType) {
+//    EImageTypeRound,
+//    EImageTypeSquare
+//};
+//
+//typedef NS_ENUM(NSInteger,ERefreshScheme) {
+//    ERefreshSchemeRow,      //单列
+//    ERefreshSchemeSection,  //单section
+//    ERefreshSchemeTable,    //整个table
+//    ERefreshSchemeView      //整个view 扩展类使用
+//};
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
