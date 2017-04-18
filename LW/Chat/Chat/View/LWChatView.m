@@ -23,7 +23,7 @@ extern const float KDefaultInputViewH;
 #pragma mark 供子类扩展使用
 - (void)addSubViewToSelf{
     [self addSubview:self.inputView];
-    self.inputView.backgroundColor = self.tableView.backgroundColor;
+    self.inputView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
     __weak typeof (&*self)weakSelf = self;
     self.inputView.messageSendAction = ^(NSString *sendMessage){
         weakSelf.messageSendAction?weakSelf.messageSendAction(sendMessage):nil;
@@ -37,7 +37,7 @@ extern const float KDefaultInputViewH;
         make.leading.equalTo(weakSelf.mas_leading);
         make.top.equalTo(weakSelf.mas_top);
         make.trailing.equalTo(weakSelf.mas_trailing);
-        make.bottom.mas_greaterThanOrEqualTo(_inputView.mas_top);
+        make.bottom.mas_greaterThanOrEqualTo(_inputView.mas_top).offset(60);
     }];
     
     [self.inputView mas_makeConstraints:^(MASConstraintMaker *make) {

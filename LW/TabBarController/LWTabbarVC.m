@@ -28,6 +28,8 @@
     chatVC.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"聊天" image:[[UIImage imageNamed:@"tabBar_live_deselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"tabBar_live_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     chatVC.tabBarItem.badgeValue = @"99+";
     LWNavigationController *chatNav = [[LWNavigationController alloc]initWithRootViewController:chatVC];
+    
+
 
     LWMediaListVC *mediaListVC = [[LWMediaListVC alloc]init];
     mediaListVC.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"休闲" image:[[UIImage imageNamed:@"tabBar_live_deselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"tabBar_live_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
@@ -48,8 +50,7 @@
     intelligenceVC.tabBarItem.badgeValue = @"8";
     
     LWNavigationController *intelligenceNav = [[LWNavigationController alloc]initWithRootViewController:intelligenceVC];
-
-    self.viewControllers = @[chatNav,mediaNav,workNav,intelligenceNav];
+       self.viewControllers = @[chatNav,mediaNav,workNav,intelligenceNav];
     self.tabBar.tintColor = [UIColor orangeColor];
 }
 

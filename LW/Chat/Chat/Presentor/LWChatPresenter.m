@@ -10,12 +10,23 @@
 #import "LWChatInteractor.h"
 #import "LWChatView.h"
 #import <JoyTool.h>
+#import "BackGroundBlurView.h"
 
 extern NSString *KHostAddressUserdefaultStr;
 
 @implementation LWChatPresenter
+
+-(void)setChatView:(LWChatView *)chatView{
+    _chatView = chatView;
+    _chatView.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _chatView.tableView.backgroundColor = JOY_clearColor;
+    BackGroundBlurView *backView = [[BackGroundBlurView alloc]init];
+    [backView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"shuye" ofType:@"jpg"]] andBlur:1];
+    _chatView.backView = backView;
+
+}
+
 - (void)getChatInfoAndDisplay{
-    self.chatView.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     __weak typeof (&*self)weakSelf = self;
 
     [self.chatInteractor getChatInfo:^{

@@ -47,12 +47,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController.navigationBar addSubview:self.statuBarView];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.edgesForExtendedLayout = UIRectEdgeAll;
     [self setDefaultConstraintWithView:self.commentView andTitle:@"评论"];
     [self setLeftNavItemWithTitle:nil andImageStr:@"header_icon_back" andHighLightImageStr:@"header_icon_back" action:nil bundle:JoyToolBundle];
     [self setRightNavWithGifStr:@"go"];
     [self.presenter reloadDataSource];
 }
+
 
 -(void)rightNavItemClickAction{
     [super rightNavItemClickAction];
@@ -63,5 +67,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
+-(void)viewDidAppear:(BOOL)animated{
+    [self.commentView.tableView setContentOffset:CGPointMake(0, 0)];
+    [super viewDidAppear:animated];
+}
 @end

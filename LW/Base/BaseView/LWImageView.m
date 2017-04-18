@@ -18,6 +18,14 @@
     return self;
 }
 
+-(instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        self.userInteractionEnabled = YES;
+        [self addGestre];
+    }
+    return self;
+}
+
 -(instancetype)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]) {
         self.userInteractionEnabled = YES;
@@ -60,18 +68,8 @@
     [self addSubview:layerView];
     layerView.userInteractionEnabled = NO;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIBezierPath * circlePath = [UIBezierPath bezierPathWithArcCenter:arcCenter
-                                                                   radius:radius
-                                                               startAngle:M_PI
-                                                                 endAngle:-M_PI
-                                                                clockwise:NO];
-        CAShapeLayer *superLayer = [CAShapeLayer layer];
-        superLayer.path = circlePath.CGPath;
-        superLayer.strokeColor = [[UIColor lightGrayColor] CGColor];
-        superLayer.fillColor = [[UIColor clearColor] CGColor];
-        superLayer.lineWidth = 5;
-        
-        for(int i =0;i<3;i++){
+        for(int i =0;i<3;i++)
+        {
             UIBezierPath * circlePath = [UIBezierPath bezierPathWithArcCenter:arcCenter
                                                                        radius:radius
                                                                    startAngle:-M_PI*i/1.5
@@ -79,13 +77,11 @@
                                                                     clockwise:NO];
             CAShapeLayer *backgroundLayer = [CAShapeLayer layer];
             backgroundLayer.path = circlePath.CGPath;
-            backgroundLayer.strokeColor = [[UIColor lightGrayColor] CGColor];
             backgroundLayer.strokeColor = [[weakSelf sortColor:i] CGColor];
             backgroundLayer.fillColor = [[UIColor clearColor] CGColor];
             backgroundLayer.lineWidth = 3;
-            [superLayer addSublayer:backgroundLayer];
+            [layerView.layer addSublayer:backgroundLayer];
         }
-        [layerView.layer addSublayer:superLayer];
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf rotateWithLayer:layerView.layer];
         });

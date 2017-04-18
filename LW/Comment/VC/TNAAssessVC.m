@@ -28,11 +28,19 @@
 @property (weak, nonatomic) IBOutlet UIImageView    *gitimageview;
 @property (nonatomic,strong)CommentModel            *comment;
 @property (weak, nonatomic) IBOutlet BackGroundBlurView *backBlurView;
+@property (nonatomic,strong)UIView *statuBarView;
 @end
 
 static const  NSInteger  KCommentMaxNumber = 500;
 @implementation TNAAssessVC
 
+-(UIView *)statuBarView{
+    if (!_statuBarView) {
+        _statuBarView = [[UIView alloc]initWithFrame:CGRectMake(0, -20, CGRectGetWidth([UIScreen mainScreen].bounds), 20)];
+        _statuBarView.backgroundColor = self.navigationController.navigationBar.backgroundColor;
+    }
+    return _statuBarView;
+}
 
 - (CommentModel *)comment{
     if (!_comment) {
@@ -73,6 +81,7 @@ static const  NSInteger  KCommentMaxNumber = 500;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavItemAndTitle];
+    [self.navigationController.navigationBar addSubview:self.statuBarView];
     self.gitimageview.image = [UIImage sd_animatedGIFNamed:@"luck"];
     self.commentStarView.canComment = YES;
     self.commentStarView.rating = 1.0f;

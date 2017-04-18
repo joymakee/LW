@@ -25,8 +25,8 @@
 -(void)setCellWithModel:(JoyCellBaseModel *)model{
     _nameLabel.text = model.title;
     _chatInfoLabel.text = model.subTitle;
+    _chatInfoLabel.layer.masksToBounds = YES;
     _chatInfoLabel.layer.cornerRadius = 5;
-    _chatInfoLabel.layer.backgroundColor = [UIColor purpleColor].CGColor;
     _avatar.layer.cornerRadius = 20;
     _avatar.layer.masksToBounds = YES;
 }
