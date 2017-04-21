@@ -5,9 +5,9 @@
 //  Created by joymake on 16/8/8.
 //  Copyright © 2016年 joymake. All rights reserved.
 //
-#define HIDE_KEYBOARD [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
 
 #import <Foundation/Foundation.h>
+#import "Joy.h"
 
 @class JoyBaseVC;
 @interface BasePresentor : NSObject

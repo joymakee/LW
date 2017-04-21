@@ -8,6 +8,7 @@
 
 #import "LWChatView.h"
 #import "InputView.h"
+#import "ChatMessage.h"
 
 @interface LWChatView ()
 @property (nonatomic,strong)InputView *inputView;
@@ -25,8 +26,8 @@ extern const float KDefaultInputViewH;
     [self addSubview:self.inputView];
     self.inputView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
     __weak typeof (&*self)weakSelf = self;
-    self.inputView.messageSendAction = ^(NSString *sendMessage){
-        weakSelf.messageSendAction?weakSelf.messageSendAction(sendMessage):nil;
+    self.inputView.messageBlock = ^(ChatMessage *sendMessage){
+        weakSelf.messageBlock?weakSelf.messageBlock(sendMessage):nil;
     };
 }
 

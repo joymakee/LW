@@ -44,6 +44,7 @@
         _moveAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
         [_moveAnimation setDuration:2.0];
         [_moveAnimation setDelegate:self];
+        _moveAnimation.removedOnCompletion = NO;
     }
     return _moveAnimation;
 }
@@ -65,11 +66,6 @@
     [self becomeFirstResponder];
     //设置动画参数
     [self setDiceAnimationParameter];
-    CAShapeLayer *layer = [CAShapeLayer layer];
-    layer.path = self.dicePath.CGPath;
-    layer.strokeColor = [UIColor orangeColor].CGColor;
-    layer.fillColor = [UIColor clearColor].CGColor;
-    [self.view.layer addSublayer:layer];
 }
 
 - (void)setDiceAnimationParameter{
@@ -84,18 +80,20 @@
 }
 
 - (IBAction)diceTapAction:(id)sender {
+    if(!self.diceImageView.isAnimating){
     [[AVAudioSession sharedInstance] playSoundWithResource:@"diceSound" ofType:@"wav"];
     [self setmoveAnimation];
     [[self.diceImageView layer] addAnimation:self.animGroup forKey:@"position"];
     [self.diceImageView startAnimating];
+    }
 }
 
 - (void)setmoveAnimation{
     //设置位移动画
-    CGPoint p1 = ARCRANDOM_DICE_POINT;
+    CGPoint p1 = self.diceImageView.layer.position;
     CGPoint p2 = ARCRANDOM_DICE_POINT;
     CGPoint p3 = ARCRANDOM_DICE_POINT;
-    CGPoint p4 = ARCRANDOM_DICE_POINT;
+    CGPoint p4 = CGPointMake(p3.x + arc4random()%30-15, p3.y + arc4random()%30-15);
     while (![self.dicePath containsPoint:p1]) {
         p1 = ARCRANDOM_DICE_POINT;
     }
@@ -106,7 +104,7 @@
         p3 = ARCRANDOM_DICE_POINT;
     }
     while (![self.dicePath containsPoint:p4]) {
-        p4 = ARCRANDOM_DICE_POINT;
+        p4 = CGPointMake(p3.x + arc4random()%30-15, p3.y + arc4random()%30-15);
     }
     NSArray *movePoints = [[NSArray alloc] initWithObjects:[NSValue valueWithCGPoint:p1],[NSValue valueWithCGPoint:p2],[NSValue valueWithCGPoint:p3],[NSValue valueWithCGPoint:p4], nil];
     
@@ -140,5 +138,7 @@
     }
 }
 
-
+-(void)dealloc{
+    [self.diceImageView.layer removeAllAnimations];
+}
 @end

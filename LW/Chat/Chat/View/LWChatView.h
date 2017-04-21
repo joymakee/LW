@@ -9,6 +9,6 @@
 #import <JoyTableAutoLayoutView.h>
 
 @interface LWChatView : JoyTableAutoLayoutView
-@property (nonatomic,copy)STRINGBLOCK messageSendAction;
+@property (nonatomic,copy)IDBLOCK messageBlock;
 
 @end

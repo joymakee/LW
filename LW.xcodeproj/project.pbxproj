@@ -125,6 +125,23 @@
 		2F410F7B1DC9BD9E00A650BB /* LWCompanyManageInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410EDE1DC9BD9D00A650BB /* LWCompanyManageInteractor.m */; };
 		2F410F7C1DC9BD9E00A650BB /* LWCompanyManagePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410EE11DC9BD9D00A650BB /* LWCompanyManagePresenter.m */; };
 		2F410F8C1DC9BD9E00A650BB /* TNACompanyManageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F410EF41DC9BD9D00A650BB /* TNACompanyManageVC.m */; };
+		2F496A731EA621BD0002F422 /* JoyRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F496A721EA621BD0002F422 /* JoyRecorder.m */; };
+		2F496A811EA6FADB0002F422 /* chat_left_BigVoice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F496A741EA6FADB0002F422 /* chat_left_BigVoice@2x.png */; };
+		2F496A821EA6FADB0002F422 /* chat_left_MiddleVoice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F496A751EA6FADB0002F422 /* chat_left_MiddleVoice@2x.png */; };
+		2F496A831EA6FADB0002F422 /* chat_left_SmallVoice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F496A761EA6FADB0002F422 /* chat_left_SmallVoice@2x.png */; };
+		2F496A841EA6FADB0002F422 /* chat_recording@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F496A771EA6FADB0002F422 /* chat_recording@2x.png */; };
+		2F496A851EA6FADB0002F422 /* chat_recording@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F496A781EA6FADB0002F422 /* chat_recording@3x.png */; };
+		2F496A861EA6FADB0002F422 /* chat_recordNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F496A791EA6FADB0002F422 /* chat_recordNormal@2x.png */; };
+		2F496A871EA6FADB0002F422 /* chat_recordNormal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F496A7A1EA6FADB0002F422 /* chat_recordNormal@3x.png */; };
+		2F496A881EA6FADB0002F422 /* chat_right_BigVoice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F496A7B1EA6FADB0002F422 /* chat_right_BigVoice@2x.png */; };
+		2F496A891EA6FADB0002F422 /* chat_right_MiddleVoice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F496A7C1EA6FADB0002F422 /* chat_right_MiddleVoice@2x.png */; };
+		2F496A8A1EA6FADB0002F422 /* chat_right_SmallVoice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F496A7D1EA6FADB0002F422 /* chat_right_SmallVoice@2x.png */; };
+		2F496A8B1EA6FADB0002F422 /* chat_video.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F496A7E1EA6FADB0002F422 /* chat_video.png */; };
+		2F496A8C1EA6FADB0002F422 /* chat_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F496A7F1EA6FADB0002F422 /* chat_video@2x.png */; };
+		2F496A8D1EA6FADB0002F422 /* chat_video@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F496A801EA6FADB0002F422 /* chat_video@3x.png */; };
+		2F496A901EA6FC900002F422 /* ChatVoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F496A8F1EA6FC900002F422 /* ChatVoiceView.m */; };
+		2F496A971EA715830002F422 /* ChatCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F496A961EA715830002F422 /* ChatCellModel.m */; };
+		2F496A9A1EA7365E0002F422 /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F496A991EA7365E0002F422 /* ChatMessage.m */; };
 		2F4ED61F1E518EF8007C71D3 /* LWChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4ED61A1E518EF8007C71D3 /* LWChatVC.m */; };
 		2F4ED6221E518F93007C71D3 /* LWChatPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4ED6211E518F93007C71D3 /* LWChatPresenter.m */; };
 		2F4ED6281E518FF7007C71D3 /* LWChatInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4ED6271E518FF7007C71D3 /* LWChatInteractor.m */; };
@@ -355,6 +372,27 @@
 		2F410EE11DC9BD9D00A650BB /* LWCompanyManagePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWCompanyManagePresenter.m; sourceTree = "<group>"; };
 		2F410EF31DC9BD9D00A650BB /* TNACompanyManageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNACompanyManageVC.h; sourceTree = "<group>"; };
 		2F410EF41DC9BD9D00A650BB /* TNACompanyManageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNACompanyManageVC.m; sourceTree = "<group>"; };
+		2F496A711EA621BD0002F422 /* JoyRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoyRecorder.h; sourceTree = "<group>"; };
+		2F496A721EA621BD0002F422 /* JoyRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoyRecorder.m; sourceTree = "<group>"; };
+		2F496A741EA6FADB0002F422 /* chat_left_BigVoice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_left_BigVoice@2x.png"; sourceTree = "<group>"; };
+		2F496A751EA6FADB0002F422 /* chat_left_MiddleVoice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_left_MiddleVoice@2x.png"; sourceTree = "<group>"; };
+		2F496A761EA6FADB0002F422 /* chat_left_SmallVoice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_left_SmallVoice@2x.png"; sourceTree = "<group>"; };
+		2F496A771EA6FADB0002F422 /* chat_recording@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_recording@2x.png"; sourceTree = "<group>"; };
+		2F496A781EA6FADB0002F422 /* chat_recording@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_recording@3x.png"; sourceTree = "<group>"; };
+		2F496A791EA6FADB0002F422 /* chat_recordNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_recordNormal@2x.png"; sourceTree = "<group>"; };
+		2F496A7A1EA6FADB0002F422 /* chat_recordNormal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_recordNormal@3x.png"; sourceTree = "<group>"; };
+		2F496A7B1EA6FADB0002F422 /* chat_right_BigVoice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_right_BigVoice@2x.png"; sourceTree = "<group>"; };
+		2F496A7C1EA6FADB0002F422 /* chat_right_MiddleVoice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_right_MiddleVoice@2x.png"; sourceTree = "<group>"; };
+		2F496A7D1EA6FADB0002F422 /* chat_right_SmallVoice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_right_SmallVoice@2x.png"; sourceTree = "<group>"; };
+		2F496A7E1EA6FADB0002F422 /* chat_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_video.png; sourceTree = "<group>"; };
+		2F496A7F1EA6FADB0002F422 /* chat_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_video@2x.png"; sourceTree = "<group>"; };
+		2F496A801EA6FADB0002F422 /* chat_video@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_video@3x.png"; sourceTree = "<group>"; };
+		2F496A8E1EA6FC900002F422 /* ChatVoiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatVoiceView.h; sourceTree = "<group>"; };
+		2F496A8F1EA6FC900002F422 /* ChatVoiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatVoiceView.m; sourceTree = "<group>"; };
+		2F496A951EA715830002F422 /* ChatCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCellModel.h; sourceTree = "<group>"; };
+		2F496A961EA715830002F422 /* ChatCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCellModel.m; sourceTree = "<group>"; };
+		2F496A981EA7365E0002F422 /* ChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessage.h; sourceTree = "<group>"; };
+		2F496A991EA7365E0002F422 /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessage.m; sourceTree = "<group>"; };
 		2F4ED6191E518EF8007C71D3 /* LWChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatVC.h; sourceTree = "<group>"; };
 		2F4ED61A1E518EF8007C71D3 /* LWChatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatVC.m; sourceTree = "<group>"; };
 		2F4ED6201E518F93007C71D3 /* LWChatPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatPresenter.h; sourceTree = "<group>"; };
@@ -1115,6 +1153,17 @@
 			path = VC;
 			sourceTree = "<group>";
 		};
+		2F496A941EA715570002F422 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2F496A951EA715830002F422 /* ChatCellModel.h */,
+				2F496A961EA715830002F422 /* ChatCellModel.m */,
+				2F496A981EA7365E0002F422 /* ChatMessage.h */,
+				2F496A991EA7365E0002F422 /* ChatMessage.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		2F4ED60E1E518E2B007C71D3 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -1127,6 +1176,7 @@
 		2F4ED6151E518EF8007C71D3 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				2F496A941EA715570002F422 /* Model */,
 				2F8806B81E52A14D0029FB4B /* SocketComponent */,
 				2F4ED6351E51A8A6007C71D3 /* resources */,
 				2F4ED6291E51932E007C71D3 /* View */,
@@ -1151,6 +1201,8 @@
 			children = (
 				2F4ED6201E518F93007C71D3 /* LWChatPresenter.h */,
 				2F4ED6211E518F93007C71D3 /* LWChatPresenter.m */,
+				2F496A711EA621BD0002F422 /* JoyRecorder.h */,
+				2F496A721EA621BD0002F422 /* JoyRecorder.m */,
 			);
 			path = Presentor;
 			sourceTree = "<group>";
@@ -1230,6 +1282,19 @@
 			isa = PBXGroup;
 			children = (
 				2F4ED6381E51B03A007C71D3 /* bubble.png */,
+				2F496A741EA6FADB0002F422 /* chat_left_BigVoice@2x.png */,
+				2F496A751EA6FADB0002F422 /* chat_left_MiddleVoice@2x.png */,
+				2F496A761EA6FADB0002F422 /* chat_left_SmallVoice@2x.png */,
+				2F496A771EA6FADB0002F422 /* chat_recording@2x.png */,
+				2F496A781EA6FADB0002F422 /* chat_recording@3x.png */,
+				2F496A791EA6FADB0002F422 /* chat_recordNormal@2x.png */,
+				2F496A7A1EA6FADB0002F422 /* chat_recordNormal@3x.png */,
+				2F496A7B1EA6FADB0002F422 /* chat_right_BigVoice@2x.png */,
+				2F496A7C1EA6FADB0002F422 /* chat_right_MiddleVoice@2x.png */,
+				2F496A7D1EA6FADB0002F422 /* chat_right_SmallVoice@2x.png */,
+				2F496A7E1EA6FADB0002F422 /* chat_video.png */,
+				2F496A7F1EA6FADB0002F422 /* chat_video@2x.png */,
+				2F496A801EA6FADB0002F422 /* chat_video@3x.png */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -1290,6 +1355,8 @@
 			children = (
 				2F8806EA1E53EBC90029FB4B /* LWChatView.h */,
 				2F8806EB1E53EBC90029FB4B /* LWChatView.m */,
+				2F496A8E1EA6FC900002F422 /* ChatVoiceView.h */,
+				2F496A8F1EA6FC900002F422 /* ChatVoiceView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1455,6 +1522,7 @@
 				2F362A911DDE9A7400B58076 /* PlayBambooVC.xib in Resources */,
 				2F362A8D1DDE9A7400B58076 /* dong1@2x.png in Resources */,
 				2F410A301DC9B85800A650BB /* LaunchScreen.storyboard in Resources */,
+				2F496A8B1EA6FADB0002F422 /* chat_video.png in Resources */,
 				2F362A881DDE9A7400B58076 /* 4@2x.png in Resources */,
 				2F410F2C1DC9BD9E00A650BB /* commentSelect.png in Resources */,
 				2F7A17721DCC26C500B71CC6 /* bamboo.png in Resources */,
@@ -1471,11 +1539,16 @@
 				2F410F071DC9BD9E00A650BB /* LWSingleLabelCell.xib in Resources */,
 				2F410F6C1DC9BD9E00A650BB /* tabBar_live_deselected@3x.png in Resources */,
 				2F410F341DC9BD9E00A650BB /* messageReceived.caf in Resources */,
+				2F496A8C1EA6FADB0002F422 /* chat_video@2x.png in Resources */,
+				2F496A881EA6FADB0002F422 /* chat_right_BigVoice@2x.png in Resources */,
+				2F496A8A1EA6FADB0002F422 /* chat_right_SmallVoice@2x.png in Resources */,
 				2F362A8B1DDE9A7400B58076 /* diceBack.jpg in Resources */,
 				2F410F2A1DC9BD9E00A650BB /* childBack.gif in Resources */,
 				2F410F0F1DC9BD9E00A650BB /* CommonImageCollectCell.xib in Resources */,
+				2F496A871EA6FADB0002F422 /* chat_recordNormal@3x.png in Resources */,
 				2F362A8E1DDE9A7400B58076 /* dong2@2x.png in Resources */,
 				2F410F6D1DC9BD9E00A650BB /* tabBar_live_selected@3x.png in Resources */,
+				2F496A891EA6FADB0002F422 /* chat_right_MiddleVoice@2x.png in Resources */,
 				2F362A851DDE9A7400B58076 /* 1@2x.png in Resources */,
 				2F410F0B1DC9BD9E00A650BB /* LWTextFieldCell.xib in Resources */,
 				2F410F441DC9BD9E00A650BB /* CommonStarView.xib in Resources */,
@@ -1494,24 +1567,31 @@
 				2F410F491DC9BD9E00A650BB /* TNACommentTableHeaderView.xib in Resources */,
 				2F7A177A1DCC3BD600B71CC6 /* eat.png in Resources */,
 				2F410F611DC9BD9E00A650BB /* LWMediaListCell.xib in Resources */,
+				2F496A861EA6FADB0002F422 /* chat_recordNormal@2x.png in Resources */,
 				2F410F541DC9BD9E00A650BB /* IntelligenceControlHeadView.xib in Resources */,
 				2F410F5F1DC9BD9E00A650BB /* LWCopyRightView.xib in Resources */,
 				2F410F121DC9BD9E00A650BB /* RadomLabelCollectionCell.xib in Resources */,
+				2F496A851EA6FADB0002F422 /* chat_recording@3x.png in Resources */,
 				2F4ED62F1E519381007C71D3 /* LWChatRightIconLabelCell.xib in Resources */,
 				2F410F2D1DC9BD9E00A650BB /* commentUnselect.png in Resources */,
 				2F410F411DC9BD9E00A650BB /* AddCommentTableCellTableViewCell.xib in Resources */,
+				2F496A8D1EA6FADB0002F422 /* chat_video@3x.png in Resources */,
 				2F410F301DC9BD9E00A650BB /* jimao.png in Resources */,
 				2F0C3D671DDEDF2000A3571F /* WhatWeEatTodayVC.xib in Resources */,
 				2F410F3F1DC9BD9E00A650BB /* TNAAssessVC.xib in Resources */,
 				2F410F4B1DC9BD9E00A650BB /* LWMonitoringCell.xib in Resources */,
 				2F410F2E1DC9BD9E00A650BB /* falali.jpg in Resources */,
+				2F496A821EA6FADB0002F422 /* chat_left_MiddleVoice@2x.png in Resources */,
+				2F496A841EA6FADB0002F422 /* chat_recording@2x.png in Resources */,
 				2FAD6C211DC9C7EC00D6A60B /* shuye.jpg in Resources */,
+				2F496A811EA6FADB0002F422 /* chat_left_BigVoice@2x.png in Resources */,
 				2F410F3C1DC9BD9E00A650BB /* 赞.gif in Resources */,
 				2F410F3A1DC9BD9E00A650BB /* ZFPlayer_play_btn@2x.png in Resources */,
 				2F362A891DDE9A7400B58076 /* 5@2x.png in Resources */,
 				2F410F661DC9BD9E00A650BB /* time.png in Resources */,
 				2F410F471DC9BD9E00A650BB /* TNACommentTableCell.xib in Resources */,
 				2F410F331DC9BD9E00A650BB /* luck.gif in Resources */,
+				2F496A831EA6FADB0002F422 /* chat_left_SmallVoice@2x.png in Resources */,
 				2F410F651DC9BD9E00A650BB /* baidu.html in Resources */,
 				2F410F2F1DC9BD9E00A650BB /* go.gif in Resources */,
 				2F410F371DC9BD9E00A650BB /* shu.png in Resources */,
@@ -1597,6 +1677,7 @@
 				2F8806D01E52E7980029FB4B /* LWChatListInteractor.m in Sources */,
 				2F8806BD1E52A14D0029FB4B /* GCDAsyncSocket.m in Sources */,
 				2F410F0E1DC9BD9E00A650BB /* CommonImageCollectCell.m in Sources */,
+				2F496A901EA6FC900002F422 /* ChatVoiceView.m in Sources */,
 				2F410F511DC9BD9E00A650BB /* IntelligencePresentor.m in Sources */,
 				2F8806DC1E52EB620029FB4B /* LWChatListCell.m in Sources */,
 				2F8806E11E52F01F0029FB4B /* LWChatListCellModel.m in Sources */,
@@ -1608,6 +1689,7 @@
 				2F4ED61F1E518EF8007C71D3 /* LWChatVC.m in Sources */,
 				2F410F481DC9BD9E00A650BB /* TNACommentTableHeaderView.m in Sources */,
 				2F410F601DC9BD9E00A650BB /* LWMediaListCell.m in Sources */,
+				2F496A731EA621BD0002F422 /* JoyRecorder.m in Sources */,
 				2F410F461DC9BD9E00A650BB /* TNACommentTableCell.m in Sources */,
 				2F410F4A1DC9BD9E00A650BB /* LWMonitoringCell.m in Sources */,
 				2FFE751D1DD310CE004AD35A /* LWColorTableInteracter.m in Sources */,
@@ -1636,9 +1718,11 @@
 				2F410F671DC9BD9E00A650BB /* LWMediaListVC.m in Sources */,
 				2F410F221DC9BD9E00A650BB /* XHImageViewer.m in Sources */,
 				2F410F431DC9BD9E00A650BB /* CommonStarView.m in Sources */,
+				2F496A9A1EA7365E0002F422 /* ChatMessage.m in Sources */,
 				2F410F641DC9BD9E00A650BB /* LWMediaPresenter.m in Sources */,
 				2F410F101DC9BD9E00A650BB /* LWBaseCollectionCell.m in Sources */,
 				2FFE751A1DD3106A004AD35A /* LWColorTabelVC.m in Sources */,
+				2F496A971EA715830002F422 /* ChatCellModel.m in Sources */,
 				2F410F261DC9BD9E00A650BB /* CommentModel.m in Sources */,
 				2F8806CA1E52E75C0029FB4B /* LWChatListVC.m in Sources */,
 				2F410F4C1DC9BD9E00A650BB /* IntelligenceControlnteractor.m in Sources */,

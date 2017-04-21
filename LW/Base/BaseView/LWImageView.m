@@ -7,6 +7,7 @@
 //
 
 #import "LWImageView.h"
+#import "CAAnimation+HCAnimation.h"
 
 @implementation LWImageView
 
@@ -142,7 +143,7 @@
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+//    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
     UITouch *touctObj = [touches anyObject];
 //    if ([touctObj view] == self.wxImageView) {
 //        
@@ -162,5 +163,13 @@
 
 - (void)longPressTapped:(UILongPressGestureRecognizer *)tap{
     self.lwImageTouchBlock?self.lwImageTouchBlock(ELwTouchActionLongPressType):nil;
+}
+
+- (void)rotate{
+    [CAAnimation showRotateAnimationInView:self Degree:M_PI*2 Direction:AxisZ Repeat:0 Duration:1];
+}
+
+- (void)stopAnimating{
+    [CAAnimation clearAnimationInView:self];
 }
 @end

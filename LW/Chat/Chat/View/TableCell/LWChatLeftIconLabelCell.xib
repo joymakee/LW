@@ -34,32 +34,55 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJj-HW-fhy" userLabel="chatLabel">
-                        <rect key="frame" x="65" y="40" width="199" height="19.5"/>
+                        <rect key="frame" x="65" y="40" width="4.5" height="19.5"/>
                         <color key="backgroundColor" red="0.9065550490335037" green="0.95125000000000004" blue="0.25127510832900218" alpha="0.35929635067114096" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.39626953124999997" green="0.099865301431095357" blue="0.061917850211063059" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0h-fj-Pg6" customClass="ChatVoiceView">
+                        <rect key="frame" x="63" y="40" width="0.0" height="30"/>
+                        <color key="backgroundColor" red="1" green="0.83547265740536569" blue="0.33072541529579891" alpha="0.46395239093959734" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" id="Bep-Ho-8LX"/>
+                            <constraint firstAttribute="height" constant="30" id="jkq-5B-PWG"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vp-WK-GN4">
+                        <rect key="frame" x="68" y="50.5" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.18490531148495648" green="0.1930091106119235" blue="0.30929687500000003" alpha="0.66243708053691264" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="T0h-fj-Pg6" firstAttribute="leading" secondItem="wt4-GB-sVy" secondAttribute="trailing" constant="8" id="4ws-Xx-5uV"/>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="wt4-GB-sVy" secondAttribute="bottom" constant="10" id="65n-Pu-hSZ"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eJj-HW-fhy" secondAttribute="bottom" constant="10" id="BPz-UW-LWj"/>
                     <constraint firstItem="DUi-oe-h3B" firstAttribute="leading" secondItem="wt4-GB-sVy" secondAttribute="trailing" constant="10" id="GZo-BM-Od0"/>
-                    <constraint firstAttribute="trailing" secondItem="eJj-HW-fhy" secondAttribute="trailing" constant="60" id="Lfv-Rg-xhk"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="T0h-fj-Pg6" secondAttribute="trailing" constant="60" id="ImO-W0-mdj"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eJj-HW-fhy" secondAttribute="trailing" constant="60" id="Lfv-Rg-xhk"/>
+                    <constraint firstItem="T0h-fj-Pg6" firstAttribute="top" secondItem="DUi-oe-h3B" secondAttribute="bottom" constant="9.5" id="Qyx-ui-mqN"/>
                     <constraint firstItem="DUi-oe-h3B" firstAttribute="top" secondItem="wt4-GB-sVy" secondAttribute="top" id="YYm-WL-zNg"/>
                     <constraint firstItem="wt4-GB-sVy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="b6y-i0-DdZ"/>
+                    <constraint firstItem="9vp-WK-GN4" firstAttribute="centerY" secondItem="T0h-fj-Pg6" secondAttribute="centerY" constant="-5" id="g10-le-Xhr"/>
                     <constraint firstAttribute="trailingMargin" secondItem="DUi-oe-h3B" secondAttribute="trailing" constant="15" id="iqQ-1U-ELf"/>
                     <constraint firstItem="eJj-HW-fhy" firstAttribute="leading" secondItem="wt4-GB-sVy" secondAttribute="trailing" constant="10" id="lc8-Oq-Zvt"/>
+                    <constraint firstItem="9vp-WK-GN4" firstAttribute="leading" secondItem="T0h-fj-Pg6" secondAttribute="trailing" constant="5" id="loF-h5-YAY"/>
                     <constraint firstItem="eJj-HW-fhy" firstAttribute="top" secondItem="DUi-oe-h3B" secondAttribute="bottom" constant="10" id="qLb-ix-hx8"/>
                     <constraint firstItem="wt4-GB-sVy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="tKp-v7-pP7"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="T0h-fj-Pg6" secondAttribute="bottom" constant="10" id="xWv-bd-DlF"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="avatar" destination="wt4-GB-sVy" id="A1e-Sr-Rda"/>
                 <outlet property="chatInfoLabel" destination="eJj-HW-fhy" id="WO3-IR-RNh"/>
                 <outlet property="nameLabel" destination="DUi-oe-h3B" id="hAM-3z-OF8"/>
+                <outlet property="voiceTimeLabel" destination="9vp-WK-GN4" id="MtX-Tu-stZ"/>
+                <outlet property="voiceView" destination="T0h-fj-Pg6" id="9Xe-iP-Y3i"/>
+                <outlet property="voiceWidthConstraint" destination="Bep-Ho-8LX" id="kfz-Z8-gBn"/>
             </connections>
-            <point key="canvasLocation" x="64" y="81.5"/>
+            <point key="canvasLocation" x="-11" y="69.5"/>
         </tableViewCell>
     </objects>
     <resources>

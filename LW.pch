@@ -17,6 +17,8 @@
 #import "LWNavigationController.h"
 #import "LWTabbarVC.h"
 #import <UIView+JoyCategory.h>
+#import "NSObject+MJKeyValue.h"
+
 #define UmengAppkey @"5775cbcbe0f55aa631003118"
 #define SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define SCREEN_H [UIScreen mainScreen].bounds.size.height
@@ -37,6 +39,18 @@ typedef void (^BOOLBLOCK)(BOOL boolValue);
 typedef void (^STRINGBLOCK)(NSString *str);
 
 typedef void (^VOIDBLOCK)();
+
+typedef void (^FLOATBLOCK)(CGFloat floatNumber);
+
+typedef void (^IDBLOCK)(id obj);
+
+
+typedef NS_ENUM(NSInteger,EChatType) {
+    EChatContentType,
+    EChatAudioType,
+    EChatMediaType,
+    EChatRichTextType
+};
 
 typedef NS_ENUM(NSInteger,ELwTouchActionType) {
     ELwTouchActionSingleType,

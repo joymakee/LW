@@ -10,11 +10,14 @@
 #import "Masonry.h"
 #import "CommonImageCollectView.h"
 #import "Intelligencelnteractor.h"
+#import "LWImageView.h"
+#import "JoyRecorder.h"
 
 @interface InputView ()<UITextViewDelegate>
-@property (nonatomic,strong)UIImageView *speakerImageView;
+@property (nonatomic,strong)LWImageView *speakerImageView;
 @property (nonatomic,strong)UITextView *inputTextView;
 @property (nonatomic,strong)UIButton *showCustomKeyboardBtn;
+@property (nonatomic,strong)UIButton *recordAudioBtn;
 @property (nonatomic,strong)CommonImageCollectView *customKeyBoardView;
 @property (nonatomic,strong)Intelligencelnteractor *customKeyBoardInteracter;
 
@@ -29,12 +32,12 @@ const float KDefaultInputViewH = 33;
     if (self = [super init]) {
         [self addSubview:self.speakerImageView];
         [self addSubview:self.inputTextView];
+        [self addSubview:self.recordAudioBtn];
         [self addSubview:self.showCustomKeyboardBtn];
         [self addSubview:self.customKeyBoardView];
         [self.customKeyBoardInteracter getIntelligenceSource];
         [self.customKeyBoardView setData:self.customKeyBoardInteracter.dataArrayM];
         self.inputTextView.returnKeyType = UIReturnKeySend;
-        [self setConstraint];
     }
     return self;
 }
@@ -43,7 +46,8 @@ const float KDefaultInputViewH = 33;
     return _customKeyBoardInteracter = _customKeyBoardInteracter?:[[Intelligencelnteractor alloc]init];
 }
 
-- (CommonImageCollectView *)customKeyBoardView{
+- (CommonImageCollectView *)customKeyBoardView
+{
     if (!_customKeyBoardView) {
         _customKeyBoardView = [[CommonImageCollectView alloc]init];
         [_customKeyBoardView setFrame:CGRectMake(0, 0, SCREEN_W, SCREEN_W)];
@@ -51,7 +55,31 @@ const float KDefaultInputViewH = 33;
     return _customKeyBoardView;
 }
 
--(UITextView *)inputTextView{
+-(UIButton *)recordAudioBtn
+{
+    if (!_recordAudioBtn) {
+        _recordAudioBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _recordAudioBtn.layer.masksToBounds = YES;
+        _recordAudioBtn.layer.cornerRadius = 5;
+        _recordAudioBtn.layer.borderWidth = 0.8;
+        _recordAudioBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        [_recordAudioBtn addTarget:self action:@selector(recordAudio) forControlEvents:UIControlEventTouchDown];
+        [_recordAudioBtn addTarget:self action:@selector(stopRecord) forControlEvents:UIControlEventTouchUpInside];
+
+        [_recordAudioBtn addTarget:self action:@selector(stopRecord) forControlEvents:UIControlEventTouchUpOutside];
+        [_recordAudioBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [_recordAudioBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+
+        [_recordAudioBtn setTitle:@"按住 说话" forState:UIControlStateNormal];
+        [_recordAudioBtn setTitle:@"松开 结束" forState:UIControlStateHighlighted];
+
+        _recordAudioBtn.alpha = 0;
+    }
+    return _recordAudioBtn;
+}
+
+-(UITextView *)inputTextView
+{
     if (!_inputTextView) {
         _inputTextView = [[UITextView alloc]initWithFrame:CGRectZero];
         _inputTextView.backgroundColor = [UIColor clearColor];
@@ -66,8 +94,17 @@ const float KDefaultInputViewH = 33;
     return _inputTextView;
 }
 
--(UIImageView *)speakerImageView{
-    return _speakerImageView = _speakerImageView?:[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"happy.png"] highlightedImage:[UIImage imageNamed:@"happy.png"]];
+-(LWImageView *)speakerImageView{
+    if(!_speakerImageView){
+        _speakerImageView = [[LWImageView alloc]init];
+        _speakerImageView.image = [UIImage imageNamed:@"happy.png"];
+        __weak __typeof(&*self)weakSelf = self;
+        _speakerImageView.lwImageTouchBlock = ^(ELwTouchActionType touchType)
+        {
+            touchType == ELwTouchActionSingleType?[weakSelf keyboardRecordSwitching]:nil;
+        };
+    }
+    return _speakerImageView;
 }
 
 -(UIButton *)showCustomKeyboardBtn{
@@ -78,7 +115,8 @@ const float KDefaultInputViewH = 33;
     return _showCustomKeyboardBtn;
 }
 
-- (void)setConstraint{
+- (void)updateConstraints{
+    [super updateConstraints];
     __weak __typeof(self)weakSelf  = self;
 
     [_speakerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -89,6 +127,13 @@ const float KDefaultInputViewH = 33;
     }];
 
     [_inputTextView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(weakSelf.mas_top).offset(padding);
+        make.left.mas_equalTo(weakSelf.speakerImageView.mas_right).offset(padding);
+        make.right.mas_equalTo(weakSelf.showCustomKeyboardBtn.mas_left).offset(-5);
+        make.height.mas_equalTo(@(KDefaultInputViewH));
+    }];
+    
+    [_recordAudioBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(weakSelf.mas_top).offset(padding);
         make.left.mas_equalTo(weakSelf.speakerImageView.mas_right).offset(padding);
         make.right.mas_equalTo(weakSelf.showCustomKeyboardBtn.mas_left).offset(-5);
@@ -144,9 +189,13 @@ const float KDefaultInputViewH = 33;
     }
 }
 
+
 #pragma mark 重置输入框高度及内容
 - (void)resetInputViewConstraintH{
-    self.messageSendAction?self.messageSendAction(self.inputTextView.text):nil;
+    ChatMessage *inputModel = [[ChatMessage alloc]init];
+    inputModel.message = self.inputTextView.text;
+    self.messageBlock?self.messageBlock(inputModel):nil;
+//    self.messageSendAction?self.messageSendAction(self.inputTextView.text):nil;
     self.inputTextView.text = nil;
     [self.inputTextView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@(KDefaultInputViewH));
@@ -180,5 +229,45 @@ const float KDefaultInputViewH = 33;
         make.height.equalTo(@(SCREEN_W+KDefaultInputViewH+padding*2));
     }];
     [self updateConstraintsIfNeeded];
+}
+
+#pragma mark 录制
+- (void)recordAudio{
+    [self.speakerImageView rotate];
+    [JoyRecorder shareInstance].recordAudioUrlStrPathFile = [NSString stringWithFormat:@"%dxx.caf",arc4random()%100];
+    [[JoyRecorder shareInstance] startRecord];
+}
+
+#pragma mark 停止录制
+- (void)stopRecord{
+    __weak __typeof (&*self)weakSelf = self;
+    [JoyRecorder shareInstance].recordFinishBlock = ^(CGFloat recordTime){
+        ChatMessage *inputModel = [[ChatMessage alloc]init];
+        inputModel.message = weakSelf.inputTextView.text;
+        inputModel.chatType = EChatAudioType;
+        inputModel.playTotalTime = recordTime;
+        inputModel.urlPath = [JoyRecorder shareInstance].recordAudioUrlStrPathFile;
+        weakSelf.messageBlock?weakSelf.messageBlock(inputModel):nil;
+    };
+
+    [self.speakerImageView stopAnimating];
+    [[JoyRecorder shareInstance] stopRecord];
+    [[JoyRecorder shareInstance] invalidate];
+}
+
+- (void)keyboardRecordSwitching{
+    if(self.inputTextView.isFirstResponder){
+        [self.inputTextView resignFirstResponder];
+        self.inputTextView.alpha = 0;
+        self.recordAudioBtn.alpha =1;
+    }else{
+        [self.inputTextView becomeFirstResponder];
+        self.inputTextView.alpha = 1;
+        self.recordAudioBtn.alpha =0;
+    }
+}
+
+-(void)dealloc{
+    [[JoyRecorder shareInstance] invalidate];
 }
 @end

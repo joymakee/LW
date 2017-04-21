@@ -8,12 +8,13 @@
 
 #import "JoyInteractorBase.h"
 
+@class ChatMessage;
 @interface LWChatInteractor : JoyInteractorBase
 @property (nonatomic,strong)NSMutableArray *dataArrayM;
 
 - (void)getChatInfo:(VOIDBLOCK)block;
 
-- (void)connectHost:(NSString *)host port:(uint16_t)port receivedMessageBlock:(STRINGBLOCK)receivedMessage;
+- (void)connectHost:(NSString *)host port:(uint16_t)port receivedMessageBlock:(VOIDBLOCK)receivedMessage;
 
-- (void)sendmessage:(NSString*)message;
+- (void)sendmessage:(ChatMessage*)message;
 @end

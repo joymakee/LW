@@ -5,7 +5,6 @@
 //  Created by joymake on 16/2/18.
 //  Copyright © 2016年 Joymake. All rights reserved.
 //
-#define HIDE_KEYBOARD [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
 #import "TNAAssessVC.h"
 #import "CommonStarView.h"
 #import "CommonImageCollectView.h"
@@ -14,7 +13,7 @@
 #import "BackGroundBlurView.h"
 #import <AFNetworking.h>
 #import <UIImage+Extension.h>
-
+#import "Joy.h"
 @interface TNAAssessVC ()<UITextViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView     *commentTextView;
 @property (weak, nonatomic) IBOutlet UILabel        *countLabel;

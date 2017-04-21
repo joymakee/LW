@@ -13,4 +13,8 @@ typedef void (^LWImageTouchBlock)(ELwTouchActionType touchType);
 @interface LWImageView : UIImageView<UIGestureRecognizerDelegate>
 @property (nonatomic,copy) LWImageTouchBlock lwImageTouchBlock;
 - (void)addLayer;
+
+- (void)rotate;
+
+- (void)stopAnimating;
 @end

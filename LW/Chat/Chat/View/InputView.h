@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChatMessage.h"
 
 @interface InputView : UIView
-@property (nonatomic,copy)STRINGBLOCK messageSendAction;
+//InputViewModel
+@property (nonatomic,copy)IDBLOCK messageBlock;
 @end
