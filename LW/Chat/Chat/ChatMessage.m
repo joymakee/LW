@@ -9,5 +9,7 @@
 #import "ChatMessage.h"
 
 @implementation ChatMessage
-
++ (NSString *)primaryKey {
+    return @"messageId";
+}
 @end

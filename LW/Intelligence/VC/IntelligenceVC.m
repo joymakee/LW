@@ -33,7 +33,7 @@
 }
 
 -(IntelligencePresentor *)intelligencePresentor{
-    _intelligencePresentor = _intelligencePresentor?:[[IntelligencePresentor alloc]init];
+    _intelligencePresentor = _intelligencePresentor?:[[IntelligencePresentor alloc]initWithView:self.view];
     _intelligencePresentor.delegate = self.intelligenceControlPresentor;
     return _intelligencePresentor;
 }

@@ -25,6 +25,6 @@ typedef NS_ENUM(NSInteger,EIntelligenceControlType) {
 };
 #import <JoyTool.h>
 
-@interface LWIntelligenceModel : JoyCellBaseModel
+@interface LWIntelligenceModel : JoyImageCellBaseModel
 @property (nonatomic,assign)EIntelligenceControlType igenceControlType;
 @end

@@ -10,6 +10,8 @@
 #import "Intelligencelnteractor.h"
 #import "CommonImageCollectView.h"
 #import "CAAnimation+HCAnimation.h"
+#import "JoyRecordView.h"
+#import "JoyMediaRecordPlay.h"
 
 @implementation IntelligencePresentor
 -(void)reloadView{
@@ -26,14 +28,87 @@
     _intelligenceView.selectStaffLayout=selectStaffLayout;
     
     __weak __typeof (&*self)weakSelf = self;
-    _intelligenceView.cellDidSelectBlock =^(NSIndexPath *indexPath,UICollectionView *collectionView){
-        [collectionView bringSubviewToFront:[collectionView cellForItemAtIndexPath:indexPath]];
-        [CAAnimation showScaleAnimationInView:[collectionView cellForItemAtIndexPath:indexPath] fromValue:1  ScaleValue:3 Repeat:1 Duration:1.0 autoreverses:YES];
-        [CAAnimation showOpacityAnimationInView:[collectionView cellForItemAtIndexPath:indexPath] fromAlpha:1 Alpha:0.6 Repeat:2 Duration:1 autoreverses:YES];
-        if ([weakSelf.delegate respondsToSelector:@selector(intelligenceCellDidSelect)]) {
-            [weakSelf.delegate intelligenceCellDidSelect];
-        }
+    _intelligenceView.cellDidSelectBlock =^(NSIndexPath *indexPath,NSString *tapAction){
+        [weakSelf.intelligenceView bringSubviewToFront:[weakSelf.intelligenceView.collectionView cellForItemAtIndexPath:indexPath]];
+        [CAAnimation showScaleAnimationInView:[weakSelf.intelligenceView.collectionView cellForItemAtIndexPath:indexPath] fromValue:1  ScaleValue:3 Repeat:1 Duration:1.0 autoreverses:YES];
+        [CAAnimation showOpacityAnimationInView:[weakSelf.intelligenceView.collectionView cellForItemAtIndexPath:indexPath] fromAlpha:1 Alpha:0.6 Repeat:2 Duration:1 autoreverses:YES];
+            [super performTapAction:tapAction];
     };
-
 }
+
+#pragma mark  温控
+- (void)temperatureControl{
+    
+}
+
+#pragma mark  灯光控制
+- (void)lightControl{
+    if ([self.delegate respondsToSelector:@selector(intelligenceCellDidSelect)]) {
+        [self.delegate intelligenceCellDidSelect];
+    }
+}
+
+#pragma 监控
+- (void)cameraControl{
+    JoyRecordView *recoreView = [[JoyRecordView alloc]init];
+    [[UIApplication sharedApplication].keyWindow addSubview:recoreView];
+    MAS_CONSTRAINT(recoreView, make.edges.mas_equalTo([UIApplication sharedApplication].keyWindow););
+    [[UIApplication sharedApplication].keyWindow updateConstraintsIfNeeded];
+    recoreView.startRecordBlock = ^(){};
+    recoreView.endRecordBlock = ^(){};
+    recoreView.switchCameraBlock = ^(){};
+    recoreView.flashLightControlBlock = ^(){};
+    recoreView.cancleRecordBlock = ^(){};
+}
+
+#pragma mark  厨控
+- (void)kitchenControl{
+    
+}
+
+#pragma mark  车库控
+- (void)carControl{
+    
+}
+
+#pragma mark  天气
+- (void)waterControl{
+    
+}
+
+#pragma mark  自动衣架控
+- (void)clothestreeControl{
+    
+}
+
+#pragma mark  电视控
+- (void)tvControl{
+    
+}
+
+#pragma mark  门控
+- (void)doorControl{
+    
+}
+
+#pragma mark  控
+- (void)cleanerControl{
+    
+}
+
+#pragma mark  gps导航
+- (void)gpsControl{
+    
+}
+
+#pragma mark  运动
+- (void)sportControl{
+    
+}
+
+#pragma mark  盆栽
+- (void)pottingControl{
+    
+}
+
 @end

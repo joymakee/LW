@@ -33,8 +33,10 @@
 	<string>CameraDescription</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>MicrophoneDescription</string>
+	<key>NSMotionUsageDescription</key>
+	<string>若不允许，你将无法在LW通中使用计步功能。</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>PhotoDescription</string>
+	<string>PhotoLibruary</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

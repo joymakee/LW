@@ -25,6 +25,10 @@
 -(JoyUISegementView *)segmentView{
     if (!_segmentView) {
         _segmentView = [[JoyUISegementView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W, 40)];
+        _segmentView.layer.masksToBounds = YES;
+        _segmentView.layer.cornerRadius = 20;
+        _segmentView.layer.borderWidth = 1;
+        _segmentView.layer.borderColor = [UIColor purpleColor].CGColor;
         _segmentView.segmentItems = @[@"影视",@"新闻",@"娱乐"];
         _segmentView.selectColor = [UIColor purpleColor];
         _segmentView.deselectColor = [UIColor lightGrayColor];
@@ -70,7 +74,7 @@
     __weak __typeof (&*self)weakSelf = self;
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(weakSelf.view.mas_leading);
-        make.top.equalTo(weakSelf.view.mas_top).offset(40);
+        make.top.equalTo(weakSelf.view.mas_top);
         make.trailing.equalTo(weakSelf.view.mas_trailing);
         make.bottom.equalTo(weakSelf.view.mas_bottom);
     }];

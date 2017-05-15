@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface ChatMessage : NSObject
+@property  NSString *messageId;
 @property (nonatomic,assign)EChatType chatType;
+@property (nonatomic,copy)NSString *userId;
+@property (nonatomic,copy)NSString *userName;
 @property (nonatomic,copy)NSString *message;
 @property (nonatomic,copy)NSString *urlPath;
 @property (nonatomic,assign)NSUInteger playTotalTime;

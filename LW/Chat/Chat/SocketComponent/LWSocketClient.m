@@ -9,12 +9,20 @@
 #import "LWSocketClient.h"
 #import "GCDAsyncSocket.h"
 
-@interface LWSocketClient ()<GCDAsyncSocketDelegate>
+@interface LWSocketClient ()<GCDAsyncSocketDelegate>{
+    BOOL _isServer;
+}
 @property(nonatomic,strong)GCDAsyncSocket *socket;
 @property (nonatomic, strong)NSThread *thread;
 
 @end
 @implementation LWSocketClient
+
+-(void)becoMeServer{
+    _isServer = YES;
+    [self.thread start];
+}
+
 -(GCDAsyncSocket *)socket{
     return _socket = _socket?:[[GCDAsyncSocket alloc]initWithDelegate:self delegateQueue:dispatch_get_global_queue(0, 0)];
 }
@@ -76,3 +84,4 @@
 }
 
 @end
+

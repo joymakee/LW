@@ -12,12 +12,7 @@
 #import "LWChatVC.h"
 #import "LWChatListCellModel.h"
 #import <JoyTool.h>
-
-@interface LWChatListPresenter ()<UITextFieldDelegate>
-@property (nonatomic,weak)UITextField *hostAddressText;
-@end
-
-NSString *KHostAddressUserdefaultStr = @"hostAddressStr";
+#import "ServerClientConfig.h"
 
 @implementation LWChatListPresenter
 -(void)reloadDataSource{
@@ -38,11 +33,12 @@ NSString *KHostAddressUserdefaultStr = @"hostAddressStr";
 -(void)tableVIewDidSelect:(NSIndexPath *)indexPath{
     JoySectionBaseModel *sectionModel = [self.chatInteractor.dataArrayM objectAtIndex:indexPath.section];
     LWChatListCellModel * selectModel  = sectionModel.rowArrayM[indexPath.row];
-    [super performTapAction:selectModel.tapAction];
     if (selectModel.messageCount) {
         selectModel.messageCount = 0;
         [self.chatView reloadRow:indexPath];
     }
+
+    [super performTapAction:selectModel.tapAction];
 }
 
 - (void)reloadTable{
@@ -56,28 +52,6 @@ NSString *KHostAddressUserdefaultStr = @"hostAddressStr";
 }
 
 -(void)leftNavItemClickAction{
-
-    NSString *hostStr = [[NSUserDefaults standardUserDefaults] objectForKey:KHostAddressUserdefaultStr];
-    NSString *messageStr = [NSString stringWithFormat:@"当前服务器地址为:%@",hostStr?:@"0.0.0.0"];
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"服务器设置" message:messageStr preferredStyle:UIAlertControllerStyleAlert];
-    __weak typeof (&*self)weakSelf = self;
-    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.textColor = [UIColor purpleColor];
-        textField.placeholder = @"ip地址(如0.0.0.0)";
-        weakSelf.hostAddressText = textField;
-    }];
-    
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:nil]];
-    
-    [alert addAction:[UIAlertAction actionWithTitle:@"设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        HIDE_KEYBOARD
-        if ([[weakSelf.hostAddressText.text componentsSeparatedByString:@"."] count]==4) {
-            [[NSUserDefaults standardUserDefaults] setObject:weakSelf.hostAddressText.text forKey:KHostAddressUserdefaultStr];
-        }else{
-            
-        }
-    }]];
-    [self.rootView.viewController presentViewController:alert animated:YES completion:nil];
+    [[ServerClientConfig shareinstance] showConfigAlertWithObj:self.rootView.viewController];
 }
 @end

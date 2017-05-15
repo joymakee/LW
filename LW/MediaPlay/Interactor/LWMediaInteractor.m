@@ -13,7 +13,7 @@
 @implementation LWMediaInteractor
 - (void)getMedisSourcesDataSource:(VOIDBLOCK)successed{
     [self.dataArrayM removeAllObjects];
-    __block NSArray *nameArray = @[@"蜘蛛侠大战超人",@"赵本山",@"小生样",@"joymake",@"🐯👀",@"Mr.Liu",@"赵子龙"];
+    __block NSArray *nameArray = @[@"蜘蛛侠大战超人",@"赵本山",@"小生样",@"joymake",@"🐯👀",@"Mr.Liu",@"赵子龙",];
     __block NSArray *mediaArray = @[@"http://wvideo.spriteapp.cn/video/2016/0328/56f8ec01d9bfe_wpd.mp4",
                             @"http://baobab.wdjcdn.com/1456117847747a_x264.mp4",
                             @"http://baobab.wdjcdn.com/14525705791193.mp4",
@@ -32,11 +32,10 @@
                             @"http://baobab.wdjcdn.com/1456231710844S(24).mp4"];
     
     __weak __typeof (&*self)weakSelf = self;
-    dispatch_queue_t queue =dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
         NSMutableArray *sourceArray = [NSMutableArray arrayWithCapacity:nameArray.count];
-        for(NSInteger index = 0;index<10;index++){
-//        dispatch_apply(nameArray.count, queue, ^(size_t index) {
+        dispatch_apply(mediaArray.count, queue, ^(size_t index) {
             LWMediaModel *comment = [[LWMediaModel alloc]init];
             comment.title = nameArray[index%nameArray.count];
             comment.cellName = @"LWMediaListCell";
@@ -46,8 +45,7 @@
             comment.playCount = arc4random()%1000000;
             [sourceArray addObject:comment];
             NSLog(@"%zu\n",(long)index);
-//        });
-        }
+        });
         JoySectionBaseModel *topicSectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:sourceArray sectionH:15 sectionTitle:nil];
         
         [weakSelf.dataArrayM addObject:topicSectionModel];

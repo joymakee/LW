@@ -15,7 +15,7 @@
 @property (nonatomic,copy)void (^addImageBlock)();
 @property (nonatomic,copy)void (^imageClickBlock)(BOOL isLongPress,NSIndexPath *indexPath);
 @property (nonatomic,copy)void (^deleteImageBlock)(NSIndexPath *indexPath);
-@property (nonatomic,copy)void (^cellDidSelectBlock)(NSIndexPath *indexPath,UICollectionView *collectionView);
+@property (nonatomic,copy)void (^cellDidSelectBlock)(NSIndexPath *indexPath,NSString *tapAction);
 
 -(void)setUrlStrData:(NSMutableArray *)dataArray;
 

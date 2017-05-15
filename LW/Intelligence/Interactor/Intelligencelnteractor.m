@@ -12,30 +12,32 @@
 @implementation Intelligencelnteractor
 -(void)getIntelligenceSource{
     [self.dataArrayM removeAllObjects];
-    __block NSArray *titleSource = @[@"监控",
-                             @"温控",
-                             @"厨房",
-                             @"灯",
-                             @"车库",
-                             @"水路",
-                             @"电路",
-                             @"门窗",
-                             @"衣架",
-                             @"玩具",
-                             @"电视",
-                             @"床",
-                             @"吸尘器",
-                             @"导航",
-                             @"运动"];
+
+    NSArray *inteligenceSource = @[@{@"title":@"灯",@"image":@"lw_inteligence_light",@"tapAction":@"lightControl"},
+                                   @{@"title":@"温控",@"image":@"lw_inteligence_thermost",@"tapAction":@"temperatureControl"},
+                                   @{@"title":@"厨房",@"image":@"lw_inteligence_kitchen",@"tapAction":@"kitchenControl"},
+                                   @{@"title":@"监控",@"image":@"lw_inteligence_camera",@"tapAction":@"cameraControl"},
+                                   @{@"title":@"车库",@"image":@"lw_inteligence_car",@"tapAction":@"carControl"},
+                                   @{@"title":@"水路",@"image":@"lw_inteligence_water",@"tapAction":@"waterControl"},
+                                   @{@"title":@"衣架",@"image":@"lw_inteligence_clothestree",@"tapAction":@"clothestreeControl"},
+                                   @{@"title":@"电视",@"image":@"lw_inteligence_tv",@"tapAction":@"tvControl"},
+                                   @{@"title":@"门窗",@"image":@"lw_inteligence_door",@"tapAction":@"doorControl"},
+                                   @{@"title":@"吸尘器",@"image":@"lw_inteligence_cleaner",@"tapAction":@"cleanerControl"},
+                                   @{@"title":@"导航",@"image":@"lw_inteligence_gps",@"tapAction":@"gpsControl"},
+                                   @{@"title":@"运动",@"image":@"lw_inteligence_sport",@"tapAction":@"sportControl"},
+                                   @{@"title":@"燃气",@"image":@"lw_inteligence_gas",@"tapAction":@"gasControl"},
+                                   @{@"title":@"空气质量",@"image":@"lw_inteligence_air",@"tapAction":@"airControl"},
+                                   @{@"title":@"盆栽",@"image":@"lw_inteligence_potting",@"tapAction":@"pottingControl"},];
     
     __weak __typeof (&*self)weakSelf = self;
-    [titleSource enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL * _Nonnull stop) {
+    [inteligenceSource enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL * _Nonnull stop) {
         @autoreleasepool {
             LWIntelligenceModel *model = [[LWIntelligenceModel alloc]init];
             model.cellName = @"RadomLabelCollectionCell";
-            model.title = title;
+//            model.title = dict[@"title"];
             model.igenceControlType = idx;
-            model.tapAction = @"goControl";
+            model.tapAction = dict[@"tapAction"];
+            model.avatar = dict[@"image"];
             model.backgroundColor = JOY_colorList[idx%JOY_colorList.count];
             [weakSelf.dataArrayM addObject:model];
             

@@ -29,25 +29,7 @@
     cellModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cellModel.viewShape = EImageTypeSquare;
     [workArrayM addObject:cellModel];
-    
-    JoyImageCellBaseModel *workGrooup = [[JoyImageCellBaseModel alloc]init];
-    workGrooup.title =@"讨论组";
-    workGrooup.placeHolderImageStr =@"poker";
-    workGrooup.cellName =@"JoyLeftIconCell";
-    workGrooup.bundleName = JoyToolBundle;
-    workGrooup.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    workGrooup.viewShape = EImageTypeSquare;
-    [workArrayM addObject:workGrooup];
-    
-    JoyImageCellBaseModel *infoModel = [[JoyImageCellBaseModel alloc]init];
-    infoModel.title =@"个人信息管理";
-    infoModel.placeHolderImageStr =@"poker";
-    infoModel.cellName =@"JoyLeftIconCell";
-    infoModel.bundleName = JoyToolBundle;
-    infoModel.tapAction = @"goColorTable";
-    infoModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    infoModel.viewShape = EImageTypeSquare;
-    [workArrayM addObject:infoModel];
+
 
     JoySectionBaseModel *staffSectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:workArrayM sectionH:KHeadSectionH sectionTitle:nil];
     [self.easyWorkArrayM addObject:staffSectionModel];
@@ -64,25 +46,7 @@
     cellModel.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
     cellModel.viewShape = EImageTypeSquare;
     [arrayM addObject:cellModel];
-    
-    JoyImageCellBaseModel *activityModel = [[JoyImageCellBaseModel alloc]init];
-    activityModel.title =@"活动";
-    activityModel.placeHolderImageStr =@"poker";
-    activityModel.cellName =@"JoyLeftIconCell";
-    activityModel.bundleName = JoyToolBundle;
-    activityModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    activityModel.viewShape = EImageTypeSquare;
-    [arrayM addObject:activityModel];
-
-    JoyImageCellBaseModel *newsModel = [[JoyImageCellBaseModel alloc]init];
-    newsModel.title =@"新闻";
-    newsModel.placeHolderImageStr =@"poker";
-    newsModel.cellName =@"JoyLeftIconCell";
-    newsModel.bundleName = JoyToolBundle;
-    newsModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    newsModel.viewShape = EImageTypeSquare;
-    [arrayM addObject:newsModel];
-
+ 
     JoyImageCellBaseModel *happyModel = [[JoyImageCellBaseModel alloc]init];
     happyModel.title =@"开心一刻";
     happyModel.placeHolderImageStr =@"happy";
@@ -91,17 +55,7 @@
     happyModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     happyModel.viewShape = EImageTypeSquare;
     [arrayM addObject:happyModel];
-    
-    JoyImageCellBaseModel *spitslotModel = [[JoyImageCellBaseModel alloc]init];
-    spitslotModel.title =@"吐槽一下";
-    spitslotModel.placeHolderImageStr =@"happy";
-    spitslotModel.cellName =@"JoyLeftIconCell";
-    spitslotModel.bundleName = JoyToolBundle;
-    spitslotModel.tapAction = @"goSpitslot";
-    spitslotModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    spitslotModel.viewShape = EImageTypeSquare;
-    [arrayM addObject:spitslotModel];
-    
+
     JoySectionBaseModel *companySectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:arrayM sectionH:KHeadSectionH sectionTitle:nil];
 
     [self.enterpriseCultureArrayM addObject:companySectionModel];
@@ -131,15 +85,6 @@
     eatModel.tapAction = @"goEatVC";
     [arrayM addObject:eatModel];
     
-    JoyImageCellBaseModel *pokerModel = [[JoyImageCellBaseModel alloc]init];
-    pokerModel.title =@"斗地主";
-    pokerModel.placeHolderImageStr =@"poker";
-    pokerModel.cellName =@"JoyLeftIconCell";
-    pokerModel.bundleName = JoyToolBundle;
-    pokerModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    pokerModel.viewShape = EImageTypeSquare;
-    [arrayM addObject:pokerModel];
-
     JoySectionBaseModel *staffSectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:arrayM sectionH:KHeadSectionH sectionTitle:nil];
    
     JoyCellBaseModel *reCommentCellModel = [[JoyCellBaseModel alloc]init];

@@ -11,12 +11,15 @@
 #import "LWChatInteractor.h"
 #import "LWChatPresenter.h"
 #import "LWImageView.h"
+#import "BackGroundBlurView.h"
 
 @interface LWChatVC ()
 @property (nonatomic,strong)LWChatView *chatView;
 @property (nonatomic,strong)LWChatInteractor *chatInteractor;
 @property (nonatomic,strong)LWChatPresenter *chatPresenter;
 @property (nonatomic,strong)UIView *customHeadView;
+@property (nonatomic,strong)BackGroundBlurView *backView;
+
 @end
 
 @implementation LWChatVC
@@ -27,6 +30,14 @@
 
 -(LWChatInteractor *)chatInteractor{
     return _chatInteractor = _chatInteractor?:[[LWChatInteractor alloc]init];
+}
+
+-(BackGroundBlurView *)backView{
+    if (!_backView) {
+        _backView = [[BackGroundBlurView alloc]init];
+        [_backView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"shuye" ofType:@"jpg"]] andBlur:1];
+    }
+    return _backView;
 }
 
 -(UIView *)customHeadView{
@@ -58,8 +69,8 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                                                   forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
+    [self setDefaultConstraintWithView:self.backView andTitle:nil];
     [self setDefaultConstraintWithView:self.chatView andTitle:nil];
-    self.view.backgroundColor = self.chatView.tableView.backgroundColor;
     [self.chatPresenter getChatInfoAndDisplay];
 }
 

@@ -10,12 +10,16 @@
 #import "LWChatInteractor.h"
 #import "LWChatView.h"
 #import <JoyTool.h>
-#import "BackGroundBlurView.h"
 #import "ChatMessage.h"
 #import "JoyRecorder.h"
 #import "ChatCellModel.h"
+#import "ServerClientConfig.h"
 
 extern NSString *KHostAddressUserdefaultStr;
+
+@interface LWChatPresenter ()<ScrollDelegate>
+
+@end
 
 @implementation LWChatPresenter
 
@@ -23,6 +27,7 @@ extern NSString *KHostAddressUserdefaultStr;
     _chatView = chatView;
     _chatView.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _chatView.tableView.backgroundColor = JOY_clearColor;
+    _chatView.scrollDelegate = self;
     __weak typeof (&*self)weakSelf = self;
     _chatView.messageBlock = ^(ChatMessage *sendMessage){
         [weakSelf.chatInteractor sendmessage:sendMessage];
@@ -32,27 +37,30 @@ extern NSString *KHostAddressUserdefaultStr;
     _chatView.tableDidSelectBlock = ^(NSIndexPath *indexPath, NSString *tapAction) {
         [super performTapAction:tapAction];
     };
-    BackGroundBlurView *backView = [[BackGroundBlurView alloc]init];
-    [backView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"shuye" ofType:@"jpg"]] andBlur:1];
-    _chatView.backView = backView;
 
 }
 
 - (void)getChatInfoAndDisplay{
     __weak typeof (&*self)weakSelf = self;
-
     [self.chatInteractor getChatInfo:^{
         [weakSelf reloadChatList];
     }];
     
-    NSString *hostStr = [[NSUserDefaults standardUserDefaults] objectForKey:KHostAddressUserdefaultStr];
-    if (!hostStr.length) {
-        return;
+    if ([ServerClientConfig shareinstance].isServer)
+    {
+//        [self.chatInteractor openSerVice];
     }
-    
-    [self.chatInteractor connectHost:hostStr port:8088 receivedMessageBlock:^() {
-        [weakSelf receivedMessage];
-    }];
+    else
+    {
+        NSString *hostStr = [[NSUserDefaults standardUserDefaults] objectForKey:KHostAddressUserdefaultStr];
+        if (!hostStr.length) {
+            return;
+        }
+        
+        [self.chatInteractor connectHost:hostStr port:8088 receivedMessageBlock:^() {
+            [weakSelf receivedMessage];
+        }];
+    }
 }
 
 - (void)reloadChatList{
@@ -93,6 +101,7 @@ extern NSString *KHostAddressUserdefaultStr;
         cellModel.aToBCellBlock?cellModel.aToBCellBlock(@(YES)):nil;
         cellModel.isReaded = YES;
         NSInteger newIndex = playIndex;
+        //播放未读的语音
         while (++newIndex<sectionModel.rowArrayM.count) {
             cellModel = sectionModel.rowArrayM[newIndex];
             //语音且未读
@@ -108,5 +117,7 @@ extern NSString *KHostAddressUserdefaultStr;
 
 }
 
-
+-(void)scrollDidScroll:(UIScrollView *)scrollView{
+    self.rootView.viewController.navigationController.navigationBar.alpha = scrollView.contentOffset.y>=64?0:(64-scrollView.contentOffset.y)/64;
+}
 @end

@@ -10,10 +10,13 @@
 #import "LoginInteracter.h"
 #import <JoyTableAutoLayoutView.h>
 #import <JoyTool.h>
-#import <JoyTool.h>
 #import "LWShareManager.h"
 #import "LWTabbarVC.h"
 #import <LocalAuthentication/LocalAuthentication.h>
+
+@interface LoginPresenter ()<TextChangedDelegete>
+
+@end
 
 @implementation LoginPresenter
 -(void)reloadDataSource{
@@ -24,15 +27,11 @@
 
 -(void)setLoginView:(JoyTableAutoLayoutView *)loginView{
     _loginView = loginView;
+    _loginView.delegate = self;
     __weak __typeof (&*self)weakSelf = self;
     _loginView.tableDidSelectBlock = ^(NSIndexPath *indexPath,NSString *tapAction){
         [weakSelf tableVIewDidSelect:indexPath];
     };
-
-//    _loginView.tableCellActionBlock =^(NSString *action,NSIndexPath *indexPath,id obj){
-//        [super performAction:action :indexPath :obj];
-//    };
-    
 }
 
 -(void)tableVIewDidSelect:(NSIndexPath *)indexPath{
@@ -78,6 +77,10 @@
 
 -(void)viewAction:(NSString *)action indexPath:(NSIndexPath *)indexPath object:(id)obj{
     [[LWShareManager shareInstance]loginWithPlatform:obj];
+}
+
+-(void)textFieldChangedWithIndexPath:(NSIndexPath *)indexPath andChangedText:(NSString *)content andChangedKey:(NSString *)key{
+    [[LWUser shareInstance]initUserInfoWithKey:key value:content];
 }
 
 @end

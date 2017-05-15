@@ -6,21 +6,21 @@
 //  Copyright © 2016年 Joymake. All rights reserved.
 //
 #define SCREEN_W [UIScreen mainScreen].bounds.size.width
-#define CELL_W  80
+#define CELL_W  SCREEN_W/3
 
 #import "CommonImageCollectView.h"
 #import "LWBaseCollectionCell.h"
 #import "Masonry.h"
 #import <JoyTool.h>
-const int KCommon_min_cellSpace = 20;
-const int KCommon_min_cellInset = 10;
+const int KCommon_min_cellSpace = 0.0f;
+const int KCommon_min_cellInset = 0.0f;
 
 @interface CommonImageCollectView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic,strong)NSMutableArray *dataArray;
 @property (nonatomic,assign) BOOL isUrlDataSource;
 @property (nonatomic,assign) BOOL isHideDeleteImage;
 @property (nonatomic,assign) BOOL isShake;
-
+@property (nonatomic,strong) UIPageControl *pageControl;
 @end
 
 @implementation CommonImageCollectView
@@ -30,12 +30,23 @@ const int KCommon_min_cellInset = 10;
     if (!_collectionView) {
         _collectionView.scrollsToTop = NO;
         _collectionView=  [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.selectStaffLayout];
+        _collectionView.pagingEnabled = YES;
         _collectionView.backgroundColor = self.backgroundColor;
         _collectionView.scrollEnabled = YES;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
     }
     return _collectionView;
+}
+
+- (UIPageControl *)pageControl{
+    if (!_pageControl) {
+        _pageControl = [[UIPageControl alloc]init];
+        _pageControl.hidesForSinglePage = YES;
+        _pageControl.currentPageIndicatorTintColor = JOY_blueColor;
+        _pageControl.pageIndicatorTintColor = JOY_grayColor;
+    }
+    return _pageControl;
 }
 
 -(void)setSelectStaffLayout:(UICollectionViewFlowLayout *)selectStaffLayout{
@@ -50,7 +61,7 @@ const int KCommon_min_cellInset = 10;
         _selectStaffLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;//滑动方式
         _selectStaffLayout.minimumLineSpacing = KCommon_min_cellSpace;//每行的间距
         _selectStaffLayout.minimumInteritemSpacing = KCommon_min_cellInset;//每行cell内部的间距
-//        _selectStaffLayout.sectionInset = UIEdgeInsetsMake(KCommon_min_cellSpace, KCommon_min_cellInset, KCommon_min_cellSpace, KCommon_min_cellInset);
+        _selectStaffLayout.sectionInset = UIEdgeInsetsMake(KCommon_min_cellSpace, KCommon_min_cellInset, KCommon_min_cellSpace, KCommon_min_cellInset);
     }
     return _selectStaffLayout;
 }
@@ -70,6 +81,11 @@ const int KCommon_min_cellInset = 10;
     self.isUrlDataSource = NO;
     _dataArray = dataArray;
     [self.collectionView reloadData];
+    if (self.selectStaffLayout.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+        self.pageControl.numberOfPages = self.collectionView.contentSize.width/SCREEN_W;
+    }else{
+        self.pageControl.numberOfPages = self.collectionView.contentSize.height/SCREEN_H;
+    }
 }
 
 - (void)hideDeleteImage:(BOOL)isShow AndShake:(BOOL)isShake{
@@ -85,6 +101,7 @@ const int KCommon_min_cellInset = 10;
         self.isHideDeleteImage = YES;
         self.isShake = NO;
         [self addSubview:self.collectionView];
+        [self addSubview:self.pageControl];
         [self setConstraint];
     }
     return self;
@@ -97,6 +114,7 @@ const int KCommon_min_cellInset = 10;
     self.isHideDeleteImage = YES;
     self.isShake = NO;
     [self addSubview:self.collectionView];
+    [self addSubview:self.pageControl];
     [self setConstraint];
     return self;
 }
@@ -105,6 +123,13 @@ const int KCommon_min_cellInset = 10;
     __weak __typeof(self)weakSelf  = self;
     [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(weakSelf.mas_top).offset(0);
+        make.bottom.mas_equalTo(weakSelf.mas_bottom).offset(0);
+        make.left.mas_equalTo(weakSelf.mas_left).offset(0);
+        make.right.mas_equalTo(weakSelf.mas_right).offset(0);
+    }];
+    
+    [_pageControl mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo (30);
         make.bottom.mas_equalTo(weakSelf.mas_bottom).offset(0);
         make.left.mas_equalTo(weakSelf.mas_left).offset(0);
         make.right.mas_equalTo(weakSelf.mas_right).offset(0);
@@ -136,17 +161,26 @@ const int KCommon_min_cellInset = 10;
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     JoyCellBaseModel *cellModel = [self.dataArray objectAtIndex:indexPath.row];
     [cellModel didSelect];
-    self.cellDidSelectBlock?self.cellDidSelectBlock(indexPath,collectionView):nil;
+    self.cellDidSelectBlock?self.cellDidSelectBlock(indexPath,cellModel.tapAction):nil;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     
 }
 
-
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return _dataArray.count;
 }
 
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    NSInteger  contentofsetPage = 0;
+    if (self.selectStaffLayout.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+        contentofsetPage = (int)(scrollView.contentOffset.x/SCREEN_W)?:0;
+    }else{
+        contentofsetPage = (int)(scrollView.contentOffset.y/SCREEN_H)?:0;
+    }
+    self.pageControl.currentPage  = contentofsetPage;
+}
 @end

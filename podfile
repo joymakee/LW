@@ -1,10 +1,9 @@
 target:LW do
 platform :ios,'7.0'
-pod 'Masonry'
 pod 'BabyBluetooth'
+pod 'Masonry'
 pod 'SDWebImage'
 pod 'AFNetworking'
 pod 'JoyTool'
 pod 'MJExtension'
-
 end

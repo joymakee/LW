@@ -24,7 +24,9 @@ extern const float KDefaultInputViewH;
 #pragma mark 供子类扩展使用
 - (void)addSubViewToSelf{
     [self addSubview:self.inputView];
-    self.inputView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
+    self.inputView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.6];
+    self.inputView.layer.masksToBounds = YES;
+    self.inputView.layer.cornerRadius = 4;
     __weak typeof (&*self)weakSelf = self;
     self.inputView.messageBlock = ^(ChatMessage *sendMessage){
         weakSelf.messageBlock?weakSelf.messageBlock(sendMessage):nil;

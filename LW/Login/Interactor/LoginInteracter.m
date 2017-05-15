@@ -33,6 +33,7 @@
     accountModel.cellName = @"LWTextFieldCell";
     accountModel.borderStyle = UITextBorderStyleRoundedRect;
     accountModel.keyboardType = UIKeyboardTypeEmailAddress;
+    accountModel.changeKey = @"userName";
     
     JoyTextCellBaseModel *passwordModel = [[JoyTextCellBaseModel alloc]init];
     passwordModel.placeHolder = @"请输入密码";

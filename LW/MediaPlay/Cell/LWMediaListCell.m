@@ -23,7 +23,7 @@
 
 - (void)setCellWithModel:(LWMediaModel *)model{
     self.titleLabel.text = model.title;
-    self.countLabel.text = [NSString stringWithFormat:@"%ld.%ld万",model.playCount/10000,model.playCount/1000-model.playCount/10000];
+    self.countLabel.text = [NSString stringWithFormat:@"%d.%d万",model.playCount/10000,model.playCount/1000-model.playCount/10000];
 }
 - (IBAction)commentAction:(id)sender {
     if ([self.delegate respondsToSelector:@selector(cellDidSelectWithIndexPath:action:)]) {
