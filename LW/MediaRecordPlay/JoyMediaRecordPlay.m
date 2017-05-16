@@ -26,13 +26,16 @@
 @end
 
 static const CGFloat KTimerInterval = 0.05;
-static const CGFloat KMaxRecordTime = 20.0f;
-static const CGFloat KMinRecordTime = 3.0f;
+static const CGFloat KMaxRecordTime = 20;
+static const CGFloat KMinRecordTime = 3;
 
 @implementation JoyMediaRecordPlay
 -(instancetype)init{
     if (self = [super init])
-    {[self getVideoAuth:^(BOOL boolValue) {boolValue?[self preareReCord]:[self showAlert];}];}
+    {
+        __weak __typeof (&*self)weakSelf = self;
+        [self getVideoAuth:^(BOOL boolValue) {boolValue?[weakSelf preareReCord]:[weakSelf showAlert];}];
+    }
     return self;
 }
 
@@ -122,22 +125,25 @@ static const CGFloat KMinRecordTime = 3.0f;
     if (!_timer)
     {
         _timer = [NSTimer scheduledTimerWithTimeInterval:KTimerInterval target:self selector:@selector(startTime:) userInfo:nil repeats:YES];
-        [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+//        [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     }
     return _timer;
 }
 
 #pragma mark 录制时间累计
 - (void)startTime:(NSTimer *)timer{
+//    self.recordProgressBlock?self.recordProgressBlock(self.recordTime,self.totalTime):nil;
+    if ([self.delegate respondsToSelector:@selector(joyRecordTimeCurrentTime:totalTime:)]) {
+        [self.delegate joyRecordTimeCurrentTime:self.recordTime totalTime:self.totalTime];
+    }
     self.recordTime += KTimerInterval;
-    self.recordTimeBlock?self.recordTimeBlock(self.recordTime,self.totalTime):nil;
     if(_recordTime>=KMaxRecordTime){[self stopCurrentVideoRecording];}
 }
 
 - (void)startTimer{
     [self.timer invalidate];
     self.timer = nil;
-    self.recordTime = 0.0f;
+    self.recordTime = 0;
     [self.timer fire];
 }
 
@@ -149,17 +155,23 @@ static const CGFloat KMinRecordTime = 3.0f;
 #pragma mark - AVCaptureFileOutputRecordignDelegate
 - (void)captureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections{
     [self startTimer];
+    if([self.delegate respondsToSelector:@selector(joyCaptureOutput:didStartRecordingToOutputFileAtURL:fromConnections:)]){
+        [self.delegate joyCaptureOutput:captureOutput didStartRecordingToOutputFileAtURL:fileURL fromConnections:connections];
+    }
 }
 
 -(void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error{
-    if (error.code == AVErrorDiskFull) {
+    if (error.code == AVErrorDiskFull)
+    {
 //        NSString *str = error.localizedRecoverySuggestion;
     }
     [self endBackgroundTask];
-    if (self.recordTime>KMinRecordTime) {
-        self.recordFinishBlock?self.recordFinishBlock(outputFileURL):nil;
+    if (self.recordTime>KMinRecordTime && [self.delegate respondsToSelector:@selector(joyCaptureOutput:didFinishRecordingToOutputFileAtURL:fromConnections:error:)])
+    {
+        [self.delegate joyCaptureOutput:captureOutput didFinishRecordingToOutputFileAtURL:outputFileURL fromConnections:connections error:error];
     }
-    else{
+    else
+    {
         [JoyAlert showWithMessage:@"录制时间有点短"];
     }
 }
@@ -167,7 +179,7 @@ static const CGFloat KMinRecordTime = 3.0f;
 -(void)dealloc{
     [self.timer invalidate];
     self.timer = nil;
-    self.recordTime = 0.0f;
+    self.recordTime = 0;
     [self stopCurrentVideoRecording];
     [self.captureSession stopRunning];
     [self.preViewLayer removeFromSuperlayer];
@@ -214,7 +226,7 @@ static const CGFloat KMinRecordTime = 3.0f;
     {
         self.captureConnection.preferredVideoStabilizationMode=AVCaptureVideoStabilizationModeAuto;//视频防抖
     }
-    self.captureConnection.videoScaleAndCropFactor = _captureConnection.videoMaxScaleAndCropFactor;//缩放比例默认为给1不缩放
+    self.captureConnection.videoScaleAndCropFactor = _captureConnection.videoMaxScaleAndCropFactor;//镜头缩放最大
 }
 
 #pragma mark 开始录制
@@ -255,13 +267,14 @@ static const CGFloat KMinRecordTime = 3.0f;
 
 #pragma mark 手电筒
 - (void)switchTorch{
+    __weak __typeof (&*self)weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
         NSError *error = nil;
         [device lockForConfiguration:&error];
         if (error) {NSLog(@"error:%@",error.description);}
         AVCaptureTorchMode torchMode = device.torchMode == AVCaptureTorchModeOff?AVCaptureTorchModeOn:AVCaptureTorchModeOff;
-        AVCaptureDevice *currentDevice = [self.mediaDeviceInput device];
+        AVCaptureDevice *currentDevice = [weakSelf.mediaDeviceInput device];
         if(currentDevice.position == AVCaptureDevicePositionFront) torchMode = AVCaptureTorchModeOff;
         [device setTorchMode:torchMode];
         [device unlockForConfiguration];

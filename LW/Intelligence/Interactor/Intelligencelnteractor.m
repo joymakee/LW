@@ -27,7 +27,7 @@
                                    @{@"title":@"运动",@"image":@"lw_inteligence_sport",@"tapAction":@"sportControl"},
                                    @{@"title":@"燃气",@"image":@"lw_inteligence_gas",@"tapAction":@"gasControl"},
                                    @{@"title":@"空气质量",@"image":@"lw_inteligence_air",@"tapAction":@"airControl"},
-                                   @{@"title":@"盆栽",@"image":@"lw_inteligence_potting",@"tapAction":@"pottingControl"},];
+                                   @{@"title":@"盆栽",@"image":@"lw_inteligence_potting",@"tapAction":@"pottingControl"}];
     
     __weak __typeof (&*self)weakSelf = self;
     [inteligenceSource enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL * _Nonnull stop) {

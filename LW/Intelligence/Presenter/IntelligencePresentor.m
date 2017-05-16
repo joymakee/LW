@@ -36,6 +36,12 @@
     };
 }
 
+#pragma mark 屏幕旋转
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    JoyRecordView *recoreView = objc_getAssociatedObject(self, @selector(cameraControl));
+    [recoreView didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+}
+
 #pragma mark  温控
 - (void)temperatureControl{
     
@@ -51,7 +57,10 @@
 #pragma 监控
 - (void)cameraControl{
     JoyRecordView *recoreView = [[JoyRecordView alloc]init];
+    objc_setAssociatedObject(self, _cmd, recoreView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [[UIApplication sharedApplication].keyWindow addSubview:recoreView];
+    
+    
     MAS_CONSTRAINT(recoreView, make.edges.mas_equalTo([UIApplication sharedApplication].keyWindow););
     [[UIApplication sharedApplication].keyWindow updateConstraintsIfNeeded];
     recoreView.startRecordBlock = ^(){};

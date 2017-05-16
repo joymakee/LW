@@ -72,7 +72,9 @@
     self.intelligenceControlPresentor.intelligenceTableView = self.intelligenceTableView;
 }
 
-
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    [self.intelligencePresentor didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

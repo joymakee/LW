@@ -27,4 +27,7 @@
 @property (nonatomic,strong)CommonImageCollectView *intelligenceView;
 
 - (void)reloadView;
+
+#pragma mark 屏幕旋转
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation;
 @end

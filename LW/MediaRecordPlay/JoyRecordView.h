@@ -14,7 +14,8 @@
 @property (nonatomic,copy) VOIDBLOCK switchCameraBlock;
 @property (nonatomic,copy) VOIDBLOCK flashLightControlBlock;
 @property (nonatomic,copy) VOIDBLOCK cancleRecordBlock;
-
+#pragma mark 屏幕旋转
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation;
 @end
 
 @class AVPlayer;

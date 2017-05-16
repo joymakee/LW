@@ -6,15 +6,25 @@
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
-typedef void (^RECORDTIMEBLOCK)(CGFloat floatValue,CGFloat totalValue);
+//typedef void (^TIMERBLOCK)(NSInteger currentValue,NSInteger totalValue);
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+
+@protocol ReCordPlayProtoCol <NSObject>
+- (void)joyRecordTimeCurrentTime:(CGFloat)currentTime totalTime:(CGFloat)totalTime;
+
+- (void)joyCaptureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections;
+
+-(void)joyCaptureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error;
+@end
+
 @interface JoyMediaRecordPlay : NSObject
-@property (nonatomic,strong)AVCaptureSession *captureSession;
-@property (nonatomic,strong)AVCaptureVideoPreviewLayer *preViewLayer;       //视图层
-@property (nonatomic,assign)RECORDTIMEBLOCK recordTimeBlock;
-@property (nonatomic,copy)IDBLOCK recordFinishBlock;
+@property (nonatomic,strong)AVCaptureSession            *captureSession;
+@property (nonatomic,strong)AVCaptureVideoPreviewLayer  *preViewLayer;       //视图层
+//@property (nonatomic,assign)TIMERBLOCK recordProgressBlock;
+//@property (nonatomic,copy)IDBLOCK recordFinishBlock;
+@property (nonatomic,weak)id<ReCordPlayProtoCol>        delegate;
 
 #pragma mark 准备录制
 - (void)preareReCord;
