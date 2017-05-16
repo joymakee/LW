@@ -21,7 +21,7 @@
 - (void)getChatInfo:(VOIDBLOCK)block{
     NSMutableArray *chatListDataArrayM = [NSMutableArray new];
     ChatCellModel *model = [[ChatCellModel alloc]init];
-    model.title = @"🌟兆麟🌟";
+    model.title = @"🌟JoyP🌟";
     model.subTitle = @"@property (weak, nonatomic)IBOutlet UILabel*chatInfoLabel;";
     model.cellName = @"LWChatLeftIconLabelCell";
     model.backgroundColor = JOY_clearColor;

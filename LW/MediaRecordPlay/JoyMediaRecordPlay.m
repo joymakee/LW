@@ -161,18 +161,11 @@ static const CGFloat KMinRecordTime = 3;
 }
 
 -(void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error{
-    if (error.code == AVErrorDiskFull)
-    {
-//        NSString *str = error.localizedRecoverySuggestion;
-    }
     [self endBackgroundTask];
-    if (self.recordTime>KMinRecordTime && [self.delegate respondsToSelector:@selector(joyCaptureOutput:didFinishRecordingToOutputFileAtURL:fromConnections:error:)])
+    if ([self.delegate respondsToSelector:@selector(joyCaptureOutput:didFinishRecordingToOutputFileAtURL:fromConnections:error: recordResult:) ])
     {
-        [self.delegate joyCaptureOutput:captureOutput didFinishRecordingToOutputFileAtURL:outputFileURL fromConnections:connections error:error];
-    }
-    else
-    {
-        [JoyAlert showWithMessage:@"录制时间有点短"];
+        ERecordResult result = error?ERecordFaile:(self.recordTime>KMinRecordTime?ERecordSucess:ERecordLessThanMinTime);
+        [self.delegate joyCaptureOutput:captureOutput didFinishRecordingToOutputFileAtURL:outputFileURL fromConnections:connections error:error recordResult:result];
     }
 }
 

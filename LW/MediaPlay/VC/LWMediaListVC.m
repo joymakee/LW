@@ -24,7 +24,7 @@
 @implementation LWMediaListVC
 -(JoyUISegementView *)segmentView{
     if (!_segmentView) {
-        _segmentView = [[JoyUISegementView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W, 40)];
+        _segmentView = [[JoyUISegementView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W-100, 40)];
         _segmentView.layer.masksToBounds = YES;
         _segmentView.layer.cornerRadius = 20;
         _segmentView.layer.borderWidth = 1;
@@ -43,7 +43,7 @@
 -(JoyTableAutoLayoutView *)mediaListView{
     _mediaListView = _mediaListView?:[[JoyTableAutoLayoutView alloc]init];
     _mediaListView.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    _mediaListView.tableView.tableHeaderView = self.segmentView;
+//    _mediaListView.tableView.tableHeaderView = self.segmentView;
     return _mediaListView;
 }
 
@@ -64,21 +64,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setDefaultConstraintWithView:self.mediaListView andTitle:@"休闲"];
-    [self.view addSubview:self.webView];
-    [self.presenter reloadDataSource];
-}
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
 
--(void)updateViewConstraints{
-    [super updateViewConstraints];
-    __weak __typeof (&*self)weakSelf = self;
-    [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.equalTo(weakSelf.view.mas_leading);
-        make.top.equalTo(weakSelf.view.mas_top);
-        make.trailing.equalTo(weakSelf.view.mas_trailing);
-        make.bottom.equalTo(weakSelf.view.mas_bottom);
-    }];
-    [self.webView setNeedsUpdateConstraints];
+    self.navigationController.navigationBar.topItem.titleView = self.segmentView;
+    [self setDefaultConstraintWithView:self.mediaListView andTitle:@"休闲"];
+    [self setDefaultConstraintWithView:self.webView andTitle:@"休闲"];
+    [self.presenter reloadDataSource];
 }
 
 @end

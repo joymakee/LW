@@ -166,7 +166,7 @@
 }
 
 - (void)rotate{
-    [CAAnimation showRotateAnimationInView:self Degree:M_PI*2 Direction:AxisZ Repeat:0 Duration:1];
+    [CAAnimation showRotateAnimationInView:self Degree:M_PI*2 Direction:AxisZ Repeat:0 Duration:1 autoreverses:NO];
 }
 
 - (void)stopAnimating{

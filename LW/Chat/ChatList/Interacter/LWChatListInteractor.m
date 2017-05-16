@@ -15,7 +15,7 @@
     NSMutableArray *chatListDataArrayM = [NSMutableArray new];
     for (int i = 0; i<10; i++) {
         LWChatListCellModel *model = [[LWChatListCellModel alloc]init];
-        model.title = @"🌟兆麟🌟";
+        model.title = @"🌟JoyP🌟";
         model.subTitle = @"@property (weak, nonatomic)IBOutlet UILabel*chatInfoLabel;";
         model.cellName = @"LWChatListCell";
         model.tapAction = @"goChatVC";

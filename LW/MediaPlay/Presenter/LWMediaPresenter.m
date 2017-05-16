@@ -19,7 +19,7 @@
 #import "LWNavigationController.h"
 #import <WebKit/WebKit.h>
 
-@interface LWMediaPresenter ()<WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler>
+@interface LWMediaPresenter ()<WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler,UIScrollViewDelegate,ScrollDelegate>
 
 @end
 
@@ -35,6 +35,7 @@
 
 -(void)setWebView:(WKWebView *)webView{
     _webView = webView;
+    _webView.scrollView.delegate = self;
     _webView.hidden = YES;
     _webView.UIDelegate = self;
     [_webView sizeToFit];
@@ -67,6 +68,7 @@
 
 -(void)setMediaListView:(JoyTableAutoLayoutView *)mediaListView{
     _mediaListView = mediaListView;
+    _mediaListView.scrollDelegate = self;
     __weak __typeof (&*self)weakSelf = self;
     _mediaListView.tableDidSelectBlock =^(NSIndexPath *indexPath,NSString *tapAction){
         [super performTapAction:tapAction];
@@ -148,5 +150,15 @@
 
 -(void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
     
+}
+
+-(void)scrollDidScroll:(UIScrollView *)scrollView{
+    self.rootView.viewController.navigationController.navigationBar.alpha = scrollView.contentOffset.y>=64?0:(64-scrollView.contentOffset.y)/64;
+    [UIApplication sharedApplication].statusBarHidden = scrollView.contentOffset.y>=64;
+    self.rootView.viewController.tabBarController.tabBar.hidden = scrollView.contentOffset.y<=64;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self scrollDidScroll:scrollView];
 }
 @end

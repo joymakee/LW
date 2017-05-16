@@ -223,10 +223,11 @@ const float KDefaultInputViewH = 33;
     return size.height>100?100:size.height;
 }
 
-- (void)btnClick:(id)btn{
+- (void)btnClick:(UIButton *)btn{
     [self.inputTextView resignFirstResponder];
+    btn.selected = !btn.selected;
     [self mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@(SCREEN_W+KDefaultInputViewH+padding*2));
+        make.height.equalTo(@((btn.selected?SCREEN_W:0)+KDefaultInputViewH+padding*2));
     }];
     [self updateConstraintsIfNeeded];
 }

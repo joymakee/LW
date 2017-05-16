@@ -59,9 +59,8 @@
     JoyRecordView *recoreView = [[JoyRecordView alloc]init];
     objc_setAssociatedObject(self, _cmd, recoreView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [[UIApplication sharedApplication].keyWindow addSubview:recoreView];
-    
-    
     MAS_CONSTRAINT(recoreView, make.edges.mas_equalTo([UIApplication sharedApplication].keyWindow););
+    
     [[UIApplication sharedApplication].keyWindow updateConstraintsIfNeeded];
     recoreView.startRecordBlock = ^(){};
     recoreView.endRecordBlock = ^(){};

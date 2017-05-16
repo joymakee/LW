@@ -10,6 +10,27 @@
 
 @implementation JoyProgressView
 
+-(instancetype)init{
+    if (self = [super init]) {
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
+}
+
+-(instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
+}
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super initWithCoder:aDecoder]) {
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
+}
+
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     //1.获取上下文
@@ -27,9 +48,9 @@
     
     //2.设置路径
     
-    CGFloat end = -5*M_PI_4+(6*M_PI_4*_progress/15);
+    CGFloat end =    -M_PI/2 + 2*M_PI*_progress/20;
     
-    CGContextAddArc(ctx, self.width/2 , self.height/2, 40, -5*M_PI_4, end , 0);
+    CGContextAddArc(ctx, self.width/2 , self.height/2, 40, -M_PI/2, end , 0);
     
     //3.绘制
     CGContextStrokePath(ctx);

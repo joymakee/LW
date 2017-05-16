@@ -8,6 +8,12 @@
 
 //typedef void (^TIMERBLOCK)(NSInteger currentValue,NSInteger totalValue);
 
+
+typedef NS_ENUM(NSInteger,ERecordResult) {
+    ERecordSucess,
+    ERecordLessThanMinTime,
+    ERecordFaile
+};
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
@@ -16,7 +22,7 @@
 
 - (void)joyCaptureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections;
 
--(void)joyCaptureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error;
+-(void)joyCaptureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error recordResult:(ERecordResult)recordResult;
 @end
 
 @interface JoyMediaRecordPlay : NSObject

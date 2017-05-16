@@ -24,7 +24,6 @@
  *  最后的缩放比例
  */
 @property(nonatomic,assign)CGFloat effectiveScale;
-
 @property (nonatomic,strong)UIImageView *focusCursor;
 @property (nonatomic,strong)JoyProgressView *progressView;
 @property (nonatomic,strong)UIButton *switchCameraBtn;
@@ -83,14 +82,16 @@
         [self addSubview:self.switchCameraBtn];
         [self addSubview:self.torchLightBtn];
         [self addSubview:self.progressView];
-        self.progressView.backgroundColor = JOY_clearColor;
         [self addSubview:self.startRecordBtn];
         [self addSubview:self.cancleBtn];
-        _recorder.preViewLayer.frame = [UIScreen mainScreen].bounds;
-        [self updateConstraintsIfNeeded];
         [self setCoreMotion];
     }
     return self;
+}
+
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    _recorder.preViewLayer.frame = self.bounds;
 }
 
 - (void)updateConstraints{
@@ -106,7 +107,7 @@
     
     MAS_CONSTRAINT(_switchCameraBtn, make.right.equalTo(weakSelf.torchLightBtn.mas_left).offset(-20);
                    make.centerY.equalTo(weakSelf.torchLightBtn.mas_centerY);
-                   make.height.mas_equalTo(25);
+                   make.height.mas_equalTo(20);
                    make.width.mas_equalTo(25);
                    );
     MAS_CONSTRAINT(self.startRecordBtn, make.bottom.equalTo(weakSelf.mas_bottom).offset(-60);
@@ -170,20 +171,13 @@
             break;
     }
     if (videoOrientation != AVCaptureVideoOrientationPortraitUpsideDown) {
-        
         [UIView animateWithDuration:0.5 animations:^{
             weakSelf.switchCameraBtn.transform = rotateToTransform;
             weakSelf.torchLightBtn.transform = rotateToTransform;
             weakSelf.startRecordBtn.transform = rotateToTransform;
             weakSelf.cancleBtn.transform = rotateToTransform;
-
-//            self.exchangeCameraDirectionButton.transform = rotateToTransform;
-//            if (!self.isRecording) {
-//                self.pressForRecordCircleView.transform = rotateToTransform;
-//            }
         }];
     }
-    
 }
 
 #pragma mark 屏幕旋转
@@ -208,12 +202,10 @@
 - (void)switchCameraBtn:(UIButton *)btn{
     [self.layer transitionWithAnimType:TransitionAnimTypeRippleEffect subType:TransitionSubtypesFromRamdom curve:TransitionCurveRamdom duration:0.8];
     [self.recorder switchCamera];
-    self.switchCameraBlock?self.switchCameraBlock():nil;
 }
 
 - (void)lightControl:(UIButton *)btn{
     [self.recorder switchTorch];
-    self.flashLightControlBlock?self.flashLightControlBlock():nil;
 }
 
 - (void)startRecord:(UIButton *)btn{
@@ -221,13 +213,11 @@
     [CAAnimation showScaleAnimationInView:btn fromValue:1 ScaleValue:1.3 Repeat:1 Duration:0.3 autoreverses:NO];
     NSURL *url = [NSURL fileURLWithPath:[JoyMediaRecordPlay generateFilePathWithType:@"mp4"]];
     [self.recorder startRecordToFile:url];
-    self.startRecordBlock?self.startRecordBlock():nil;
 }
                   
 - (void)stopRecord:(UIButton *)btn{
     [self.recorder stopCurrentVideoRecording];
     [CAAnimation showScaleAnimationInView:btn fromValue:1.3 ScaleValue:1 Repeat:1 Duration:0.3 autoreverses:NO];
-    self.startRecordBlock?self.startRecordBlock():nil;
 }
 
 - (void)leaveout:(UIButton *)btn{
@@ -237,7 +227,6 @@
     } completion:^(BOOL finished) {
         [weakSlef.recorder stopCurrentVideoRecording];
         [weakSlef.recorder.captureSession stopRunning];
-        [weakSlef.progressView setProgress:0];
         [weakSlef stopCoreMotion];
         [weakSlef removeFromSuperview];
     }];
@@ -261,10 +250,29 @@
 - (void)joyCaptureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections{
 }
 
-- (void)joyCaptureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error{
-    //            [weakSelf mergeUrl:recordUrl];
-    [self reviewRecordVideoWithUrl:outputFileURL];
+- (void)joyCaptureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error recordResult:(ERecordResult)recordResult{
     [self.progressView setProgress:0];
+    if (recordResult == ERecordSucess) {
+        //[weakSelf mergeUrl:recordUrl];
+        [self reviewRecordVideoWithUrl:outputFileURL];
+    }else if(recordResult == ERecordFaile){}
+    else
+    {
+        __block UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 20)];
+        label.text = @"录制时间有点短...";
+        [[UIApplication sharedApplication].keyWindow addSubview:label];
+        label.center = [UIApplication sharedApplication].keyWindow.center;
+        label.textColor = JOY_purpleColor;
+        label.textAlignment  = NSTextAlignmentCenter;
+        [CAAnimation showOpacityAnimationInView:label fromAlpha:0 Alpha:1 Repeat:1 Duration:1.5 autoreverses:NO];
+        [CAAnimation showScaleAnimationInView:label fromValue:0 ScaleValue:1 Repeat:1 Duration:1 autoreverses:NO];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [label removeFromSuperview];
+            label = nil;
+            [CAAnimation clearAnimationInView:label];
+        });
+    }
+
 }
 
 - (void)mergeUrl:(NSURL *)recordUrl{
@@ -311,8 +319,8 @@
  */
 -(void)setFocusCursorWithPoint:(CGPoint)point{
     self.focusCursor.center=point;
-    [CAAnimation showRotateAnimationInView:self.focusCursor Degree:6.65*M_PI Direction:AxisZ Repeat:1 Duration:1.5];
-    [CAAnimation showScaleAnimationInView:self.focusCursor fromValue:2 ScaleValue:1 Repeat:2 Duration:1 autoreverses:YES];
+    [CAAnimation showRotateAnimationInView:self.focusCursor Degree:6.65*M_PI Direction:AxisZ Repeat:1 Duration:1.5 autoreverses:NO];
+    [CAAnimation showScaleAnimationInView:self.focusCursor fromValue:2 ScaleValue:1 Repeat:1 Duration:1 autoreverses:YES];
     [CAAnimation showOpacityAnimationInView:self.focusCursor fromAlpha:1 Alpha:0 Repeat:1 Duration:3 autoreverses:NO];
 }
 
