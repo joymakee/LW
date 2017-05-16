@@ -152,10 +152,31 @@
     
 }
 
+static float _lastPosition = 0;
 -(void)scrollDidScroll:(UIScrollView *)scrollView{
-    self.rootView.viewController.navigationController.navigationBar.alpha = scrollView.contentOffset.y>=64?0:(64-scrollView.contentOffset.y)/64;
-    [UIApplication sharedApplication].statusBarHidden = scrollView.contentOffset.y>=64;
-    self.rootView.viewController.tabBarController.tabBar.hidden = scrollView.contentOffset.y<=64;
+//    self.rootView.viewController.navigationController.navigationBar.alpha = scrollView.contentOffset.y>=64?0:(64-scrollView.contentOffset.y)/64;
+//
+//    self.rootView.viewController.tabBarController.tabBar.hidden = scrollView.contentOffset.y<=64;
+//    
+    
+    int currentPostion = scrollView.contentOffset.y;
+    if (currentPostion - _lastPosition > 25) {
+        _lastPosition = currentPostion;
+        NSLog(@"ScrollUp now");
+        self.rootView.viewController.navigationController.navigationBar.alpha = (currentPostion - _lastPosition)/60;
+        self.rootView.viewController.tabBarController.tabBar.hidden = NO;
+    }
+    else if (_lastPosition - currentPostion > 25)
+    {
+        _lastPosition = currentPostion;
+        NSLog(@"ScrollDown now");
+        self.rootView.viewController.navigationController.navigationBar.alpha = 1;
+        self.rootView.viewController.tabBarController.tabBar.hidden = YES;
+
+    }
+    if(scrollView.contentOffset.y<=64){
+        self.rootView.viewController.navigationController.navigationBar.alpha=1;
+    }
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
