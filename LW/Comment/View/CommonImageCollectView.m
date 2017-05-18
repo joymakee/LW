@@ -6,14 +6,15 @@
 //  Copyright © 2016年 Joymake. All rights reserved.
 //
 #define SCREEN_W [UIScreen mainScreen].bounds.size.width
-#define CELL_W  SCREEN_W/3
+#define CELL_W  80
 
 #import "CommonImageCollectView.h"
 #import "LWBaseCollectionCell.h"
+#import "UIView+VM.h"
 #import "Masonry.h"
 #import <JoyTool.h>
-const int KCommon_min_cellSpace = 0.0f;
-const int KCommon_min_cellInset = 0.0f;
+const int KCommon_min_cellSpace = 20.0f;
+const int KCommon_min_cellInset = 10.0f;
 
 @interface CommonImageCollectView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic,strong)NSMutableArray *dataArray;
@@ -21,16 +22,20 @@ const int KCommon_min_cellInset = 0.0f;
 @property (nonatomic,assign) BOOL isHideDeleteImage;
 @property (nonatomic,assign) BOOL isShake;
 @property (nonatomic,strong) UIPageControl *pageControl;
+@property (nonatomic,strong)NSMutableDictionary *registDict;
 @end
 
 @implementation CommonImageCollectView
 @synthesize selectStaffLayout = _selectStaffLayout;
 
+-(NSMutableDictionary *)registDict{
+    return _registDict = _registDict?:[NSMutableDictionary dictionary];
+}
+
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
         _collectionView.scrollsToTop = NO;
         _collectionView=  [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.selectStaffLayout];
-        _collectionView.pagingEnabled = YES;
         _collectionView.backgroundColor = self.backgroundColor;
         _collectionView.scrollEnabled = YES;
         _collectionView.showsVerticalScrollIndicator = NO;
@@ -74,7 +79,6 @@ const int KCommon_min_cellInset = 0.0f;
     self.isUrlDataSource = YES;
     _dataArray = dataArray;
     [self.collectionView reloadData];
-//    self.frame = CGRectMake(0, 0, SCREEN_W, self.collectionView.frame.size.height);
 }
 
 -(void)setData:(NSMutableArray *)dataArray{
@@ -138,12 +142,15 @@ const int KCommon_min_cellInset = 0.0f;
 
 }
 
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     JoyCellBaseModel *cellModel = [self.dataArray objectAtIndex:indexPath.row];
-    [_collectionView registerNib:[UINib nibWithNibName:cellModel.cellName bundle:nil] forCellWithReuseIdentifier:cellModel.cellName];
+    [self registCellWithCellModel:cellModel];
     LWBaseCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellModel.cellName forIndexPath:indexPath];
-//
-//    //最后一张加号
+
     __weak __typeof (&*self)weakSelf = self;
     if (self.dataArray.count > indexPath.row) {
         [cell setCellWithModel:[self.dataArray objectAtIndex:indexPath.row]];
@@ -158,6 +165,18 @@ const int KCommon_min_cellInset = 0.0f;
     return cell;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    [self registHeadFootWithCellModel:nil viewForSupplementaryElementOfKind:(NSString *)kind];
+    if(kind ==UICollectionElementKindSectionHeader){
+    UICollectionReusableView * headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"JoyScrollView" forIndexPath:indexPath];
+    [headerView setViewWithModel:nil];
+    [headerView setPicSource:@[@"lw_inteligence_livingRoom.jpg",@"lw_inteligence_Bathroom.jpg",@"lw_inteligence_bedroom.jpg",@"lw_inteligence_kitchen.jpg",@"lw_inteligence_garage.jpg"]];
+    [headerView setPicInfoSource:@[@"客厅",@"卫生间",@"卧室",@"厨房",@"车库"]];
+    return headerView;
+    }
+    return nil;
+}
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     JoyCellBaseModel *cellModel = [self.dataArray objectAtIndex:indexPath.row];
     [cellModel didSelect];
@@ -183,4 +202,21 @@ const int KCommon_min_cellInset = 0.0f;
     }
     self.pageControl.currentPage  = contentofsetPage;
 }
+
+- (void)registCellWithCellModel:(JoyCellBaseModel *)cellModel{
+    if (![_registDict objectForKey:cellModel.cellName])
+    {
+        cellModel.cellType == ECellCodeType?[_collectionView registerClass:NSClassFromString(cellModel.cellName) forCellWithReuseIdentifier:cellModel.cellName]:[_collectionView registerNib:[UINib nibWithNibName:cellModel.cellName bundle:nil] forCellWithReuseIdentifier:cellModel.cellName];
+        [_registDict setObject:cellModel.cellName forKey:cellModel.cellName];
+    }
+}
+
+- (void)registHeadFootWithCellModel:(JoySectionBaseModel *)sectionModel viewForSupplementaryElementOfKind:(NSString *)kind{
+    if (![_registDict objectForKey:@"JoyScrollView"])
+    {
+        [_collectionView registerNib:[UINib nibWithNibName:@"JoyScrollView" bundle:nil] forSupplementaryViewOfKind:(kind ==UICollectionElementKindSectionHeader)?UICollectionElementKindSectionHeader:UICollectionElementKindSectionFooter withReuseIdentifier:@"JoyScrollView"];
+        [_registDict setObject:sectionModel.sectionTitle forKey:sectionModel.sectionTitle];
+    }
+}
+
 @end

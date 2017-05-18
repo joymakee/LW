@@ -13,6 +13,7 @@
 #import <JoyTableAutoLayoutView.h>
 #import "IntelligenceControlnteractor.h"
 #import "IntelligenceControlPresentor.h"
+#import "JoyScrollView.h"
 
 @interface IntelligenceVC ()
 
@@ -43,7 +44,6 @@
     return _intelligencelnteractor;
 }
 
-
 -(JoyTableAutoLayoutView *)intelligenceTableView{
     _intelligenceTableView = _intelligenceTableView?:[[JoyTableAutoLayoutView alloc]init];
     _intelligenceTableView.backgroundColor =  _intelligenceTableView.tableView.backgroundColor =[UIColor orangeColor];
@@ -67,7 +67,6 @@
     self.intelligencePresentor.intelligencelnteractor = self.intelligencelnteractor;
     self.intelligencePresentor.intelligenceView = self.intelligenceView;
     [self.intelligencePresentor reloadView];
-    
     self.intelligenceControlPresentor.intelligenceControlnteractor = self.intelligenceControlnteractor;
     self.intelligenceControlPresentor.intelligenceTableView = self.intelligenceTableView;
 }

@@ -131,7 +131,7 @@
 - (void)setCoreMotion{
     __weak __typeof(&*self)weakSelf = self;
     [[JoyCoreMotion sharedInstance] startMotionManager:YES];
-    [JoyCoreMotion sharedInstance].screenOrentationBlock = ^(int orientation){
+    [JoyCoreMotion sharedInstance].screenOrentationBlock = ^(NSInteger orientation){
         [weakSelf updateVideoOrientationWithResult:orientation];
     };
 }

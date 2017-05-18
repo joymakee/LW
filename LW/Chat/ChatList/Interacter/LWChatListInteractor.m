@@ -19,7 +19,7 @@
         model.subTitle = @"@property (weak, nonatomic)IBOutlet UILabel*chatInfoLabel;";
         model.cellName = @"LWChatListCell";
         model.tapAction = @"goChatVC";
-
+        model.editingStyle = UITableViewCellEditingStyleDelete;
         model.messageCount = arc4random()%100;
         [chatListDataArrayM addObject:model];
     }

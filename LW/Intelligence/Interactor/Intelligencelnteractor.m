@@ -38,6 +38,7 @@
             model.igenceControlType = idx;
             model.tapAction = dict[@"tapAction"];
             model.avatar = dict[@"image"];
+            model.title = dict[@"title"];
             model.backgroundColor = JOY_colorList[idx%JOY_colorList.count];
             [weakSelf.dataArrayM addObject:model];
             

@@ -51,6 +51,13 @@ const float KDefaultInputViewH = 33;
     if (!_customKeyBoardView) {
         _customKeyBoardView = [[CommonImageCollectView alloc]init];
         [_customKeyBoardView setFrame:CGRectMake(0, 0, SCREEN_W, SCREEN_W)];
+        _customKeyBoardView.collectionView.pagingEnabled = YES;
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
+        layout.itemSize = CGSizeMake(SCREEN_W/3, SCREEN_W/3);//cell的大小
+        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;//滑动方式
+        layout.minimumLineSpacing = 0;//每行的间距
+        layout.minimumInteritemSpacing = 0;//每行cell内部的间距
+        _customKeyBoardView.selectStaffLayout = layout;
     }
     return _customKeyBoardView;
 }

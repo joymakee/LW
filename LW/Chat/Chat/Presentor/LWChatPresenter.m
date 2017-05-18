@@ -54,7 +54,7 @@ extern NSString *KHostAddressUserdefaultStr;
     {
         NSString *hostStr = [[NSUserDefaults standardUserDefaults] objectForKey:KHostAddressUserdefaultStr];
         if (!hostStr.length) {
-            return;
+            [JoyAlert showWithMessage:@"你还没有设置服务器ip,配置ip后才能进行多人聊天哦"];
         }
         
         [self.chatInteractor connectHost:hostStr port:8088 receivedMessageBlock:^() {

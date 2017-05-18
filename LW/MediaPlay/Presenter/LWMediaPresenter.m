@@ -155,7 +155,6 @@
 static float _lastPosition = 0;
 -(void)scrollDidScroll:(UIScrollView *)scrollView{
 //    self.rootView.viewController.navigationController.navigationBar.alpha = scrollView.contentOffset.y>=64?0:(64-scrollView.contentOffset.y)/64;
-//
 //    self.rootView.viewController.tabBarController.tabBar.hidden = scrollView.contentOffset.y<=64;
 //    
     
@@ -172,7 +171,6 @@ static float _lastPosition = 0;
         NSLog(@"ScrollDown now");
         self.rootView.viewController.navigationController.navigationBar.alpha = 1;
         self.rootView.viewController.tabBarController.tabBar.hidden = YES;
-
     }
     if(scrollView.contentOffset.y<=64){
         self.rootView.viewController.navigationController.navigationBar.alpha=1;

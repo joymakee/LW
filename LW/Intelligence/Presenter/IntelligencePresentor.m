@@ -12,6 +12,7 @@
 #import "CAAnimation+HCAnimation.h"
 #import "JoyRecordView.h"
 #import "JoyMediaRecordPlay.h"
+#import "LWSportVC.h"
 
 @implementation IntelligencePresentor
 -(void)reloadView{
@@ -25,12 +26,13 @@
     selectStaffLayout.scrollDirection = UICollectionViewScrollDirectionVertical;//滑动方式
     selectStaffLayout.minimumLineSpacing = 0;//每行的间距
     selectStaffLayout.minimumInteritemSpacing = 0;//每行cell内部的间距
+    selectStaffLayout.headerReferenceSize = CGSizeMake(SCREEN_W, SCREEN_W*170/240);
     _intelligenceView.selectStaffLayout=selectStaffLayout;
     
     __weak __typeof (&*self)weakSelf = self;
     _intelligenceView.cellDidSelectBlock =^(NSIndexPath *indexPath,NSString *tapAction){
         [weakSelf.intelligenceView bringSubviewToFront:[weakSelf.intelligenceView.collectionView cellForItemAtIndexPath:indexPath]];
-        [CAAnimation showScaleAnimationInView:[weakSelf.intelligenceView.collectionView cellForItemAtIndexPath:indexPath] fromValue:1  ScaleValue:3 Repeat:1 Duration:1.0 autoreverses:YES];
+    [CAAnimation showScaleAnimationInView:[weakSelf.intelligenceView.collectionView cellForItemAtIndexPath:indexPath] fromValue:1  ScaleValue:3 Repeat:1 Duration:1.0 autoreverses:YES];
         [CAAnimation showOpacityAnimationInView:[weakSelf.intelligenceView.collectionView cellForItemAtIndexPath:indexPath] fromAlpha:1 Alpha:0.6 Repeat:2 Duration:1 autoreverses:YES];
             [super performTapAction:tapAction];
     };
@@ -111,7 +113,8 @@
 
 #pragma mark  运动
 - (void)sportControl{
-    
+    LWSportVC *sportVC = [[LWSportVC alloc]init];
+    [self goVC:sportVC];
 }
 
 #pragma mark  盆栽
