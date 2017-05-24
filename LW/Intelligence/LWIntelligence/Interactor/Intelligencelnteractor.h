@@ -10,6 +10,9 @@
 
 @interface Intelligencelnteractor : NSObject
 @property (nonatomic,strong)NSMutableArray *dataArrayM;
+
 -(void)getIntelligenceSource;
+
+- (void)getWeatherDataWithCity:(NSString *)cityName days:(int)days block:(IDBLOCK)block;
 
 @end

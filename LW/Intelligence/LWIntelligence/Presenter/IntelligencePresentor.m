@@ -13,6 +13,13 @@
 #import "JoyRecordView.h"
 #import "JoyMediaRecordPlay.h"
 #import "LWSportVC.h"
+#import "LWWeatherModel.h"
+#import "LWTempratureVC.h"
+#import "JoyCellBaseModel.h"
+
+@interface IntelligencePresentor()
+@property(nonatomic,strong) NSIndexPath *selectIndexPath;
+@end
 
 @implementation IntelligencePresentor
 -(void)reloadView{
@@ -31,6 +38,7 @@
     
     __weak __typeof (&*self)weakSelf = self;
     _intelligenceView.cellDidSelectBlock =^(NSIndexPath *indexPath,NSString *tapAction){
+        weakSelf.selectIndexPath = indexPath;
         [weakSelf.intelligenceView bringSubviewToFront:[weakSelf.intelligenceView.collectionView cellForItemAtIndexPath:indexPath]];
     [CAAnimation showScaleAnimationInView:[weakSelf.intelligenceView.collectionView cellForItemAtIndexPath:indexPath] fromValue:1  ScaleValue:3 Repeat:1 Duration:1.0 autoreverses:YES];
         [CAAnimation showOpacityAnimationInView:[weakSelf.intelligenceView.collectionView cellForItemAtIndexPath:indexPath] fromAlpha:1 Alpha:0.6 Repeat:2 Duration:1 autoreverses:YES];
@@ -46,7 +54,8 @@
 
 #pragma mark  温控
 - (void)temperatureControl{
-    
+    LWTempratureVC *VC = [[LWTempratureVC alloc]init];
+    [self goVC:VC];
 }
 
 #pragma mark  灯光控制
@@ -81,9 +90,8 @@
     
 }
 
-#pragma mark  天气
+#pragma mark  水路
 - (void)waterControl{
-    
 }
 
 #pragma mark  自动衣架控
@@ -115,6 +123,17 @@
 - (void)sportControl{
     LWSportVC *sportVC = [[LWSportVC alloc]init];
     [self goVC:sportVC];
+}
+
+#pragma mark  天气
+- (void)airControl{
+    __weak __typeof(&*self)weakSelf = self;
+    [self.intelligencelnteractor getWeatherDataWithCity:@"北京" days:1 block:^(LWWeatherModel *obj) {
+        JoyImageCellBaseModel *cellModel = weakSelf.intelligencelnteractor.dataArrayM[weakSelf.selectIndexPath.row];
+        cellModel.title = [[[obj.info stringByAppendingString:@"\t"] stringByAppendingString:obj.temperature] stringByAppendingString:@"℃"];
+        cellModel.avatar = obj.img;
+        cellModel.aToBCellBlock?cellModel.aToBCellBlock(nil):nil;
+    }];
 }
 
 #pragma mark  盆栽

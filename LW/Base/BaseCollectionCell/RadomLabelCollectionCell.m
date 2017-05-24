@@ -18,6 +18,12 @@
     self.contentView.backgroundColor=self.backgroundColor = cellModel.backgroundColor;
     self.titleLabel.text = cellModel.title;
     self.imageView.image = [UIImage imageNamed:cellModel.avatar];
+    __weak __typeof(&*self)weakSelf = self;
+    __block JoyImageCellBaseModel*blockModel = cellModel;
+    cellModel.aToBCellBlock = ^(id obj){
+        weakSelf.titleLabel.text = blockModel.title;
+        weakSelf.imageView.image = [UIImage imageNamed:blockModel.avatar];
+    };
 }
 - (void)awakeFromNib {
     [super awakeFromNib];

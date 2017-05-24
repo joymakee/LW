@@ -116,7 +116,7 @@
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     [self.diceImageView stopAnimating];
-    self.diceImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d",arc4random()%6+1]];
+    self.diceImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"playBamboo%d",arc4random()%6+1]];
 }
 
 - (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event{

@@ -8,11 +8,24 @@
 
 #import "Intelligencelnteractor.h"
 #import "LWIntelligenceModel.h"
+#import "AFNetworking.h"
+#import "LWWeatherModel.h"
+#import <MJProperty.h>
+
+static const NSString *weahTherAppKey = @"06423a901d5349ffa9dc23031e460f00";
+
+#define KgetAvatarWeather(cityName) [NSString stringWithFormat:@"http://api.avatardata.cn/Weather/Query?key=%@&cityname=%@",weahTherAppKey,cityName]
+
+
+
+@interface Intelligencelnteractor ()
+@property (nonatomic,strong)AFHTTPSessionManager *netManager;
+@end
 
 @implementation Intelligencelnteractor
 -(void)getIntelligenceSource{
+    
     [self.dataArrayM removeAllObjects];
-
     NSArray *inteligenceSource = @[@{@"title":@"灯",@"image":@"lw_inteligence_light",@"tapAction":@"lightControl"},
                                    @{@"title":@"温控",@"image":@"lw_inteligence_thermost",@"tapAction":@"temperatureControl"},
                                    @{@"title":@"厨房",@"image":@"lw_inteligence_kitchen",@"tapAction":@"kitchenControl"},
@@ -46,6 +59,33 @@
     }];
 }
 
+#pragma mark 获取天气信息
+- (void)getWeatherDataWithCity:(NSString *)cityName days:(int)days block:(IDBLOCK)block{
+    
+    NSString *weatherStr =KgetAvatarWeather(@"北京");
+    weatherStr = [weatherStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ];
+    
+    
+    
+    [self.netManager GET:weatherStr parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *weatherDic =  responseObject[@"result"][@"realtime"];
+        LWWeatherModel *weatherModel = [[LWWeatherModel alloc] init];
+        NSDictionary *windDic = weatherDic[@"wind"];
+        NSDictionary *weather = weatherDic[@"weather"];
+
+        [weatherModel setValuesForKeysWithDictionary:windDic];
+        [weatherModel setValuesForKeysWithDictionary:weather];
+        block?block(weatherModel):nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"");
+    }];
+
+}
+
+
+-(AFHTTPSessionManager *)netManager{
+    return _netManager = _netManager?:[AFHTTPSessionManager manager];
+}
 -(NSMutableArray *)dataArrayM{
     _dataArrayM = _dataArrayM?:[NSMutableArray arrayWithCapacity:0];
     return _dataArrayM;

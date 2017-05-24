@@ -34,7 +34,7 @@ static JoySportCalcer *sportCalcer;
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:[NSDate date]];
     NSDate *startDate = [calendar dateFromComponents:components];
-    [self querySportDataFromDate:startDate toDate:[NSDate date] block:block errorBlock:errorBlock];
+    [self queryPedometerDataFromDate:startDate toDate:[NSDate date] block:block errorBlock:errorBlock];
 }
 
 #pragma mark 查看当月的运动记录
@@ -42,7 +42,7 @@ static JoySportCalcer *sportCalcer;
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth fromDate:[NSDate date]];
     NSDate *startDate = [calendar dateFromComponents:components];
-    [self querySportDataFromDate:startDate toDate:[NSDate date] block:block errorBlock:errorBlock];
+    [self queryPedometerDataFromDate:startDate toDate:[NSDate date] block:block errorBlock:errorBlock];
 }
 
 #pragma mark 查看今年的运动记录
@@ -50,12 +50,11 @@ static JoySportCalcer *sportCalcer;
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:NSCalendarUnitYear fromDate:[NSDate date]];
     NSDate *startDate = [calendar dateFromComponents:components];
-    [self querySportDataFromDate:startDate toDate:[NSDate date] block:block errorBlock:errorBlock];
+    [self queryPedometerDataFromDate:startDate toDate:[NSDate date] block:block errorBlock:errorBlock];
 }
 
-
 #pragma mark 查看某个时间段的运动记录
-- (void)querySportDataFromDate:(NSDate *)startDate toDate:(NSDate *)toDate block:(IDBLOCK)block errorBlock:(ERRORBLOCK)errorBlock{
+- (void)queryPedometerDataFromDate:(NSDate *)startDate toDate:(NSDate *)toDate block:(IDBLOCK)block errorBlock:(ERRORBLOCK)errorBlock{
     if([self checkSportAvaliable]){
     __weak __typeof (&*self)weakSelf = self;
     [self.pedometer queryPedometerDataFromDate:startDate toDate:toDate withHandler:^(CMPedometerData * _Nullable pedometerData, NSError * _Nullable error) {
@@ -64,6 +63,17 @@ static JoySportCalcer *sportCalcer;
         });
     }];
     }
+}
+
+#pragma MARK 实时更新
+- (void)startPedometerUpdatesFromDate:(NSDate *)start
+                          withHandler:(CMPedometerHandler)handler{
+    [self.pedometer startPedometerUpdatesFromDate:start withHandler:handler];
+}
+
+#pragma mark停止实时更新
+- (void)stopPedometerUpdates{
+    [self.pedometer stopPedometerUpdates];
 }
 
 -(void)showError:(NSError *)error block:(ERRORBLOCK)errorBlock{

@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2j-ls-qf0">
-                        <rect key="frame" x="0.0" y="68" width="70" height="0.0"/>
+                        <rect key="frame" x="0.0" y="71" width="70" height="0.0"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" name="SnellRoundhand" family="Snell Roundhand" pointSize="14"/>
                         <color key="textColor" red="0.94430340396752055" green="1" blue="0.95085440379227226" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -38,7 +38,7 @@
             <constraints>
                 <constraint firstItem="a0v-b4-G8m" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="N3c-5I-ftc"/>
                 <constraint firstAttribute="trailing" secondItem="P2j-ls-qf0" secondAttribute="trailing" id="QQY-lr-qtz"/>
-                <constraint firstAttribute="bottom" secondItem="P2j-ls-qf0" secondAttribute="bottom" constant="6" id="iOa-BU-wuZ"/>
+                <constraint firstAttribute="bottom" secondItem="P2j-ls-qf0" secondAttribute="bottom" constant="3" id="iOa-BU-wuZ"/>
                 <constraint firstItem="P2j-ls-qf0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="mxB-FV-DUr"/>
                 <constraint firstItem="a0v-b4-G8m" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="ud3-ZM-T03"/>
             </constraints>

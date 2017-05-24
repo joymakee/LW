@@ -19,5 +19,11 @@
 #pragma mark 查看今年的运动记录
 - (void)queryYearSportData:(IDBLOCK)block errorBlock:(ERRORBLOCK)errorBlock;
 #pragma mark 查看某个时间段的运动记录
-- (void)querySportDataFromDate:(NSDate *)startDate toDate:(NSDate *)toDate block:(IDBLOCK)block errorBlock:(ERRORBLOCK)errorBlock;
+- (void)queryPedometerDataFromDate:(NSDate *)startDate toDate:(NSDate *)toDate block:(IDBLOCK)block errorBlock:(ERRORBLOCK)errorBlock;
+
+#pragma MARK 实时更新
+- (void)startPedometerUpdatesFromDate:(NSDate *)start
+                          withHandler:(CMPedometerHandler)handler;
+#pragma mark停止实时更新
+- (void)stopPedometerUpdates;
 @end

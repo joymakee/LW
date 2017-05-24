@@ -12,9 +12,9 @@
 #pragma mark 员工更多信息数据
 
 - (void)getWorkDataSource{
+    [self getAppManageSource];
     [self getStaffManageViewModel];
     [self getCompanyManageSource];
-    [self getAppManageSource];
 }
 
 - (void)getStaffManageViewModel{
@@ -66,7 +66,7 @@
     NSMutableArray * arrayM = [NSMutableArray arrayWithCapacity:0];
 
     JoyImageCellBaseModel *cellModel = [[JoyImageCellBaseModel alloc]init];
-    cellModel.title =@"扔骰子";
+    cellModel.title =@"猜🎲";
     cellModel.placeHolderImageStr =@"eat";
     cellModel.cellName =@"JoyLeftIconCell";
     cellModel.bundleName = JoyToolBundle;
@@ -76,7 +76,7 @@
     [arrayM addObject:cellModel];
     
     JoyImageCellBaseModel *eatModel = [[JoyImageCellBaseModel alloc]init];
-    eatModel.title =@"今天吃什么";
+    eatModel.title =@"今儿个吃🍜";
     eatModel.placeHolderImageStr =@"poker";
     eatModel.cellName =@"JoyLeftIconCell";
     eatModel.bundleName = JoyToolBundle;

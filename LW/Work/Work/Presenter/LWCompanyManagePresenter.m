@@ -19,7 +19,7 @@
 
 -(void)setSegmentView:(JoyUISegementView *)segmentView{
     _segmentView = segmentView;
-    _segmentView.segmentItems = @[@"轻松工作",@"企业文化",@"歇一歇"];
+    _segmentView.segmentItems = @[@"休息一下",@"轻松工作",@"企业文化"];
     _segmentView.selectColor = [UIColor purpleColor];
     _segmentView.deselectColor = [UIColor lightGrayColor];
     __weak __typeof (&*self)weakSelf = self;
@@ -45,7 +45,7 @@
 
 -(void)reloadDataSource{
     [self.interactor getWorkDataSource];
-    self.staffManageView.dataArrayM = self.interactor.easyWorkArrayM;
+    self.staffManageView.dataArrayM = self.interactor.restArrayM;
     [self.staffManageView reloadTableView];
 }
 
@@ -53,13 +53,14 @@
 - (void)setMentClickAction:(NSInteger)selectIndex{
     switch (selectIndex) {
         case 0:
-            self.staffManageView.dataArrayM = self.interactor.easyWorkArrayM;
+            self.staffManageView.dataArrayM = self.interactor.restArrayM;
             break;
         case 1:
-            self.staffManageView.dataArrayM = self.interactor.enterpriseCultureArrayM;
+            self.staffManageView.dataArrayM = self.interactor.easyWorkArrayM;
             break;
+
         default:
-            self.staffManageView.dataArrayM = self.interactor.restArrayM;
+            self.staffManageView.dataArrayM = self.interactor.enterpriseCultureArrayM;
             break;
     }
     [self.staffManageView reloadTableView];
