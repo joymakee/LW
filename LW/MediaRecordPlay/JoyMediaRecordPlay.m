@@ -11,17 +11,19 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <JoyAlert.h>
 
-@interface JoyMediaRecordPlay ()<AVCaptureFileOutputRecordingDelegate>
+@interface JoyMediaRecordPlay ()<AVCaptureFileOutputRecordingDelegate,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureMetadataOutputObjectsDelegate>
 @property (nonatomic,strong)NSTimer *timer;
 @property (nonatomic,assign)CGFloat recordTime;
 @property (nonatomic,assign)CGFloat totalTime;
-@property (nonatomic,strong)AVCaptureDeviceInput        *mediaDeviceInput;         //视频输入
-@property (nonatomic,strong)AVCaptureDeviceInput        *audioDeviceInput;         //音频输入
-@property (nonatomic,strong)AVCaptureMovieFileOutput    *movieFileOutput;      //视频文件输出
-@property (nonatomic,strong)AVCaptureStillImageOutput   *stillImageOutput;    //图像输出
-@property (strong, nonatomic) AVCaptureVideoDataOutput  *videoDataOutput;    //视频data输出
+@property (nonatomic,strong)AVCaptureDeviceInput        *mediaDeviceInput;          //视频输入
+@property (nonatomic,strong)AVCaptureDeviceInput        *audioDeviceInput;          //音频输入
+@property (nonatomic,strong)AVCaptureMovieFileOutput    *movieFileOutput;           //视频文件输出
+@property (nonatomic,strong)AVCaptureStillImageOutput   *stillImageOutput;          //图像输出
+@property (strong, nonatomic) AVCaptureVideoDataOutput  *videoDataOutput;           //视频data输出
+@property (strong, nonatomic) AVCaptureAudioDataOutput  *audioDataOutput;           //视频data输出
+@property (strong, nonatomic) AVCaptureMetadataOutput   *metadataOutput;            //元数据输出
 @property (strong, nonatomic) AVCaptureConnection       *captureConnection;
-@property (assign,nonatomic) UIBackgroundTaskIdentifier backgroundTaskIdentifier;//后台任务标识
+@property (assign,nonatomic) UIBackgroundTaskIdentifier backgroundTaskIdentifier;   //后台任务标识
 
 @end
 
@@ -30,6 +32,17 @@ static const CGFloat KMaxRecordTime = 20;
 static const CGFloat KMinRecordTime = 3;
 
 @implementation JoyMediaRecordPlay
+
+-(instancetype)initWithCaptureType:(EAVCaptureOutputType)captureType{
+    if (self = [super init])
+    {
+        self.captureOutputType = captureType;
+        __weak __typeof (&*self)weakSelf = self;
+        [self getVideoAuth:^(BOOL boolValue) {boolValue?[weakSelf preareReCord]:[weakSelf showAlert];}];
+    }
+    return self;
+}
+
 -(instancetype)init{
     if (self = [super init])
     {
@@ -92,8 +105,21 @@ static const CGFloat KMinRecordTime = 3;
     if  (!_videoDataOutput){
         _videoDataOutput = [[AVCaptureVideoDataOutput alloc] init];
         _videoDataOutput.videoSettings = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange] forKey:(id)kCVPixelBufferPixelFormatTypeKey];
+        dispatch_queue_t videoQueue = dispatch_queue_create("Video Capture Queue", DISPATCH_QUEUE_SERIAL);
+        [_videoDataOutput setSampleBufferDelegate:self queue:videoQueue];
     }
     return _videoDataOutput;
+}
+
+#pragma mark 元数据输出
+-(AVCaptureMetadataOutput *)metadataOutput{
+    if (!_metadataOutput){
+        _metadataOutput = [[AVCaptureMetadataOutput alloc]init];
+//        _metadataOutput.rectOfInterest = CGRectMake(0.2, 0.2, 0.6, 0.6);
+//        //设置输出数据代理
+        [_metadataOutput setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
+    }
+    return _metadataOutput;
 }
 
 #pragma mark
@@ -160,12 +186,30 @@ static const CGFloat KMinRecordTime = 3;
     }
 }
 
+#pragma mark 文件录制结束
 -(void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error{
     [self endBackgroundTask];
     if ([self.delegate respondsToSelector:@selector(joyCaptureOutput:didFinishRecordingToOutputFileAtURL:fromConnections:error: recordResult:) ])
     {
         ERecordResult result = error?ERecordFaile:(self.recordTime>KMinRecordTime?ERecordSucess:ERecordLessThanMinTime);
         [self.delegate joyCaptureOutput:captureOutput didFinishRecordingToOutputFileAtURL:outputFileURL fromConnections:connections error:error recordResult:result];
+    }
+}
+
+#pragma mark 流数据丢包
+-(void)captureOutput:(AVCaptureOutput *)captureOutput didDropSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
+    
+}
+
+#pragma mark 流数据输出
+-(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
+    
+}
+
+#pragma mark 扫描到数据
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection{
+    if ([self.delegate respondsToSelector:@selector(joyCaptureOutput:didOutputMetadataObjects:fromConnection:)]) {
+        [self.delegate joyCaptureOutput:captureOutput didOutputMetadataObjects:metadataObjects fromConnection:connection];
     }
 }
 
@@ -188,8 +232,31 @@ static const CGFloat KMinRecordTime = 3;
     [self.captureSession canAddInput:self.mediaDeviceInput]?[self.captureSession addInput:self.mediaDeviceInput]:nil;
     [self.captureSession canAddInput:self.audioDeviceInput]?[self.captureSession addInput:self.audioDeviceInput]:nil;
     [self.captureSession canAddOutput:self.stillImageOutput]?[self.captureSession addOutput:self.stillImageOutput]:nil;
-    [self.captureSession canAddOutput:self.movieFileOutput]?[self.captureSession addOutput:self.movieFileOutput]:nil;
-    [self.captureSession canAddOutput:self.videoDataOutput]?[self.captureSession addOutput:self.videoDataOutput]:nil;
+    switch (self.captureOutputType)
+    {
+    case EAVCaptureVideoDataOutput:
+        [self.captureSession canAddOutput:self.videoDataOutput]?[self.captureSession addOutput:self.videoDataOutput]:nil;
+        break;
+    case EAVCaptureMetadataOutput:
+        [self.captureSession canAddOutput:self.metadataOutput]?[self.captureSession addOutput:self.metadataOutput]:nil;
+        if ([_metadataOutput.availableMetadataObjectTypes containsObject:AVMetadataObjectTypeQRCode])
+        {_metadataOutput.metadataObjectTypes = [NSArray arrayWithObjects:AVMetadataObjectTypeQRCode,AVMetadataObjectTypeUPCECode,
+                                                AVMetadataObjectTypeCode39Code,
+                                                AVMetadataObjectTypeCode39Mod43Code,
+                                                AVMetadataObjectTypeEAN13Code,
+                                                AVMetadataObjectTypeEAN8Code,
+                                                AVMetadataObjectTypeCode93Code,
+                                                AVMetadataObjectTypeCode128Code,
+                                                AVMetadataObjectTypePDF417Code,
+                                                AVMetadataObjectTypeQRCode,
+                                                AVMetadataObjectTypeAztecCode, nil];}
+            
+        break;
+    default:
+        [self.captureSession canAddOutput:self.movieFileOutput]?[self.captureSession addOutput:self.movieFileOutput]:nil;
+        break;
+    }
+    //设置输出数据代理
     [self.captureSession commitConfiguration];
     [self openStabilization];
     [self.captureSession startRunning];
@@ -201,8 +268,18 @@ static const CGFloat KMinRecordTime = 3;
     self.mediaDeviceInput?[self.captureSession removeInput:self.mediaDeviceInput]:nil;
     self.audioDeviceInput?[self.captureSession removeInput:self.audioDeviceInput]:nil;
     self.stillImageOutput?[self.captureSession removeOutput:self.stillImageOutput]:nil;
-    self.movieFileOutput? [self.captureSession removeOutput:self.movieFileOutput]:nil;
-    self.videoDataOutput? [self.captureSession removeOutput:self.videoDataOutput]:nil;
+    switch (self.captureOutputType)
+    {
+    case EAVCaptureVideoDataOutput:
+        self.videoDataOutput? [self.captureSession removeOutput:self.videoDataOutput]:nil;
+        break;
+    case EAVCaptureMetadataOutput:
+        self.metadataOutput? [self.captureSession removeOutput:self.metadataOutput]:nil;
+        break;
+    default:
+        self.movieFileOutput? [self.captureSession removeOutput:self.movieFileOutput]:nil;
+        break;
+    }
 }
 
 #pragma mark 设置焦距
@@ -266,7 +343,9 @@ static const CGFloat KMinRecordTime = 3;
         NSError *error = nil;
         [device lockForConfiguration:&error];
         if (error) {NSLog(@"error:%@",error.description);}
-        AVCaptureTorchMode torchMode = device.torchMode == AVCaptureTorchModeOff?AVCaptureTorchModeOn:AVCaptureTorchModeOff;
+//        AVCaptureTorchMode torchMode = device.torchMode == AVCaptureTorchModeOff?AVCaptureTorchModeOn:AVCaptureTorchModeOff;
+        
+        AVCaptureTorchMode torchMode = AVCaptureTorchModeAuto;
         AVCaptureDevice *currentDevice = [weakSelf.mediaDeviceInput device];
         if(currentDevice.position == AVCaptureDevicePositionFront) torchMode = AVCaptureTorchModeOff;
         [device setTorchMode:torchMode];

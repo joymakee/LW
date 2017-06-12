@@ -46,6 +46,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.segmentView.backgroundColor = [UIColor whiteColor];
     [self setDefaultConstraintWithView:self.staffManageView andTitle:NSLocalizedString(@"工作", nil)];
     [self.presenter reloadDataSource];
 }

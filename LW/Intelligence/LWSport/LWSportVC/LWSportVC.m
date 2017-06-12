@@ -10,6 +10,8 @@
 #import "JoySportCalcer.h"
 #import "JoyCircleGradientLayerView.h"
 #import "Joy.h"
+#import "JoyLocationManager.h"
+#import "JoyTextSpeechConversion.h"
 
 @interface LWSportVC (){
     CAGradientLayer *_gradientLayer;
@@ -97,7 +99,8 @@
     self.completionProgressLabel.text = [[NSString stringWithFormat:@"%.0f",percent>1?100:(float)percent *100] stringByAppendingString:@"%"];
     self.pieView.persentShow = percent;
     self.bigPieView.persentShow = percent;
-
+    JoyTextSpeechConversion *speaker = [[JoyTextSpeechConversion alloc]init];
+    [speaker speakStr:[NSString stringWithFormat:@"今天运动了%ld步,%ldm,完成度%@,请继续努力",(long)[obj.numberOfSteps integerValue],(long)[obj.distance integerValue],self.completionProgressLabel.text]];
 }
 
 -(void)leftNavItemClickAction{

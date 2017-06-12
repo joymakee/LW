@@ -7,13 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef void (^STRINGBLOCK)(NSString *str);
 
 @class GCDAsyncSocket;
 @interface LWSocketClient : NSObject
 
+//接收消息block
 @property (nonatomic,copy)STRINGBLOCK receivedMessageBlock;
-- (void)connectHost:(NSString *)host port:(uint16_t)port;
 
+//设置主机ip和port
+- (void)connectHost:(NSString *)host port:(uint16_t)port;
+//发送消息
 - (void)sendmessage:(NSString*)message;
 @end
 

@@ -14,15 +14,26 @@ typedef NS_ENUM(NSInteger,ERecordResult) {
     ERecordLessThanMinTime,
     ERecordFaile
 };
+
+typedef NS_ENUM(NSUInteger,EAVCaptureOutputType) {
+    EAVCaptureMovieFileOutput,      //文件输出
+    EAVCaptureVideoDataOutput,      //data输出
+    EAVCaptureMetadataOutput        //元数据输出
+};
+
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 
 @protocol ReCordPlayProtoCol <NSObject>
+
+@optional
 - (void)joyRecordTimeCurrentTime:(CGFloat)currentTime totalTime:(CGFloat)totalTime;
 
 - (void)joyCaptureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections;
 
 -(void)joyCaptureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error recordResult:(ERecordResult)recordResult;
+
+- (void)joyCaptureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection;
 @end
 
 @interface JoyMediaRecordPlay : NSObject
@@ -31,6 +42,10 @@ typedef NS_ENUM(NSInteger,ERecordResult) {
 //@property (nonatomic,assign)TIMERBLOCK recordProgressBlock;
 //@property (nonatomic,copy)IDBLOCK recordFinishBlock;
 @property (nonatomic,weak)id<ReCordPlayProtoCol>        delegate;
+@property (nonatomic,assign)EAVCaptureOutputType        captureOutputType;
+
+#pragma mark 初始化类型,默认录制文件
+-(instancetype)initWithCaptureType:(EAVCaptureOutputType)captureType;
 
 #pragma mark 准备录制
 - (void)preareReCord;

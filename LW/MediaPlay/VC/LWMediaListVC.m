@@ -12,32 +12,30 @@
 #import <JoyTableAutoLayoutView.h>
 #import <JoyUISegementView.h>
 #import <WebKit/WebKit.h>
-
+#import "JoyWebView.h"
 @interface LWMediaListVC ()
 @property (nonatomic,strong)JoyTableAutoLayoutView *mediaListView;
 @property (nonatomic,strong)JoyUISegementView *segmentView;
 @property (nonatomic,strong)LWMediaInteractor *interactor;
 @property (nonatomic,strong)LWMediaPresenter *presenter;
-@property (nonatomic,strong)WKWebView *webView;
+@property (nonatomic,strong)JoyWebView *webView;
 @end
 
 @implementation LWMediaListVC
 -(JoyUISegementView *)segmentView{
     if (!_segmentView) {
-        _segmentView = [[JoyUISegementView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W-100, 40)];
-        _segmentView.layer.masksToBounds = YES;
-        _segmentView.layer.cornerRadius = 20;
-        _segmentView.layer.borderWidth = 1;
-        _segmentView.layer.borderColor = [UIColor purpleColor].CGColor;
-        _segmentView.segmentItems = @[@"影视",@"新闻",@"娱乐"];
-        _segmentView.selectColor = [UIColor purpleColor];
-        _segmentView.deselectColor = [UIColor lightGrayColor];
+        _segmentView = [[JoyUISegementView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W, 40)];
+        _segmentView.segmentItems = @[@"电视",@"新闻",@"段子",@"游戏"];
+        _segmentView.selectColor = [UIColor colorWithRed:0.9 green:0.1 blue:0.2 alpha:0.8];
+        _segmentView.deselectColor = [UIColor colorWithRed:0.3 green:0.4 blue:0.6 alpha:0.6];
+        _segmentView.bottomSliderColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.7 alpha:0.7];
+//        _segmentView.backgroundColor = JOY_clearColor;
     }
     return _segmentView;
 }
 
--(WKWebView *)webView{
-    return _webView = _webView?:[[WKWebView alloc]init];
+-(JoyWebView *)webView{
+    return _webView = _webView?:[[JoyWebView alloc]init];
 }
 
 -(JoyTableAutoLayoutView *)mediaListView{
@@ -65,14 +63,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeAll;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                  forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-
-    self.navigationController.navigationBar.topItem.titleView = self.segmentView;
-    [self setDefaultConstraintWithView:self.mediaListView andTitle:@"休闲"];
-    [self setDefaultConstraintWithView:self.webView andTitle:@"休闲"];
+    [self.navigationController.navigationBar addSubview:self.segmentView];
+    [self.view addSubview:self.mediaListView];
+    [self.view addSubview:self.webView];
+    [self setConstraint];
+    self.navigationController.navigationBar.topItem.titleView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.presenter reloadDataSource];
+}
+
+-(void)setConstraint{
+    __weak __typeof (&*self)weakSelf = self;
+    MAS_CONSTRAINT(self.mediaListView, make.leading.mas_equalTo(weakSelf.view);
+                   make.trailing.mas_equalTo(weakSelf.view);
+                   make.bottom.mas_equalTo(weakSelf.view);
+                   make.top.mas_equalTo(weakSelf.view).mas_offset(20););
+    
+    MAS_CONSTRAINT(self.webView, make.leading.mas_equalTo(weakSelf.view);
+                   make.trailing.mas_equalTo(weakSelf.view);
+                   make.bottom.mas_equalTo(weakSelf.view);
+                   make.top.mas_equalTo(weakSelf.view).mas_offset(20););
+    [self.view updateConstraintsIfNeeded];
 }
 
 @end

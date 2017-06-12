@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,48 +16,31 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="micro_messenger.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ly1-fW-O00" customClass="LWImageView">
-                        <rect key="frame" x="220" y="10" width="20" height="20"/>
+                        <rect key="frame" x="226" y="19.5" width="22" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Ly1-fW-O00" secondAttribute="height" id="7Yc-vq-zgn"/>
                         </constraints>
                     </imageView>
                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qq.png" translatesAutoresizingMaskIntoConstraints="NO" id="ObU-cy-iIT" customClass="LWImageView">
-                        <rect key="frame" x="270" y="10" width="20" height="20"/>
+                        <rect key="frame" x="268" y="19.5" width="22" height="22"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ObU-cy-iIT" secondAttribute="height" id="dRx-RJ-6Zd"/>
-                            <constraint firstAttribute="height" constant="20" id="kBH-0c-XeB"/>
+                            <constraint firstAttribute="height" constant="22" id="kBH-0c-XeB"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz1-uH-blq">
-                        <rect key="frame" x="211.5" y="35" width="37" height="25"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                        <color key="textColor" red="0.97820632129999996" green="1" blue="0.57009291220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="qq登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDd-mE-05j">
-                        <rect key="frame" x="265" y="35" width="30" height="25"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                        <color key="textColor" red="0.97820632129999996" green="1" blue="0.57009291220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="tDd-mE-05j" secondAttribute="bottom" constant="0.5" id="4G5-5s-kdz"/>
                     <constraint firstItem="ObU-cy-iIT" firstAttribute="top" secondItem="Ly1-fW-O00" secondAttribute="top" id="7kR-Fk-nmr"/>
-                    <constraint firstItem="tDd-mE-05j" firstAttribute="bottom" secondItem="Vz1-uH-blq" secondAttribute="bottom" id="9gK-cZ-gMA"/>
-                    <constraint firstItem="tDd-mE-05j" firstAttribute="top" secondItem="ObU-cy-iIT" secondAttribute="bottom" constant="5" id="AO8-D4-yeC"/>
-                    <constraint firstItem="ObU-cy-iIT" firstAttribute="centerX" secondItem="tDd-mE-05j" secondAttribute="centerX" id="DuR-ws-HPg"/>
                     <constraint firstItem="ObU-cy-iIT" firstAttribute="bottom" secondItem="Ly1-fW-O00" secondAttribute="bottom" id="TaT-XH-bZv"/>
-                    <constraint firstItem="Ly1-fW-O00" firstAttribute="centerX" secondItem="Vz1-uH-blq" secondAttribute="centerX" id="ZbB-IS-vou"/>
-                    <constraint firstItem="ObU-cy-iIT" firstAttribute="leading" secondItem="Ly1-fW-O00" secondAttribute="trailing" constant="30" id="by3-dR-Pgq"/>
+                    <constraint firstItem="ObU-cy-iIT" firstAttribute="leading" secondItem="Ly1-fW-O00" secondAttribute="trailing" constant="20" id="by3-dR-Pgq"/>
                     <constraint firstAttribute="trailing" secondItem="ObU-cy-iIT" secondAttribute="trailing" constant="30" id="f5H-oZ-2Ba"/>
-                    <constraint firstItem="ObU-cy-iIT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ivI-by-Y06"/>
-                    <constraint firstItem="tDd-mE-05j" firstAttribute="top" secondItem="Vz1-uH-blq" secondAttribute="top" id="lbk-Xr-d6K"/>
+                    <constraint firstItem="ObU-cy-iIT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ivI-by-Y06"/>
+                    <constraint firstItem="ObU-cy-iIT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ouo-4C-XXC"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>

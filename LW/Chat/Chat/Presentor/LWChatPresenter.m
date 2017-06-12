@@ -9,7 +9,6 @@
 #import "LWChatPresenter.h"
 #import "LWChatInteractor.h"
 #import "LWChatView.h"
-#import <JoyTool.h>
 #import "ChatMessage.h"
 #import "JoyRecorder.h"
 #import "ChatCellModel.h"
@@ -40,7 +39,7 @@ extern NSString *KHostAddressUserdefaultStr;
 
 }
 
-- (void)getChatInfoAndDisplay{
+- (void)getChatInfoAndDisplay:(AlertBlock)alert{
     __weak typeof (&*self)weakSelf = self;
     [self.chatInteractor getChatInfo:^{
         [weakSelf reloadChatList];
@@ -54,7 +53,7 @@ extern NSString *KHostAddressUserdefaultStr;
     {
         NSString *hostStr = [[NSUserDefaults standardUserDefaults] objectForKey:KHostAddressUserdefaultStr];
         if (!hostStr.length) {
-            [JoyAlert showWithMessage:@"你还没有设置服务器ip,配置ip后才能进行多人聊天哦"];
+            [[JoyAlert shareAlert]showAlertViewWithTitle:nil message:@"你还没有设置服务器ip,配置ip后才能进行多人聊天哦" cancle:@"取消" confirm:@"设置" alertBlock:alert];
         }
         
         [self.chatInteractor connectHost:hostStr port:8088 receivedMessageBlock:^() {

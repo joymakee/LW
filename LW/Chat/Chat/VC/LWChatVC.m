@@ -71,7 +71,15 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     [self setDefaultConstraintWithView:self.backView andTitle:nil];
     [self setDefaultConstraintWithView:self.chatView andTitle:nil];
-    [self.chatPresenter getChatInfoAndDisplay];
+     __weak __typeof(&*self)weakSelf = self;
+    [self.chatPresenter getChatInfoAndDisplay:^(UIAlertView *alertView, NSInteger btnIndex) {
+        if (btnIndex ==0) {
+            
+        }else{
+            [weakSelf goBack];
+            weakSelf.setSocketBlock?weakSelf.setSocketBlock():nil;
+        }
+    }];
 }
 
 -(void)viewDidAppear:(BOOL)animated{

@@ -11,7 +11,6 @@
 #import "LoginInteracter.h"
 #import <JoyTableAutoLayoutView.h>
 #import "BackGroundBlurView.h"
-#import "JoyRecordView.h"
 
 @interface LoginVC ()
 @property (nonatomic,strong)JoyTableAutoLayoutView *loginView;

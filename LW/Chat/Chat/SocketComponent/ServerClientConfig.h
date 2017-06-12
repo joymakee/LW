@@ -14,4 +14,7 @@
 + (instancetype)shareinstance;
 
 - (void)showConfigAlertWithObj:(UIViewController *)vc;
+
+#pragma mark 缓存ip
+- (BOOL)cacheServiceIP:(NSString *)ip;
 @end

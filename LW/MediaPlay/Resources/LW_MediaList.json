@@ -1,0 +1,238 @@
+[
+ {
+ "title": "CCTV-1综合",
+ "mediaUrlStr": "/hls/cctv1.m3u8"
+ },
+ {
+ "title": "CCTV-2财经",
+ "mediaUrlStr": "/hls/cctv2.m3u8"
+ },
+ {
+ "title": "CCTV-3综艺",
+ "mediaUrlStr": "/hls/cctv3.m3u8"
+ },
+ {
+ "title": "CCTV-4中文国际",
+ "mediaUrlStr": "/hls/cctv4.m3u8"
+ },
+ {
+ "title": "CCTV-5体育",
+ "mediaUrlStr": "/hls/cctv5.m3u8"
+ },
+ {
+ "title": "CCTV-6电影",
+ "mediaUrlStr": "/hls/cctv6.m3u8"
+ },
+ {
+ "title": "CCTV-7军事农业",
+ "mediaUrlStr": "/hls/cctv7.m3u8"
+ },
+ {
+ "title": "CCTV-8电视剧",
+ "mediaUrlStr": "/hls/cctv8.m3u8"
+ },
+ {
+ "title": "CCTV-9纪录",
+ "mediaUrlStr": "/hls/cctv9.m3u8"
+ },
+ {
+ "title": "CCTV-10科教",
+ "mediaUrlStr": "/hls/cctv10.m3u8"
+ },
+ {
+ "title": "CCTV-11戏曲",
+ "mediaUrlStr": "/hls/cctv11.m3u8"
+ },
+ {
+ "title": "CCTV-12社会与法",
+ "mediaUrlStr": "/hls/cctv12.m3u8"
+ },
+ {
+ "title": "CCTV-13新闻",
+ "mediaUrlStr": "/hls/cctv13.m3u8"
+ },
+ {
+ "title": "CCTV-14少儿",
+ "mediaUrlStr": "/hls/cctv14.m3u8"
+ },
+ {
+ "title": "CCTV-15音乐",
+ "mediaUrlStr": "/hls/cctv15.m3u8"
+ },
+ {
+ "title": "CCTV-NEWS",
+ "mediaUrlStr": "/hls/cctv16.m3u8"
+ },
+ {
+ "title": "北京卫视",
+ "mediaUrlStr": "/hls/btv1.m3u8"
+ },
+ {
+ "title": "北京文艺",
+ "mediaUrlStr": "/hls/btv2.m3u8"
+ },
+ {
+ "title": "北京科教",
+ "mediaUrlStr": "/hls/btv3.m3u8"
+ },
+ {
+ "title": "北京影视",
+ "mediaUrlStr": "/hls/btv4.m3u8"
+ },
+ {
+ "title": "北京财经",
+ "mediaUrlStr": "/hls/btv5.m3u8"
+ },
+ {
+ "title": "北京体育",
+ "mediaUrlStr": "/hls/btv6.m3u8"
+ },
+ {
+ "title": "北京生活",
+ "mediaUrlStr": "/hls/btv7.m3u8"
+ },
+ {
+ "title": "北京青年",
+ "mediaUrlStr": "/hls/btv8.m3u8"
+ },
+ {
+ "title": "北京新闻",
+ "mediaUrlStr": "/hls/btv9.m3u8"
+ },
+ {
+ "title": "北京卡酷少儿",
+ "mediaUrlStr": "/hls/btv10.m3u8"
+ },
+ {
+ "title": "深圳卫视",
+ "mediaUrlStr": "/hls/sztv.m3u8"
+ },
+ {
+ "title": "安徽卫视",
+ "mediaUrlStr": "/hls/ahtv.m3u8"
+ },
+ {
+ "title": "河南卫视",
+ "mediaUrlStr": "/hls/hntv.m3u8"
+ },
+ {
+ "title": "陕西卫视",
+ "mediaUrlStr": "/hls/sxtv.m3u8"
+ },
+ {
+ "title": "吉林卫视",
+ "mediaUrlStr": "/hls/jltv.m3u8"
+ },
+ {
+ "title": "广东卫视",
+ "mediaUrlStr": "/hls/gdtv.m3u8"
+ },
+ {
+ "title": "山东卫视",
+ "mediaUrlStr": "/hls/sdtv.m3u8"
+ },
+ {
+ "title": "湖北卫视",
+ "mediaUrlStr": "/hls/hbtv.m3u8"
+ },
+ {
+ "title": "广西卫视",
+ "mediaUrlStr": "/hls/gxtv.m3u8"
+ },
+ {
+ "title": "河北卫视",
+ "mediaUrlStr": "/hls/hebtv.m3u8"
+ },
+ {
+ "title": "西藏卫视",
+ "mediaUrlStr": "/hls/xztv.m3u8"
+ },
+ {
+ "title": "内蒙古卫视",
+ "mediaUrlStr": "/hls/nmtv.m3u8"
+ },
+ {
+ "title": "青海卫视",
+ "mediaUrlStr": "/hls/qhtv.m3u8"
+ },
+ {
+ "title": "四川卫视",
+ "mediaUrlStr": "/hls/sctv.m3u8"
+ },
+ {
+ "title": "江苏卫视",
+ "mediaUrlStr": "/hls/jstv.m3u8"
+ },
+ {
+ "title": "天津卫视",
+ "mediaUrlStr": "/hls/tjtv.m3u8"
+ },
+ {
+ "title": "山西卫视",
+ "mediaUrlStr": "/hls/sxrtv.m3u8"
+ },
+ {
+ "title": "辽宁卫视",
+ "mediaUrlStr": "/hls/lntv.m3u8"
+ },
+ {
+ "title": "厦门卫视",
+ "mediaUrlStr": "/hls/xmtv.m3u8"
+ },
+ {
+ "title": "新疆卫视",
+ "mediaUrlStr": "/hls/xjtv.m3u8"
+ },
+ {
+ "title": "东方卫视",
+ "mediaUrlStr": "/hls/dftv.m3u8"
+ },
+ {
+ "title": "黑龙江卫视",
+ "mediaUrlStr": "/hls/hljtv.m3u8"
+ },
+ {
+ "title": "湖南卫视",
+ "mediaUrlStr": "/hls/hunantv.m3u8"
+ },
+ {
+ "title": "云南卫视",
+ "mediaUrlStr": "/hls/yntv.m3u8"
+ },
+ {
+ "title": "江西卫视",
+ "mediaUrlStr": "/hls/jxtv.m3u8"
+ },
+ {
+ "title": "福建东南卫视",
+ "mediaUrlStr": "/hls/dntv.m3u8"
+ },
+ {
+ "title": "浙江卫视",
+ "mediaUrlStr": "/hls/zjtv.m3u8"
+ },
+ {
+ "title": "贵州卫视",
+ "mediaUrlStr": "/hls/gztv.m3u8"
+ },
+ {
+ "title": "宁夏卫视",
+ "mediaUrlStr": "/hls/nxtv.m3u8"
+ },
+ {
+ "title": "甘肃卫视",
+ "mediaUrlStr": "/hls/gstv.m3u8"
+ },
+ {
+ "title": "重庆卫视",
+ "mediaUrlStr": "/hls/cqtv.m3u8"
+ },
+ {
+ "title": "兵团卫视",
+ "mediaUrlStr": "/hls/bttv.m3u8"
+ },
+ {
+ "title": "旅游卫视",
+ "mediaUrlStr": "/hls/lytv.m3u8"
+ },
+ ]

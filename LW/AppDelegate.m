@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "LoginVC.h"
-#import "IntelligenceVC.h"
+#import <TencentOpenAPI/TencentOAuth.h>
 @interface AppDelegate ()
 
 @end
@@ -51,5 +51,19 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    BOOL canOpenUrl = [TencentOAuth HandleOpenURL:url];
+    return canOpenUrl;
+}
 
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    BOOL canOpenUrl = [TencentOAuth HandleOpenURL:url];
+    return canOpenUrl;
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
+    BOOL canOpenUrl = [TencentOAuth HandleOpenURL:url];
+    return canOpenUrl;
+
+}
 @end

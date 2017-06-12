@@ -14,7 +14,7 @@
 
 - (void)getTempratureDataSource:(VOIDBLOCK)success{
     
-    __block NSArray *sourceArray = @[@"客厅",@"主卧",@"次卧",@"客房",@"洗手间",@"泳池",@"书房",@"娱乐间",@"机车房",@"花草室",@"厨房",];
+    __block NSArray *sourceArray = @[@"客厅",@"主卧",@"次卧",@"客房",@"洗手间",@"书房",@"娱乐间",@"厨房",];
     __weak __typeof (&*self)weakSelf = self;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{

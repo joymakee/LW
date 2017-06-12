@@ -14,6 +14,9 @@
 #import "IntelligenceControlnteractor.h"
 #import "IntelligenceControlPresentor.h"
 #import "JoyScrollView.h"
+#import "IntelligenceTitleView.h"
+#import "JoyBaseVC+LWCategory.h"
+#import "JoyLocationManager.h"
 
 @interface IntelligenceVC ()
 
@@ -23,19 +26,37 @@
 @property (nonatomic,strong)IntelligencePresentor *intelligencePresentor;
 @property (nonatomic,strong)IntelligenceControlnteractor *intelligenceControlnteractor;
 @property (nonatomic,strong)IntelligenceControlPresentor *intelligenceControlPresentor;
+@property (nonatomic,strong)IntelligenceTitleView *weatherTitleView;
+@property (nonatomic,strong)JoyLocationManager *locationManager;
 @end
 
 @implementation IntelligenceVC
+
+-(JoyLocationManager *)locationManager{
+    return _locationManager = _locationManager?:[[JoyLocationManager alloc]init];
+}
+
+-(IntelligenceTitleView *)weatherTitleView{
+    return _weatherTitleView = _weatherTitleView?:[[[NSBundle mainBundle] loadNibNamed:@"IntelligenceTitleView" owner:self options:nil] firstObject];
+}
+
 - (CommonImageCollectView *)intelligenceView{
     if (!_intelligenceView) {
         _intelligenceView = [[CommonImageCollectView alloc]init];
+        _intelligenceView.backgroundColor = JOY_clearColor;
     }
     return _intelligenceView;
 }
 
 -(IntelligencePresentor *)intelligencePresentor{
-    _intelligencePresentor = _intelligencePresentor?:[[IntelligencePresentor alloc]initWithView:self.view];
+    if (!_intelligencePresentor) {
+    _intelligencePresentor = [[IntelligencePresentor alloc]initWithView:self.view];
     _intelligencePresentor.delegate = self.intelligenceControlPresentor;
+    _intelligencePresentor.intelligencelnteractor = self.intelligencelnteractor;
+    _intelligencePresentor.intelligenceView = self.intelligenceView;
+    _intelligencePresentor.weatherTitleView = self.weatherTitleView;
+    _intelligencePresentor.locationManager = self.locationManager;
+    }
     return _intelligencePresentor;
 }
 
@@ -56,25 +77,34 @@
 }
 
 - (IntelligenceControlPresentor *)intelligenceControlPresentor{
+    if(!_intelligenceControlPresentor){
     _intelligenceControlPresentor = _intelligenceControlPresentor?:[[IntelligenceControlPresentor alloc]init];
+    _intelligenceControlPresentor.intelligenceControlnteractor = self.intelligenceControlnteractor;
+        _intelligenceControlPresentor.intelligenceTableView = self.intelligenceTableView;
+    }
     return _intelligenceControlPresentor;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setBackViewWithImageName:nil bundleName:nil];
     [self setDefaultConstraintWithView:self.intelligenceView andTitle:@"智能生活"];
     [self.intelligencelnteractor getIntelligenceSource];
-    self.intelligencePresentor.intelligencelnteractor = self.intelligencelnteractor;
-    self.intelligencePresentor.intelligenceView = self.intelligenceView;
     [self.intelligencePresentor reloadView];
-    self.intelligenceControlPresentor.intelligenceControlnteractor = self.intelligenceControlnteractor;
-    self.intelligenceControlPresentor.intelligenceTableView = self.intelligenceTableView;
+    [self.navigationController.navigationBar addSubview:self.weatherTitleView];
+    self.weatherTitleView.width = SCREEN_W;
+    self.navigationController.navigationBar.topItem.titleView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
--(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
-    [self.intelligencePresentor didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    _weatherTitleView.hidden = NO;
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    _weatherTitleView.hidden = YES;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

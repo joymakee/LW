@@ -9,4 +9,5 @@
 #import "JoyBaseVC.h"
 
 @interface LWChatVC : JoyBaseVC
+@property (nonatomic,copy)VOIDBLOCK setSocketBlock;
 @end

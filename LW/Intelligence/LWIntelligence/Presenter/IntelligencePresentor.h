@@ -16,8 +16,7 @@
 
 @end
 
-@class Intelligencelnteractor;
-@class CommonImageCollectView;
+@class Intelligencelnteractor,CommonImageCollectView,IntelligenceTitleView,JoyLocationManager;
 @interface IntelligencePresentor : BasePresentor
 
 @property (nonatomic,weak) id <IntelligenceDelegate>delegate;
@@ -26,8 +25,10 @@
 
 @property (nonatomic,strong)CommonImageCollectView *intelligenceView;
 
+@property (nonatomic,strong)IntelligenceTitleView *weatherTitleView;
+
+@property (nonatomic,strong)JoyLocationManager *locationManager;
+
 - (void)reloadView;
 
-#pragma mark 屏幕旋转
--(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation;
 @end

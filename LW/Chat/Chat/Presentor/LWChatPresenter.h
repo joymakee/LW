@@ -7,6 +7,7 @@
 //
 
 #import "BasePresentor.h"
+#import <JoyTool.h>
 
 @class LWChatInteractor;
 @class LWChatView;
@@ -14,6 +15,6 @@
 @property (nonatomic,strong)LWChatInteractor *chatInteractor;
 @property (nonatomic,strong)LWChatView *chatView;
 
-- (void)getChatInfoAndDisplay;
+- (void)getChatInfoAndDisplay:(AlertBlock)alert;
 
 @end

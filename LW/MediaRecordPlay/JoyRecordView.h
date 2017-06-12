@@ -14,6 +14,7 @@
 @property (nonatomic,copy) VOIDBLOCK switchCameraBlock;
 @property (nonatomic,copy) VOIDBLOCK flashLightControlBlock;
 @property (nonatomic,copy) VOIDBLOCK cancleRecordBlock;
+@property (nonatomic,copy) STRINGBLOCK scanMMetaBlock;
 #pragma mark 屏幕旋转
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation;
 @end

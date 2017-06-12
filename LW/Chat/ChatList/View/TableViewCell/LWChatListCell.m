@@ -25,6 +25,9 @@
 }
 
 -(void)setCellWithModel:(LWChatListCellModel *)model{
+    self.avatar.image = [UIImage imageNamed:model.avatar];
+    self.titleLabel.text = model.title;
+    self.subTitleLabel.text = model.subTitle;
     if (model.messageCount) {
         self.messageCountLabel.hidden = NO;
         self.messageCountLabel.layer.masksToBounds = YES;

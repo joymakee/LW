@@ -8,6 +8,6 @@
 
 #import <JoyTool.h>
 
-@interface LWChatListCellModel : JoyCellBaseModel
+@interface LWChatListCellModel : JoyImageCellBaseModel
 @property (nonatomic,assign)NSInteger messageCount;
 @end

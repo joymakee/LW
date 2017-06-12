@@ -8,6 +8,8 @@
 
 #import "LWLogin_wx&qqCell.h"
 #import "LWImageView.h"
+#import <JoyCellBaseModel.h>
+
 @interface LWLogin_wx_qqCell  ()
 
 @property (weak, nonatomic) IBOutlet LWImageView *wxImageView;
@@ -18,20 +20,20 @@ static const void *loginPath = &loginPath;
 @implementation LWLogin_wx_qqCell
 
 -(void)setCellWithModel:(NSObject *)model{
-//    __weak __typeof (&*self)weakSelf = self;
+    __weak __typeof (&*self)weakSelf = self;
     self.wxImageView.lwImageTouchBlock =^(ELwTouchActionType touchType){
 //        [weakSelf tapActionWithPlatform:UMShareToWechatSession];
     };
     self.qqImageView.lwImageTouchBlock =^(ELwTouchActionType touchType){
-//        [weakSelf tapActionWithPlatform:UMShareToQQ];
+        [weakSelf tapActionWithPlatform:@"qqLogin"];
     };
 
 }
 
 - (void)tapActionWithPlatform:(NSString *)platform{
-//    if ([self.delegate respondsToSelector:@selector(viewAction:IndexPath:object:)]) {
-//        [self.delegate viewAction:@"wxLoginAction" IndexPath:self.index object:platform];
-//    }
+    if ([self.delegate respondsToSelector:@selector(cellDidSelectWithIndexPath:action:)]) {
+        [self.delegate cellDidSelectWithIndexPath:self.index action:platform];
+    }
 
 }
 @end

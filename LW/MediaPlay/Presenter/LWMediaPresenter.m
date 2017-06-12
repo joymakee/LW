@@ -19,27 +19,18 @@
 #import "LWNavigationController.h"
 #import <WebKit/WebKit.h>
 
-@interface LWMediaPresenter ()<WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler,UIScrollViewDelegate,ScrollDelegate>
+@interface LWMediaPresenter ()<ScrollDelegate>
 
 @end
 
 @implementation LWMediaPresenter
 -(void)reloadDataSource{
     __weak __typeof (&*self)weakSelf = self;
+    self.webView.hidden = YES;
     [self.interactor getMedisSourcesDataSource:^{
         weakSelf.mediaListView.dataArrayM = weakSelf.interactor.dataArrayM;
         [weakSelf.mediaListView reloadTableView];
     }];
-}
-
-
--(void)setWebView:(WKWebView *)webView{
-    _webView = webView;
-    _webView.scrollView.delegate = self;
-    _webView.hidden = YES;
-    _webView.UIDelegate = self;
-    [_webView sizeToFit];
-    _webView.navigationDelegate = self;
 }
 
 -(void)setSegmentView:(JoyUISegementView *)segmentView{
@@ -58,11 +49,14 @@
     }
     else if (index == 1 ) {
         self.webView.hidden = NO;
-        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]]];
+        self.webView.initUrlStr(@"http://www.toutiao.com").startLoad();
     }
     else if (index == 2){
         self.webView.hidden = NO;
-        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.budejie.com"]]];
+        self.webView.initUrlStr(@"http://www.budejie.com").startLoad();
+    }else if(index == 3){
+        self.webView.hidden = NO;
+        self.webView.initUrlStr(@"http://pvp.qq.com/webplat/info/news_version3/15592/18024/19327/m13205/list_1.shtml").startLoad();
     }
 }
 
@@ -91,85 +85,20 @@
     [self presentVC:avPlayer];
 }
 
-#pragma MARK WKNavigationDelegate来追踪加载过程
-// 页面开始加载时调用
-- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible= YES;
-}
-// 当内容开始返回时调用
-- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation;{
-    
-}
-// 页面加载完成之后调用
-- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation;{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible= NO;
-    [webView evaluateJavaScript:@"document.getElementsByClassName('s-p-top')[0].style.display = 'none'" completionHandler:nil];
-}
-// 页面加载失败时调用
-- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation;{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible= NO;
-    
-}
-
-#pragma MARK WKNavigtionDelegate来进行页面跳转
-// 接收到服务器跳转请求之后再执行
-- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation;{
-    [webView evaluateJavaScript:@"document.getElementsByClassName('s-p-top')[0].style.display = 'none'" completionHandler:nil];
-}
-// 在收到响应后，决定是否跳转
-- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler;{
-    decisionHandler(WKNavigationResponsePolicyAllow);
-}
-// 在发送请求之前，决定是否跳转
-- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler;{
-    decisionHandler(WKNavigationActionPolicyAllow);
-}
-
-#pragma MARK WKUIDelegate
-//1.创建一个新的WebVeiw
-- (nullable WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures{
-    
-    return nil;
-}
-//2.WebVeiw关闭（9.0中的新方法）
-- (void)webViewDidClose:(WKWebView *)webView NS_AVAILABLE(10_11, 9_0);{
-    
-}
-//3.显示一个JS的Alert（与JS交互）
-- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler;{
-}
-//4.弹出一个输入框（与JS交互的）
-- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * __nullable result))completionHandler;{
-    
-}
-//5.显示一个确认框（JS的）
-- (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler;{
-    
-}
-
-
--(void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
-    
-}
-
 static float _lastPosition = 0;
 -(void)scrollDidScroll:(UIScrollView *)scrollView{
-//    self.rootView.viewController.navigationController.navigationBar.alpha = scrollView.contentOffset.y>=64?0:(64-scrollView.contentOffset.y)/64;
-//    self.rootView.viewController.tabBarController.tabBar.hidden = scrollView.contentOffset.y<=64;
-//    
-    
     int currentPostion = scrollView.contentOffset.y;
-    if (currentPostion - _lastPosition > 25) {
+    if (currentPostion - _lastPosition > 0) {
         _lastPosition = currentPostion;
         NSLog(@"ScrollUp now");
-        self.rootView.viewController.navigationController.navigationBar.alpha = (currentPostion - _lastPosition)/60;
+        self.rootView.viewController.navigationController.navigationBar.alpha = 0;//(currentPostion - _lastPosition)/60;
         self.rootView.viewController.tabBarController.tabBar.hidden = NO;
     }
-    else if (_lastPosition - currentPostion > 25)
+    else if (_lastPosition - currentPostion > 0)
     {
         _lastPosition = currentPostion;
         NSLog(@"ScrollDown now");
-        self.rootView.viewController.navigationController.navigationBar.alpha = 1;
+        self.rootView.viewController.navigationController.navigationBar.alpha = 0.7;
         self.rootView.viewController.tabBarController.tabBar.hidden = YES;
     }
     if(scrollView.contentOffset.y<=64){

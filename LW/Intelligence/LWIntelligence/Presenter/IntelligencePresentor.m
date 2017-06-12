@@ -9,6 +9,7 @@
 #import "IntelligencePresentor.h"
 #import "Intelligencelnteractor.h"
 #import "CommonImageCollectView.h"
+#import "IntelligenceTitleView.h"
 #import "CAAnimation+HCAnimation.h"
 #import "JoyRecordView.h"
 #import "JoyMediaRecordPlay.h"
@@ -16,6 +17,9 @@
 #import "LWWeatherModel.h"
 #import "LWTempratureVC.h"
 #import "JoyCellBaseModel.h"
+#import "JoyLocationManager.h"
+#import "JoyTextSpeechConversion.h"
+#import "JoyWebLoader.h"
 
 @interface IntelligencePresentor()
 @property(nonatomic,strong) NSIndexPath *selectIndexPath;
@@ -24,6 +28,36 @@
 @implementation IntelligencePresentor
 -(void)reloadView{
     [self.intelligenceView setData:self.intelligencelnteractor.dataArrayM];
+    __weak __typeof (&*self)weakSelf = self;
+//    self.locationManager.checkAuthorization(NO).startUpdateHeading().headUpdateSuccess(^(CGFloat floatNumber) {
+//        NSLog(@"%f",floatNumber);
+//    });
+    self.locationManager.checkAuthorization(NO).startLocation().locationSuccess(^(NSDictionary *addressDict) {
+        [addressDict isKindOfClass:[NSDictionary class]]?[weakSelf getWeatherDiplayWithCity:addressDict[@"City"]]:nil;
+    }).locationError(^(NSError *error){
+        
+    }).startUpdateHeading().headUpdateSuccess(^(CGFloat floatNumber) {
+        NSLog(@"%f",floatNumber);
+    });;
+}
+
+-(void)setWeatherTitleView:(IntelligenceTitleView *)weatherTitleView{
+    _weatherTitleView = weatherTitleView;
+    _weatherTitleView.touchBlock = ^(ELwTouchActionType touchType) {
+        NSLog(@"");
+    };
+}
+
+- (void)getWeatherDiplayWithCity:(NSString *)city{
+    __weak __typeof (&*self)weakSelf = self;
+    [self.intelligencelnteractor getWeatherDataWithCity:city days:1 block:^(LWWeatherModel *obj) {
+        [weakSelf updateTitleViewData:obj];
+    }];
+}
+
+- (void)updateTitleViewData:(LWWeatherModel *)weatherModel{
+    [self.weatherTitleView setWeatherModel:weatherModel];
+    [self.weatherTitleView layoutSubviews];
 }
 
 -(void)setIntelligenceView:(CommonImageCollectView *)intelligenceView{
@@ -44,12 +78,6 @@
         [CAAnimation showOpacityAnimationInView:[weakSelf.intelligenceView.collectionView cellForItemAtIndexPath:indexPath] fromAlpha:1 Alpha:0.6 Repeat:2 Duration:1 autoreverses:YES];
             [super performTapAction:tapAction];
     };
-}
-
-#pragma mark 屏幕旋转
--(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
-    JoyRecordView *recoreView = objc_getAssociatedObject(self, @selector(cameraControl));
-    [recoreView didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
 
 #pragma mark  温控
@@ -82,12 +110,14 @@
 
 #pragma mark  厨控
 - (void)kitchenControl{
-    
+    JoyTextSpeechConversion *speaker = [[JoyTextSpeechConversion alloc]init];
+    [speaker speakStr:@"打开厨房燃气,开始做饭"];
 }
 
 #pragma mark  车库控
 - (void)carControl{
-    
+    JoyTextSpeechConversion *speaker = [[JoyTextSpeechConversion alloc]init];
+    [speaker speakStr:@"车库门已打开,请停靠"];
 }
 
 #pragma mark  水路
@@ -96,12 +126,14 @@
 
 #pragma mark  自动衣架控
 - (void)clothestreeControl{
-    
+    JoyTextSpeechConversion *speaker = [[JoyTextSpeechConversion alloc]init];
+    [speaker speakStr:@"未扫描到智能衣架设备,请配置后再进行连接"];
 }
 
 #pragma mark  电视控
 - (void)tvControl{
-    
+    JoyTextSpeechConversion *speaker = [[JoyTextSpeechConversion alloc]init];
+    [speaker speakStr:@"未扫描到智能电视,请配置后再进行连接"];
 }
 
 #pragma mark  门控
@@ -116,7 +148,8 @@
 
 #pragma mark  gps导航
 - (void)gpsControl{
-    
+    JoyTextSpeechConversion *speaker = [[JoyTextSpeechConversion alloc]init];
+    [speaker speakStr:@"已开启gps导航功能,等待连接"];
 }
 
 #pragma mark  运动
@@ -133,12 +166,18 @@
         cellModel.title = [[[obj.info stringByAppendingString:@"\t"] stringByAppendingString:obj.temperature] stringByAppendingString:@"℃"];
         cellModel.avatar = obj.img;
         cellModel.aToBCellBlock?cellModel.aToBCellBlock(nil):nil;
+        JoyTextSpeechConversion *speaker = [[JoyTextSpeechConversion alloc]init];
+        [speaker speakStr:[NSString stringWithFormat:@"今天天气%@",cellModel.title]];
+        JoyWebLoader *loader = [[JoyWebLoader alloc]init].initUrlStr(@"http://m.moji.com").startLoad();
+        loader.titleStr = @"天气";
+        [weakSelf goVC:loader];
     }];
 }
 
+
 #pragma mark  盆栽
 - (void)pottingControl{
-    
 }
+
 
 @end

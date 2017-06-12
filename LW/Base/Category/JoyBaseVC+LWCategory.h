@@ -12,4 +12,6 @@
 - (void)setBackViewWithImageName:(NSString *)imageName bundleName:(NSString *)bundleName;
 
 - (void)setRectEdgeAll;
+
+- (void)recoveryEdgeNav;
 @end

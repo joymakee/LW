@@ -5,7 +5,6 @@
 //  Created by joymake on 16/2/18.
 //  Copyright © 2016年 Joymake. All rights reserved.
 //
-#define SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define CELL_W  80
 
 #import "CommonImageCollectView.h"
@@ -64,9 +63,9 @@ const int KCommon_min_cellInset = 10.0f;
         _selectStaffLayout = [[UICollectionViewFlowLayout alloc]init];
         _selectStaffLayout.itemSize = CGSizeMake(CELL_W, CELL_W);//cell的大小
         _selectStaffLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;//滑动方式
-        _selectStaffLayout.minimumLineSpacing = KCommon_min_cellSpace;//每行的间距
-        _selectStaffLayout.minimumInteritemSpacing = KCommon_min_cellInset;//每行cell内部的间距
-        _selectStaffLayout.sectionInset = UIEdgeInsetsMake(KCommon_min_cellSpace, KCommon_min_cellInset, KCommon_min_cellSpace, KCommon_min_cellInset);
+//        _selectStaffLayout.minimumLineSpacing = KCommon_min_cellSpace;//每行的间距
+//        _selectStaffLayout.minimumInteritemSpacing = KCommon_min_cellInset;//每行cell内部的间距
+//        _selectStaffLayout.sectionInset = UIEdgeInsetsMake(KCommon_min_cellSpace, KCommon_min_cellInset, KCommon_min_cellSpace, KCommon_min_cellInset);
     }
     return _selectStaffLayout;
 }

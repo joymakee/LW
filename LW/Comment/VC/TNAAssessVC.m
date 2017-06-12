@@ -184,6 +184,7 @@ static const  NSInteger  KCommentMaxNumber = 500;
 
 #pragma mark 图片获取代理
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    NSString *content = @"" ;
     [picker dismissViewControllerAnimated:YES completion:nil];
     picker.delegate=nil;
     [self reloadSelectPic];

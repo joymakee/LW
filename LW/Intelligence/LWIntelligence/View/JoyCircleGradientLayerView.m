@@ -124,7 +124,6 @@
     CGFloat radius = MIN(self.width, self.height)/2-self.strokeWidth/2;//圆的半径是strokeWidth的中心到center的距离，所以self.strokeWidth/2
     _circlePath = [UIBezierPath bezierPathWithArcCenter:centerPoint radius:radius startAngle:-M_PI_4 endAngle:M_PI_4*7 clockwise:YES];
     }
-    
     return _circlePath;
 }
 

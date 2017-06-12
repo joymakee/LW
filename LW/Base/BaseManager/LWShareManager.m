@@ -6,11 +6,14 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
+#define KTENCENT_APPID @"1106126975"
 #import "LWShareManager.h"
 #import "UIImage+Extension.h"
 #import "LWCommentVC.h"
-@interface LWShareManager ()
+#import <TencentOpenAPI/TencentOAuth.h>
+@interface LWShareManager ()<TencentSessionDelegate>
 
+@property (nonatomic,strong)TencentOAuth *tencentOAuth;
 @end
 
 @implementation LWShareManager
@@ -22,6 +25,98 @@
         instance = [[super alloc]init];
     });
     return instance;
+}
+
+-(TencentOAuth *)tencentOAuth{
+    return _tencentOAuth = _tencentOAuth?:[[TencentOAuth alloc]initWithAppId:KTENCENT_APPID andDelegate:self];
+
+}
+
+-(LWShareManager *(^)())qqLogin{
+    __weak __typeof(&*self)weakSelf = self;
+    return ^(void){
+        [weakSelf tencentLogin];
+        return weakSelf;
+    };
+}
+
+-(LWShareManager *(^)(VOIDBLOCK voidBlock))loginSuccess{
+    __weak __typeof(&*self)weakSelf = self;
+    return ^(VOIDBLOCK voidBlock){
+        objc_setAssociatedObject(weakSelf, _cmd, voidBlock, OBJC_ASSOCIATION_COPY);
+        return weakSelf;
+    };
+}
+
+-(LWShareManager *(^)(VOIDBLOCK voidBlock))loginFailure{
+    __weak __typeof(&*self)weakSelf = self;
+    return ^(VOIDBLOCK voidBlock){
+        objc_setAssociatedObject(weakSelf, _cmd, voidBlock, OBJC_ASSOCIATION_COPY);
+        return weakSelf;
+    };
+}
+-(LWShareManager *(^)(VOIDBLOCK voidBlock))loginOut{
+    __weak __typeof(&*self)weakSelf = self;
+    return ^(VOIDBLOCK voidBlock){
+        objc_setAssociatedObject(weakSelf, _cmd, voidBlock, OBJC_ASSOCIATION_COPY);
+        return weakSelf;
+    };
+}
+-(LWShareManager *(^)(VOIDBLOCK voidBlock))loginCancle{
+    __weak __typeof(&*self)weakSelf = self;
+    return ^(VOIDBLOCK voidBlock){
+        objc_setAssociatedObject(weakSelf, _cmd, voidBlock, OBJC_ASSOCIATION_COPY);
+        return weakSelf;
+    };
+}
+
+-(LWShareManager *(^)(VOIDBLOCK voidBlock))loginWithoutNet{
+    __weak __typeof(&*self)weakSelf = self;
+    return ^(VOIDBLOCK voidBlock){
+        objc_setAssociatedObject(weakSelf, _cmd, voidBlock, OBJC_ASSOCIATION_COPY);
+        return weakSelf;
+    };
+}
+
+- (void)tencentLogin{
+    NSArray* permissions = [NSArray arrayWithObjects:
+                            kOPEN_PERMISSION_GET_USER_INFO,
+                            kOPEN_PERMISSION_GET_SIMPLE_USER_INFO,
+                            kOPEN_PERMISSION_ADD_ALBUM,
+                            kOPEN_PERMISSION_ADD_ONE_BLOG,
+                            kOPEN_PERMISSION_ADD_SHARE,
+                            kOPEN_PERMISSION_ADD_TOPIC,
+                            kOPEN_PERMISSION_CHECK_PAGE_FANS,
+                            kOPEN_PERMISSION_GET_INFO,
+                            kOPEN_PERMISSION_GET_OTHER_INFO,
+                            kOPEN_PERMISSION_LIST_ALBUM,
+                            kOPEN_PERMISSION_UPLOAD_PIC,
+                            kOPEN_PERMISSION_GET_VIP_INFO,
+                            kOPEN_PERMISSION_GET_VIP_RICH_INFO,
+                            nil];
+    self.tencentOAuth.authShareType= AuthShareType_QQ;
+    [self.tencentOAuth authorize:permissions inSafari:NO];
+}
+
+-(void)tencentDidLogin{
+    VOIDBLOCK voidBlock = objc_getAssociatedObject(self, @selector(loginSuccess));
+    voidBlock?voidBlock():nil;
+}
+
+
+-(void)tencentDidLogout{
+    VOIDBLOCK voidBlock = objc_getAssociatedObject(self, @selector(loginOut));
+    voidBlock?voidBlock():nil;
+}
+
+-(void)tencentDidNotLogin:(BOOL)cancelled{
+    VOIDBLOCK voidBlock = objc_getAssociatedObject(self, @selector(loginCancle));
+    voidBlock?voidBlock():nil;
+}
+
+-(void)tencentDidNotNetWork{
+    VOIDBLOCK voidBlock = objc_getAssociatedObject(self, @selector(loginWithoutNet));
+    voidBlock?voidBlock():nil;
 }
 
 + (void)shareCompentInit{

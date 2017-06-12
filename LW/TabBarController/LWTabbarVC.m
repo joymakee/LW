@@ -14,6 +14,8 @@
 #import "TNACompanyManageVC.h"
 #import "LWChatListVC.h"
 
+NSInteger messageCount = 0;
+NSString  *KMESSAGE_COUNT_CHANGE = @"messageCountChange";
 @interface LWTabbarVC ()<UITabBarControllerDelegate>
 
 @end
@@ -23,10 +25,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.delegate = self;
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageCountChange:) name:KMESSAGE_COUNT_CHANGE object:nil];
     LWChatListVC *chatVC = [[LWChatListVC alloc]init];
     chatVC.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"聊天" image:[[UIImage imageNamed:@"tabBar_live_deselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"tabBar_live_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    chatVC.tabBarItem.badgeValue = @"99+";
+    chatVC.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",messageCount];
+    
     LWNavigationController *chatNav = [[LWNavigationController alloc]initWithRootViewController:chatVC];
     
 
@@ -52,6 +55,10 @@
     LWNavigationController *intelligenceNav = [[LWNavigationController alloc]initWithRootViewController:intelligenceVC];
        self.viewControllers = @[chatNav,mediaNav,workNav,intelligenceNav];
     self.tabBar.tintColor = [UIColor orangeColor];
+}
+
+- (void)messageCountChange:(NSNotification *)obj{
+    
 }
 
 -(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{

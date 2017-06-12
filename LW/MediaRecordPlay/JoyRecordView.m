@@ -187,10 +187,10 @@
 
 -(UIImageView *)focusCursor{
     if (!_focusCursor) {
-        _focusCursor = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
-        _focusCursor.image = [UIImage imageNamed:@"LW_CameraFocus"];
-        [self addSubview:_focusCursor];
-        _focusCursor.alpha = 0;
+    _focusCursor = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
+    _focusCursor.image = [UIImage imageNamed:@"LW_CameraFocus"];
+    [self addSubview:_focusCursor];
+    _focusCursor.alpha = 0;
     }
     return _focusCursor;
 }
@@ -271,6 +271,19 @@
             label = nil;
             [CAAnimation clearAnimationInView:label];
         });
+    }
+
+}
+
+-(void)joyCaptureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection{
+    if (metadataObjects.count > 0){
+        [self.recorder.captureSession stopRunning];
+        AVMetadataMachineReadableCodeObject *obj = metadataObjects.count?metadataObjects.firstObject:nil;
+        NSString *scanStr = obj?obj.stringValue:nil;
+        __weak __typeof(&*self)weakSelf = self;
+        scanStr?dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.scanMMetaBlock?weakSelf.scanMMetaBlock(scanStr):nil;
+        }):nil;
     }
 
 }

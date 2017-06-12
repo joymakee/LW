@@ -20,12 +20,7 @@
 @implementation LWChatInteractor
 - (void)getChatInfo:(VOIDBLOCK)block{
     NSMutableArray *chatListDataArrayM = [NSMutableArray new];
-    ChatCellModel *model = [[ChatCellModel alloc]init];
-    model.title = @"🌟JoyP🌟";
-    model.subTitle = @"@property (weak, nonatomic)IBOutlet UILabel*chatInfoLabel;";
-    model.cellName = @"LWChatLeftIconLabelCell";
-    model.backgroundColor = JOY_clearColor;
-    [chatListDataArrayM addObject:model];
+
     JoySectionBaseModel *sectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:chatListDataArrayM sectionH:64 sectionTitle:nil];
     sectionModel.sectionFootH = 60;
     [self.dataArrayM addObject:sectionModel];

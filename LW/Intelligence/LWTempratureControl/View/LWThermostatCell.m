@@ -46,9 +46,11 @@
     self.currentTemprature.text = [@(model.currentValue) stringValue];
     self.currentTemprature.layer.borderColor =
     self.backView.layer.borderColor = [UIColor colorWithRed:model.currentValue/50 green:0.2 blue:1-model.currentValue/50 alpha:0.8].CGColor;
+    
     [self openPower:_model.on]; //电源状态
     
     self.tempratureView.currentValue = model.currentValue/50;
+    
     self.tempratureView.targetValue = model.targetValue/50;
 
     __weak __typeof(&*self)weakSelf = self;

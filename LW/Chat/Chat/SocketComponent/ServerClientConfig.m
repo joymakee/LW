@@ -53,25 +53,23 @@ static ServerClientConfig *serverClientConfig;
             weakSelf.hostAddressText = textField;
         }];
         
-//        [_alert addAction:[UIAlertAction actionWithTitle:@"服务器" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action){
-//           _alert.message = localIpAddress;
-//            weakSelf.isServer = YES;
-//        }]];
-        
         [_alert addAction:[UIAlertAction actionWithTitle:@"客户端" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
              HIDE_KEYBOARD
-             if ([[weakSelf.hostAddressText.text componentsSeparatedByString:@"."] count]==4)
-             {
-                 [[NSUserDefaults standardUserDefaults] setObject:weakSelf.hostAddressText.text forKey:KHostAddressUserdefaultStr];
-                 weakSelf.isServer = NO;
-                 _alert.message = [NSString stringWithFormat:@"当前服务器地址为:%@",weakSelf.hostAddressText.text];
-             }
-             else
-             {
-                 
-             }
+            
+            BOOL cacheIP =  [weakSelf cacheServiceIP:weakSelf.hostAddressText.text];
+            if(cacheIP) _alert.message = [NSString stringWithFormat:@"当前服务器地址为:%@",weakSelf.hostAddressText.text];
          }]];
     }
     return _alert;
+}
+
+#pragma mark 缓存ip
+- (BOOL)cacheServiceIP:(NSString *)ip{
+    if ([ip componentsSeparatedByString:@"."].count == 4) {
+        [[NSUserDefaults standardUserDefaults] setObject:ip forKey:KHostAddressUserdefaultStr];
+        self.isServer = NO;
+        return YES;
+    }
+    return NO;
 }
 @end
