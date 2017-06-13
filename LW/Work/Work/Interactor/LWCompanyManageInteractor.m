@@ -45,6 +45,7 @@
     cellModel.bundleName = JoyToolBundle;
     cellModel.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
     cellModel.viewShape = EImageTypeSquare;
+    cellModel.tapAction = @"goCommentVC";
     [arrayM addObject:cellModel];
  
     JoyImageCellBaseModel *happyModel = [[JoyImageCellBaseModel alloc]init];

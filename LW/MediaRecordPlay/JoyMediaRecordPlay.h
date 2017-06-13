@@ -27,13 +27,21 @@ typedef NS_ENUM(NSUInteger,EAVCaptureOutputType) {
 @protocol ReCordPlayProtoCol <NSObject>
 
 @optional
-- (void)joyRecordTimeCurrentTime:(CGFloat)currentTime totalTime:(CGFloat)totalTime;
+- (void)joyRecordTimeCurrentTime:(CGFloat)currentTime
+                       totalTime:(CGFloat)totalTime;
 
-- (void)joyCaptureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections;
+- (void)joyCaptureOutput:(AVCaptureFileOutput *)captureOutput
+didStartRecordingToOutputFileAtURL:(NSURL *)fileURL
+         fromConnections:(NSArray *)connections;
 
--(void)joyCaptureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error recordResult:(ERecordResult)recordResult;
+-(void)joyCaptureOutput:(AVCaptureFileOutput *)captureOutput
+didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
+        fromConnections:(NSArray *)connections error:(NSError *)error
+           recordResult:(ERecordResult)recordResult;
 
-- (void)joyCaptureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection;
+- (void)joyCaptureOutput:(AVCaptureOutput *)captureOutput
+didOutputMetadataObjects:(NSArray *)metadataObjects
+          fromConnection:(AVCaptureConnection *)connection;
 @end
 
 @interface JoyMediaRecordPlay : NSObject
@@ -86,7 +94,11 @@ typedef NS_ENUM(NSUInteger,EAVCaptureOutputType) {
 - (void)showAlert;
 
 #pragma mark 视频裁剪压缩
-+ (void)mergeAndExportVideosAtFileURLs:(NSURL *)fileURL newUrl:(NSString *)mergeFilePath widthHeightScale:(CGFloat)whScalle presetName:(NSString *)presetName mergeSucess:(VOIDBLOCK)mergeSucess;
++ (void)mergeAndExportVideosAtFileURLs:(NSURL *)fileURL
+                                newUrl:(NSString *)mergeFilePath
+                      widthHeightScale:(CGFloat)whScalle
+                            presetName:(NSString *)presetName
+                           mergeSucess:(VOIDBLOCK)mergeSucess;
 
 #pragma mark 视频保存相册
 + (void)saveToPhotoWithUrl:(NSURL *)url;

@@ -122,7 +122,7 @@ static const CGFloat KMinRecordTime = 3;
     return _metadataOutput;
 }
 
-#pragma mark
+#pragma mark 输入输出对象连接
 -(AVCaptureConnection *)captureConnection{
     return _captureConnection = _captureConnection?:[self.movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
 }

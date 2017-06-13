@@ -14,6 +14,7 @@
 #import "PlayBambooVC.h"
 #import "LWColorTabelVC.h"
 #import "WhatWeEatTodayVC.h"
+#import "LWCommentVC.h"
 
 @implementation LWCompanyManagePresenter
 
@@ -79,4 +80,11 @@
     LWColorTabelVC *colorTable = [[LWColorTabelVC alloc]init];
     [self goVC:colorTable];
 }
+
+
+- (void)goCommentVC{
+    LWCommentVC *commentVC = [[LWCommentVC alloc]init];
+    [self goVC:commentVC];
+}
+
 @end

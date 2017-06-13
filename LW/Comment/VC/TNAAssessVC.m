@@ -14,6 +14,7 @@
 #import <AFNetworking.h>
 #import <UIImage+Extension.h>
 #import "Joy.h"
+#import "JoyBaseVC+LWCategory.h"
 @interface TNAAssessVC ()<UITextViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView     *commentTextView;
 @property (weak, nonatomic) IBOutlet UILabel        *countLabel;
@@ -27,19 +28,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView    *gitimageview;
 @property (nonatomic,strong)CommentModel            *comment;
 @property (weak, nonatomic) IBOutlet BackGroundBlurView *backBlurView;
-@property (nonatomic,strong)UIView *statuBarView;
 @end
 
 static const  NSInteger  KCommentMaxNumber = 500;
 @implementation TNAAssessVC
-
--(UIView *)statuBarView{
-    if (!_statuBarView) {
-        _statuBarView = [[UIView alloc]initWithFrame:CGRectMake(0, -20, CGRectGetWidth([UIScreen mainScreen].bounds), 20)];
-        _statuBarView.backgroundColor = self.navigationController.navigationBar.backgroundColor;
-    }
-    return _statuBarView;
-}
 
 - (CommentModel *)comment{
     if (!_comment) {
@@ -80,7 +72,7 @@ static const  NSInteger  KCommentMaxNumber = 500;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavItemAndTitle];
-    [self.navigationController.navigationBar addSubview:self.statuBarView];
+    [self setRectEdgeAll];
     self.gitimageview.image = [UIImage sd_animatedGIFNamed:@"luck"];
     self.commentStarView.canComment = YES;
     self.commentStarView.rating = 1.0f;
@@ -98,7 +90,6 @@ static const  NSInteger  KCommentMaxNumber = 500;
         [weakSelf deleteSelectPic:indexPath];
     };
     [self.backBlurView setImage:[UIImage imageNamed:@"shuye.jpg"] andBlur:0];
-
 }
 
 - (void)setNavItemAndTitle{
@@ -167,6 +158,7 @@ static const  NSInteger  KCommentMaxNumber = 500;
 #pragma mark 提交评论
 - (IBAction)commentBtnClick:(id)sender {
     self.comment.starNumber = self.commentStarView.rating;
+    [self.imageSourcesArray removeLastObject];
     self.comment.imageArray = self.imageSourcesArray;
     self.comment.subTitle = self.commentTextView.text;
     self.comment.dateStr = [CommentModel getDateStrWithDate:[NSDate date]];
@@ -219,7 +211,7 @@ static const  NSInteger  KCommentMaxNumber = 500;
         //上传成功
     } failure:^(NSURLSessionDataTask *_Nullable task, NSError * _Nonnull error) {
         //上传失败
-        [weakSelf reloadSelectPic];
+//        [weakSelf reloadSelectPic];
     }];
 }
 
