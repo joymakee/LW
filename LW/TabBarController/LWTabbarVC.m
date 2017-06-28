@@ -62,6 +62,12 @@ NSString  *KMESSAGE_COUNT_CHANGE = @"messageCountChange";
 }
 
 -(void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
-
+    [tabBarController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj == viewController) {
+            [viewController.tabBarItem setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor orangeColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:14] } forState:UIControlStateNormal];
+        }else{
+            [obj.tabBarItem setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor grayColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:12] } forState:UIControlStateNormal];
+        }
+    }];
 }
 @end

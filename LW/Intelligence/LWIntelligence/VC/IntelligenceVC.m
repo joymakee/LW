@@ -87,6 +87,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setRectEdgeAll];
     [self setBackViewWithImageName:nil bundleName:nil];
     [self setDefaultConstraintWithView:self.intelligenceView andTitle:@"智能生活"];
     [self.intelligencelnteractor getIntelligenceSource];

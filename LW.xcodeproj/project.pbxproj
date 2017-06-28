@@ -274,7 +274,6 @@
 		2FD44D791EE7E53600474F9A /* JoyQRCodeScanPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD44D781EE7E53600474F9A /* JoyQRCodeScanPresenter.m */; };
 		2FD44D7B1EE7FA4700474F9A /* LW_PhotoLibruary.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FD44D7A1EE7FA4700474F9A /* LW_PhotoLibruary.png */; };
 		2FE953831EDFB89D00C44B05 /* LW_MediaList.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FE953821EDFB89D00C44B05 /* LW_MediaList.json */; };
-		2FFB12961EEE8890009D7B75 /* JoyQRCodeGenerateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB12951EEE8890009D7B75 /* JoyQRCodeGenerateManager.m */; };
 		2FFB12A81EEEA2C0009D7B75 /* bamboo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2FFB12A71EEEA2C0009D7B75 /* bamboo.jpg */; };
 		2FFC5C7D1EE8F80B002F4906 /* JoyWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFC5C7C1EE8F80B002F4906 /* JoyWebView.m */; };
 		2FFE751A1DD3106A004AD35A /* LWColorTabelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE75191DD3106A004AD35A /* LWColorTabelVC.m */; };
@@ -648,6 +647,8 @@
 		2FA559B11EBCAA35000F6E48 /* trends_preview_video_done@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trends_preview_video_done@2x.png"; sourceTree = "<group>"; };
 		2FA559B21EBCAA35000F6E48 /* trends_preview_video_done@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trends_preview_video_done@3x.png"; sourceTree = "<group>"; };
 		2FAD6C201DC9C7EC00D6A60B /* shuye.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shuye.jpg; sourceTree = "<group>"; };
+		2FB872581EF4007500C6E338 /* JoyQRCodeGenerateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JoyQRCodeGenerateManager.h; sourceTree = "<group>"; };
+		2FB872591EF4007500C6E338 /* JoyQRCodeGenerateManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JoyQRCodeGenerateManager.m; sourceTree = "<group>"; };
 		2FBC81F21EE4F8E8006CB4C4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2FBC81F41EE4F913006CB4C4 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		2FBC81F61EE548DD006CB4C4 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TencentOpenApi_IOS_Bundle.bundle; path = LW/FrameWork/TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
@@ -675,8 +676,6 @@
 		2FD44D781EE7E53600474F9A /* JoyQRCodeScanPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoyQRCodeScanPresenter.m; sourceTree = "<group>"; };
 		2FD44D7A1EE7FA4700474F9A /* LW_PhotoLibruary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LW_PhotoLibruary.png; sourceTree = "<group>"; };
 		2FE953821EDFB89D00C44B05 /* LW_MediaList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LW_MediaList.json; sourceTree = "<group>"; };
-		2FFB12941EEE8890009D7B75 /* JoyQRCodeGenerateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JoyQRCodeGenerateManager.h; path = LW/JoyQRCode/JoyQRCodeGenarate/JoyQRCodeGenerateManager.h; sourceTree = SOURCE_ROOT; };
-		2FFB12951EEE8890009D7B75 /* JoyQRCodeGenerateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JoyQRCodeGenerateManager.m; path = LW/JoyQRCode/JoyQRCodeGenarate/JoyQRCodeGenerateManager.m; sourceTree = SOURCE_ROOT; };
 		2FFB12A71EEEA2C0009D7B75 /* bamboo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bamboo.jpg; sourceTree = "<group>"; };
 		2FFC5C7B1EE8F80B002F4906 /* JoyWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoyWebView.h; sourceTree = "<group>"; };
 		2FFC5C7C1EE8F80B002F4906 /* JoyWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoyWebView.m; sourceTree = "<group>"; };
@@ -1878,6 +1877,15 @@
 			path = imageSources;
 			sourceTree = "<group>";
 		};
+		2FB872571EF4007500C6E338 /* JoyQRCodeGenerateManager */ = {
+			isa = PBXGroup;
+			children = (
+				2FB872581EF4007500C6E338 /* JoyQRCodeGenerateManager.h */,
+				2FB872591EF4007500C6E338 /* JoyQRCodeGenerateManager.m */,
+			);
+			path = JoyQRCodeGenerateManager;
+			sourceTree = "<group>";
+		};
 		2FBC81FA1EE549DA006CB4C4 /* JoyCoreMotion */ = {
 			isa = PBXGroup;
 			children = (
@@ -1959,19 +1967,10 @@
 		2FFB12911EEE84DE009D7B75 /* JoyQRCodeGenarate */ = {
 			isa = PBXGroup;
 			children = (
-				2FFB12921EEE84DE009D7B75 /* JoyQRCodeGeneratePresenter */,
+				2FB872571EF4007500C6E338 /* JoyQRCodeGenerateManager */,
 				2FFB12931EEE84DE009D7B75 /* JoyQRCodeGenerateView */,
 			);
 			path = JoyQRCodeGenarate;
-			sourceTree = "<group>";
-		};
-		2FFB12921EEE84DE009D7B75 /* JoyQRCodeGeneratePresenter */ = {
-			isa = PBXGroup;
-			children = (
-				2FFB12941EEE8890009D7B75 /* JoyQRCodeGenerateManager.h */,
-				2FFB12951EEE8890009D7B75 /* JoyQRCodeGenerateManager.m */,
-			);
-			path = JoyQRCodeGeneratePresenter;
 			sourceTree = "<group>";
 		};
 		2FFB12931EEE84DE009D7B75 /* JoyQRCodeGenerateView */ = {
@@ -2454,7 +2453,6 @@
 				2F4ED6221E518F93007C71D3 /* LWChatPresenter.m in Sources */,
 				2F410F621DC9BD9E00A650BB /* LWMediaInteractor.m in Sources */,
 				2F36FA971ED4375D00207D12 /* LWTempratureView.m in Sources */,
-				2FFB12961EEE8890009D7B75 /* JoyQRCodeGenerateManager.m in Sources */,
 				2F410F671DC9BD9E00A650BB /* LWMediaListVC.m in Sources */,
 				2F410F221DC9BD9E00A650BB /* XHImageViewer.m in Sources */,
 				2F36FB1C1ED43D5A00207D12 /* LWTempratureInteractor.m in Sources */,

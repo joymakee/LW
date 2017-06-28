@@ -8,7 +8,7 @@
 
 #import "JoyWebView.h"
 #import <WebKit/WebKit.h>
-#import <Joy.h>
+#import <JoyTool.h>
 
 @interface JoyWebView ()<WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler,UIScrollViewDelegate>
 @property (nonatomic,copy)NSString *urlString;
@@ -33,7 +33,16 @@
 
 -(WKWebView *)webView{
     if (!_webView) {
-        _webView = [[WKWebView alloc]init];
+        WKUserContentController *userContentController = [[WKUserContentController alloc] init];
+        [userContentController addScriptMessageHandler:self name:@"webViewLoadStart"];
+        [userContentController addScriptMessageHandler:self name:@"webViewLoadFinish"];
+        [userContentController addScriptMessageHandler:self name:@"webViewLogout"];
+        [userContentController addScriptMessageHandler:self name:@"webViewSuccess"];
+        
+        // WKWebView的配置
+        WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+        configuration.userContentController = userContentController;
+        _webView = [[WKWebView alloc]initWithFrame:self.frame configuration:configuration];
         _webView.scrollView.delegate = self;
         _webView.UIDelegate = self;
         [_webView sizeToFit];
@@ -130,14 +139,34 @@
 }
 //3.显示一个JS的Alert（与JS交互）
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler;{
+    [[JoyAlert shareAlert]showAlertViewWithTitle:@"提示" message:message cancle:nil confirm:@"OK" alertBlock:^(UIAlertView *alertView, NSInteger btnIndex) {
+        completionHandler();
+    }];
+    
 }
 //4.弹出一个输入框（与JS交互的）
 - (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * __nullable result))completionHandler;{
-    
+    NSLog(@"%s",__FUNCTION__);
+    // alert弹出框
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:prompt message:nil preferredStyle:UIAlertControllerStyleAlert];
+    // 输入框
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = defaultText;
+    }];
+    // 确定按钮
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // 返回用户输入的信息
+        UITextField *textField = alertController.textFields.firstObject;
+        completionHandler(textField.text);
+    }]];
+    // 显示
+//    [self presentViewController:alertController animated:YES completion:nil];
 }
 //5.显示一个确认框（JS的）
 - (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler;{
-    
+    [[JoyAlert shareAlert]showAlertViewWithTitle:@"提示" message:message cancle:@"Cancle" confirm:@"OK" alertBlock:^(UIAlertView *alertView, NSInteger btnIndex) {
+        completionHandler(btnIndex?YES:NO);
+    }];
 }
 
 -(void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{

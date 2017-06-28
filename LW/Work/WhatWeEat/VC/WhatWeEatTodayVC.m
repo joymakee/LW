@@ -81,7 +81,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"吃饭选择困难户";
-    self.navigationController.navigationBar.backgroundColor = JOY_greenColor;
     [self setRightNavItemWithTitle:@"自定义菜单"];
     [self.featherView setBounds:CGRectMake(0, 0, 300, 300)];
     [self.pie setBounds:self.featherView.bounds];

@@ -56,8 +56,21 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     [picker dismissViewControllerAnimated:YES completion:nil];
     picker.delegate = nil;
-    UIImage *pickImage = info[UIImagePickerControllerOriginalImage];
-    _scanView.scanMMetaBlock?_scanView.scanMMetaBlock(pickImage.scanMessage):nil;
+    UIImage *pickImage = info[UIImagePickerControllerEditedImage];
+    if (!pickImage) {
+        pickImage = info[UIImagePickerControllerOriginalImage];
+    }
+    //初始化  将类型设置为二维码
+    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:nil options:nil];
+    //设置数组，放置识别完之后的数据
+    NSArray *features = [detector featuresInImage:[CIImage imageWithData:UIImagePNGRepresentation(pickImage)]];
+    //判断是否有数据（即是否是二维码）
+    if (features.count >= 1) {
+        //取第一个元素就是二维码所存放的文本信息
+        CIQRCodeFeature *feature = features[0];
+        NSString *scannedResult = feature.messageString;
+        _scanView.scanMMetaBlock?_scanView.scanMMetaBlock(scannedResult):nil;
+    }
 }
 
 -(void)dealloc{
