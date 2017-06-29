@@ -11,7 +11,7 @@
 #import "Joy.h"
 #import <CAAnimation+HCAnimation.h>
 #import "JoyCoreMotion.h"
-
+#import "QRCodeView.h"
 
 @interface JoyQRCodeScanView ()<UIGestureRecognizerDelegate,ReCordPlayProtoCol>
 /**
@@ -27,20 +27,17 @@
 @property (nonatomic,strong)UIButton *torchLightBtn;
 @property (nonatomic,strong)UIButton *photoSelectBtn;
 @property (nonatomic,strong)UIButton *cancleBtn;
-@property (nonatomic,strong)UIView  *scanlineView;
+@property (nonatomic,strong)QRCodeView  *qrCodeBorderImageView;
 
 @end
 
 @implementation JoyQRCodeScanView
 
--(UIView *)scanlineView{
-    if (!_scanlineView) {
-        _scanlineView = [[UIView alloc]initWithFrame:CGRectMake(10, 100, SCREEN_W-20, 2)];
-        _scanlineView.backgroundColor = [UIColor greenColor];
-        _scanlineView.layer.masksToBounds = YES;
-        _scanlineView.layer.cornerRadius =3;
+-(QRCodeView *)qrCodeBorderImageView{
+    if (!_qrCodeBorderImageView) {
+        _qrCodeBorderImageView = [[QRCodeView alloc]initWithFrame:CGRectZero];
     }
-    return _scanlineView;
+    return _qrCodeBorderImageView;
 }
 
 -(UIButton *)switchCameraBtn{
@@ -90,9 +87,8 @@
         [self addSubview:self.torchLightBtn];
         [self addSubview:self.photoSelectBtn];
         [self addSubview:self.cancleBtn];
-        [self addSubview:self.scanlineView];
+        [self addSubview:self.qrCodeBorderImageView];
         [self setCoreMotion];
-        [CAAnimation showMoveAnimationInView:self.scanlineView Position:CGPointMake(160, SCREEN_H-100) Repeat:0 Duration:1.5];
     }
     return self;
 }
@@ -106,6 +102,11 @@
     [super updateConstraints];
     
     __weak __typeof (&*self)weakSelf = self;
+    
+    MAS_CONSTRAINT(self.qrCodeBorderImageView, make.height.mas_equalTo(280);
+                   make.width.mas_equalTo(280);
+                   make.centerX.mas_equalTo(weakSelf.centerX);
+                   make.centerY.mas_equalTo(weakSelf.centerY).offset(-40););
     
     MAS_CONSTRAINT(self.torchLightBtn, make.right.equalTo(weakSelf.mas_right).offset(-20);
                    make.top.equalTo(weakSelf.mas_top).offset(30);
@@ -178,6 +179,7 @@
             weakSelf.torchLightBtn.transform = rotateToTransform;
             weakSelf.photoSelectBtn.transform = rotateToTransform;
             weakSelf.cancleBtn.transform = rotateToTransform;
+            weakSelf.qrCodeBorderImageView.transform = rotateToTransform;
         }];
     }
 }

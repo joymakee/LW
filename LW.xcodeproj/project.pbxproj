@@ -248,6 +248,8 @@
 		2F8806E11E52F01F0029FB4B /* LWChatListCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8806E01E52F01F0029FB4B /* LWChatListCellModel.m */; };
 		2F8806E51E53061A0029FB4B /* InputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8806E41E53061A0029FB4B /* InputView.m */; };
 		2F8806EC1E53EBC90029FB4B /* LWChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8806EB1E53EBC90029FB4B /* LWChatView.m */; };
+		2F9A7B0E1F03BB80000E1674 /* QRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9A7B0D1F03BB80000E1674 /* QRCodeView.m */; };
+		2F9A7B101F04F277000E1674 /* qrScanBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F9A7B0F1F04F277000E1674 /* qrScanBorder.png */; };
 		2FA559AD1EBC78B7000F6E48 /* LW_StartRecordVideo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA559AB1EBC78B7000F6E48 /* LW_StartRecordVideo@2x.png */; };
 		2FA559AE1EBC78B7000F6E48 /* LW_StartRecordVideo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA559AC1EBC78B7000F6E48 /* LW_StartRecordVideo@3x.png */; };
 		2FA559B31EBCAA35000F6E48 /* trends_ preview_video_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FA559AF1EBCAA35000F6E48 /* trends_ preview_video_back@2x.png */; };
@@ -640,6 +642,9 @@
 		2F8806E41E53061A0029FB4B /* InputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputView.m; sourceTree = "<group>"; };
 		2F8806EA1E53EBC90029FB4B /* LWChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatView.h; sourceTree = "<group>"; };
 		2F8806EB1E53EBC90029FB4B /* LWChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatView.m; sourceTree = "<group>"; };
+		2F9A7B0C1F03BB80000E1674 /* QRCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeView.h; sourceTree = "<group>"; };
+		2F9A7B0D1F03BB80000E1674 /* QRCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeView.m; sourceTree = "<group>"; };
+		2F9A7B0F1F04F277000E1674 /* qrScanBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qrScanBorder.png; sourceTree = "<group>"; };
 		2FA559AB1EBC78B7000F6E48 /* LW_StartRecordVideo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LW_StartRecordVideo@2x.png"; sourceTree = "<group>"; };
 		2FA559AC1EBC78B7000F6E48 /* LW_StartRecordVideo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LW_StartRecordVideo@3x.png"; sourceTree = "<group>"; };
 		2FA559AF1EBCAA35000F6E48 /* trends_ preview_video_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trends_ preview_video_back@2x.png"; sourceTree = "<group>"; };
@@ -1960,6 +1965,9 @@
 			children = (
 				2FD44D741EE7DE8000474F9A /* JoyQRCodeScanView.h */,
 				2FD44D751EE7DE8000474F9A /* JoyQRCodeScanView.m */,
+				2F9A7B0C1F03BB80000E1674 /* QRCodeView.h */,
+				2F9A7B0D1F03BB80000E1674 /* QRCodeView.m */,
+				2F9A7B0F1F04F277000E1674 /* qrScanBorder.png */,
 			);
 			path = JoyQRCodeScanView;
 			sourceTree = "<group>";
@@ -2253,6 +2261,7 @@
 				2F36FB071ED437F500207D12 /* lw_inteligence_thermost.png in Resources */,
 				2F362A861DDE9A7400B58076 /* playBamboo2@2x.png in Resources */,
 				2FBC82041EE555BF006CB4C4 /* lw_inteligence_potting.png in Resources */,
+				2F9A7B101F04F277000E1674 /* qrScanBorder.png in Resources */,
 				2FA559AE1EBC78B7000F6E48 /* LW_StartRecordVideo@3x.png in Resources */,
 				2F36FB261ED4566100207D12 /* LWThermostatCell.xib in Resources */,
 				2F8685371EC2BF3800A443CF /* LW_Video_FlashLight.png in Resources */,
@@ -2450,6 +2459,7 @@
 				2F723E601EB08FED00E9DB67 /* JoyDeviceNetTool.m in Sources */,
 				2F410F681DC9BD9E00A650BB /* LWNavigationController.m in Sources */,
 				2F410F231DC9BD9E00A650BB /* XHViewState.m in Sources */,
+				2F9A7B0E1F03BB80000E1674 /* QRCodeView.m in Sources */,
 				2F4ED6221E518F93007C71D3 /* LWChatPresenter.m in Sources */,
 				2F410F621DC9BD9E00A650BB /* LWMediaInteractor.m in Sources */,
 				2F36FA971ED4375D00207D12 /* LWTempratureView.m in Sources */,

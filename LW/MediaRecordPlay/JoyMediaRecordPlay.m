@@ -115,7 +115,11 @@ static const CGFloat KMinRecordTime = 3;
 -(AVCaptureMetadataOutput *)metadataOutput{
     if (!_metadataOutput){
         _metadataOutput = [[AVCaptureMetadataOutput alloc]init];
-//        _metadataOutput.rectOfInterest = CGRectMake(0.2, 0.2, 0.6, 0.6);
+        //设置扫描区域的大小 (0, 0, 1, 1) 按比例设置
+        CGFloat scanW = 280;
+        CGFloat scanH = 280;
+        _metadataOutput.rectOfInterest = CGRectMake((SCREEN_H-scanH)/2/SCREEN_H,(SCREEN_W-scanW)/2/SCREEN_W,scanH/SCREEN_H,scanW/SCREEN_W);
+
 //        //设置输出数据代理
         [_metadataOutput setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
     }

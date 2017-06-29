@@ -94,7 +94,9 @@ extern NSString  *KMESSAGE_COUNT_CHANGE;
 -(void)rightNavItemClickAction{
     [super rightNavItemClickAction];
         __weak __typeof(&*self)weakSelf = self;
-    [[JoyQRCodeScanPresenter shareInstance]startScan:^(NSString *str) {
+    JoyQRCodeScanPresenter *scanManager = [[JoyQRCodeScanPresenter alloc]init];
+    [scanManager startScan:^(NSString *str) {
+        [UIPasteboard generalPasteboard].string = str;
         [weakSelf scanResultHandler:str];
     }];
 }
