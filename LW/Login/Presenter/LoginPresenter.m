@@ -14,32 +14,21 @@
 #import "LWTabbarVC.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 
-@interface LoginPresenter ()<TextChangedDelegete>
-
-@end
-
 @implementation LoginPresenter
 -(void)reloadDataSource{
     [self.interactor getLoginDataSource];
-    self.loginView.dataArrayM = self.interactor.dataArrayM;
-    [self.loginView reloadTableView];
-    [self deviceLogin];
-}
-
--(void)setLoginView:(JoyTableAutoLayoutView *)loginView{
-    _loginView = loginView;
-    _loginView.delegate = self;
     __weak __typeof (&*self)weakSelf = self;
-    _loginView.tableDidSelectBlock = ^(NSIndexPath *indexPath,NSString *tapAction){
-        [super performTapAction:tapAction];
-    };
+    self.loginView.setDataSource(self.interactor.dataArrayM).reloadTable().cellDidSelect(^(NSIndexPath *indexPath, NSString *tapAction) {
+        [weakSelf performTapAction:tapAction];
+    }).cellTextEiditEnd(^(NSIndexPath *indexPath, NSString *content, NSString *key) {
+        [[LWUser shareInstance]initUserInfoWithKey:key value:content];
+    });
+    [self deviceLogin];
 }
 
 #pragma mark  登录
 - (void)loginAction{
-    {
-        [UIApplication sharedApplication].keyWindow.rootViewController = [[LWTabbarVC alloc]init];
-    }
+    [UIApplication sharedApplication].keyWindow.rootViewController = [[LWTabbarVC alloc]init];
 }
 
 #pragma mark 指纹识别
@@ -63,16 +52,6 @@
                               });
                           }];
     }
-}
-
--(void)viewAction:(NSString *)action indexPath:(NSIndexPath *)indexPath object:(id)obj{
-//    [[LWShareManager shareInstance]loginWithPlatform:obj];
-    [[LWShareManager shareInstance]tencentLogin];
-
-}
-
--(void)textFieldChangedWithIndexPath:(NSIndexPath *)indexPath andChangedText:(NSString *)content andChangedKey:(NSString *)key{
-    [[LWUser shareInstance]initUserInfoWithKey:key value:content];
 }
 
 - (void)qqLogin{

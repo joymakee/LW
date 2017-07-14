@@ -16,7 +16,7 @@
 
 extern NSString *KHostAddressUserdefaultStr;
 
-@interface LWChatPresenter ()<ScrollDelegate>
+@interface LWChatPresenter ()
 
 @end
 
@@ -26,17 +26,17 @@ extern NSString *KHostAddressUserdefaultStr;
     _chatView = chatView;
     _chatView.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _chatView.tableView.backgroundColor = JOY_clearColor;
-    _chatView.scrollDelegate = self;
     __weak typeof (&*self)weakSelf = self;
     _chatView.messageBlock = ^(ChatMessage *sendMessage){
         [weakSelf.chatInteractor sendmessage:sendMessage];
         [weakSelf receivedMessage];
     };
     
-    _chatView.tableDidSelectBlock = ^(NSIndexPath *indexPath, NSString *tapAction) {
-        [super performTapAction:tapAction];
-    };
-
+    _chatView.tableScroll(^(UIScrollView *scrollView) {
+        weakSelf.rootView.viewController.navigationController.navigationBar.alpha = scrollView.contentOffset.y>=64?0:(64-scrollView.contentOffset.y)/64;
+    }).cellDidSelect(^(NSIndexPath *indexPath, NSString *tapAction) {
+        [weakSelf performTapAction:tapAction];
+    });
 }
 
 - (void)getChatInfoAndDisplay:(AlertBlock)alert{
@@ -63,8 +63,7 @@ extern NSString *KHostAddressUserdefaultStr;
 }
 
 - (void)reloadChatList{
-    self.chatView.dataArrayM = self.chatInteractor.dataArrayM;
-    [self.chatView reloadTableView];
+    self.chatView.setDataSource(self.chatInteractor.dataArrayM).reloadTable();
 }
 
 - (void)receivedMessage{
@@ -114,9 +113,5 @@ extern NSString *KHostAddressUserdefaultStr;
     //开启动画回调
     cellModel.aToBCellBlock?cellModel.aToBCellBlock(@(NO)):nil;
 
-}
-
--(void)scrollDidScroll:(UIScrollView *)scrollView{
-    self.rootView.viewController.navigationController.navigationBar.alpha = scrollView.contentOffset.y>=64?0:(64-scrollView.contentOffset.y)/64;
 }
 @end

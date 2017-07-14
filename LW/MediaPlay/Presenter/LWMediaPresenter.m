@@ -19,18 +19,26 @@
 #import "LWNavigationController.h"
 #import <WebKit/WebKit.h>
 
-@interface LWMediaPresenter ()<ScrollDelegate>
-
-@end
-
 @implementation LWMediaPresenter
 -(void)reloadDataSource{
     __weak __typeof (&*self)weakSelf = self;
     self.webView.hidden = YES;
     [self.interactor getMedisSourcesDataSource:^{
-        weakSelf.mediaListView.dataArrayM = weakSelf.interactor.dataArrayM;
-        [weakSelf.mediaListView reloadTableView];
+        [weakSelf reloadTable];
     }];
+    
+    self.webView.scrollDidScroll(^(UIScrollView *scrollView) {
+        [weakSelf scrollDidScroll:scrollView];
+    });
+}
+
+- (void)reloadTable{
+    __weak __typeof (&*self)weakSelf = self;
+    self.mediaListView.setDataSource(self.interactor.dataArrayM).reloadTable().cellDidSelect(^(NSIndexPath *indexPath, NSString *tapAction) {
+        [weakSelf performTapAction:tapAction];
+    }).tableScroll(^(UIScrollView *scrollView) {
+        [weakSelf scrollDidScroll:scrollView];
+    });
 }
 
 -(void)setSegmentView:(JoyUISegementView *)segmentView{
@@ -45,7 +53,7 @@
     if (index == 0) {
         self.webView.hidden = YES;
         self.mediaListView.hidden = NO;
-        [self.mediaListView reloadTableView];
+        self.mediaListView.reloadTable();
     }
     else if (index == 1 ) {
         self.webView.hidden = NO;
@@ -58,15 +66,6 @@
         self.webView.hidden = NO;
         self.webView.initUrlStr(@"http://pvp.qq.com/webplat/info/news_version3/15592/18024/19327/m13205/list_1.shtml").startLoad();
     }
-}
-
--(void)setMediaListView:(JoyTableAutoLayoutView *)mediaListView{
-    _mediaListView = mediaListView;
-    _mediaListView.scrollDelegate = self;
-    __weak __typeof (&*self)weakSelf = self;
-    _mediaListView.tableDidSelectBlock =^(NSIndexPath *indexPath,NSString *tapAction){
-        [super performTapAction:tapAction];
-    };
 }
 
 - (void)goCommentVC{

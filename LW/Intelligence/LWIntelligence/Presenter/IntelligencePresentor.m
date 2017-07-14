@@ -32,6 +32,7 @@
 //    self.locationManager.checkAuthorization(NO).startUpdateHeading().headUpdateSuccess(^(CGFloat floatNumber) {
 //        NSLog(@"%f",floatNumber);
 //    });
+
     self.locationManager.checkAuthorization(NO).startLocation().locationSuccess(^(NSDictionary *addressDict) {
         [addressDict isKindOfClass:[NSDictionary class]]?[weakSelf getWeatherDiplayWithCity:addressDict[@"City"]]:nil;
     }).locationError(^(NSError *error){

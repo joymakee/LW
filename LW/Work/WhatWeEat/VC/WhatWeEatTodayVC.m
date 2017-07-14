@@ -152,8 +152,7 @@ static BOOL isSaved = NO;
 
 - (void)showCustomTable{
     [self.customMealInteracter getViewDataSourceWithDataSource:self.interacter.dataArrayM];
-    self.customMealView.dataArrayM = self.customMealInteracter.dataArrayM;
-    [self.customMealView reloadTableView];
+    self.customMealView.setDataSource(self.customMealInteracter.dataArrayM).reloadTable();
 }
 
 @end

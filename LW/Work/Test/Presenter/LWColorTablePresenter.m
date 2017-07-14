@@ -14,6 +14,6 @@
 -(void)reloadDataSource{
     [self.interacter getViewDataSource];
     self.colorView.dataArrayM = self.interacter.dataArrayM;
-    [self.colorView reloadTableView];
+    self.colorView.reloadTable();
 }
 @end

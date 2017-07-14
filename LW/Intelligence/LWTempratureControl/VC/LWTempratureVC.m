@@ -20,14 +20,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setBackViewWithImageName:nil bundleName:nil];
-//    [self setRectEdgeAll];
     [self setDefaultConstraintWithView:self.tempratureListView andTitle:@"温控"];
     self.tempratureListView.tableView.separatorStyle =UITableViewCellSeparatorStyleNone;
     self.tempratureListView.tableView.backgroundColor = JOY_clearColor;
     __weak __typeof(&*self)weakSelf = self;
     [self.tempratureInteractor getTempratureDataSource:^{
-        weakSelf.tempratureListView.dataArrayM = weakSelf.tempratureInteractor.dataArrayM;
-        [weakSelf.tempratureListView reloadTableView];
+        weakSelf.tempratureListView.setDataSource(weakSelf.tempratureInteractor.dataArrayM).reloadTable();
     }];
 }
 

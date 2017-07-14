@@ -30,9 +30,8 @@
     _commentView.backgroundColor = [UIColor clearColor];
     BackGroundBlurView *backView = [[BackGroundBlurView alloc]init];
     [backView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"shuye" ofType:@"jpg"]] andBlur:1];
-    _commentView.backView = backView;
     _commentView.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    [_commentView setTableHeaderView:self.headerView];
+    _commentView.setTableBackView(backView).setTableHeadView(self.headerView);
 
 }
 
@@ -58,8 +57,7 @@
 }
 
 - (void)reloadData{
-    self.commentView.dataArrayM = self.interactor.dataArrayM;
-    [self.commentView reloadTableView];
+    self.commentView.setDataSource(self.interactor.dataArrayM).reloadTable();
 }
 
 #pragma mark 完成事件
@@ -78,6 +76,6 @@
     comment.cellName = @"TNACommentTableCell";
     comment.backgroundColor = [UIColor clearColor];
     [sectionModel.rowArrayM insertObject:comment atIndex:0];
-    [self.commentView reloadTableView];
+    self.commentView.reloadTable();
 }
 @end

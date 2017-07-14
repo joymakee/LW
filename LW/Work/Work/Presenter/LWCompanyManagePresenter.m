@@ -29,15 +29,6 @@
     };
 }
 
--(void)setStaffManageView:(JoyTableAutoLayoutView *)staffManageView{
-    _staffManageView = staffManageView;
-    [self.staffManageView.tableView setTableHeaderView:self.segmentView];
-    __weak __typeof (&*self)weakSelf = self;
-    staffManageView.tableDidSelectBlock = ^(NSIndexPath *indexPath,NSString *tapAction){
-        [weakSelf tableVIewDidSelect:indexPath];
-    };
-}
-
 -(void)tableVIewDidSelect:(NSIndexPath *)indexPath{
     JoySectionBaseModel *sectionModel = [self.staffManageView.dataArrayM objectAtIndex:indexPath.section];
     JoyCellBaseModel * selectModel  = sectionModel.rowArrayM[indexPath.row];
@@ -46,10 +37,11 @@
 
 -(void)reloadDataSource{
     [self.interactor getWorkDataSource];
-    self.staffManageView.dataArrayM = self.interactor.restArrayM;
-    [self.staffManageView reloadTableView];
+    __weak __typeof (&*self)weakSelf = self;
+    self.staffManageView.setDataSource(self.interactor.restArrayM).reloadTable().setTableHeadView(self.segmentView).cellDidSelect(^(NSIndexPath *indexPath, NSString *tapAction) {
+        [weakSelf tableVIewDidSelect:indexPath];
+    });
 }
-
 
 - (void)setMentClickAction:(NSInteger)selectIndex{
     switch (selectIndex) {
@@ -64,7 +56,7 @@
             self.staffManageView.dataArrayM = self.interactor.enterpriseCultureArrayM;
             break;
     }
-    [self.staffManageView reloadTableView];
+    self.staffManageView.reloadTable();
 }
 
 - (void)goPlayBambooVC{

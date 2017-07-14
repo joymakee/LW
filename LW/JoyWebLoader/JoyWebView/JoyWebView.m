@@ -83,6 +83,31 @@
     };
 }
 
+-(JoyWebView *(^)(ScrollBlock))scrollDidScroll{
+    __weak __typeof(&*self)weakSelf = self;
+    return ^(ScrollBlock scrollBlock){
+        objc_setAssociatedObject(weakSelf, _cmd, scrollBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        return weakSelf;
+    };
+}
+
+-(JoyWebView *(^)(ScrollBlock))scrollZoom{
+    __weak __typeof(&*self)weakSelf = self;
+    return ^(ScrollBlock scrollBlock){
+        objc_setAssociatedObject(weakSelf, _cmd, scrollBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        return weakSelf;
+    };
+}
+
+-(JoyWebView *(^)(ScrollBlock))scrollScrollToTop{
+    __weak __typeof(&*self)weakSelf = self;
+    return ^(ScrollBlock scrollBlock){
+        objc_setAssociatedObject(weakSelf, _cmd, scrollBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        return weakSelf;
+    };
+}
+
+
 -(void)setUrlStr:(NSString *)urlString urlType:(JoyUrl_Type)urlType{
     _urlString =urlString;
     _urlType = urlType;
@@ -173,4 +198,18 @@
     
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    ScrollBlock scrollBlock = objc_getAssociatedObject(self, @selector(scrollDidScroll));
+    scrollBlock?scrollBlock(scrollView):nil;
+}
+
+-(void)scrollViewDidScrollToTop:(UIScrollView *)scrollView{
+    ScrollBlock scrollBlock = objc_getAssociatedObject(self, @selector(scrollZoom));
+    scrollBlock?scrollBlock(scrollView):nil;
+}
+
+-(void)scrollViewDidZoom:(UIScrollView *)scrollView{
+    ScrollBlock scrollBlock = objc_getAssociatedObject(self, @selector(scrollScrollToTop));
+    scrollBlock?scrollBlock(scrollView):nil;
+}
 @end

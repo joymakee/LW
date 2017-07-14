@@ -24,11 +24,9 @@
     return presenter;
 }
 
--(JoyQRCodeScanView *)scanView{
-    return _scanView =_scanView?:[[JoyQRCodeScanView alloc]init];
-}
-
 - (void)startScan:(STRINGBLOCK)scanBlock{
+    [self.scanView removeFromSuperview];
+    self.scanView = [[JoyQRCodeScanView alloc]init];
     [[UIApplication sharedApplication].keyWindow addSubview:self.scanView];
     MAS_CONSTRAINT(self.scanView, make.edges.mas_equalTo([UIApplication sharedApplication].keyWindow););
     [[UIApplication sharedApplication].keyWindow updateConstraintsIfNeeded];

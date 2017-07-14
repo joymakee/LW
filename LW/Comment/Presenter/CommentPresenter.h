@@ -6,11 +6,11 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "BasePresentor.h"
+#import <JoyPresenterBase.h>
 
 @class JoyTableAutoLayoutView;
 @class CommentInteractor;
-@interface CommentPresenter : BasePresentor
+@interface CommentPresenter : JoyPresenterBase
 @property (nonatomic,strong)JoyTableAutoLayoutView *commentView;
 @property (nonatomic,strong)CommentInteractor *interactor;
 @end

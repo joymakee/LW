@@ -28,17 +28,6 @@ extern NSString  *KMESSAGE_COUNT_CHANGE;
     }];
 }
 
--(void)setChatView:(JoyTableAutoLayoutView *)chatView{
-    _chatView = chatView;
-    __weak typeof (&*self)weakSelf = self;
-    _chatView.tableDidSelectBlock = ^(NSIndexPath *indexPath,NSString *tapAction){
-        [weakSelf tableVIewDidSelect:indexPath];
-    };
-    _chatView.tableEditingBlock = ^(UITableViewCellEditingStyle editingStyle,NSIndexPath *indexPath){
-        [weakSelf deleteCellActionWithIndexPath:indexPath];
-    };
-}
-
 -(void)tableVIewDidSelect:(NSIndexPath *)indexPath{
     JoySectionBaseModel *sectionModel = [self.chatInteractor.dataArrayM objectAtIndex:indexPath.section];
     LWChatListCellModel * selectModel  = sectionModel.rowArrayM[indexPath.row];
@@ -73,8 +62,12 @@ extern NSString  *KMESSAGE_COUNT_CHANGE;
 }
 
 - (void)reloadTable{
-    self.chatView.dataArrayM = self.chatInteractor.dataArrayM;
-    [self.chatView reloadTableView];
+    __weak typeof (&*self)weakSelf = self;
+    self.chatView.setDataSource(self.chatInteractor.dataArrayM).reloadTable().cellDidSelect(^(NSIndexPath *indexPath, NSString *tapAction) {
+        [weakSelf tableVIewDidSelect:indexPath];
+    }).cellEiditAction(^(UITableViewCellEditingStyle editingStyle,NSIndexPath *indexPath){
+        [weakSelf deleteCellActionWithIndexPath:indexPath];
+    });
 }
 
 - (void)goChatVC{
@@ -94,8 +87,7 @@ extern NSString  *KMESSAGE_COUNT_CHANGE;
 -(void)rightNavItemClickAction{
     [super rightNavItemClickAction];
         __weak __typeof(&*self)weakSelf = self;
-    JoyQRCodeScanPresenter *scanManager = [[JoyQRCodeScanPresenter alloc]init];
-    [scanManager startScan:^(NSString *str) {
+    [[JoyQRCodeScanPresenter shareInstance] startScan:^(NSString *str) {
         [UIPasteboard generalPasteboard].string = str;
         [weakSelf scanResultHandler:str];
     }];

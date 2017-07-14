@@ -12,10 +12,15 @@ typedef NS_ENUM(NSInteger,JoyUrl_Type) {
 };
 #import <UIKit/UIKit.h>
 
+typedef void (^ScrollBlock)(UIScrollView *scrollView);
+
 @interface JoyWebView : UIView
 @property (nonatomic,readonly)JoyWebView        *(^initUrlStr)(NSString *urlString);
 @property (nonatomic,readonly)JoyWebView        *(^initUrlType)(JoyUrl_Type urlType);
 @property (nonatomic,readonly)JoyWebView        *(^startLoad)();
 @property (nonatomic,readonly)JoyWebView        *(^sizetoFit)();
+@property (nonatomic,readonly)JoyWebView        *(^scrollDidScroll)(ScrollBlock scrollBlock);
+@property (nonatomic,readonly)JoyWebView        *(^scrollScrollToTop)(ScrollBlock scrollBlock);
+@property (nonatomic,readonly)JoyWebView        *(^scrollZoom)(ScrollBlock scrollBlock);
 
 @end

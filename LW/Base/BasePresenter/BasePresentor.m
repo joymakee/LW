@@ -53,8 +53,9 @@
 #pragma MARk goVC
 - (void)goVC:(UIViewController *)vc{
     self.rootView.viewController.hidesBottomBarWhenPushed=YES;
+    BOOL isNavStack = self.rootView.viewController.navigationController.viewControllers.count>1;
     [self.rootView.viewController.navigationController pushViewController:vc animated:YES];
-    self.rootView.viewController.hidesBottomBarWhenPushed=NO;
+    self.rootView.viewController.hidesBottomBarWhenPushed=isNavStack;
 }
 
 #pragma mark present vc

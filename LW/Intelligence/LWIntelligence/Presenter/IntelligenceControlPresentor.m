@@ -15,7 +15,7 @@
 -(void)setIntelligenceTableView:(JoyTableAutoLayoutView *)intelligenceTableView{
     _intelligenceTableView = intelligenceTableView;
     IntelligenceControlHeadView *headView = [[[NSBundle mainBundle] loadNibNamed:@"IntelligenceControlHeadView" owner:self options:nil] lastObject];
-    [_intelligenceTableView.tableView setTableHeaderView:headView];
+    _intelligenceTableView.setTableHeadView(headView);
     __weak __typeof (&*self)weakSelf = self;
     headView.headImageView.lwImageTouchBlock =^(ELwTouchActionType touchType){
         [weakSelf removeTableFrowmSuperViewAnimation];
@@ -28,7 +28,7 @@
     [self.intelligenceControlnteractor scanBlueth:^{
         __strong __typeof (&*weakSelf)strongSelf = weakSelf;
         strongSelf.intelligenceTableView.dataArrayM = strongSelf.intelligenceControlnteractor.dataArrayM;
-        [strongSelf.intelligenceTableView reloadTableView];
+        strongSelf.intelligenceTableView.reloadTable();
         [weakSelf reloadViewWithFlag:isHaveFoundDevice];
         isHaveFoundDevice =YES;
     }];
