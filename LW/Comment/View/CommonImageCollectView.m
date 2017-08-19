@@ -12,6 +12,7 @@
 #import "UIView+VM.h"
 #import "Masonry.h"
 #import <JoyTool.h>
+#import <JoyCellBaseModel+Action.h>
 const int KCommon_min_cellSpace = 20.0f;
 const int KCommon_min_cellInset = 10.0f;
 
@@ -178,7 +179,7 @@ const int KCommon_min_cellInset = 10.0f;
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     JoyCellBaseModel *cellModel = [self.dataArray objectAtIndex:indexPath.row];
-    [cellModel didSelect];
+    [cellModel action:cellModel.tapAction];
     self.cellDidSelectBlock?self.cellDidSelectBlock(indexPath,cellModel.tapAction):nil;
 }
 

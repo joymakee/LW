@@ -25,7 +25,6 @@
     cellModel.title =@"工作伙伴";
     cellModel.placeHolderImageStr =@"poker";
     cellModel.cellName =@"JoyLeftIconCell";
-    cellModel.bundleName = JoyToolBundle;
     cellModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cellModel.viewShape = EImageTypeSquare;
     [workArrayM addObject:cellModel];
@@ -42,7 +41,6 @@
     cellModel.title =@"照片墙";
     cellModel.placeHolderImageStr =@"poker";
     cellModel.cellName =@"JoyLeftIconCell";
-    cellModel.bundleName = JoyToolBundle;
     cellModel.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
     cellModel.viewShape = EImageTypeSquare;
     cellModel.tapAction = @"goCommentVC";
@@ -52,13 +50,11 @@
     happyModel.title =@"开心一刻";
     happyModel.placeHolderImageStr =@"happy";
     happyModel.cellName =@"JoyLeftIconCell";
-    happyModel.bundleName = JoyToolBundle;
     happyModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     happyModel.viewShape = EImageTypeSquare;
     [arrayM addObject:happyModel];
 
     JoySectionBaseModel *companySectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:arrayM sectionH:KHeadSectionH sectionTitle:nil];
-
     [self.enterpriseCultureArrayM addObject:companySectionModel];
 }
 
@@ -70,7 +66,6 @@
     cellModel.title =@"猜🎲";
     cellModel.placeHolderImageStr =@"eat";
     cellModel.cellName =@"JoyLeftIconCell";
-    cellModel.bundleName = JoyToolBundle;
     cellModel.accessoryType =  UITableViewCellAccessoryDisclosureIndicator;
     cellModel.viewShape = EImageTypeSquare;
     cellModel.tapAction = @"goPlayBambooVC";
@@ -80,7 +75,6 @@
     eatModel.title =@"今儿个吃🍜";
     eatModel.placeHolderImageStr =@"poker";
     eatModel.cellName =@"JoyLeftIconCell";
-    eatModel.bundleName = JoyToolBundle;
     eatModel.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     eatModel.viewShape = EImageTypeSquare;
     eatModel.tapAction = @"goEatVC";
