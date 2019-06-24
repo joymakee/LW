@@ -33,7 +33,7 @@
         [addressDict isKindOfClass:[NSDictionary class]]?[weakSelf getWeatherDiplayWithCity:addressDict[@"City"]]:nil;
     }).locationError(^(NSError *error){
         NSLog(@"");
-    }).startUpdateHeading().headUpdateSuccess(^(CGFloat floatNumber) {
+    }).startUpdateHeading().headUpdateSuccess(^(float floatNumber) {
         NSLog(@"%f",floatNumber);
     });;
 }
@@ -157,18 +157,9 @@
 
 #pragma mark  天气
 - (void)airControl{
-    __weak __typeof(&*self)weakSelf = self;
-    [self.intelligencelnteractor getWeatherDataWithCity:@"北京" days:1 block:^(LWWeatherModel *obj) {
-        JoyImageCellBaseModel *cellModel = weakSelf.intelligencelnteractor.dataArrayM[weakSelf.selectIndexPath.row];
-        cellModel.title = [[[obj.info stringByAppendingString:@"\t"] stringByAppendingString:obj.temperature] stringByAppendingString:@"℃"];
-        cellModel.avatar = obj.img;
-        cellModel.aToBCellBlock?cellModel.aToBCellBlock(nil):nil;
-        JoyTextSpeechConversion *speaker = [[JoyTextSpeechConversion alloc]init];
-        [speaker speakStr:[NSString stringWithFormat:@"今天天气%@",cellModel.title]];
-        JoyWebLoader *loader = [[JoyWebLoader alloc]init].initUrlStr(@"http://m.moji.com").startLoad();
-        loader.titleStr = @"天气";
-        [weakSelf goVC:loader];
-    }];
+    JoyWebLoader *loader = [[JoyWebLoader alloc]init].initUrlStr(@"http://m.moji.com").startLoad();
+    loader.titleStr = @"天气";
+    [self goVC:loader];
 }
 
 

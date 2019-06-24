@@ -9,7 +9,7 @@
 #import "LoginPresenter.h"
 #import "LoginInteracter.h"
 #import <JoyTableAutoLayoutView.h>
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 #import "LWShareManager.h"
 #import "LWTabbarVC.h"
 #import <LocalAuthentication/LocalAuthentication.h>

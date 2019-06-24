@@ -11,4 +11,6 @@
 @interface IntelligenceControlnteractor : NSObject
 @property (nonatomic,strong)NSMutableArray *dataArrayM;
 - (void)scanBlueth:(void(^)())successed;
+- (void)stopScanBlueth;
+
 @end

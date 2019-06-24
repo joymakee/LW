@@ -2,12 +2,12 @@
 //  LWChatPresenter.h
 //  LW
 //
-//  Created by wangguopeng on 2017/2/13.
+//  Created by joymake on 2017/2/13.
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
 #import "BasePresentor.h"
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 
 @class LWChatInteractor;
 @class LWChatView;

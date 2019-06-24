@@ -2,12 +2,12 @@
 //  LWChatListInteractor.m
 //  LW
 //
-//  Created by wangguopeng on 2017/2/14.
+//  Created by joymake on 2017/2/14.
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
 #import "LWChatListInteractor.h"
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 #import "LWChatListCellModel.h"
 extern NSInteger messageCount;
 
@@ -33,6 +33,7 @@ extern NSInteger messageCount;
         model.avatar = obj[@"image"];
         model.cellName = @"LWChatListCell";
         model.tapAction = @"goChatVC";
+        model.cellType = ECellXibType;
         model.editingStyle = UITableViewCellEditingStyleDelete;
         model.messageCount = arc4random()%30;
         messageCount += model?model.messageCount:0;

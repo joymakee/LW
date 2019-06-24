@@ -6,7 +6,7 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 
 @interface LWMediaModel : JoyCellBaseModel
 @property (nonatomic,assign)NSInteger playCount;

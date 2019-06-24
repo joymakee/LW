@@ -95,7 +95,7 @@
             _percentLayer.path = circlePath.CGPath;
             _percentLayer.strokeColor = [UIColor redColor].CGColor;
             _percentLayer.fillColor = [UIColor clearColor].CGColor;
-            _percentLayer.lineWidth = 3;
+            _percentLayer.lineWidth = 5;
             _percentLayer.strokeStart = 0;
             _percentLayer.strokeEnd = 1.0;
             _percentLayer.lineCap = kCALineCapRound;

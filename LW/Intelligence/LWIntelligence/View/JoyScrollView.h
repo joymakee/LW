@@ -2,7 +2,7 @@
 //  ResuableScrollView.h
 //  scrollVieeResuable
 //
-//  Created by wangguopeng on 16/2/1.
+//  Created by joymake on 16/2/1.
 //  Copyright © 2016年 . All rights reserved.
 //
 

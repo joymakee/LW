@@ -7,9 +7,9 @@
 //
 
 #import "CommentInteractor.h"
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 #import "CommentModel.h"
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 
 @implementation CommentInteractor
 - (void)getCommentViewDataSource:(VOIDBLOCK)successed{
@@ -29,7 +29,8 @@
                 comment.subTitle= commentArray[arc4random()%commentArray.count];
                 comment.dateStr = [CommentModel getDateStrWithDate:[NSDate date]];
                 comment.cellName = @"TNACommentTableCell";
-                comment.backgroundColor = [UIColor clearColor];
+                comment.cellType = ECellXibType;
+                comment.backgroundColor = @"#00000000";
                 [sourceArray addObject:comment];
             }
         }

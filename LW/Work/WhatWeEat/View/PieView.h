@@ -2,7 +2,7 @@
 //  PieView.h
 //  PieDrawDemo
 //
-//  Created by wangguopeng on 2016/11/14.
+//  Created by joymake on 2016/11/14.
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 

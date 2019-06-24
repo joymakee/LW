@@ -2,11 +2,11 @@
 //  LWTempratureInteractor.h
 //  LW
 //
-//  Created by wangguopeng on 2017/5/23.
+//  Created by joymake on 2017/5/23.
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
-#import <JoyTool/JoyTool.h>
+#import <JoyKit/JoyKit.h>
 
 @interface LWTempratureInteractor : JoyInteractorBase
 @property (nonatomic,strong)NSMutableArray *dataArrayM;

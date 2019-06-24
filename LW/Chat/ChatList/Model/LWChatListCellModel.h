@@ -2,11 +2,11 @@
 //  LWChatListCellModel.h
 //  LW
 //
-//  Created by wangguopeng on 2017/2/14.
+//  Created by joymake on 2017/2/14.
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 
 @interface LWChatListCellModel : JoyImageCellBaseModel
 @property (nonatomic,assign)NSInteger messageCount;

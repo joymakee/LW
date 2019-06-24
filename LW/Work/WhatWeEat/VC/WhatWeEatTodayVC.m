@@ -2,7 +2,7 @@
 //  WhatWeEatTodayVC.m
 //  LW
 //
-//  Created by wangguopeng on 2016/11/18.
+//  Created by joymake on 2016/11/18.
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
@@ -13,7 +13,7 @@
 #import "WhatWeEatTodayInteracter.h"    //数据处理源
 #import "BackGroundBlurView.h"          //模糊背景
 #import <JoyTableAutoLayoutView.h>       //弹出的table
-#import <JoyTool.h>     //table的section模型
+#import <JoyKit/JoyKit.h>     //table的section模型
 #import "CustomMealInteracter.h"        //table的cell模型
 #import <CALayer+JoyLayer.h>
 
@@ -84,7 +84,7 @@
     [self setRightNavItemWithTitle:@"自定义菜单"];
     [self.featherView setBounds:CGRectMake(0, 0, 300, 300)];
     [self.pie setBounds:self.featherView.bounds];
-//    [self.pie setFrame:self.featherView.frame];
+    self.navigationController.navigationBar.translucent = YES;
     [self reloadPieViewWithDataSource:@[@{@"宫保鸡丁":@1},@{@"西红柿炒鸡蛋":@1},@{@"干锅菜花":@1},@{@"鱼香肉丝":@1},@{@"麻辣香锅":@1},@{@"烩虾仁儿":@1},@{@"炸子蟹":@2},@{@"毛血旺":@1},@{@"麻婆豆腐":@1}]];
     [self.blurView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]
                                                               pathForResource:@"shuye"

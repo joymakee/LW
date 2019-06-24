@@ -2,7 +2,7 @@
 //  PieView.m
 //  PieDrawDemo
 //
-//  Created by wangguopeng on 2016/11/14.
+//  Created by joymake on 2016/11/14.
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
@@ -30,7 +30,18 @@
     }];
     self.backgroundColor = [UIColor clearColor];
     __weak __typeof (&*self)weakSelf = self;
-    NSArray *colorarray = @[[UIColor orangeColor],[UIColor purpleColor],[UIColor redColor],[UIColor brownColor],[UIColor cyanColor],[UIColor orangeColor],[UIColor greenColor],[UIColor yellowColor],[UIColor magentaColor],[UIColor darkGrayColor]];
+//    NSArray *colorarray = @[[UIColor orangeColor],[UIColor purpleColor],[UIColor redColor],[UIColor brownColor],[UIColor cyanColor],[UIColor orangeColor],[UIColor greenColor],[UIColor yellowColor],[UIColor magentaColor],[UIColor darkGrayColor]];
+    
+    NSArray *colorarray  = @[[UIColor colorWithRed:0.2 green:0.8 blue:0.2 alpha:0.7],
+                             [UIColor colorWithRed:0.4 green:0.6 blue:0.2 alpha:0.7],
+                             [UIColor colorWithRed:0.9 green:0.6 blue:0.4 alpha:0.7],
+                             [UIColor colorWithRed:0.5 green:0.2 blue:0.2 alpha:0.7],
+                             [UIColor colorWithRed:1.0 green:1.0 blue:0.1 alpha:0.7],
+                             [UIColor colorWithRed:0.3 green:0.3 blue:0.8 alpha:0.7],
+                             [UIColor colorWithRed:1.0 green:0.5 blue:0.5 alpha:0.7],
+                             [UIColor colorWithRed:0.7 green:0.7 blue:0.2 alpha:0.7],
+                             [UIColor colorWithRed:0.9 green:0.9 blue:0.7 alpha:0.7],
+                             [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:0.7]];
     
     CGPoint center = CGPointMake(self.center.x-(CGRectGetMaxX(self.frame)-CGRectGetMaxX(self.bounds)),self.center.y-(CGRectGetMaxY(self.frame)-CGRectGetMaxY(self.bounds)) );
     
@@ -61,7 +72,7 @@
     CAShapeLayer *layer = [CAShapeLayer layer];
     layer.path = path.CGPath;
     layer.fillColor = [[UIColor clearColor] CGColor];
-    layer.strokeColor = [UIColor purpleColor].CGColor;
+    layer.strokeColor = [UIColor colorWithWhite:0.3 alpha:0.6].CGColor;
     [self.layer addSublayer:layer];
     [self.layerArrayM addObject:layer];
 }

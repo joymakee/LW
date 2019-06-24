@@ -44,11 +44,22 @@ static const NSString *weahTherAppKey = @"06423a901d5349ffa9dc23031e460f00";
             LWIntelligenceModel *model = [[LWIntelligenceModel alloc]init];
             model.cellName = @"RadomLabelCollectionCell";
             model.igenceControlType = idx;
+            model.cellType = ECellXibType;
             model.tapAction = dict[@"tapAction"];
             model.avatar = dict[@"image"];
             model.title = dict[@"title"];
             CGFloat color = (float)idx/inteligenceSource.count;
-            model.backgroundColor = [UIColor colorWithRed:color green:0.4 blue:1-color alpha:0.6];
+        int red = color*255;
+        int green = 0.4*255;
+        int blue = (1-color)*255;
+        int alpha = 0.6*255;
+
+        NSString *colorStr = [@"#" stringByAppendingString:[NSString stringWithFormat:@"%02x",red]];
+        colorStr = [colorStr stringByAppendingString:[NSString stringWithFormat:@"%02x",green]];
+        colorStr =[colorStr stringByAppendingString:[NSString stringWithFormat:@"%02x",blue]];
+        colorStr =[colorStr stringByAppendingString:[NSString stringWithFormat:@"%02x",alpha]];
+        
+        model.backgroundColor = colorStr;
         model?[self.dataArrayM addObject:model]:nil;
     }];
 }

@@ -7,7 +7,7 @@
 //
 
 #import "CommonImageCollectCell.h"
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 #import "UIImageView+AFNetworking.h"
 
 @interface CommonImageCollectCell ()<TapImageViewDelegate>

@@ -10,6 +10,9 @@
 
 @interface LWMediaInteractor : JoyInteractorBase
 @property (nonatomic,strong)NSMutableArray *dataArrayM;
+@property (nonatomic,strong)NSMutableArray *joyArrayM;
 
 -(void)getMedisSourcesDataSource:(VOIDBLOCK)successed;
+
+- (void)getJoySuccess:(VOIDBLOCK)success failure:(ERRORBLOCK)failure;
 @end

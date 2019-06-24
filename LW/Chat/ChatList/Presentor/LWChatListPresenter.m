@@ -2,7 +2,7 @@
 //  LWChatListPresenter.m
 //  LW
 //
-//  Created by wangguopeng on 2017/2/14.
+//  Created by joymake on 2017/2/14.
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
@@ -11,11 +11,9 @@
 #import <JoyTableAutoLayoutView.h>
 #import "LWChatVC.h"
 #import "LWChatListCellModel.h"
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 #import "ServerClientConfig.h"
-#import "JoyRecordView.h"
-#import "JoyQRCodeScanPresenter.h"
-
+#import "CALayer+ScanCode.h"
 extern NSInteger messageCount;
 extern NSString  *KMESSAGE_COUNT_CHANGE;
 
@@ -43,7 +41,6 @@ extern NSString  *KMESSAGE_COUNT_CHANGE;
 
 #pragma mark 左滑删除事件
 - (void)deleteCellActionWithIndexPath:(NSIndexPath *)indexPath{
-    __weak __typeof (&*self)weakSelf = self;
     JoySectionBaseModel *sectionModel = self.chatInteractor.dataArrayM[indexPath.section];
     LWChatListCellModel *cellModel = sectionModel.rowArrayM[indexPath.row];
 
@@ -87,10 +84,12 @@ extern NSString  *KMESSAGE_COUNT_CHANGE;
 -(void)rightNavItemClickAction{
     [super rightNavItemClickAction];
         __weak __typeof(&*self)weakSelf = self;
-    [[JoyQRCodeScanPresenter shareInstance] startScan:^(NSString *str) {
+    [[JoyQRCodeScan shareInstance] startScan:^(NSString *str) {
         [UIPasteboard generalPasteboard].string = str;
         [weakSelf scanResultHandler:str];
     }];
+
+    [[JoyQRCodeScan shareInstance].scanView.layer addScanLayerScanW:300 scanH:300 cornerWidth:30];
 }
 
 - (void)scanResultHandler:(NSString *)scanStr{

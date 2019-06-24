@@ -38,9 +38,9 @@ typedef void (^BOOLBLOCK)(BOOL boolValue);
 
 typedef void (^STRINGBLOCK)(NSString *str);
 
-typedef void (^VOIDBLOCK)();
+typedef void (^VOIDBLOCK)(void);
 
-typedef void (^FLOATBLOCK)(CGFloat floatNumber);
+typedef void (^FLOATBLOCK)(float floatNumber);
 
 typedef void (^IDBLOCK)(id obj);
 
@@ -57,6 +57,17 @@ typedef NS_ENUM(NSInteger,ELwTouchActionType) {
     ELwTouchActionDoubleType,
     ELwTouchActionLongPressType
 };
+
+#if DEBUG
+#define rac_keywordify autoreleasepool {}
+#else
+#define rac_keywordify try {} @catch (...) {}
+#endif
+
+#define Weakify(o) rac_keywordify __weak typeof(o) o##Weak = o;
+
+#define Strongify(o) rac_keywordify __strong typeof(o) o = o##Weak;
+
 
 
 //typedef NS_ENUM(NSInteger,ETextCellType) {

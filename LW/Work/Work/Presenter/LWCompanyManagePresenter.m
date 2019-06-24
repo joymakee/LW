@@ -10,7 +10,7 @@
 #import <JoyTableAutoLayoutView.h>
 #import <JoyUISegementView.h>
 #import "LWCompanyManageInteractor.h"
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 #import "PlayBambooVC.h"
 #import "LWColorTabelVC.h"
 #import "WhatWeEatTodayVC.h"
@@ -20,13 +20,10 @@
 
 -(void)setSegmentView:(JoyUISegementView *)segmentView{
     _segmentView = segmentView;
-    _segmentView.segmentItems = @[@"休息一下",@"轻松工作",@"企业文化"];
-    _segmentView.selectColor = [UIColor purpleColor];
-    _segmentView.deselectColor = [UIColor lightGrayColor];
     __weak __typeof (&*self)weakSelf = self;
-    _segmentView.setmentValuechangedBlock =^(NSInteger selectIndex){
+    _segmentView.setSegmentItems(@[@"休息一下",@"轻松工作",@"企业文化"]).setSelectColor([UIColor purpleColor]).setDeselectColor([UIColor lightGrayColor]).segmentValuechangedBlock(^(NSInteger selectIndex) {
         [weakSelf setMentClickAction:selectIndex];
-    };
+    });
 }
 
 -(void)tableVIewDidSelect:(NSIndexPath *)indexPath{

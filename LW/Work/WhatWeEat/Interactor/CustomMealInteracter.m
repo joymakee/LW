@@ -2,13 +2,13 @@
 //  CustomMealInteracter.m
 //  LW
 //
-//  Created by wangguopeng on 2016/11/21.
+//  Created by joymake on 2016/11/21.
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
 #import "CustomMealInteracter.h"
-#import <JoyTool.h>
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
+#import <JoyKit/JoyKit.h>
 #import "MealModel.h"
 
 @implementation CustomMealInteracter
@@ -21,6 +21,7 @@
             JoyTextCellBaseModel *colorModel = [[JoyTextCellBaseModel alloc]init];
             colorModel.cellName =@"LWTextFieldCell";
             colorModel.placeHolder = @"请输入自定义名称";
+            colorModel.cellType = ECellXibType;
             colorModel.maxNumber = 16;
             colorModel.title = obj.title;
             colorModel.borderStyle = UITextBorderStyleRoundedRect;

@@ -10,7 +10,7 @@
 #import "CommonStarView.h"
 #import "XHImageViewer.h"
 #import "CommentModel.h"
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 
 @interface TNACommentTableCell()<UIGestureRecognizerDelegate>{
     float lastScale;
@@ -35,6 +35,7 @@
     };
     [self setNeedsUpdateConstraints];
     [self.imageCollectionView setData:model.imageArray];
+    [self.imageCollectionView.collectionView reloadData];
     self.timeLabel.text = model.dateStr;
     self.commentLabel.text = model.subTitle;
     self.nameLabel.text = model.title;

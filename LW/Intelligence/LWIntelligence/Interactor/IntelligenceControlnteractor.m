@@ -8,8 +8,8 @@
 
 #import "IntelligenceControlnteractor.h"
 #import "BabyBluetooth.h"
-#import <JoyTool.h>
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
+#import <JoyKit/JoyKit.h>
 #import "LWCBPeripheralModel.h"
 
 @implementation IntelligenceControlnteractor
@@ -24,6 +24,10 @@
     [BabyBluetooth shareBabyBluetooth].scanForPeripherals().connectToPeripherals().discoverServices().discoverCharacteristics().readValueForCharacteristic().discoverDescriptorsForCharacteristic().readValueForDescriptors().begin();
 }
 
+-(void)stopScanBlueth{
+    [BabyBluetooth shareBabyBluetooth].stop(0);
+}
+
 -(void)babyDelegate:(void(^)(NSString *bluetoothName))successed{
     
     __weak __typeof (&*self)weakSelf = self;
@@ -31,6 +35,12 @@
     //设置扫描到设备的委托
     [[BabyBluetooth shareBabyBluetooth] setBlockOnDiscoverToPeripherals:^(CBCentralManager *central, CBPeripheral *peripheral, NSDictionary *advertisementData, NSNumber *RSSI) {
         NSLog(@"搜索到了设备:%@",peripheral.name);
+        NSData *data = [advertisementData objectForKey:@"kCBAdvDataManufacturerData"];
+        NSString *aStr= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        //    NSString *mac = [NSStringTool convertToNSStringWithNSData:data];
+        aStr = [aStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+        NSLog(@"aStr:%@",aStr);
+        NSLog(@"advertisementData:%@",advertisementData);
         if (peripheral.name) {
         }
     }];
@@ -128,7 +138,6 @@
     JoySectionBaseModel *topicSectionModel = [self.dataArrayM firstObject];
     JoySwitchCellBaseModel *cellModel =  [JoySwitchCellBaseModel alloc];
     cellModel.cellName = @"JoySwitchCell";
-    cellModel.bundleName = JoyToolBundle;
     cellModel.title = name;
     [topicSectionModel.rowArrayM addObject:cellModel];
 }

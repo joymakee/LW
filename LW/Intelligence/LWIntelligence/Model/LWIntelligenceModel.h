@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger,EIntelligenceControlType) {
     EIntelligenceControlNavigationType,//@"导航"
     EIntelligenceControlSportType//@"运动"
 };
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 
 @interface LWIntelligenceModel : JoyImageCellBaseModel
 @property (nonatomic,assign)EIntelligenceControlType igenceControlType;

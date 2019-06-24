@@ -2,7 +2,7 @@
 //  LWChatView.m
 //  LW
 //
-//  Created by wangguopeng on 2017/2/15.
+//  Created by joymake on 2017/2/15.
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 

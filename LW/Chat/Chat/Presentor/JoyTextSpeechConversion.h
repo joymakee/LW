@@ -2,7 +2,7 @@
 //  JoyTextSpeechConversion.h
 //  LW
 //
-//  Created by wangguopeng on 2017/6/9.
+//  Created by joymake on 2017/6/9.
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 

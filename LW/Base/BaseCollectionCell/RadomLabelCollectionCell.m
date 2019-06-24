@@ -7,15 +7,16 @@
 //
 
 #import "RadomLabelCollectionCell.h"
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
+#import <JoyKit/UIColor+JoyColor.h>
 @interface RadomLabelCollectionCell ()
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic)  UILabel *titleLabel;
+@property (weak, nonatomic)  UIImageView *imageView;
 
 @end
 @implementation RadomLabelCollectionCell
 -(void)setCellWithModel:(JoyImageCellBaseModel *)cellModel{
-    self.contentView.backgroundColor=self.backgroundColor = cellModel.backgroundColor;
+    self.contentView.backgroundColor=self.backgroundColor = [UIColor joyColorWithHEXString:cellModel.backgroundColor];
     self.titleLabel.text = cellModel.title;
     self.imageView.image = [UIImage imageNamed:cellModel.avatar];
     __weak __typeof(&*self)weakSelf = self;

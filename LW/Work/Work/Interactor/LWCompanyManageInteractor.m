@@ -7,7 +7,7 @@
 //
 
 #import "LWCompanyManageInteractor.h"
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 @implementation LWCompanyManageInteractor
 #pragma mark 员工更多信息数据
 
@@ -84,16 +84,8 @@
     eatModel.viewShape = EImageTypeSquare;
     eatModel.tapAction = @"goEatVC";
     [arrayM addObject:eatModel];
-    
     JoySectionBaseModel *staffSectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:arrayM sectionH:KHeadSectionH sectionTitle:nil];
-   
-    JoyCellBaseModel *reCommentCellModel = [[JoyCellBaseModel alloc]init];
-    reCommentCellModel.title =@"勾搭一下";
-    reCommentCellModel.cellName =@"LWSingleLabelCell";
-    JoySectionBaseModel *reCommentSectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:@[reCommentCellModel] sectionH:KHeadSectionH sectionTitle:nil];
-    
     [self.restArrayM addObject:staffSectionModel];
-    [self.restArrayM addObject:reCommentSectionModel];
 }
 
 

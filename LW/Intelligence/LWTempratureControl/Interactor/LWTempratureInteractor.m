@@ -2,7 +2,7 @@
 //  LWTempratureInteractor.m
 //  LW
 //
-//  Created by wangguopeng on 2017/5/23.
+//  Created by joymake on 2017/5/23.
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
@@ -19,17 +19,19 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
         __block NSMutableArray *rowsArray = [NSMutableArray array];
-        dispatch_apply(sourceArray.count, queue, ^(size_t index) {
+        for (NSString *title in sourceArray) {
+            
             LWtempratureCellModel *model = [[LWtempratureCellModel alloc]init];
-            model.title = sourceArray[index];
+            model.title = title;
             model.cellName = @"LWThermostatCell";
+            model.cellType = ECellXibType;
             model.on = YES;
-            model.backgroundColor = JOY_clearColor;
+            model.backgroundColor = @"#00000000";
             model.currentValue = (float)(arc4random()%50);
             model.targetValue = (float)(arc4random()%50);
-            [rowsArray addObject:model];
+            model?[rowsArray addObject:model]:nil;
             NSLog(@"%zu\n",(long)index);
-        });
+        };
         JoySectionBaseModel *topicSectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:rowsArray sectionH:15 sectionTitle:nil];
         [weakSelf.dataArrayM addObject:topicSectionModel];
         

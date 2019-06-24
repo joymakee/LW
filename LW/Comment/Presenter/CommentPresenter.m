@@ -15,7 +15,7 @@
 #import <CALayer+JoyLayer.h>
 #import "AVAudioSession+manager.h"
 #import "TNAAssessVC.h"
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 #import "CommentModel.h"
 
 @interface CommentPresenter()
@@ -74,7 +74,7 @@
 - (void)insertCommentModel:(CommentModel *)comment{
     JoySectionBaseModel *sectionModel = self.interactor.dataArrayM[0];
     comment.cellName = @"TNACommentTableCell";
-    comment.backgroundColor = [UIColor clearColor];
+    comment.backgroundColor = @"#00000000";
     [sectionModel.rowArrayM insertObject:comment atIndex:0];
     self.commentView.reloadTable();
 }

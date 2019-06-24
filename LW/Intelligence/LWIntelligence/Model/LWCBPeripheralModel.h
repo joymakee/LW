@@ -6,7 +6,7 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 
 @class CBPeripheral;
 @interface LWCBPeripheralModel : JoyCellBaseModel

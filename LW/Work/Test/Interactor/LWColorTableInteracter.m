@@ -7,8 +7,8 @@
 //
 
 #import "LWColorTableInteracter.h"
-#import <JoyTool.h>
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
+
 @implementation LWColorTableInteracter
 
 - (void)getViewDataSource{
@@ -22,6 +22,7 @@
         @autoreleasepool {
             JoyImageCellBaseModel *colorModel = [[JoyImageCellBaseModel alloc]init];
             colorModel.cellName =@"LWSingleLabelCell";
+            colorModel.cellType = ECellXibType;
             colorModel.title = titleArray[i%titleArray.count];
             colorModel.backgroundColor = colorarray[i%colorarray.count];
             [colorCellModelSource addObject:colorModel];

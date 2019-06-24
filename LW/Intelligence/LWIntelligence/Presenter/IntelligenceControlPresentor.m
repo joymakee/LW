@@ -19,6 +19,7 @@
     __weak __typeof (&*self)weakSelf = self;
     headView.headImageView.lwImageTouchBlock =^(ELwTouchActionType touchType){
         [weakSelf removeTableFrowmSuperViewAnimation];
+        [weakSelf.intelligenceControlnteractor stopScanBlueth];
     };
 }
 

@@ -2,7 +2,7 @@
 //  InputView.m
 //  LW
 //
-//  Created by wangguopeng on 2017/2/14.
+//  Created by joymake on 2017/2/14.
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
@@ -249,7 +249,7 @@ const float KDefaultInputViewH = 33;
 #pragma mark 停止录制
 - (void)stopRecord{
     __weak __typeof (&*self)weakSelf = self;
-    [JoyRecorder shareInstance].recordFinishBlock = ^(CGFloat recordTime){
+    [JoyRecorder shareInstance].recordFinishBlock = ^(float recordTime){
         ChatMessage *inputModel = [[ChatMessage alloc]init];
         inputModel.message = weakSelf.inputTextView.text;
         inputModel.chatType = EChatAudioType;

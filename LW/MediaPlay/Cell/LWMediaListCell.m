@@ -13,23 +13,26 @@
 
 @interface LWMediaListCell ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundIV;
 @property (weak, nonatomic) IBOutlet UILabel *timeDurationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet UIButton *playBtn;
 @property (weak, nonatomic) IBOutlet LWImageView *commentImageView;
+@property (weak, nonatomic) IBOutlet UIView *backView;
 
 @end
 @implementation LWMediaListCell
 
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    self.contentView.backgroundColor = self.backgroundColor = [UIColor clearColor];
+    self.backView.layer.cornerRadius = 20;
+    self.backView.backgroundColor = self.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.7];
+}
+
 - (void)setCellWithModel:(LWMediaModel *)model{
     self.titleLabel.text = model.title;
     self.countLabel.text = [NSString stringWithFormat:@"%ld.%ld万",model.playCount/10000,model.playCount/1000-model.playCount/10000];
-//    __weak __typeof(&*self)weakSelf = self;
-//    [self getVideoPreViewImage:model.mediaUrlStr block:^(UIImage *obj) {
-//        weakSelf.backgroundIV.image = obj;
-//    }];
 }
 
 - (void)getVideoPreViewImage:(NSString *)strUrlPath block:(IDBLOCK)block{

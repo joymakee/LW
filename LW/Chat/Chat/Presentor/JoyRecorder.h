@@ -2,7 +2,7 @@
 //  JoyRecorder.h
 //  AudioRecord
 //
-//  Created by wangguopeng on 2017/4/18.
+//  Created by joymake on 2017/4/18.
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 

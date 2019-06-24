@@ -63,6 +63,8 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string>NSHealthShareUsageDescription</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>mqq</string>
@@ -72,6 +74,8 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NFCReaderUsageDescription</key>
+	<string>using your nfc</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -81,6 +85,10 @@
 	<string>BluetoothDescription</string>
 	<key>NSCameraUsageDescription</key>
 	<string>CameraDescription</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>visit your sport data </string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>write sport data to system</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>开启后,你可以获得天气预报、定位等功能</string>
 	<key>NSMicrophoneUsageDescription</key>

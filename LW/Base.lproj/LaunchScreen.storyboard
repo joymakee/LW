@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,17 +21,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="spatial" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bamboo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ZkC-yN-vB9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="spatial" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" image="screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZkC-yN-vB9">
+                                <rect key="frame" x="100" y="200" width="175" height="267"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.95780714897260277" green="0.85734160958904104" blue="0.50144477739726023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ZkC-yN-vB9" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="IpH-Bi-NWU"/>
-                            <constraint firstItem="ZkC-yN-vB9" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="P6Q-7M-CV7"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="ZkC-yN-vB9" secondAttribute="bottom" id="brD-Zi-67Q"/>
-                            <constraint firstAttribute="trailing" secondItem="ZkC-yN-vB9" secondAttribute="trailing" id="v4j-ak-mxx"/>
+                            <constraint firstItem="ZkC-yN-vB9" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="100" id="BFm-xi-ztI"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="ZkC-yN-vB9" secondAttribute="bottom" constant="200" id="Enb-mx-DiI"/>
+                            <constraint firstItem="ZkC-yN-vB9" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="200" id="W9g-cD-KHT"/>
+                            <constraint firstAttribute="trailing" secondItem="ZkC-yN-vB9" secondAttribute="trailing" constant="100" id="o4D-O3-sNk"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -41,6 +42,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bamboo.jpg" width="330" height="480"/>
+        <image name="screen.png" width="2000" height="2000"/>
     </resources>
 </document>

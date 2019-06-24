@@ -2,7 +2,7 @@
 //  ChatVoiceView.h
 //  LW
 //
-//  Created by wangguopeng on 2017/4/19.
+//  Created by joymake on 2017/4/19.
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 

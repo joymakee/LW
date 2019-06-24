@@ -8,7 +8,7 @@
 
 #import "LWMediaPresenter.h"
 #import "LWMediaInteractor.h"
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 #import "LWMediaModel.h"
 #import <JoyTableAutoLayoutView.h>
 #import <JoyUISegementView.h>
@@ -28,7 +28,7 @@
     }];
     
     self.webView.scrollDidScroll(^(UIScrollView *scrollView) {
-        [weakSelf scrollDidScroll:scrollView];
+//        [weakSelf scrollDidScroll:scrollView];
     });
 }
 
@@ -37,32 +37,50 @@
     self.mediaListView.setDataSource(self.interactor.dataArrayM).reloadTable().cellDidSelect(^(NSIndexPath *indexPath, NSString *tapAction) {
         [weakSelf performTapAction:tapAction];
     }).tableScroll(^(UIScrollView *scrollView) {
-        [weakSelf scrollDidScroll:scrollView];
+//        [weakSelf scrollDidScroll:scrollView];
     });
 }
 
 -(void)setSegmentView:(JoyUISegementView *)segmentView{
     _segmentView = segmentView;
     __weak __typeof (&*self)weakSelf = self;
-    _segmentView.setmentValuechangedBlock=^(NSInteger touchIndex){
-        [weakSelf segmentClickAction:touchIndex];
-    };
+    _segmentView.segmentValuechangedBlock(^(NSInteger selectIndex) {
+        [weakSelf segmentClickAction:selectIndex];
+    });
 }
 
 -(void)segmentClickAction:(NSInteger)index{
     if (index == 0) {
         self.webView.hidden = YES;
         self.mediaListView.hidden = NO;
-        self.mediaListView.reloadTable();
+        __weak __typeof (&*self)weakSelf = self;
+        self.mediaListView.setDataSource(self.interactor.dataArrayM).reloadTable().joyFooterRefreshblock(^{
+            weakSelf.mediaListView.joyEndFooterRefreshblock();
+        }).joyHeaderRefreshblock(^{
+            weakSelf.mediaListView.joyEndHeaderRefreshblock();
+        });
+    }else if (index == 1) {
+        self.webView.hidden = YES;
+        self.mediaListView.hidden = NO;
+        __weak __typeof (&*self)weakSelf = self;
+        [self.interactor getJoySuccess:^{
+            weakSelf.mediaListView.setDataSource(weakSelf.interactor.joyArrayM).reloadTable().joyFooterRefreshblock(^{
+                [weakSelf.interactor getJoySuccess:^{
+                    weakSelf.mediaListView.joyEndFooterRefreshblock().reloadTable();
+                } failure:nil];
+            }).joyHeaderRefreshblock(^{
+                weakSelf.mediaListView.joyEndHeaderRefreshblock().reloadTable();
+            });
+        } failure:nil];
     }
-    else if (index == 1 ) {
+    else if (index == 2 ) {
         self.webView.hidden = NO;
         self.webView.initUrlStr(@"http://www.toutiao.com").startLoad();
     }
-    else if (index == 2){
+    else if (index == 3){
         self.webView.hidden = NO;
         self.webView.initUrlStr(@"http://www.budejie.com").startLoad();
-    }else if(index == 3){
+    }else if(index == 4){
         self.webView.hidden = NO;
         self.webView.initUrlStr(@"http://pvp.qq.com/webplat/info/news_version3/15592/18024/19327/m13205/list_1.shtml").startLoad();
     }
@@ -84,28 +102,28 @@
     [self presentVC:avPlayer];
 }
 
-static float _lastPosition = 0;
--(void)scrollDidScroll:(UIScrollView *)scrollView{
-    int currentPostion = scrollView.contentOffset.y;
-    if (currentPostion - _lastPosition > 0) {
-        _lastPosition = currentPostion;
-        NSLog(@"ScrollUp now");
-        self.rootView.viewController.navigationController.navigationBar.alpha = 0;//(currentPostion - _lastPosition)/60;
-        self.rootView.viewController.tabBarController.tabBar.hidden = NO;
-    }
-    else if (_lastPosition - currentPostion > 0)
-    {
-        _lastPosition = currentPostion;
-        NSLog(@"ScrollDown now");
-        self.rootView.viewController.navigationController.navigationBar.alpha = 0.7;
-        self.rootView.viewController.tabBarController.tabBar.hidden = YES;
-    }
-    if(scrollView.contentOffset.y<=64){
-        self.rootView.viewController.navigationController.navigationBar.alpha=1;
-    }
-}
+//static float _lastPosition = 0;
+//-(void)scrollDidScroll:(UIScrollView *)scrollView{
+//    int currentPostion = scrollView.contentOffset.y;
+//    if (currentPostion - _lastPosition > 0) {
+//        _lastPosition = currentPostion;
+//        NSLog(@"ScrollUp now");
+//        self.rootView.viewController.navigationController.navigationBar.alpha = 0;//(currentPostion - _lastPosition)/60;
+//        self.rootView.viewController.tabBarController.tabBar.hidden = NO;
+//    }
+//    else if (_lastPosition - currentPostion > 0)
+//    {
+//        _lastPosition = currentPostion;
+//        NSLog(@"ScrollDown now");
+//        self.rootView.viewController.navigationController.navigationBar.alpha = 0.7;
+//        self.rootView.viewController.tabBarController.tabBar.hidden = YES;
+//    }
+//    if(scrollView.contentOffset.y<=64){
+//        self.rootView.viewController.navigationController.navigationBar.alpha=1;
+//    }
+//}
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [self scrollDidScroll:scrollView];
-}
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    [self scrollDidScroll:scrollView];
+//}
 @end

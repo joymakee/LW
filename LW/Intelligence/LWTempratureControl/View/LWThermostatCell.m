@@ -2,7 +2,7 @@
 //  LWThermostatCell.m
 //  LW
 //
-//  Created by wangguopeng on 2017/5/23.
+//  Created by joymake on 2017/5/23.
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
@@ -54,11 +54,11 @@
     self.tempratureView.targetValue = model.targetValue/50;
 
     __weak __typeof(&*self)weakSelf = self;
-    self.tempratureView.valueChangedBlock = ^(CGFloat floatNumber) {
+    self.tempratureView.valueChangedBlock = ^(float floatNumber) {
         [weakSelf setTargetTP:floatNumber];
     };
     
-    self.tempratureView.valueChangedEndBlock = ^(CGFloat floatNumber) {
+    self.tempratureView.valueChangedEndBlock = ^(float floatNumber) {
         [weakSelf windSpeedChanged];
     };
     

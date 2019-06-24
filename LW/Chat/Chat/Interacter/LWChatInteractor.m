@@ -2,12 +2,12 @@
 //  LWChatInteractor.m
 //  LW
 //
-//  Created by wangguopeng on 2017/2/13.
+//  Created by joymake on 2017/2/13.
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
 #import "LWChatInteractor.h"
-#import <JoyTool.h>
+#import <JoyKit/JoyKit.h>
 #import "LWSocketClient.h"
 #import "ChatCellModel.h"
 #import "ChatMessage.h"
@@ -68,7 +68,8 @@
     }
     model.playTotalTime = message.playTotalTime;
     model.cellName = isSend?@"LWChatRightIconLabelCell":@"LWChatLeftIconLabelCell";
-    model.backgroundColor = JOY_clearColor;
+    model.cellType = ECellXibType;
+    model.backgroundColor = @"#00000000";
     return model;
 }
 @end
