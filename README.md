@@ -13,3 +13,6 @@ Life And Work
 5.使用方法:命令终端进入项目目录执行 pod update 安装pod依赖库
 
 
+![image.png](https://github.com/joymakee/LW/blob/master/demo.jpg?raw=true)
+
+![image.png](https://github.com/joymakee/LW/blob/master/lw.png?raw=true)
