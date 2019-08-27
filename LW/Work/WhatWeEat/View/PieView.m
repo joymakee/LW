@@ -16,6 +16,20 @@
 
 @implementation PieView
 
+-(instancetype)initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super initWithCoder:aDecoder]){
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
+}
+
+-(instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]){
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
+}
+
 - (NSMutableArray *)layerArrayM{
     return _layerArrayM = _layerArrayM?:[NSMutableArray array];
 }
@@ -32,16 +46,16 @@
     __weak __typeof (&*self)weakSelf = self;
 //    NSArray *colorarray = @[[UIColor orangeColor],[UIColor purpleColor],[UIColor redColor],[UIColor brownColor],[UIColor cyanColor],[UIColor orangeColor],[UIColor greenColor],[UIColor yellowColor],[UIColor magentaColor],[UIColor darkGrayColor]];
     
-    NSArray *colorarray  = @[[UIColor colorWithRed:0.2 green:0.8 blue:0.2 alpha:0.7],
-                             [UIColor colorWithRed:0.4 green:0.6 blue:0.2 alpha:0.7],
-                             [UIColor colorWithRed:0.9 green:0.6 blue:0.4 alpha:0.7],
-                             [UIColor colorWithRed:0.5 green:0.2 blue:0.2 alpha:0.7],
-                             [UIColor colorWithRed:1.0 green:1.0 blue:0.1 alpha:0.7],
-                             [UIColor colorWithRed:0.3 green:0.3 blue:0.8 alpha:0.7],
-                             [UIColor colorWithRed:1.0 green:0.5 blue:0.5 alpha:0.7],
-                             [UIColor colorWithRed:0.7 green:0.7 blue:0.2 alpha:0.7],
-                             [UIColor colorWithRed:0.9 green:0.9 blue:0.7 alpha:0.7],
-                             [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:0.7]];
+    NSArray *colorarray  = @[[UIColor colorWithRed:0.2 green:0.8 blue:0.2 alpha:0.3],
+                             [UIColor colorWithRed:0.4 green:0.6 blue:0.2 alpha:0.3],
+                             [UIColor colorWithRed:0.9 green:0.6 blue:0.4 alpha:0.3],
+                             [UIColor colorWithRed:0.5 green:0.2 blue:0.2 alpha:0.3],
+                             [UIColor colorWithRed:1.0 green:1.0 blue:0.1 alpha:0.3],
+                             [UIColor colorWithRed:0.3 green:0.3 blue:0.8 alpha:0.3],
+                             [UIColor colorWithRed:1.0 green:0.5 blue:0.5 alpha:0.3],
+                             [UIColor colorWithRed:0.7 green:0.7 blue:0.2 alpha:0.3],
+                             [UIColor colorWithRed:0.9 green:0.9 blue:0.7 alpha:0.3],
+                             [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:0.3]];
     
     CGPoint center = CGPointMake(self.center.x-(CGRectGetMaxX(self.frame)-CGRectGetMaxX(self.bounds)),self.center.y-(CGRectGetMaxY(self.frame)-CGRectGetMaxY(self.bounds)) );
     
@@ -60,6 +74,8 @@
         layer.strokeColor = [UIColor clearColor].CGColor;
         [weakSelf.layer addSublayer:layer];
         CATextLayer *txtLayer = [weakSelf textLayer:model.title rotate:(endAngle - (endAngle-startAngle)/2)];
+        txtLayer.foregroundColor = [UIColor whiteColor].CGColor;
+        txtLayer.shadowOpacity = 0;
         [weakSelf.layer addSublayer:txtLayer];
         startAngle = endAngle;
         [weakSelf.layerArrayM addObject:layer];

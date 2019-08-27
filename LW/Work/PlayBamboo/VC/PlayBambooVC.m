@@ -6,12 +6,13 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#define ARCRANDOM_DICE_POINT  CGPointMake(arc4random()%200 +60, arc4random()%200 +60);
+#define ARCRANDOM_DICE_POINT  CGPointMake(arc4random()%250 +40, arc4random()%250 +40+80);
 
 #import "PlayBambooVC.h"
 #import "AVAudioSession+manager.h"
 #import "CAAnimation+HCAnimation.h"
 #import <QuartzCore/QuartzCore.h>
+#import "BackGroundBlurView.h"
 
 @interface PlayBambooVC ()<CAAnimationDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *diceImageView;
@@ -19,12 +20,13 @@
 @property (strong, nonatomic) CABasicAnimation *transformAnimation;
 @property (strong, nonatomic) CAKeyframeAnimation *moveAnimation;
 @property (strong, nonatomic) CAAnimationGroup *animGroup;
+@property (weak, nonatomic) IBOutlet BackGroundBlurView *blurView;
 @end
 
 @implementation PlayBambooVC
 
 -(UIBezierPath *)dicePath{
-    return _dicePath= _dicePath?:[UIBezierPath bezierPathWithArcCenter:CGPointMake(SCREEN_W/2, SCREEN_W/2) radius:SCREEN_W/2-60 startAngle:0 endAngle:M_PI*2 clockwise:YES];
+    return _dicePath= _dicePath?:[UIBezierPath bezierPathWithArcCenter:self.diceImageView.center radius:self.diceImageView.bounds.size.width/2-60 startAngle:0 endAngle:M_PI*2 clockwise:YES];
 }
 
 -(CABasicAnimation *)transformAnimation{
@@ -58,10 +60,19 @@
     _animGroup.animations = [NSArray arrayWithObjects: self.moveAnimation, self.transformAnimation,nil];
     return _animGroup;
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self setRectEdgeAll];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self recoveryEdgeNav];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"扔骰子";
+    self.title = @"摇一摇";
     [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
     [self becomeFirstResponder];
     //设置动画参数
@@ -71,9 +82,12 @@
 - (void)setDiceAnimationParameter{
     //转动骰子的载入
     NSArray *myImages = [NSArray arrayWithObjects:
-                         [UIImage imageNamed:@"dong1@2x.png"],
-                         [UIImage imageNamed:@"dong2@2x.png"],
-                         [UIImage imageNamed:@"dong3@2x.png"],nil];
+                         [UIImage imageNamed:@"playBamboo1"],
+                         [UIImage imageNamed:@"playBamboo2"],
+                         [UIImage imageNamed:@"playBamboo3"],
+                         [UIImage imageNamed:@"playBamboo4"],
+                         [UIImage imageNamed:@"playBamboo5"],
+                         [UIImage imageNamed:@"playBamboo6"],nil];
     
     self.diceImageView.animationImages = myImages;
     self.diceImageView.animationDuration = 1;
@@ -93,7 +107,7 @@
     CGPoint p1 = self.diceImageView.layer.position;
     CGPoint p2 = ARCRANDOM_DICE_POINT;
     CGPoint p3 = ARCRANDOM_DICE_POINT;
-    CGPoint p4 = CGPointMake(p3.x + arc4random()%30-15, p3.y + arc4random()%30-15);
+    CGPoint p4 = CGPointMake(p3.x + arc4random()%10-5, p3.y + arc4random()%10-5);
     while (![self.dicePath containsPoint:p1]) {
         p1 = ARCRANDOM_DICE_POINT;
     }
@@ -104,7 +118,7 @@
         p3 = ARCRANDOM_DICE_POINT;
     }
     while (![self.dicePath containsPoint:p4]) {
-        p4 = CGPointMake(p3.x + arc4random()%30-15, p3.y + arc4random()%30-15);
+        p4 = CGPointMake(p3.x + arc4random()%10-5, p3.y + arc4random()%10-5);
     }
     NSArray *movePoints = [[NSArray alloc] initWithObjects:[NSValue valueWithCGPoint:p1],[NSValue valueWithCGPoint:p2],[NSValue valueWithCGPoint:p3],[NSValue valueWithCGPoint:p4], nil];
     

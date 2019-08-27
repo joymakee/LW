@@ -14,8 +14,15 @@
 #import "BackGroundBlurView.h"          //模糊背景
 #import <JoyTableAutoLayoutView.h>       //弹出的table
 #import <JoyKit/JoyKit.h>     //table的section模型
+#import <JoyKit/CALayer+JoyLayer.h>
 #import "CustomMealInteracter.h"        //table的cell模型
 #import <CALayer+JoyLayer.h>
+#import "CustomMealVC.h"
+#import <JoyRequest/Joy_NetCacheTool.h>
+
+extern const NSString *lw_meal_key;
+extern const NSString *selectMealKey ;
+extern const NSString *deSelectMealKey;
 
 @interface WhatWeEatTodayVC ()<CAAnimationDelegate>{
     CGFloat _roatedValue ;
@@ -23,12 +30,9 @@
 @property (nonatomic,strong)CABasicAnimation *transformAnimation;   //旋转动画
 @property (weak, nonatomic) IBOutlet BackGroundBlurView *blurView;
 @property (nonatomic,strong)IBOutlet PieView *pie;   //转盘
-
 @property (weak, nonatomic) IBOutlet FeatherView *featherView;
-
+@property (weak, nonatomic) IBOutlet UILabel *selectLabel;
 @property (nonatomic,strong)WhatWeEatTodayInteracter *interacter;
-
-@property (nonatomic, strong) JoyTableAutoLayoutView  *customMealView;
 
 @property (nonatomic,strong)CustomMealInteracter *customMealInteracter;
 @end
@@ -38,22 +42,9 @@
 #pragma mark lazyload method
 
 -(void)dealloc{
-    [self.customMealView.layer removeAllAnimations];
     [self.pie.layer removeAllAnimations];
     [self.pie.layer removeFromSuperlayer];
     [self.featherView.layer removeFromSuperlayer];
-}
-
--(JoyTableAutoLayoutView *)customMealView{
-    if (!_customMealView) {
-        _customMealView = [[JoyTableAutoLayoutView alloc]initWithFrame:CGRectZero];
-        _customMealView.tableView.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.3 alpha:0.8];
-        _customMealView.backgroundColor = JOY_clearColor;
-        _customMealView.layer.masksToBounds = YES;
-        _customMealView.layer.cornerRadius = SCREEN_W*2/6;
-        [self.view addSubview:_customMealView];
-    }
-    return _customMealView;
 }
 
 -(CustomMealInteracter *)customMealInteracter{
@@ -77,20 +68,30 @@
     return _transformAnimation;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self setRectEdgeAll];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self recoveryEdgeNav];
+}
+
 #pragma mark life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"吃饭选择困难户";
-    [self setRightNavItemWithTitle:@"自定义菜单"];
-    [self.featherView setBounds:CGRectMake(0, 0, 300, 300)];
+    self.title = @"摇一摇";
+    [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
+    [self becomeFirstResponder];
+    [self setRightNavItemWithTitle:@"换口味"];
+    [self setRectEdgeAll];
+    [self.featherView setBounds:CGRectMake(0, 0, kSCREEN_WIDTH-40, kSCREEN_WIDTH-40)];
     [self.pie setBounds:self.featherView.bounds];
     self.navigationController.navigationBar.translucent = YES;
-    [self reloadPieViewWithDataSource:@[@{@"宫保鸡丁":@1},@{@"西红柿炒鸡蛋":@1},@{@"干锅菜花":@1},@{@"鱼香肉丝":@1},@{@"麻辣香锅":@1},@{@"烩虾仁儿":@1},@{@"炸子蟹":@2},@{@"毛血旺":@1},@{@"麻婆豆腐":@1}]];
-    [self.blurView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]
-                                                              pathForResource:@"shuye"
-                                                              ofType:@"jpg"]] andBlur:1];
-
-
+    NSDictionary *mealDict = [Joy_NetCacheTool scbuDictCacheForKey:lw_meal_key];
+    NSArray *selects = [mealDict objectForKey:selectMealKey];
+    [self reloadPieViewWithDataSource:selects];
     __weak __typeof (&*self)weakSelf = self;
     [self.featherView drawFeatherViewTouchBlock:^{[weakSelf roate];}];
 }
@@ -112,47 +113,37 @@
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     self.transformAnimation.fromValue = @(_roatedValue);
     __block CGFloat totalValue = 0;
-    __weak __typeof (&*self)weakSelf = self;
+    @LwWeak(self);
     [self.interacter.dataArrayM enumerateObjectsUsingBlock:^(MealModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        @LwStrong(self);
         totalValue += model.mealRadius;
-        if (2*M_PI * totalValue/weakSelf.interacter.totalRadious + _roatedValue>=2*M_PI)
+        if (2*M_PI * totalValue/self.interacter.totalRadious + _roatedValue>=2*M_PI)
         {
-        MealModel *model = weakSelf.pie.dataArrayM[idx];
-        NSLog(@"你选中了%@",model.title);
-        *stop = YES;
+            MealModel *model = self.pie.dataArrayM[idx];
+            [self.selectLabel.layer transitionWithAnimType:TransitionAnimTypeOglFlip subType:TransitionSubtypesFromLeft curve:TransitionCurveRamdom duration:1];
+            self.selectLabel.text = model.title;
+            self.selectLabel.textColor = LW_RADOM_COLOR_NOALPHA;
+            self.selectLabel.backgroundColor = LW_RADOM_COLOR;
+            *stop = YES;
         }
     }];
 }
 
-static BOOL isSaved = NO;
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
+    if (event.subtype == UIEventSubtypeMotionShake) {
+        [self roate];
+    }
+}
 
 -(void)rightNavItemClickAction{
     [super rightNavItemClickAction];
-    isSaved?[self saveCustomMealAndReloadPie]:[self showCustomTable];
+    CustomMealVC *vc = [CustomMealVC new];
+    self.hidesBottomBarWhenPushed = YES;
     __weak __typeof (&*self)weakSelf = self;
-    [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^{
-        [weakSelf.customMealView setFrame:CGRectMake(0, 0, SCREEN_W*2/3, isSaved?0:SCREEN_H-64)];
-        weakSelf.customMealView.centerX = weakSelf.view.centerX;
-        
-    } completion:nil];
-    isSaved = !isSaved;
-    [self setRightNavItemWithTitle:isSaved?@"保存":@"自定义菜单"];
-}
-
-- (void)saveCustomMealAndReloadPie{
-    if (!self.customMealView.dataArrayM.count) return;
-    __weak __typeof (&*self)weakSelf = self;
-    __block NSMutableArray *array = [NSMutableArray array];
-    JoySectionBaseModel *sectionModel = self.customMealView.dataArrayM[0];
-    [sectionModel.rowArrayM enumerateObjectsUsingBlock:^(JoyTextCellBaseModel   *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-    obj.title.length?[array addObject:@{obj.title:@1}]:nil;
+    [vc routeParam:@{@"selectedMeal":[self.interacter.dataArrayM valueForKey:@"title"]} block:^(NSDictionary *params, NSError *error) {
+        [weakSelf reloadPieViewWithDataSource:[params objectForKey:@"selectedMeal"]];
     }];
-    array.count?[weakSelf reloadPieViewWithDataSource:array]:nil;
-}
-
-- (void)showCustomTable{
-    [self.customMealInteracter getViewDataSourceWithDataSource:self.interacter.dataArrayM];
-    self.customMealView.setDataSource(self.customMealInteracter.dataArrayM).reloadTable();
+    [self goVC:vc];
 }
 
 @end

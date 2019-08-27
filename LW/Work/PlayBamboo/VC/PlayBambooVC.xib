@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WhatWeEatVC">
             <connections>
+                <outlet property="blurView" destination="fvv-Ch-LK6" id="pe1-qY-QCe"/>
                 <outlet property="diceImageView" destination="m6d-kG-boR" id="L4U-IU-eQU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,24 +21,18 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hk9-eO-e33">
-                    <rect key="frame" x="164.5" y="577" width="46" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="SXi-8y-4wl"/>
-                    </constraints>
-                    <state key="normal" title="摇一摇"/>
-                    <connections>
-                        <action selector="diceTapAction:" destination="-1" eventType="touchUpInside" id="c5V-ZJ-c3o"/>
-                    </connections>
-                </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diceBack.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="FSn-dG-SWp">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvv-Ch-LK6" customClass="BackGroundBlurView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diceBack.png" translatesAutoresizingMaskIntoConstraints="NO" id="FSn-dG-SWp">
+                    <rect key="frame" x="0.0" y="100" width="375" height="375"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="FSn-dG-SWp" secondAttribute="height" id="ZZn-JN-VO1"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playBamboo1.png" translatesAutoresizingMaskIntoConstraints="NO" id="m6d-kG-boR">
-                    <rect key="frame" x="150" y="150" width="75" height="75"/>
+                    <rect key="frame" x="150" y="250" width="75" height="75"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="m6d-kG-boR" secondAttribute="height" id="fgh-iF-6xz"/>
                     </constraints>
@@ -47,12 +40,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Hk9-eO-e33" secondAttribute="bottom" constant="60" id="PI6-wi-MXW"/>
+                <constraint firstAttribute="bottom" secondItem="fvv-Ch-LK6" secondAttribute="bottom" id="8nd-ay-BHd"/>
+                <constraint firstAttribute="trailing" secondItem="fvv-Ch-LK6" secondAttribute="trailing" id="IIW-SG-lCv"/>
+                <constraint firstItem="fvv-Ch-LK6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="O86-TD-nTE"/>
                 <constraint firstItem="m6d-kG-boR" firstAttribute="centerX" secondItem="FSn-dG-SWp" secondAttribute="centerX" id="Pvi-Ks-fWr"/>
                 <constraint firstAttribute="trailing" secondItem="FSn-dG-SWp" secondAttribute="trailing" id="YV4-jg-2bS"/>
-                <constraint firstItem="Hk9-eO-e33" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZfG-QH-Rtq"/>
+                <constraint firstItem="fvv-Ch-LK6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Z6Q-b1-ota"/>
                 <constraint firstItem="m6d-kG-boR" firstAttribute="centerY" secondItem="FSn-dG-SWp" secondAttribute="centerY" id="jfU-h9-6qJ"/>
-                <constraint firstItem="FSn-dG-SWp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mSq-3F-Cw9"/>
+                <constraint firstItem="FSn-dG-SWp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="mSq-3F-Cw9"/>
                 <constraint firstItem="m6d-kG-boR" firstAttribute="width" secondItem="FSn-dG-SWp" secondAttribute="width" multiplier="1:5" id="uha-KE-6fG"/>
                 <constraint firstItem="FSn-dG-SWp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xAT-h4-Tkv"/>
             </constraints>
@@ -60,7 +55,7 @@
         </view>
     </objects>
     <resources>
-        <image name="diceBack.jpg" width="184" height="182"/>
+        <image name="diceBack.png" width="179" height="177"/>
         <image name="playBamboo1.png" width="39" height="40"/>
     </resources>
 </document>

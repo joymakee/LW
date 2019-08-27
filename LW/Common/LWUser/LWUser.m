@@ -7,6 +7,7 @@
 //
 
 #import "LWUser.h"
+#import <JoyRequest/Joy_NetCacheTool.h>
 
 @interface LWUser ()
 @property (nonatomic,copy)NSString *userName;
@@ -14,6 +15,8 @@
 @end
 
 @implementation LWUser
+
+#define LW_USER_CACHE_KEY @"LW_USER_CACHE_KEY"
 + (instancetype)shareInstance{
     static id user = nil;
     static dispatch_once_t onceToken;
@@ -23,27 +26,24 @@
     return user;
 }
 
-- (void)initUserName:(NSString *)userName{
-    self.userName = userName;
+-(void)cacheUserInfo{
+    [Joy_NetCacheTool scbuCacheDict:@{@"password":self.password?:@"",@"userName":self.userName?:@""} forKey:LW_USER_CACHE_KEY];
 }
 
-- (void)initUserInfoWithKey:(NSString *)key value:(NSString *)value{
-    if (!(key&&value)) {
-        return;
-    }
-    if ([key isEqualToString:@"password"]) {
-        [self initPassword:value];
-    }else{
-        [self setValue:value forKey:key];
+- (void)setValueWithCache{
+    NSDictionary *dict = [Joy_NetCacheTool scbuDictCacheForKey:LW_USER_CACHE_KEY];
+    if (dict) {
+        self.userName = [dict objectForKey:@"userName"];
+        self.password = [dict objectForKey:@"password"];
     }
 }
 
-- (void)initPassword:(NSString *)password{
-    self.password = password;
+-(void)loginOut{
+    self.password = nil;
+    [self cacheUserInfo];
 }
 
 - (NSString *)encryptWithStr:(NSString *)str{
-//    return <#expression#>
     return nil;
 }
 @end

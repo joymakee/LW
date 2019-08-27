@@ -10,46 +10,44 @@
 #import <JoyKit/JoyKit.h>
 #import <JoyKit/JoyKit.h>
 #import "MealModel.h"
+#import <JoyRequest/Joy_NetCacheTool.h>
+
+extern const NSString *lw_meal_key;
+extern const NSString *selectMealKey ;
+extern const NSString *deSelectMealKey;
 
 @implementation CustomMealInteracter
-- (void)getViewDataSourceWithDataSource:(NSArray *)dataArrayM{
+
+
+-(void)genrateDataSourceWithSelectedDataSource:(NSArray *)selectedDataSource{
+    NSDictionary *mealDict = [Joy_NetCacheTool scbuDictCacheForKey:lw_meal_key];
+    NSArray *deSelects = [mealDict objectForKey:deSelectMealKey];
+    
     [self.dataArrayM removeAllObjects];
-    __block NSMutableArray *colorCellModelSource = [NSMutableArray array];
-    
-    [dataArrayM enumerateObjectsUsingBlock:^(MealModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        @autoreleasepool {
-            JoyTextCellBaseModel *colorModel = [[JoyTextCellBaseModel alloc]init];
-            colorModel.cellName =@"LWTextFieldCell";
-            colorModel.placeHolder = @"请输入自定义名称";
-            colorModel.cellType = ECellXibType;
-            colorModel.maxNumber = 16;
-            colorModel.title = obj.title;
-            colorModel.borderStyle = UITextBorderStyleRoundedRect;
-            colorModel.editingStyle = UITableViewCellEditingStyleDelete;
-            colorModel.titleColor = JOY_RandomColor;
-            [colorCellModelSource addObject:colorModel];
-        }
-    }];
-    
-    //补够10个
-    for (NSInteger i = 0; i<11-dataArrayM.count; i++) {
-        @autoreleasepool {
-            JoyTextCellBaseModel *colorModel = [[JoyTextCellBaseModel alloc]init];
-            colorModel.cellName =@"LWTextFieldCell";
-            colorModel.placeHolder = @"请输入自定义名称";
-            colorModel.maxNumber = 16;
-            colorModel.borderStyle = UITextBorderStyleRoundedRect;
-            colorModel.editingStyle = UITableViewCellEditingStyleDelete;
-            colorModel.titleColor = JOY_RandomColor;
-//            colorModel.title = ;
-//            colorModel.backgroundColor = colorarray[i%colorarray.count];
-            [colorCellModelSource addObject:colorModel];
-        }
+    JoySectionBaseModel *section = [[JoySectionBaseModel alloc]init];
+    section.sectionHeadViewName = @"LWCollectionReusableView";
+    section.sectionTitle = @"🧚‍♀️:等待开吃（至少1个菜） ";
+    for (NSString *title in selectedDataSource) {
+        JoyCellBaseModel *model = [[JoyCellBaseModel alloc]init];
+        model.title = title;
+        model.titleColor = @"#FFBB44";
+        model.cellName = @"JoyCollectionTextCell";
+        [section.rowArrayM addObject:model];
     }
-    
-    JoySectionBaseModel *colorSectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:colorCellModelSource sectionH:KHeadSectionH sectionTitle:nil];
-    
-    [self.dataArrayM addObject:colorSectionModel];
+    [self.dataArrayM addObject:section];
+
+    JoySectionBaseModel *deSelectSection = [[JoySectionBaseModel alloc]init];
+    deSelectSection.sectionHeadViewName = @"LWCollectionReusableView";
+    deSelectSection.sectionTitle = @"🧚‍♀️:已收藏  ";
+
+    for (NSString *title in deSelects) {
+        JoyCellBaseModel *model = [[JoyCellBaseModel alloc]init];
+        model.title = title;
+        model.titleColor = @"#DDAAAA";
+        model.cellName = @"JoyCollectionTextCell";
+        [deSelectSection.rowArrayM addObject:model];
+    }
+    [self.dataArrayM addObject:deSelectSection];
 }
 
 -(NSMutableArray *)dataArrayM{

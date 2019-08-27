@@ -10,17 +10,15 @@
 #import "MealModel.h"
 
 @implementation WhatWeEatTodayInteracter
-- (void)getMealDataSourceWithDataSouce:(NSArray *)mealDicArray{
-    
+- (void)getMealDataSourceWithDataSouce:(NSArray *)mealArray{
     self.totalRadious = 0.0;
     [self.dataArrayM removeAllObjects];
     __weak __typeof (&*self)weakSelf = self;
-
-    [mealDicArray enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL * _Nonnull stop) {
+    [mealArray enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL * _Nonnull stop) {
         @autoreleasepool {
             MealModel *model = [[MealModel alloc]init];
-            model.title = [dict allKeys][0];
-            model.mealRadius = [[dict allValues][0] floatValue];
+            model.title = title;
+            model.mealRadius = 1;
             [weakSelf.dataArrayM addObject:model];
             weakSelf.totalRadious +=model.mealRadius;
         }

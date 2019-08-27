@@ -174,3 +174,155 @@
     self.textFieldText.layer.cornerRadius = CGRectGetHeight(self.textFieldText.frame)/2;
 }
 @end
+
+
+@interface LWTextViewCell ()<UITextViewDelegate>
+@property (strong, nonatomic)  UITextView *textView;
+@property (nonatomic,copy) NSString *inputOldStr;
+@property (nonatomic,copy)NSString *changeTextKey;
+@property (strong, nonatomic) UILabel *placeHolderLabel;
+@property (nonatomic,assign)BOOL isNeedScroll;
+
+@end
+
+@implementation LWTextViewCell
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self.contentView addSubview:self.placeHolderLabel];
+        [self.contentView addSubview:self.textView];
+        self.backgroundColor = self.contentView.backgroundColor = [UIColor clearColor];
+        [self setConstraint];
+        [self updateConstraintsIfNeeded];
+    }
+    return self;
+}
+
+-(UITextView *)textView{
+    if (!_textView) {
+        _textView = [[UITextView alloc]initWithFrame:CGRectZero];
+        _textView.delegate = self;
+        _textView.font = [UIFont systemFontOfSize:15];
+        _textView.textColor = [UIColor whiteColor];
+        _textView.backgroundColor = [UIColor colorWithRed:0.45 green:0.4 blue:0.4 alpha:0.4];
+        _textView.layer.cornerRadius = 10;
+    }
+    return _textView;
+}
+
+-(UILabel *)placeHolderLabel{
+    if(!_placeHolderLabel){
+        _placeHolderLabel =[[UILabel alloc]init];
+        _placeHolderLabel.font = [UIFont systemFontOfSize:15];
+        _placeHolderLabel.textColor = [UIColor whiteColor];
+    }
+    return _placeHolderLabel;
+}
+
+-(void)setConstraint{
+    MAS_CONSTRAINT(self.placeHolderLabel,
+                   make.leading.mas_equalTo(20);
+                   make.trailing.mas_equalTo(-15);
+                   make.top.mas_equalTo(self.textView.mas_top).mas_offset(5);
+                   );
+    
+    MAS_CONSTRAINT(self.textView,
+                   make.leading.mas_equalTo(15);
+                   make.trailing.mas_equalTo(-15);
+                   make.height.mas_equalTo(100);
+                   make.top.mas_equalTo(self.contentView.mas_top).offset(5);
+                   make.centerY.mas_equalTo(self.contentView.mas_centerY);
+                   );
+}
+
+- (void)setCellWithModel:(JoyTextCellBaseModel *)model{
+    self.textView.returnKeyType = UIReturnKeyDone;
+    objc_setAssociatedObject(self, @selector(setCellWithModel:), model, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    self.changeTextKey = model.changeKey;
+    self.textView.keyboardType = model.keyboardType?model.keyboardType:UIKeyboardTypeDefault;
+    self.maxNum = model.maxNumber;
+    if (self.maxNum && model.subTitle.strLength> self.maxNum)
+    {
+        model.subTitle  =  [model.subTitle subToMaxIndex:self.maxNum];
+    }
+    self.textView.text = model.subTitle;
+    self.placeHolderLabel.text = model.placeHolder;
+    self.placeHolderLabel.hidden = self.textView.text.length;
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+    if ([self.delegate respondsToSelector:@selector(textshouldBeginEditWithTextContainter:andIndexPath:)])
+    {
+        [self.delegate textshouldBeginEditWithTextContainter:textView andIndexPath:self.index];
+    }
+    return YES;
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView{
+    if ([self.delegate respondsToSelector:@selector(textshouldEndEditWithTextContainter:andIndexPath:)])
+    {
+        [self.delegate textshouldEndEditWithTextContainter:textView andIndexPath:self.index];
+    }
+    return YES;
+}
+
+- (void)textViewDidChange:(UITextView *)textView{
+    
+    if ([self.delegate respondsToSelector:@selector(textHasChanged:andText:andChangedKey:)]) {
+        [self.delegate textHasChanged:self.index andText:textView.text andChangedKey:self.changeTextKey];
+    }
+    if (self.maxNum) {
+        UITextPosition* beginning = textView.beginningOfDocument;
+        UITextRange* markedTextRange = textView.markedTextRange;
+        UITextPosition* selectionStart = markedTextRange.start;
+        UITextPosition* selectionEnd = markedTextRange.end;
+        NSInteger location = [textView offsetFromPosition:beginning toPosition:selectionStart];
+        NSInteger length = [textView offsetFromPosition:selectionStart toPosition:selectionEnd];
+        NSRange tRange = NSMakeRange(location,length);
+        NSString *newString = [textView.text substringWithRange:tRange];
+        NSString *oldString = [textView.text stringByReplacingOccurrencesOfString:newString withString:@"" options:0 range:tRange];
+        if(newString.length <= 0)//非汉字输入
+        {
+            if (textView.text.strLength > self.maxNum)
+            {textView.text = self.inputOldStr;}
+            else
+            {self.inputOldStr = textView.text;}
+        }
+        else//汉字输入
+        {
+            NSInteger tNewNumber = newString.strLength;
+            NSInteger tOldNumber = oldString.strLength;
+            BOOL isEnsure = (newString.length*2 == tNewNumber);//判断markedText是汉字还是字母。如果是汉字，说是用户最终输入。
+            if(isEnsure && tNewNumber+tOldNumber > self.maxNum)
+            {
+                NSInteger tIndex = (tNewNumber+tOldNumber) - self.maxNum;
+                tIndex = tNewNumber - tIndex;
+                tIndex /= 2;
+                NSString *finalStr = [oldString substringToIndex:location];
+                finalStr = [finalStr stringByAppendingString:[newString substringToIndex:tIndex]];
+                finalStr = [finalStr stringByAppendingString:[oldString substringFromIndex:location]];
+                textView.text = finalStr;
+            }
+        }
+    }
+    self.placeHolderLabel.hidden = textView.text.length;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    if ([self.delegate respondsToSelector:@selector(textChanged:andText:andChangedKey:)]) {
+        JoyTextCellBaseModel *model = objc_getAssociatedObject(self, @selector(setCellWithModel:));
+        model.title = textView.text;
+        [self.delegate textChanged:self.index andText:textView.text andChangedKey:self.changeTextKey];
+    }
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString*)text
+{
+    if(range.length == 1)
+    {return YES;}
+    if ((range.location == 0 && [text isEqualToString:@" "]) || [text isEqualToString:@"\n"])
+    {return NO;}
+    return YES;
+}
+
+
+@end

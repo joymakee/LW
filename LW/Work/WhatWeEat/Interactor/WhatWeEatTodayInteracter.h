@@ -12,5 +12,5 @@
 
 @property (nonatomic,strong)NSMutableArray *dataArrayM;
 @property (nonatomic,assign)CGFloat totalRadious;
-- (void)getMealDataSourceWithDataSouce:(NSArray *)mealDicArray;
+- (void)getMealDataSourceWithDataSouce:(NSArray *)mealArray;
 @end

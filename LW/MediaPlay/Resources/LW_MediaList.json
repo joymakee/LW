@@ -1,238 +1,638 @@
 [
+{
+"icon":"lw_add_icon",
+"title": "自定义节目",
+"subTitle":"自定义副标题",
+"tapAction":"addTVCustomAction"
+},
  {
+ "icon":"zonghe",
  "title": "CCTV-1综合",
- "mediaUrlStr": "/hls/cctv1.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv1.m3u8",
+ "subTitle":"中央1套综合频道"
  },
  {
+ "icon":"caijingxinxi",
  "title": "CCTV-2财经",
- "mediaUrlStr": "/hls/cctv2.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv2.m3u8",
+ "subTitle":"中央2套财经频道"
  },
  {
+ "icon":"zongyi",
  "title": "CCTV-3综艺",
- "mediaUrlStr": "/hls/cctv3.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv3.m3u8",
+ "subTitle":"中央3套综艺频道"
  },
  {
+ "icon":"zhongwenfenci",
  "title": "CCTV-4中文国际",
- "mediaUrlStr": "/hls/cctv4.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv4.m3u8",
+ "subTitle":"中央4套中文国际频道"
  },
  {
+ "icon":"tiyu",
  "title": "CCTV-5体育",
- "mediaUrlStr": "/hls/cctv5.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv5phd.m3u8",
+ "subTitle":"中央5套体育频道"
  },
  {
+ "icon":"dianying",
  "title": "CCTV-6电影",
- "mediaUrlStr": "/hls/cctv6.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv6.m3u8",
+ "subTitle":"中央6套电影频道"
  },
  {
+ "icon":"junshi",
  "title": "CCTV-7军事农业",
- "mediaUrlStr": "/hls/cctv7.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv7.m3u8",
+ "subTitle":"中央7套军事农业频道"
  },
  {
+ "icon":"lianxuju",
  "title": "CCTV-8电视剧",
- "mediaUrlStr": "/hls/cctv8.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv8.m3u8",
+ "subTitle":"中央8套电视剧频道"
  },
  {
+ "icon":"lishijilu",
  "title": "CCTV-9纪录",
- "mediaUrlStr": "/hls/cctv9.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv9.m3u8",
+ "subTitle":"中央9套纪录频道"
  },
  {
+ "icon":"kejiaoshipin-K",
  "title": "CCTV-10科教",
- "mediaUrlStr": "/hls/cctv10.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv10.m3u8",
+ "subTitle":"中央10套科教频道"
  },
  {
+ "icon":"xiquguocui",
  "title": "CCTV-11戏曲",
- "mediaUrlStr": "/hls/cctv11.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv11.m3u8",
+ "subTitle":"中央11套戏曲频道"
  },
  {
+ "icon":"falvfagui",
  "title": "CCTV-12社会与法",
- "mediaUrlStr": "/hls/cctv12.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv12.m3u8",
+ "subTitle":"中央12套社会与法频道"
  },
  {
+ "icon":"xinwen",
  "title": "CCTV-13新闻",
- "mediaUrlStr": "/hls/cctv13.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv13.m3u8",
+ "subTitle":"中央13套新闻频道"
  },
  {
+ "icon":"shaoer",
  "title": "CCTV-14少儿",
- "mediaUrlStr": "/hls/cctv14.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv14.m3u8",
+ "subTitle":"中央14套少儿频道"
  },
  {
+ "icon":"yinle",
  "title": "CCTV-15音乐",
- "mediaUrlStr": "/hls/cctv15.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv15.m3u8",
+ "subTitle":"中央15套音乐频道"
  },
  {
+ "icon":"xinwen_1",
  "title": "CCTV-NEWS",
- "mediaUrlStr": "/hls/cctv16.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cctv16.m3u8",
+ "subTitle":"中央新闻频道"
  },
  {
+ "icon":"beijing",
  "title": "北京卫视",
- "mediaUrlStr": "/hls/btv1.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/btv1.m3u8",
+ "subTitle":"北京卫视频道"
  },
  {
+ "icon":"wangluowenyijia",
  "title": "北京文艺",
- "mediaUrlStr": "/hls/btv2.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/btv2.m3u8",
+ "subTitle":"北京文艺频道"
  },
  {
+ "icon":"kejiaoshipin-K",
  "title": "北京科教",
- "mediaUrlStr": "/hls/btv3.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/btv3.m3u8",
+ "subTitle":"北京科教频道"
  },
  {
+ "icon":"yingshiliandong",
  "title": "北京影视",
- "mediaUrlStr": "/hls/btv4.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/btv4.m3u8",
+ "subTitle":"北京影视频道"
  },
  {
+ "icon":"caijingxinxi",
  "title": "北京财经",
- "mediaUrlStr": "/hls/btv5.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/btv5.m3u8",
+ "subTitle":"北京财经频道"
  },
  {
+ "icon":"tiyu",
  "title": "北京体育",
- "mediaUrlStr": "/hls/btv6.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/btv6.m3u8",
+ "subTitle":"北京体育频道"
  },
  {
+ "icon":"shenghuo",
  "title": "北京生活",
- "mediaUrlStr": "/hls/btv7.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/btv7.m3u8",
+ "subTitle":"北京生活频道"
  },
  {
+ "icon":"qingnian",
  "title": "北京青年",
- "mediaUrlStr": "/hls/btv8.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/btv8.m3u8",
+ "subTitle":"北京青年频道"
  },
  {
+ "icon":"xinwen",
  "title": "北京新闻",
- "mediaUrlStr": "/hls/btv9.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/btv9.m3u8",
+ "subTitle":"北京新闻频道"
  },
  {
+ "icon":"shaoer",
  "title": "北京卡酷少儿",
- "mediaUrlStr": "/hls/btv10.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/btv10.m3u8",
+ "subTitle":"北京卡酷少儿频道"
  },
  {
+ "icon":"shenzhenCA",
  "title": "深圳卫视",
- "mediaUrlStr": "/hls/sztv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/sztv.m3u8"
  },
  {
+ "icon":"anhui",
  "title": "安徽卫视",
- "mediaUrlStr": "/hls/ahtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/ahtv.m3u8"
  },
- {
+  {
+ "icon":"henan",
  "title": "河南卫视",
- "mediaUrlStr": "/hls/hntv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/hntv.m3u8"
  },
- {
+  {
+ "icon":"shanxishenghangzhengquyu-shiliangdituyiji",
  "title": "陕西卫视",
- "mediaUrlStr": "/hls/sxtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/sxtv.m3u8"
  },
- {
+  {
+ "icon":"jilin",
  "title": "吉林卫视",
- "mediaUrlStr": "/hls/jltv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/jltv.m3u8"
  },
- {
+  {
+ "icon":"guangdongsheng",
  "title": "广东卫视",
- "mediaUrlStr": "/hls/gdtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/gdtv.m3u8"
  },
- {
+  {
+ "icon":"shandong",
  "title": "山东卫视",
- "mediaUrlStr": "/hls/sdtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/sdtv.m3u8"
  },
- {
+  {
+ "icon":"hubeisheng",
  "title": "湖北卫视",
- "mediaUrlStr": "/hls/hbtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/hbtv.m3u8"
  },
- {
+  {
+ "icon":"guangxi",
  "title": "广西卫视",
- "mediaUrlStr": "/hls/gxtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/gxtv.m3u8"
  },
- {
+  {
+ "icon":"hebeisheng",
  "title": "河北卫视",
- "mediaUrlStr": "/hls/hebtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/hebtv.m3u8"
  },
- {
+  {
+ "icon":"xizang",
  "title": "西藏卫视",
- "mediaUrlStr": "/hls/xztv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/xztv.m3u8"
  },
- {
+  {
+ "icon":"neimenggu",
  "title": "内蒙古卫视",
- "mediaUrlStr": "/hls/nmtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/nmtv.m3u8"
  },
- {
+  {
+ "icon":"qinghai",
  "title": "青海卫视",
- "mediaUrlStr": "/hls/qhtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/qhtv.m3u8"
  },
- {
+  {
+ "icon":"sichuan",
  "title": "四川卫视",
- "mediaUrlStr": "/hls/sctv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/sctv.m3u8"
  },
- {
+  {
+ "icon":"jiangsuyinhang",
  "title": "江苏卫视",
- "mediaUrlStr": "/hls/jstv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/jstv.m3u8"
  },
- {
+  {
+ "icon":"tianjin",
  "title": "天津卫视",
- "mediaUrlStr": "/hls/tjtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/tjtv.m3u8"
  },
- {
+  {
+ "icon":"shanxi",
  "title": "山西卫视",
- "mediaUrlStr": "/hls/sxrtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/sxrtv.m3u8"
  },
- {
+  {
+ "icon":"liaoning",
  "title": "辽宁卫视",
- "mediaUrlStr": "/hls/lntv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/lntv.m3u8"
  },
- {
+  {
+ "icon":"shamenhangkong",
  "title": "厦门卫视",
- "mediaUrlStr": "/hls/xmtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/xmtv.m3u8"
  },
- {
+  {
+ "icon":"xinjiang",
  "title": "新疆卫视",
- "mediaUrlStr": "/hls/xjtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/xjtv.m3u8"
  },
- {
+  {
+ "icon":"dongfangmingzhu",
  "title": "东方卫视",
- "mediaUrlStr": "/hls/dftv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/dftv.m3u8"
  },
- {
+  {
+ "icon":"heilongjiang",
  "title": "黑龙江卫视",
- "mediaUrlStr": "/hls/hljtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/hljtv.m3u8"
  },
- {
+  {
+ "icon":"hunan",
  "title": "湖南卫视",
- "mediaUrlStr": "/hls/hunantv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/hunantv.m3u8"
  },
- {
+  {
+ "icon":"yunnan",
  "title": "云南卫视",
- "mediaUrlStr": "/hls/yntv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/yntv.m3u8"
  },
- {
+  {
+ "icon":"jiangxi",
  "title": "江西卫视",
- "mediaUrlStr": "/hls/jxtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/jxtv.m3u8"
  },
- {
+  {
+ "icon":"fujian",
  "title": "福建东南卫视",
- "mediaUrlStr": "/hls/dntv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/dntv.m3u8"
  },
- {
+  {
+ "icon":"zhejiang",
  "title": "浙江卫视",
- "mediaUrlStr": "/hls/zjtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/zjtv.m3u8"
  },
- {
+  {
+ "icon":"guizhousheng",
  "title": "贵州卫视",
- "mediaUrlStr": "/hls/gztv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/gztv.m3u8"
  },
- {
+  {
+ "icon":"ningxia",
  "title": "宁夏卫视",
- "mediaUrlStr": "/hls/nxtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/nxtv.m3u8"
  },
  {
+ "icon":"gansu",
  "title": "甘肃卫视",
- "mediaUrlStr": "/hls/gstv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/gstv.m3u8"
  },
  {
+ "icon":"chongqing",
  "title": "重庆卫视",
- "mediaUrlStr": "/hls/cqtv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/cqtv.m3u8"
  },
  {
+ "icon":"md-bingying",
  "title": "兵团卫视",
- "mediaUrlStr": "/hls/bttv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/bttv.m3u8"
  },
  {
+ "icon":"lvyou",
  "title": "旅游卫视",
- "mediaUrlStr": "/hls/lytv.m3u8"
+ "mediaUrlStr": "http://ivi.bupt.edu.cn/hls/lytv.m3u8"
  },
+ {
+     "icon":"lvyou",
+     "title": "有线新闻",
+     "mediaUrlStr": "https://shangzhibo-aliyun.b0.upaiyun.com/record/onelive/4800408-k7P4r5tVzk/2019-04-17-19-26-05_2019-04-17-20-26-30.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "香港卫视",
+     "mediaUrlStr": "http://zhibo.hkstv.tv/livestream/zb2yhapo/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "寰宇新闻",
+     "mediaUrlStr": "http://ms003.happytv.com.tw/live/Btl59TBpbXESUqTf/index.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "美国中文电视",
+     "mediaUrlStr": "http://media3.sinovision.net:1935/live/livestream/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": " 历史频道",
+     "mediaUrlStr": "http://192.240.127.34:1935/live/cs14.stream/media_1254.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "台湾全美",
+     "mediaUrlStr": "http://dcunilive30-lh.akamaihd.net/i/dclive_1@535522/master.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "博斯魅力",
+     "mediaUrlStr": "http://ms003.happytv.com.tw/live/OcScNdWHvBx5P4w3/index.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "香港开视",
+     "mediaUrlStr": "http://media.fantv.hk/m3u8/archive/channel2_stream1.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "港有线台",
+     "mediaUrlStr": "http://aldirect.hls.huya.com/huyalive/29169025-2686219962-11537226886652362752-2710080226-10057-A-0-1_1200.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "天空新闻",
+     "mediaUrlStr": "http://skydvn-nowtv-atv-prod.skydvn.com/atv/skynews/1404/live/06.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "民視新聞HD",
+     "mediaUrlStr": "https://6.mms.vlog.xuite.net/hls/ftvtv/index.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "香港TVB",
+     "mediaUrlStr": "http://hls-ott-zhibo.wasu.tv/live/202/index.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "澳亚卫视",
+     "mediaUrlStr": "http://stream.mastvnet.com/MASTV/sd/live.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "澳门卫星",
+     "mediaUrlStr": "http://61.244.22.4/ch3/ch3.live/playelist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "澳视澳门",
+     "mediaUrlStr": "http://61.244.22.4/ch1/ch1.live/playelist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "澳门资讯",
+     "mediaUrlStr": "http://103.233.191.138/ch5/info_ch5.live/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "港RHK31",
+     "mediaUrlStr": "http://rthklive1-lh.akamaihd.net/i/rthk31_1@167495/index_2052_av-p.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "民视",
+     "mediaUrlStr": "http://60.251.37.44:8080/live/super7659.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "TVB资讯台",
+     "mediaUrlStr": "http://e1.vdowowza.vip.hk1.tvb.com/tvblive/smil:mobilehd_financeintl.smil/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "澳门卫视",
+     "mediaUrlStr": "http://stream.mastvnet.com/MSTV/SD/live.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "澳门资讯",
+     "mediaUrlStr": "http://103.233.191.136/ch5/_definst_/info_ch5.live/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "澳视澳门 ",
+     "mediaUrlStr": "http://103.233.191.135:1935/ch1/ch1.live/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "澳视澳门 ",
+     "mediaUrlStr": "http://103.233.191.136:1935/ch1/ch1.live/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "凤凰资讯 ",
+     "mediaUrlStr": "http://live.italkdd.com/cds160/hls/channel002/channel002.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "凤凰资讯 ",
+     "mediaUrlStr": "http://live.italkdd.com/cds160/hls/channel002/channel002_2000.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": " 环球电视台",
+     "mediaUrlStr": "http://live-cdn.xzxwhcb.com/hls/r86am856.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "奇妙电视",
+     "mediaUrlStr": "http://media.fantv.hk/m3u8/archive/channel2.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "香港台",
+     "mediaUrlStr": "http://dlhls.cdn.zhanqi.tv/zqlive/123407_XhQs9.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "香港31台",
+     "mediaUrlStr": "http://rthklive1-lh.akamaihd.net/i/rthk31_1@167495/index_2052_av-b.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "香港电视剧",
+     "mediaUrlStr": "http://hls-ott-zhibo.wasu.tv/live/97_68611/index.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "香港环球电视",
+     "mediaUrlStr": "http://live-cdn.xzxwhcb.com/hls/sn88wrar.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "优视频道",
+     "mediaUrlStr": "http://1-fss24-s0.streamhoster.com/lv_uchannel/_definst_/broadcast1/chunklist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "新华社中文",
+     "mediaUrlStr": "http://live.xinhuashixun.com/live/chn01/desc.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "亚洲电视新闻台，",
+     "mediaUrlStr": "http://drsh196ivjwe8.cloudfront.net/hls/cnai/03.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "環球電視",
+     "mediaUrlStr": "http://39.134.52.161/hwottcdn.ln.chinamobile.com/PLTV/88888890/224/3221225496/index.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国-CBS",
+     "mediaUrlStr": "http://cbs-live.gscdn.com/cbs-live/cbs-live.stream/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国-KTV",
+     "mediaUrlStr": "http://218.38.152.69:1935/da_live/72136989/mp4:ch001/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国-Good",
+     "mediaUrlStr": "http://mobliestream.c3tv.com:554/live/goodtv.sdp/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": " ebs1",
+     "mediaUrlStr": "http://ebsonair.ebs.co.kr:1935/groundwavefamilypc/familypc1m/chunklist_w877483320.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "ebs2",
+     "mediaUrlStr": "http://ebsonair.ebs.co.kr:1935/ebs2familypc/familypc1m/chunklist_w243599202.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国chosunTV",
+     "mediaUrlStr": "http://live.chosun.gscdn.com/live/_definst_/tvchosun1.stream/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国阿里郎直播源",
+     "mediaUrlStr": "http://amdlive.ctnd.com.edgesuite.net/arirang_1ch/smil:arirang_1ch.smil/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "半岛电视",
+     "mediaUrlStr": "http://aljazeera-mubasher-apple-live.adaptive.level3.net/apple/aljazeera/mubasher/800.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "卡塔尔半岛台",
+     "mediaUrlStr": "http://aljazeera-doc-apple-live.adaptive.level3.net/apple/aljazeera/hq-doc/800kStream.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "寰宇新闻2台",
+     "mediaUrlStr": "http://ms003.happytv.com.tw/live/z8bCZRy7IjD8Nyrm/index.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": " 美国唐人街台",
+     "mediaUrlStr": "http://174.127.67.246/live330/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "SKY韩国",
+     "mediaUrlStr": "http://198.144.156.90:9083/live/CA42-live1/iL/LR/iLLRnuqGuLQwgpV41PVLAg==/live.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "SKY韩国",
+     "mediaUrlStr": "http://198.144.156.90:9083/live/CA42-live1/es/hU/eshUgLoukfy2UQQc95aGbQ==/live.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "MBC Busan",
+     "mediaUrlStr": "https://5ca29b882aaf6.streamlock.net/livetv/BusanMBC_TV_livestream/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩-CBS",
+     "mediaUrlStr": "http://cbs-live.gscdn.com:1935/cbs-live/cbs-live.stream/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩Chosun HD",
+     "mediaUrlStr": "http://live.chosun.gscdn.com/live/tvchosun1.stream/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩-EBS2",
+     "mediaUrlStr": "http://ebsonair.ebs.co.kr/ebs2familypc/familypc1m/chunklist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩-EBSi",
+     "mediaUrlStr": "http://ebsonair.ebs.co.kr/plus1tablet500k/tablet500k/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩-EBSi",
+     "mediaUrlStr": "http://ebsonair.ebs.co.kr/plus1familypc/familypc1m/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩EBS-kids",
+     "mediaUrlStr": "http://ebsonair.ebs.co.kr:1935/ebsutablet500k/tablet500k/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩-KBS LIVE Dokdo",
+     "mediaUrlStr": "http://kbs-dokdo.gscdn.com/dokdo_300/_definst_/dokdo_300.stream/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩KBS2",
+     "mediaUrlStr": "http://198.144.156.93:9083/live/CA42-live1/cX/Iu/cXIuLIgTUuG1XxsBCHPF0A==/live.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩-KCTVN",
+     "mediaUrlStr": "http://122.202.129.136:1935/live/ch4/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩MBC",
+     "mediaUrlStr": "http://198.144.156.93:9083/live/CA42-live1/PJ/Yr/PJYrrds4bTe69nKCwA_MAQ==/live.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩MNET HD",
+     "mediaUrlStr": "http://198.144.156.92:9083/live/lmgr218-live1/DD/kh/DDkhewBlWWfGWPVkTkDWNA==/live.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩SBS Golf",
+     "mediaUrlStr": "http://198.144.156.93:9083/live/CA42-live1/aU/Zx/aUZxH_RUOehMBmBXwZjwjQ==/live.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩SBS SPORTS",
+     "mediaUrlStr": "http://198.144.156.93:9083/live/CA42-live1/N5/Zi/N5ZiPBK3M6JnskdXwIWTXw==/live.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩tvN",
+     "mediaUrlStr": "http://198.144.156.93:9083/live/CA42-live1/Rf/DM/RfDMODnZ-dV2NYqGXlMsRQ==/live.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩TVN HD",
+     "mediaUrlStr": "http://199.21.149.42:9083/live/lmgr218-live1/F8/6x/F86xTagKpWyjsAWhpFhRYQ==/live.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国Arte",
+     "mediaUrlStr": "http://etomatomobile.hscdn.com/artemobile/livestream/chunklist_w1865830476.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国CBS",
+     "mediaUrlStr": "http://cbs-live.gscdn.com/cbs-live/cbs-live.stream/chunklist_w1226916721.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国CBS",
+     "mediaUrlStr": "http://cbs-live.gscdn.com/cbs-live/cbs-live.stream/chunklist_w1646291294.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国CBS News",
+     "mediaUrlStr": "http://www.cbsnews.com/common/video/dai_prod.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国EBS 1",
+     "mediaUrlStr": "http://ebsonair.ebs.co.kr:1935/groundwavefamilypc/familypc1m/chunklist_w1081857294.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国EBS Kids",
+     "mediaUrlStr": "http://ebsonairios.ebs.co.kr/ebsutablet500k/tablet500k/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国EBSeHD",
+     "mediaUrlStr": "http://ebsonair.ebs.co.kr/plus3familypc/familypc1m/playlist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国KBS",
+     "mediaUrlStr": "http://edge.linknetott.swiftserve.com/channelgroup5/cg542production/ch262/03.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国KBS1",
+     "mediaUrlStr": "http://ebsonair.ebs.co.kr/groundwavefamilypc/familypc1m/chunklist_w1960240276.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国KCTV HD CH05",
+     "mediaUrlStr": "http://119.77.96.184:1935/chn05/chn05/chunklist_w644291506.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国TVCHOSUN",
+     "mediaUrlStr": "http://live.chosun.gscdn.com/live/_definst_/tvchosun2.stream/chunklist.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国WFCHD",
+     "mediaUrlStr": "http://wfc.bonus-tv.ru:80/cdn/wfcint/tracks-v1a1/index.m3u8" },
+ {
+     "icon":"lvyou",
+     "title": "韩国WFCHD",
+     "mediaUrlStr": "P2p://185.212.201.60:6005/5b44909800092dee001a20eea83cd454.ts" },
  ]
+ 

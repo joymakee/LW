@@ -12,5 +12,6 @@
 @property (nonatomic,assign)NSInteger playCount;
 @property (nonatomic,copy)NSString    *dateStr;
 @property (nonatomic,copy)NSString    *mediaUrlStr;
+@property (nonatomic,copy)NSString    *icon;
 
 @end

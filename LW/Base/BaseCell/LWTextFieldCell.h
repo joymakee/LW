@@ -11,3 +11,7 @@
 @interface LWTextFieldCell : JoyBaseCell
 
 @end
+
+@interface LWTextViewCell : JoyBaseCell
+
+@end

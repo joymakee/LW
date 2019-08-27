@@ -12,5 +12,9 @@
 	<array>
 		<string>NDEF</string>
 	</array>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.com.shequbanjing.test</string>
+	</array>
 </dict>
 </plist>

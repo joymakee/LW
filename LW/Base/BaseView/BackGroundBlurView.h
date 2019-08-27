@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface BackGroundBlurView : UIView
-- (void)setImage:(UIImage *)image andBlur:(CGFloat)blur;
+- (void)setBlurImage:(UIImage *)image andBlur:(CGFloat)blur;
 @end

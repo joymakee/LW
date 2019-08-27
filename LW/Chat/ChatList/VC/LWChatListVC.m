@@ -10,6 +10,7 @@
 #import "LWChatListPresenter.h"
 #import "LWChatListInteractor.h"
 #import <JoyTableAutoLayoutView.h>
+#import "JoyBaseVC+LWCategory.h"
 
 @interface LWChatListVC ()
 @property (nonatomic,strong)LWChatListPresenter *chatPresenter;
@@ -20,7 +21,13 @@
 
 @implementation LWChatListVC
 -(JoyTableAutoLayoutView *)chatView{
-    return _chatView = _chatView?:[[JoyTableAutoLayoutView alloc]initWithFrame:CGRectZero];;
+    if (!_chatView){
+        _chatView = [[JoyTableAutoLayoutView alloc]initWithFrame:CGRectZero];
+        _chatView.backgroundColor = _chatView.tableView.backgroundColor = [UIColor clearColor];
+        _chatView.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//        _chatView.tableView.contentInset = UIEdgeInsetsMake(-60, 0, 60, 0);
+    }
+    return _chatView;
 }
 
 -(LWChatListInteractor *)chatInteractor{
@@ -37,9 +44,11 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    [self setRectEdgeAll];
+    [self setBackViewWithImageName:nil bundleName:nil];
     [self setDefaultConstraintWithView:self.chatView andTitle:@"消息"];
     [self.chatPresenter reloadDataSource];
-    [self setLeftNavItemWithTitle:nil andImageStr:@"joymakeHead.jpg" andHighLightImageStr:@"joymakeHead.jpg" action:nil bundle:nil];
+    [self setLeftNavItemWithTitle:nil andImageStr:@"joymakeHead" andHighLightImageStr:@"joymakeHead" action:nil bundle:nil];
     [self setRightNavItemWithTitle:nil andImageStr:@"lw_qr_code.png" andHighLightImageStr:@"lw_qr_code.png" action:nil bundle:nil];
 }
 

@@ -14,6 +14,10 @@
 #import "LWTabbarVC.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 
+@interface LoginPresenter ()
+
+@end
+
 @implementation LoginPresenter
 -(void)reloadDataSource{
     [self.interactor getLoginDataSource];
@@ -21,14 +25,21 @@
     self.loginView.setDataSource(self.interactor.dataArrayM).reloadTable().cellDidSelect(^(NSIndexPath *indexPath, NSString *tapAction) {
         [weakSelf performTapAction:tapAction];
     }).cellTextEiditEnd(^(NSIndexPath *indexPath, NSString *content, NSString *key) {
-        [[LWUser shareInstance]initUserInfoWithKey:key value:content];
+        [[LWUser shareInstance] setValue:content forKey:key];
     });
-    [self deviceLogin];
+    if ([LWUser shareInstance].userName) {
+        [self deviceLogin];
+    }
 }
 
 #pragma mark  登录
 - (void)loginAction{
-    [UIApplication sharedApplication].keyWindow.rootViewController = [[LWTabbarVC alloc]init];
+    if([LWUser shareInstance].userName.length && [LWUser shareInstance].password.length){
+        [self.interactor loginWithPhone:[LWUser shareInstance].userName password:[LWUser shareInstance].password success:^(NSDictionary *dict) {
+            [UIApplication sharedApplication].keyWindow.rootViewController = [[LWTabbarVC alloc]init];
+        } failure:^(NSError *error) {
+        }];
+    }
 }
 
 #pragma mark 指纹识别
@@ -36,21 +47,17 @@
     LAContext *context = [[LAContext alloc] init];
     NSError *error = nil;
     if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
-        [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics
-                localizedReason:@"Are you the device owner?"
-                          reply:^(BOOL success, NSError *error) {
-                              dispatch_async(dispatch_get_main_queue(), ^{
-                                  if (error)
-                                  {
-                                      if (error.code == -2) return;
-                                      [[JoyAlert shareAlert]showAlertViewWithTitle:@"Error" message:@"There was a problem verifying your identity." cancle:@"OK" confirm:nil alertBlock:nil];
-                                  }
-                                  else
-                                  {
-                                      success?[UIApplication sharedApplication].keyWindow.rootViewController = [[LWTabbarVC alloc]init]:nil;
-                                  }
-                              });
-                          }];
+        [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@"Are you the device owner?" reply:^(BOOL success, NSError *error) {
+          dispatch_async(dispatch_get_main_queue(), ^{
+              if (error){
+                  if (error.code == -2)
+                      return;
+                  [[JoyAlert shareAlert]showAlertViewWithTitle:@"Error" message:@"There was a problem verifying your identity." cancle:@"OK" confirm:nil alertBlock:nil];
+              }else{
+                  success?[self loginAction]:nil;
+              }
+          });
+        }];
     }
 }
 

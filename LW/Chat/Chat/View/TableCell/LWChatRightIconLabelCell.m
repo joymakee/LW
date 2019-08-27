@@ -31,8 +31,10 @@
     _nameLabel.text = model.title;
     _avatar.layer.cornerRadius = 20;
     _avatar.layer.masksToBounds = YES;
-    _chatInfoLabel.layer.masksToBounds = YES;
-    _chatInfoLabel.layer.cornerRadius = 5;
+//    _chatInfoLabel.layer.masksToBounds = YES;
+//    _chatInfoLabel.layer.cornerRadius = 5;
+//    _chatInfoLabel.layer.borderWidth = 1;
+//    _chatInfoLabel.layer.borderColor = LW_RADOM_COLOR.CGColor;
 
     if (model.chatType == EChatContentType) {
         _chatInfoLabel.text = model.subTitle;

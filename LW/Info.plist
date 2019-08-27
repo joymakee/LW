@@ -27,7 +27,7 @@
 			<string>lw</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>joyLW</string>
+				<string>joylw</string>
 			</array>
 		</dict>
 		<dict>
@@ -97,6 +97,10 @@
 	<string>若不允许，你将无法在LW通中使用计步功能。</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>PhotoLibruary</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>iconfont.ttf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
@@ -110,10 +114,10 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
+	<array/>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -121,5 +125,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

@@ -89,7 +89,6 @@ static const  NSInteger  KCommentMaxNumber = 500;
     self.picCollectionView.deleteImageBlock =^(NSIndexPath *indexPath){
         [weakSelf deleteSelectPic:indexPath];
     };
-    [self.backBlurView setImage:[UIImage imageNamed:@"shuye.jpg"] andBlur:0];
 }
 
 - (void)setNavItemAndTitle{

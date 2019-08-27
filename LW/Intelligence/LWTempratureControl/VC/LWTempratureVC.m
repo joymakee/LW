@@ -10,6 +10,8 @@
 #import "JoyBaseVC+LWCategory.h"
 #import <JoyTableAutoLayoutView.h>
 #import "LWTempratureInteractor.h"
+#import "JoyBaseVC+LWCategory.h"
+
 @interface LWTempratureVC ()
 @property (nonatomic,strong)JoyTableAutoLayoutView *tempratureListView;
 @property (nonatomic,strong)LWTempratureInteractor *tempratureInteractor;
@@ -31,7 +33,12 @@
 
 
 -(JoyTableAutoLayoutView *)tempratureListView{
-    return _tempratureListView = _tempratureListView?:[[JoyTableAutoLayoutView alloc]init];
+    if(!_tempratureListView){
+        _tempratureListView = [[JoyTableAutoLayoutView alloc]init];
+        _tempratureListView.backgroundColor = _tempratureListView.tableView.backgroundColor = [UIColor clearColor];
+        _tempratureListView.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+    return _tempratureListView;
 }
 
 -(LWTempratureInteractor *)tempratureInteractor{

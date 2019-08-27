@@ -40,7 +40,6 @@
     if (!_loginView) {
     _loginView = [[JoyTableAutoLayoutView alloc]init];
     BackGroundBlurView *backView = [[BackGroundBlurView alloc]init];
-    [backView setImage:[UIImage imageNamed:@"loginBack.jpg"] andBlur:1];
     _loginView.setTableBackView(backView);
     _loginView.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }

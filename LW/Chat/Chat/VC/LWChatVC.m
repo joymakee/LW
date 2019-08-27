@@ -11,14 +11,13 @@
 #import "LWChatInteractor.h"
 #import "LWChatPresenter.h"
 #import "LWImageView.h"
-#import "BackGroundBlurView.h"
+#import "JoyBaseVC+LWCategory.h"
 
 @interface LWChatVC ()
 @property (nonatomic,strong)LWChatView *chatView;
 @property (nonatomic,strong)LWChatInteractor *chatInteractor;
 @property (nonatomic,strong)LWChatPresenter *chatPresenter;
 @property (nonatomic,strong)UIView *customHeadView;
-@property (nonatomic,strong)BackGroundBlurView *backView;
 
 @end
 
@@ -32,20 +31,12 @@
     return _chatInteractor = _chatInteractor?:[[LWChatInteractor alloc]init];
 }
 
--(BackGroundBlurView *)backView{
-    if (!_backView) {
-        _backView = [[BackGroundBlurView alloc]init];
-        [_backView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"shuye" ofType:@"jpg"]] andBlur:1];
-    }
-    return _backView;
-}
-
 -(UIView *)customHeadView{
     if (!_customHeadView) {
         _customHeadView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 46, 46)];;
         LWImageView *headView = [[LWImageView alloc]initWithFrame:CGRectMake(0, 0, 46, 46)];
         headView.contentMode = UIViewContentModeScaleAspectFit;
-        headView.image = [UIImage imageNamed:@"joymakeHead.jpg"];
+        headView.image = [UIImage imageNamed:@"joymakeHead"];
         headView.backgroundColor = [UIColor orangeColor];
         [headView addLayer];
         [_customHeadView addSubview:headView];
@@ -63,13 +54,8 @@
 }
 
 - (void)viewDidLoad {
-
     [super viewDidLoad];
-    self.edgesForExtendedLayout = UIRectEdgeAll;
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                  forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [self setDefaultConstraintWithView:self.backView andTitle:nil];
+    [self setBackViewWithImageName:nil bundleName:nil];
     [self setDefaultConstraintWithView:self.chatView andTitle:nil];
      __weak __typeof(&*self)weakSelf = self;
     [self.chatPresenter getChatInfoAndDisplay:^(UIAlertView *alertView, NSInteger btnIndex) {
@@ -80,6 +66,16 @@
             weakSelf.setSocketBlock?weakSelf.setSocketBlock():nil;
         }
     }];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self setRectEdgeAll];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self recoveryEdgeNav];
 }
 
 -(void)viewDidAppear:(BOOL)animated{

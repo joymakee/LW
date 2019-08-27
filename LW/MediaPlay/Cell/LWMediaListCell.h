@@ -11,3 +11,8 @@
 @interface LWMediaListCell : UITableViewCell
 
 @end
+
+
+@interface LWNewsListCell : UITableViewCell
+
+@end

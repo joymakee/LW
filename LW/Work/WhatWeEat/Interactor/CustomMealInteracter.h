@@ -11,5 +11,5 @@
 @interface CustomMealInteracter : JoyInteractorBase
 @property (nonatomic,strong)NSMutableArray *dataArrayM;
 
-- (void)getViewDataSourceWithDataSource:(NSArray *)dataArrayM;
+- (void)genrateDataSourceWithSelectedDataSource:(NSArray *)selectedDataSource;
 @end

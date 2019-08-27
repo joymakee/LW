@@ -21,18 +21,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="spatial" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" image="screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZkC-yN-vB9">
-                                <rect key="frame" x="100" y="200" width="175" height="267"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="spatial" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" image="launchScreen.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ZkC-yN-vB9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="717"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.95780714897260277" green="0.85734160958904104" blue="0.50144477739726023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ZkC-yN-vB9" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="100" id="BFm-xi-ztI"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="ZkC-yN-vB9" secondAttribute="bottom" constant="200" id="Enb-mx-DiI"/>
-                            <constraint firstItem="ZkC-yN-vB9" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="200" id="W9g-cD-KHT"/>
-                            <constraint firstAttribute="trailing" secondItem="ZkC-yN-vB9" secondAttribute="trailing" constant="100" id="o4D-O3-sNk"/>
+                            <constraint firstItem="ZkC-yN-vB9" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="BFm-xi-ztI"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="ZkC-yN-vB9" secondAttribute="bottom" constant="-50" id="Enb-mx-DiI"/>
+                            <constraint firstAttribute="trailing" secondItem="ZkC-yN-vB9" secondAttribute="trailing" id="UfZ-cN-kn0"/>
+                            <constraint firstItem="ZkC-yN-vB9" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="W9g-cD-KHT"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -42,6 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="screen.png" width="2000" height="2000"/>
+        <image name="launchScreen.jpg" width="1080" height="1920"/>
     </resources>
 </document>

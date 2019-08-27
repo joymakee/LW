@@ -17,6 +17,8 @@
 #import "IntelligenceTitleView.h"
 #import "JoyBaseVC+LWCategory.h"
 #import "JoyLocationManager.h"
+#import <GizWifiSDK/GizWifiSDK.h>
+#import <MJExtension/NSObject+MJKeyValue.h>
 
 @interface IntelligenceVC ()
 
@@ -94,6 +96,7 @@
     [self.navigationController.navigationBar addSubview:self.weatherTitleView];
     self.weatherTitleView.width = SCREEN_W;
     self.navigationController.navigationBar.topItem.titleView = [[UIView alloc] initWithFrame:CGRectZero];
+    NSArray* devices = [GizWifiSDK sharedInstance].deviceList;
 }
 
 -(void)viewWillAppear:(BOOL)animated{

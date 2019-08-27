@@ -10,10 +10,9 @@
 #import "LWShareManager.h"
 #import "UIImage+Extension.h"
 #import "LWCommentVC.h"
-#import <TencentOpenAPI/TencentOAuth.h>
-@interface LWShareManager ()<TencentSessionDelegate>
 
-@property (nonatomic,strong)TencentOAuth *tencentOAuth;
+@interface LWShareManager ()
+
 @end
 
 @implementation LWShareManager
@@ -25,11 +24,6 @@
         instance = [[super alloc]init];
     });
     return instance;
-}
-
--(TencentOAuth *)tencentOAuth{
-    return _tencentOAuth = _tencentOAuth?:[[TencentOAuth alloc]initWithAppId:KTENCENT_APPID andDelegate:self];
-
 }
 
 -(LWShareManager *(^)())qqLogin{
@@ -79,23 +73,6 @@
 }
 
 - (void)tencentLogin{
-    NSArray* permissions = [NSArray arrayWithObjects:
-                            kOPEN_PERMISSION_GET_USER_INFO,
-                            kOPEN_PERMISSION_GET_SIMPLE_USER_INFO,
-                            kOPEN_PERMISSION_ADD_ALBUM,
-                            kOPEN_PERMISSION_ADD_ONE_BLOG,
-                            kOPEN_PERMISSION_ADD_SHARE,
-                            kOPEN_PERMISSION_ADD_TOPIC,
-                            kOPEN_PERMISSION_CHECK_PAGE_FANS,
-                            kOPEN_PERMISSION_GET_INFO,
-                            kOPEN_PERMISSION_GET_OTHER_INFO,
-                            kOPEN_PERMISSION_LIST_ALBUM,
-                            kOPEN_PERMISSION_UPLOAD_PIC,
-                            kOPEN_PERMISSION_GET_VIP_INFO,
-                            kOPEN_PERMISSION_GET_VIP_RICH_INFO,
-                            nil];
-    self.tencentOAuth.authShareType= AuthShareType_QQ;
-    [self.tencentOAuth authorize:permissions inSafari:NO];
 }
 
 -(void)tencentDidLogin{

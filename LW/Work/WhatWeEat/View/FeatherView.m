@@ -39,8 +39,8 @@
     
     CAShapeLayer *layer = [CAShapeLayer layer];
     layer.path = path.CGPath;
-    layer.fillColor = [UIColor orangeColor].CGColor;
-    layer.strokeColor = [[UIColor purpleColor] CGColor];
+    layer.fillColor = [UIColor colorWithRed:0.5 green:0.4 blue:0.3 alpha:0.7].CGColor;
+    layer.strokeColor = [[UIColor colorWithWhite:0.9 alpha:0.6] CGColor];
     [self.layer addSublayer:layer];
     
     [self.centerPath addArcWithCenter:center radius:CGRectGetWidth(self.frame)/25 startAngle:0 endAngle:M_PI*2 clockwise:YES];
@@ -48,11 +48,11 @@
     [self.centerPath closePath];
     CAShapeLayer *centerLayer = [CAShapeLayer layer];
     centerLayer.path = self.centerPath.CGPath;
-    centerLayer.fillColor = [UIColor yellowColor].CGColor;
-    centerLayer.strokeColor = [UIColor purpleColor].CGColor;
+    centerLayer.fillColor = [UIColor colorWithRed:0.8 green:0.7 blue:0.4 alpha:0.6].CGColor;
+    centerLayer.strokeColor = [[UIColor colorWithWhite:0.9 alpha:0.6] CGColor];
     [self.layer addSublayer:centerLayer];
     
-    CATextLayer *txtLayer = [self textLayer:@"Go" rotate:0];
+    CATextLayer *txtLayer = [self textLayer:@"🧚‍♀️" rotate:0];
     [self.layer addSublayer:txtLayer];
     
     [self.layerArrayM addObject:layer];

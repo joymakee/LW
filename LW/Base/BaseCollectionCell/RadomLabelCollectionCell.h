@@ -11,3 +11,8 @@
 @interface RadomLabelCollectionCell : LWBaseCollectionCell
 
 @end
+
+
+@interface RadomLabelIconCollectionCell : LWBaseCollectionCell
+
+@end

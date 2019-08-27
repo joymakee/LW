@@ -13,4 +13,6 @@
 
 -(void)getLoginDataSource;
 
+- (void)loginWithPhone:(NSString *)phone password:(NSString *)password success:(DICTBLOCK)success failure:(ERRORBLOCK)failure;
+
 @end

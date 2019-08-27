@@ -18,7 +18,8 @@
 
 @implementation CommonImageCollectCell
 -(void)setCellWithModel:(JoyImageCellBaseModel *)cellModel{
-    SDIMAGE_LOAD(self.tapImageView, cellModel.avatar, cellModel.placeHolderImageStr)
+//    SDIMAGE_LOAD(self.tapImageView, cellModel.avatar, cellModel.placeHolderImageStr)
+    self.tapImageView.image = [UIImage imageNamed:@"shu"];
     self.tapImageView.delegate = self;
     self.deleteImageView.delegate = self;
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>tabBar</key>
+	<dict>
+		<key>excutor</key>
+		<string>LWTabbarVC</string>
+		<key>actionType</key>
+		<string>4</string>
+	</dict>
+	<key>media</key>
+	<dict>
+		<key>excutor</key>
+		<string>LWMediaListVC</string>
+		<key>actionType</key>
+		<string>0</string>
+	</dict>
+	<key>login</key>
+	<dict>
+		<key>excutor</key>
+		<string>LoginVC</string>
+		<key>actionType</key>
+		<string>4</string>
+	</dict>
+</dict>
+</plist>

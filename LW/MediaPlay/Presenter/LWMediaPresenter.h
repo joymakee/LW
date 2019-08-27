@@ -7,13 +7,11 @@
 //
 
 #import "JoyPresenterBase.h"
-#import "JoyWebView.h"
-@class LWMediaInteractor,JoyTableAutoLayoutView,WKWebView,JoyUISegementView;
+@class LWMediaInteractor,JoyTableAutoLayoutView,JoyUISegementView;
 
 @interface LWMediaPresenter : JoyPresenterBase
 @property (nonatomic,strong)LWMediaInteractor *interactor;
 @property (nonatomic,strong)JoyTableAutoLayoutView *mediaListView;
-@property (nonatomic,strong)JoyWebView *webView;
 @property (nonatomic,strong)JoyUISegementView *segmentView;
 
 @end

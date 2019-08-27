@@ -29,10 +29,8 @@
     _commentView = commentView;
     _commentView.backgroundColor = [UIColor clearColor];
     BackGroundBlurView *backView = [[BackGroundBlurView alloc]init];
-    [backView setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"shuye" ofType:@"jpg"]] andBlur:1];
     _commentView.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     _commentView.setTableBackView(backView).setTableHeadView(self.headerView);
-
 }
 
 -(TNACommentTableHeaderView *)headerView{

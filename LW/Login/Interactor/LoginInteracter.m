@@ -9,6 +9,14 @@
 #import "LoginInteracter.h"
 #import <JoyKit/JoyKit.h>
 #import <JoyKit/JoyKit.h>
+#import <GizWifiSDK/GizWifiSDK.h>
+#import "LWUser.h"
+@interface LoginInteracter ()<GizWifiSDKDelegate>
+@property (nonatomic,copy)DICTBLOCK successBlock;
+@property (nonatomic,copy)ERRORBLOCK failureBlock;
+
+@end
+
 @implementation LoginInteracter
 
 -(void)getLoginDataSource{
@@ -30,6 +38,7 @@
     
     JoyTextCellBaseModel *accountModel = [[JoyTextCellBaseModel alloc]init];
     accountModel.placeHolder = @"邮箱/手机号";
+    accountModel.title = [LWUser shareInstance].userName;
     accountModel.textFieldModel = normalModel;
     accountModel.changeKey = @"account";
     accountModel.cellName = @"LWTextFieldCell";
@@ -55,6 +64,25 @@
     [self.dataArrayM addObject:topicSectionModel];
     [self.dataArrayM addObject:loginHeadSectionModel];
     [self.dataArrayM addObject:loginSectionModel];
+}
+
+- (void)loginWithPhone:(NSString *)phone password:(NSString *)password success:(DICTBLOCK)success failure:(ERRORBLOCK)failure{
+    [GizWifiSDK sharedInstance].delegate = self;
+    self.successBlock = success;
+    self.failureBlock = failure;
+    [[GizWifiSDK sharedInstance] userLogin:phone password:password];
+}
+
+// 实现回调
+- (void)wifiSDK:(GizWifiSDK *)wifiSDK didUserLogin:(NSError *)result uid:(NSString *)uid token:(NSString *)token {
+    if(result.code == GIZ_SDK_SUCCESS) {
+        [LWUser shareInstance].uid = uid;
+        [LWUser shareInstance].token = token;
+        [[LWUser shareInstance] cacheUserInfo];
+        self.successBlock?self.successBlock(@{@"uid":uid,@"token":token}):nil;
+    } else {
+        self.failureBlock?self.failureBlock(result):nil;
+    }
 }
 
 -(NSMutableArray *)dataArrayM{

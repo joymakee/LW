@@ -10,11 +10,13 @@
 #import "LWChatListCellModel.h"
 
 @interface LWChatListCell ()
-@property (weak, nonatomic) IBOutlet UIImageView *avatar;
+@property (weak, nonatomic) IBOutlet UILabel *avatar;
+//@property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *messageCountLabel;
+@property (weak, nonatomic) IBOutlet UIView *backView;
 
 @end
 
@@ -25,7 +27,9 @@
 }
 
 -(void)setCellWithModel:(LWChatListCellModel *)model{
-    self.avatar.image = [UIImage imageNamed:model.avatar];
+    self.avatar.font = [UIFont fontWithName:@"iconFont" size:33];
+    self.avatar.text = model.avatar;
+    self.avatar.textColor = LW_RADOM_COLOR_NOALPHA;
     self.titleLabel.text = model.title;
     self.subTitleLabel.text = model.subTitle;
     if (model.messageCount) {
@@ -36,7 +40,7 @@
     }else{
         self.messageCountLabel.hidden = YES;
     }
-    
+    self.backView.backgroundColor = LW_RADOM_COLOR;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

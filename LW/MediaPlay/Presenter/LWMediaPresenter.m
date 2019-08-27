@@ -10,6 +10,7 @@
 #import "LWMediaInteractor.h"
 #import <JoyKit/JoyKit.h>
 #import "LWMediaModel.h"
+#import "LWNewsModel.h"
 #import <JoyTableAutoLayoutView.h>
 #import <JoyUISegementView.h>
 #import <AVFoundation/AVFoundation.h>
@@ -17,72 +18,121 @@
 #import <AVKit/AVKit.h>
 #import "LWCommentVC.h"
 #import "LWNavigationController.h"
-#import <WebKit/WebKit.h>
+#import "PlayBambooVC.h"
+#import "WhatWeEatTodayVC.h"
+#import <JoyKit/CALayer+JoyLayer.h>
+#import "LWCustomMediaVC.h"
 
 @implementation LWMediaPresenter
 -(void)reloadDataSource{
     __weak __typeof (&*self)weakSelf = self;
-    self.webView.hidden = YES;
     [self.interactor getMedisSourcesDataSource:^{
         [weakSelf reloadTable];
     }];
-    
-    self.webView.scrollDidScroll(^(UIScrollView *scrollView) {
-//        [weakSelf scrollDidScroll:scrollView];
-    });
 }
 
 - (void)reloadTable{
-    __weak __typeof (&*self)weakSelf = self;
+    @LwWeak(self);
     self.mediaListView.setDataSource(self.interactor.dataArrayM).reloadTable().cellDidSelect(^(NSIndexPath *indexPath, NSString *tapAction) {
-        [weakSelf performTapAction:tapAction];
-    }).tableScroll(^(UIScrollView *scrollView) {
-//        [weakSelf scrollDidScroll:scrollView];
+        [self performTapAction:tapAction];
+        if (self.segmentView.selectIndex == 3){
+            LWNewsModel *model = [self.interactor.newsArrayM objectAtIndex:indexPath.row];
+            JoyWebLoader *loader =[[JoyWebLoader alloc]init];
+            [self goVC:loader];
+            loader.initUrlStr(model.url).startLoad();
+        }
+    }).joyHeaderRefreshblock(^{
+        @LwStrong(self);
+        self.mediaListView.joyEndHeaderRefreshblock();
+    }).joyFooterRefreshblock(^{
+        @LwStrong(self);
+        switch (self.segmentView.selectIndex) {
+            case 0:
+                self.mediaListView.joyEndFooterRefreshblock();
+                break;
+            case 1:
+                [self refreshJoyFooter];
+                break;
+            case 2:
+                self.mediaListView.joyEndFooterRefreshblock();
+                break;
+            case 3:
+                [self refreshNewsFooter];
+                break;
+            default:
+                self.mediaListView.joyEndFooterRefreshblock();
+                break;
+        }
     });
+}
+
+- (void)refreshJoyFooter{
+    @LwWeak(self);
+    [self.interactor getJoySuccess:^{
+        @LwStrong(self);
+        self.mediaListView.setDataSource(self.interactor.joyArrayM).reloadTable().joyEndFooterRefreshblock();
+    } failure:^(NSError *error) {
+        @LwStrong(self);
+        self.mediaListView.joyEndFooterRefreshblock();
+    }];
+}
+
+- (void)refreshNewsFooter{
+    @LwWeak(self);
+    [self.interactor getNewsSuccess:^{
+        @LwStrong(self);
+        self.mediaListView.setDataSource(self.interactor.newsArrayM).reloadTable().joyEndFooterRefreshblock();
+    } failure:^(NSError *error) {
+        @LwStrong(self);
+        self.mediaListView.joyEndFooterRefreshblock();
+    }];
 }
 
 -(void)setSegmentView:(JoyUISegementView *)segmentView{
     _segmentView = segmentView;
-    __weak __typeof (&*self)weakSelf = self;
+    @LwWeak(self);
     _segmentView.segmentValuechangedBlock(^(NSInteger selectIndex) {
-        [weakSelf segmentClickAction:selectIndex];
+        @LwStrong(self);
+        [self segmentClickAction:selectIndex];
     });
 }
 
 -(void)segmentClickAction:(NSInteger)index{
+    @LwWeak(self);
     if (index == 0) {
-        self.webView.hidden = YES;
-        self.mediaListView.hidden = NO;
-        __weak __typeof (&*self)weakSelf = self;
-        self.mediaListView.setDataSource(self.interactor.dataArrayM).reloadTable().joyFooterRefreshblock(^{
-            weakSelf.mediaListView.joyEndFooterRefreshblock();
-        }).joyHeaderRefreshblock(^{
-            weakSelf.mediaListView.joyEndHeaderRefreshblock();
-        });
+        [self.mediaListView.layer transitionWithAnimType:TransitionAnimTypeOglFlip subType:TransitionSubtypesFromLeft curve:TransitionCurveEaseIn duration:1];
+        self.mediaListView.setDataSource(self.interactor.dataArrayM).reloadTable();
     }else if (index == 1) {
-        self.webView.hidden = YES;
-        self.mediaListView.hidden = NO;
-        __weak __typeof (&*self)weakSelf = self;
-        [self.interactor getJoySuccess:^{
-            weakSelf.mediaListView.setDataSource(weakSelf.interactor.joyArrayM).reloadTable().joyFooterRefreshblock(^{
-                [weakSelf.interactor getJoySuccess:^{
-                    weakSelf.mediaListView.joyEndFooterRefreshblock().reloadTable();
-                } failure:nil];
-            }).joyHeaderRefreshblock(^{
-                weakSelf.mediaListView.joyEndHeaderRefreshblock().reloadTable();
-            });
-        } failure:nil];
+            [self.mediaListView.layer transitionWithAnimType:TransitionAnimTypeOglFlip subType:TransitionSubtypesFromRight curve:TransitionCurveEaseIn duration:1];
+            if(self.interactor.joyArrayM.count){
+                self.mediaListView.setDataSource(self.interactor.joyArrayM).reloadTable();
+        }else{
+            [self.interactor getJoySuccess:^{
+                @LwStrong(self);
+                self.mediaListView.setDataSource(self.interactor.joyArrayM).reloadTable();
+            } failure:^(NSError *error) {
+                @LwStrong(self);
+                self.mediaListView.setDataSource(self.interactor.joyArrayM).reloadTable();
+            }];
+        }
     }
     else if (index == 2 ) {
-        self.webView.hidden = NO;
-        self.webView.initUrlStr(@"http://www.toutiao.com").startLoad();
+        [self.mediaListView.layer transitionWithAnimType:TransitionAnimTypeRippleEffect subType:TransitionSubtypesFromRight curve:TransitionCurveEaseIn duration:1];
+        self.mediaListView.setDataSource(self.interactor.relaxationArrayM).reloadTable();
     }
     else if (index == 3){
-        self.webView.hidden = NO;
-        self.webView.initUrlStr(@"http://www.budejie.com").startLoad();
-    }else if(index == 4){
-        self.webView.hidden = NO;
-        self.webView.initUrlStr(@"http://pvp.qq.com/webplat/info/news_version3/15592/18024/19327/m13205/list_1.shtml").startLoad();
+        [self.mediaListView.layer transitionWithAnimType:TransitionAnimTypeOglFlip subType:TransitionSubtypesFromRight curve:TransitionCurveEaseIn duration:1];
+        if(self.interactor.newsArrayM.count){
+            self.mediaListView.setDataSource(self.interactor.newsArrayM).reloadTable();
+        }else{
+            [self.interactor getNewsSuccess:^{
+                @LwStrong(self);
+                self.mediaListView.setDataSource(self.interactor.newsArrayM).reloadTable();
+            } failure:^(NSError *error) {
+                @LwStrong(self);
+                self.mediaListView.setDataSource(self.interactor.newsArrayM).reloadTable();
+            }];
+        }
     }
 }
 
@@ -93,7 +143,7 @@
 }
 
 - (void)goPlayMedia{
-    JoySectionBaseModel *sectionModel = [self.interactor.dataArrayM objectAtIndex:self.mediaListView.currentSelectIndexPath.section];
+    JoySectionBaseModel *sectionModel =  self.interactor.dataArrayM[self.mediaListView.currentSelectIndexPath.section];
     LWMediaModel * selectModel  = sectionModel.rowArrayM[self.mediaListView.currentSelectIndexPath.row];
     AVPlayerItem *playitem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:selectModel.mediaUrlStr]];
     AVPlayer *player = [AVPlayer playerWithPlayerItem:playitem];
@@ -102,28 +152,29 @@
     [self presentVC:avPlayer];
 }
 
-//static float _lastPosition = 0;
-//-(void)scrollDidScroll:(UIScrollView *)scrollView{
-//    int currentPostion = scrollView.contentOffset.y;
-//    if (currentPostion - _lastPosition > 0) {
-//        _lastPosition = currentPostion;
-//        NSLog(@"ScrollUp now");
-//        self.rootView.viewController.navigationController.navigationBar.alpha = 0;//(currentPostion - _lastPosition)/60;
-//        self.rootView.viewController.tabBarController.tabBar.hidden = NO;
-//    }
-//    else if (_lastPosition - currentPostion > 0)
-//    {
-//        _lastPosition = currentPostion;
-//        NSLog(@"ScrollDown now");
-//        self.rootView.viewController.navigationController.navigationBar.alpha = 0.7;
-//        self.rootView.viewController.tabBarController.tabBar.hidden = YES;
-//    }
-//    if(scrollView.contentOffset.y<=64){
-//        self.rootView.viewController.navigationController.navigationBar.alpha=1;
-//    }
-//}
+- (void)addTVCustomAction{
+    LWCustomMediaVC *vc = [LWCustomMediaVC new];
+    [vc routeParam:nil block:^(NSDictionary *params, NSError *error) {
+        LWMediaModel * selectModel = [LWMediaModel new];
+        selectModel.title = [params objectForKey:@"title"];
+        selectModel.mediaUrlStr = [params objectForKey:@"url"];
+        selectModel.tapAction = @"goPlayMedia";
+        selectModel.cellName = @"LWMediaListCell";
+        selectModel.icon = @"zonghe";
+        selectModel.playCount = 0;
+        [self.interactor.dataArrayM insertObject:selectModel atIndex:self.interactor.dataArrayM.count-1];
+        self.mediaListView.reloadTable();
+    }];
+    [self goVC:vc];
+}
 
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    [self scrollDidScroll:scrollView];
-//}
+- (void)goPlayBambooVC{
+    PlayBambooVC *eatVC = [[PlayBambooVC alloc]init];
+    [self goVC:eatVC];
+}
+
+- (void)goEatVC{
+    WhatWeEatTodayVC *eatVC = [[WhatWeEatTodayVC alloc]init];
+    [self goVC:eatVC];
+}
 @end

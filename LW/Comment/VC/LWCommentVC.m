@@ -48,7 +48,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setRectEdgeAll];
-    [self setBackViewWithImageName:nil bundleName:nil];
     [self setDefaultConstraintWithView:self.commentView andTitle:@"评论"];
     [self setLeftNavItemWithTitle:nil andImageStr:@"header_icon_back" andHighLightImageStr:@"header_icon_back" action:nil bundle:nil];
     [self setRightNavWithGifStr:@"go"];

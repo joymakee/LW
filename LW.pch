@@ -64,11 +64,37 @@ typedef NS_ENUM(NSInteger,ELwTouchActionType) {
 #define rac_keywordify try {} @catch (...) {}
 #endif
 
-#define Weakify(o) rac_keywordify __weak typeof(o) o##Weak = o;
+#define LwWeak(o) rac_keywordify __weak typeof(o) o##Weak = o;
 
-#define Strongify(o) rac_keywordify __strong typeof(o) o = o##Weak;
+#define LwStrong(o) rac_keywordify __strong typeof(o) o = o##Weak;
 
+#define LW_RADOM_SINGLE_COLOR ((arc4random()%255)/255.)
+#define LW_RADOM_COLOR [UIColor colorWithRed:LW_RADOM_SINGLE_COLOR green:LW_RADOM_SINGLE_COLOR blue:LW_RADOM_SINGLE_COLOR alpha:(0.3)]
+#define LW_RADOM_COLOR_NOALPHA [UIColor colorWithRed:LW_RADOM_SINGLE_COLOR green:LW_RADOM_SINGLE_COLOR blue:LW_RADOM_SINGLE_COLOR alpha:(1)]
 
+#define is3_5inch ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+#define is4inch_retina ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define is4_7inch_retina ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+#define is5_5inch_retina ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define IOS10Last   [[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0 ? YES : NO
+
+// 判断是否为iPhone X 系列
+#define iPhoneX \
+({BOOL isPhoneX = ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO);\
+if (@available(iOS 11.0, *)) {\
+isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+}\
+(isPhoneX);})
+
+#define KStatusBarHeight (iPhoneX ? 44 : 20)
+#define kStatusBarAndNavigationBarHeight (iPhoneX ? 88 : 64)
+#define iPhoneXSafeAreaBottomHeight (iPhoneX ? 34 : 0)
+#define  kTabbarHeight        (iPhoneX ? (49.f+34.f) : 49.f)
+
+#define kSCREEN_WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
+#define kSCREEN_HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
+#define kScreenBounds [UIScreen mainScreen].bounds
 
 //typedef NS_ENUM(NSInteger,ETextCellType) {
 //    leftViewModel,
