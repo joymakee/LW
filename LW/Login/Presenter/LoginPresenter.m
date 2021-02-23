@@ -34,12 +34,12 @@
 
 #pragma mark  登录
 - (void)loginAction{
-//    if([LWUser shareInstance].userName.length && [LWUser shareInstance].password.length){
-//        [self.interactor loginWithPhone:[LWUser shareInstance].userName password:[LWUser shareInstance].password success:^(NSDictionary *dict) {
+    if([LWUser shareInstance].userName.length && [LWUser shareInstance].password.length){
+        [self.interactor loginWithPhone:[LWUser shareInstance].userName password:[LWUser shareInstance].password success:^(NSDictionary *dict) {
             [UIApplication sharedApplication].keyWindow.rootViewController = [[LWTabbarVC alloc]init];
-//        } failure:^(NSError *error) {
-//        }];
-//    }
+        } failure:^(NSError *error) {
+        }];
+    }
 }
 
 #pragma mark 指纹识别

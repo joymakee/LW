@@ -12,6 +12,7 @@
 #import "LWUser.h"
 #import <JoyKit/JoyRouter.h>
 #import "ThemeVC.h"
+#import "UserInfoVC.h"
 
 @interface MeVC ()
 @property (nonatomic,strong)JoyTableAutoLayoutView *meListView;
@@ -31,6 +32,11 @@
         [super performTapAction:tapAction];
     }).cellTextEiditEnd(^(NSIndexPath *indexPath, NSString *content, NSString *key) {
     });
+}
+
+-(void)userInfoAction{
+    UserInfoVC *vc = [UserInfoVC new];
+    [self goVC:vc];
 }
 
 - (void)themeAction{
@@ -56,8 +62,9 @@
 -(NSMutableArray *)dataArrayM{
     if (!_dataArrayM) {
         _dataArrayM = [NSMutableArray array];
-        for (NSDictionary *dict in @[@{@"title":@"个性换肤",@"icon":@"\ue600",@"tapAction":@"themeAction"},
-                                     @{@"title":@"退出登录",@"icon":@"\uea86",@"tapAction":@"loginOutAction"}]) {
+        for (NSDictionary *dict in @[@{@"title":@"用户信息",@"icon":@"\ue7af",@"tapAction":@"userInfoAction"},
+             @{@"title":@"个性换肤",@"icon":@"\ue600",@"tapAction":@"themeAction"},
+             @{@"title":@"退出登录",@"icon":@"\uea86",@"tapAction":@"loginOutAction"}]) {
             JoyCellBaseModel *cellModel = [[JoyCellBaseModel alloc]init];
             cellModel.title = dict[@"title"];
             cellModel.subTitle = dict[@"icon"];

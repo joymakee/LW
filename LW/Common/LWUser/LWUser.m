@@ -26,16 +26,26 @@
     return user;
 }
 
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    
+}
+
+-(NSString *)genderStr{
+    return [self.userGender integerValue]==0?@"\ue61f":[self.userGender integerValue]==1?@"\ue676":@"\ue676";
+}
+
 -(void)cacheUserInfo{
-    [Joy_NetCacheTool scbuCacheDict:@{@"password":self.password?:@"",@"userName":self.userName?:@""} forKey:LW_USER_CACHE_KEY];
+    NSDictionary *dict = self.mj_keyValues;
+    [Joy_NetCacheTool scbuCacheDict:dict forKey:LW_USER_CACHE_KEY];
 }
 
 - (void)setValueWithCache{
     NSDictionary *dict = [Joy_NetCacheTool scbuDictCacheForKey:LW_USER_CACHE_KEY];
-    if (dict) {
-        self.userName = [dict objectForKey:@"userName"];
-        self.password = [dict objectForKey:@"password"];
-    }
+    [self setValuesForKeysWithDictionary:dict];
+//    if (dict) {
+//        self.userName = [dict objectForKey:@"userName"];
+//        self.password = [dict objectForKey:@"password"];
+//    }
 }
 
 -(void)loginOut{

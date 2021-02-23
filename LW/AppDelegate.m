@@ -34,6 +34,7 @@ extern  NSString * const deSelectMealKey;
     [[JoyRouter sharedInstance]configScheme:@"joylw"];
     [GizWifiSDK sharedInstance].delegate = self;
     [GizWifiSDK startWithAppID:@"0fdee57c9dc24613b8f21000de4d29ec"];
+    [GizWifiSDK setLogLevel:GizLogPrintI];
     [[LWUser shareInstance] setValueWithCache];
     [self.window makeKeyWindow];
 

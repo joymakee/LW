@@ -36,7 +36,7 @@
         _customHeadView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 46, 46)];;
         LWImageView *headView = [[LWImageView alloc]initWithFrame:CGRectMake(0, 0, 46, 46)];
         headView.contentMode = UIViewContentModeScaleAspectFit;
-        headView.image = [UIImage imageNamed:@"joymakeHead"];
+        headView.image = [UIImage imageNamed:@"joymakeHead.jpg"];
         headView.backgroundColor = [UIColor orangeColor];
         [headView addLayer];
         [_customHeadView addSubview:headView];

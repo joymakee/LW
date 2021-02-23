@@ -8,7 +8,7 @@
 
 #import "LoginInteracter.h"
 #import <JoyKit/JoyKit.h>
-#import <JoyKit/JoyKit.h>
+#import <JoyKit/NSDate+JoyExtention.h>
 #import <GizWifiSDK/GizWifiSDK.h>
 #import "LWUser.h"
 @interface LoginInteracter ()<GizWifiSDKDelegate>
@@ -40,7 +40,6 @@
     accountModel.placeHolder = @"邮箱/手机号";
     accountModel.title = [LWUser shareInstance].userName;
     accountModel.textFieldModel = normalModel;
-    accountModel.changeKey = @"account";
     accountModel.cellName = @"LWTextFieldCell";
     accountModel.borderStyle = UITextBorderStyleRoundedRect;
     accountModel.keyboardType = UIKeyboardTypeEmailAddress;
@@ -66,6 +65,7 @@
     [self.dataArrayM addObject:loginSectionModel];
 }
 
+//登录接口
 - (void)loginWithPhone:(NSString *)phone password:(NSString *)password success:(DICTBLOCK)success failure:(ERRORBLOCK)failure{
     [GizWifiSDK sharedInstance].delegate = self;
     self.successBlock = success;
@@ -73,17 +73,27 @@
     [[GizWifiSDK sharedInstance] userLogin:phone password:password];
 }
 
-// 实现回调
+// 登录回调
 - (void)wifiSDK:(GizWifiSDK *)wifiSDK didUserLogin:(NSError *)result uid:(NSString *)uid token:(NSString *)token {
     if(result.code == GIZ_SDK_SUCCESS) {
         [LWUser shareInstance].uid = uid;
         [LWUser shareInstance].token = token;
-        [[LWUser shareInstance] cacheUserInfo];
-        self.successBlock?self.successBlock(@{@"uid":uid,@"token":token}):nil;
+        [[GizWifiSDK sharedInstance] getUserInfo:token];//获取用户信息
     } else {
         self.failureBlock?self.failureBlock(result):nil;
     }
 }
+
+//获取用户信息回调
+- (void)wifiSDK:(GizWifiSDK *)wifiSDK didGetUserInfo:(NSError *)result userInfo:(GizUserInfo*)userInfo{
+    [[LWUser shareInstance] setValuesForKeysWithDictionary:userInfo.mj_keyValues];
+    if (userInfo.birthday){
+        [LWUser shareInstance].birthday = [userInfo.birthday timeStringformat:@"yyyy-MM-dd"];
+    }
+    [[LWUser shareInstance] cacheUserInfo];
+    self.successBlock?self.successBlock(@{}):nil;
+}
+
 
 -(NSMutableArray *)dataArrayM{
     return _dataArrayM = _dataArrayM?:[NSMutableArray array];

@@ -307,9 +307,10 @@
 		BB1FEF4822CDFCD1002BB467 /* lw_girl.JPG in Resources */ = {isa = PBXBuildFile; fileRef = BB1FEF3E22CDFCD1002BB467 /* lw_girl.JPG */; };
 		BB1FEF4B22CEF998002BB467 /* LWNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1FEF4A22CEF998002BB467 /* LWNewsModel.m */; };
 		BB1FEF4D22CEFB12002BB467 /* LWNewsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1FEF4C22CEFB12002BB467 /* LWNewsListCell.xib */; };
-		BB1FEF4F22CF4E4B002BB467 /* joymakeHead.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1FEF4E22CF4E4B002BB467 /* joymakeHead.png */; };
 		BB256C3821528AD300A3097E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BB256C3721528AD200A3097E /* libc++.tbd */; };
 		BB25E68B22DDDF51005819BD /* LWCustomMediaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BB25E68A22DDDF51005819BD /* LWCustomMediaVC.m */; };
+		BB48ACEB25E4AD3800DE1FA7 /* UserInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BB48ACEA25E4AD3800DE1FA7 /* UserInfoVC.m */; };
+		BB48ACF125E54DD000DE1FA7 /* joymakeHead.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB48ACF025E54DD000DE1FA7 /* joymakeHead.jpg */; };
 		BB62657D22C20CD00099733C /* lw_tabbar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB62657C22C20CCF0099733C /* lw_tabbar.jpg */; };
 		BB62658622C2234F0099733C /* CustomMealVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BB62658522C2234F0099733C /* CustomMealVC.m */; };
 		BB62658B22C30BD20099733C /* lw_save.png in Resources */ = {isa = PBXBuildFile; fileRef = BB62658922C30BD20099733C /* lw_save.png */; };
@@ -763,10 +764,12 @@
 		BB1FEF4922CEF998002BB467 /* LWNewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LWNewsModel.h; sourceTree = "<group>"; };
 		BB1FEF4A22CEF998002BB467 /* LWNewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LWNewsModel.m; sourceTree = "<group>"; };
 		BB1FEF4C22CEFB12002BB467 /* LWNewsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LWNewsListCell.xib; sourceTree = "<group>"; };
-		BB1FEF4E22CF4E4B002BB467 /* joymakeHead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joymakeHead.png; sourceTree = "<group>"; };
 		BB256C3721528AD200A3097E /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		BB25E68922DDDF51005819BD /* LWCustomMediaVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LWCustomMediaVC.h; sourceTree = "<group>"; };
 		BB25E68A22DDDF51005819BD /* LWCustomMediaVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LWCustomMediaVC.m; sourceTree = "<group>"; };
+		BB48ACE925E4AD3800DE1FA7 /* UserInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoVC.h; sourceTree = "<group>"; };
+		BB48ACEA25E4AD3800DE1FA7 /* UserInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoVC.m; sourceTree = "<group>"; };
+		BB48ACF025E54DD000DE1FA7 /* joymakeHead.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = joymakeHead.jpg; sourceTree = "<group>"; };
 		BB52EDAD25C98C9400C19C89 /* LWDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LWDebug.entitlements; sourceTree = "<group>"; };
 		BB62657C22C20CCF0099733C /* lw_tabbar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lw_tabbar.jpg; sourceTree = "<group>"; };
 		BB62658422C2234F0099733C /* CustomMealVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomMealVC.h; sourceTree = "<group>"; };
@@ -1519,7 +1522,7 @@
 		2F410E9D1DC9BD9D00A650BB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BB1FEF4E22CF4E4B002BB467 /* joymakeHead.png */,
+				BB48ACF025E54DD000DE1FA7 /* joymakeHead.jpg */,
 				BB1CD67722CA004E00D07015 /* launchScreen.jpg */,
 				2FBC82071EE6C1C4006CB4C4 /* lw_qr_code.png */,
 				2F7D25FE1DD426CA008F3FDF /* qq.png */,
@@ -2029,6 +2032,8 @@
 				BB1FEF2822CDD603002BB467 /* MeVC.m */,
 				BB1FEF2E22CDE14A002BB467 /* ThemeVC.h */,
 				BB1FEF2F22CDE14A002BB467 /* ThemeVC.m */,
+				BB48ACE925E4AD3800DE1FA7 /* UserInfoVC.h */,
+				BB48ACEA25E4AD3800DE1FA7 /* UserInfoVC.m */,
 				BB1FEF3422CDFCD1002BB467 /* theme */,
 			);
 			path = Me;
@@ -2227,6 +2232,7 @@
 				BB1CD66A22C9D9D400D07015 /* work.plist in Resources */,
 				BB1FEED922CB7330002BB467 /* qingnian.png in Resources */,
 				2F36FAFA1ED437F500207D12 /* lw_inteligence_bedroom.jpg in Resources */,
+				BB48ACF125E54DD000DE1FA7 /* joymakeHead.jpg in Resources */,
 				BB1CD67322C9F69000D07015 /* chi.png in Resources */,
 				BB1FEEC422CB636A002BB467 /* falvfagui.png in Resources */,
 				BB1FEF2D22CDDAD2002BB467 /* tabBar_me@3x.png in Resources */,
@@ -2338,7 +2344,6 @@
 				BB1FEF0422CC3B79002BB467 /* ningxia.png in Resources */,
 				BB1FEED222CB7281002BB467 /* yingshiliandong.png in Resources */,
 				BB1FEEC822CB636A002BB467 /* kejiaoshipin-K.png in Resources */,
-				BB1FEF4F22CF4E4B002BB467 /* joymakeHead.png in Resources */,
 				2F410F3A1DC9BD9E00A650BB /* ZFPlayer_play_btn@2x.png in Resources */,
 				2F362A891DDE9A7400B58076 /* playBamboo5@2x.png in Resources */,
 				2F410F471DC9BD9E00A650BB /* TNACommentTableCell.xib in Resources */,
@@ -2473,6 +2478,7 @@
 				2F36FB191ED43C9300207D12 /* LWtempratureCellModel.m in Sources */,
 				2F8806E11E52F01F0029FB4B /* LWChatListCellModel.m in Sources */,
 				2F410F0A1DC9BD9E00A650BB /* LWTextFieldCell.m in Sources */,
+				BB48ACEB25E4AD3800DE1FA7 /* UserInfoVC.m in Sources */,
 				2F4ED6331E5193A7007C71D3 /* LWChatRightIconLabelCell.m in Sources */,
 				2F36FB251ED4566100207D12 /* LWThermostatCell.m in Sources */,
 				2F8806BE1E52A14D0029FB4B /* GCDAsyncUdpSocket.m in Sources */,

@@ -46,7 +46,7 @@
     if(!_titleLabel){
         _titleLabel = [[UILabel alloc]init];
         _titleLabel.numberOfLines = 0;
-        _titleLabel.font = [UIFont systemFontOfSize:16];
+        _titleLabel.font =  [UIFont fontWithName:@"iconfont" size:16];
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.textAlignment = NSTextAlignmentLeft;
     }

@@ -47,7 +47,7 @@
 }
 
 - (void)sendmessage:(ChatMessage*)message{
-    message.userName = [LWUser shareInstance].userName;
+    message.userName = [LWUser shareInstance].name;
     [self.socketClient sendmessage:message.mj_JSONString];
     JoySectionBaseModel *sectionModel = self.dataArrayM.firstObject;
     [sectionModel.rowArrayM addObject:[self tranvrtMessageToCellModel:message isSelf:YES]];

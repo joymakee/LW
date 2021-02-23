@@ -48,7 +48,7 @@
     [self setBackViewWithImageName:nil bundleName:nil];
     [self setDefaultConstraintWithView:self.chatView andTitle:@"消息"];
     [self.chatPresenter reloadDataSource];
-    [self setLeftNavItemWithTitle:nil andImageStr:@"joymakeHead" andHighLightImageStr:@"joymakeHead" action:nil bundle:nil];
+    [self setLeftNavItemWithTitle:nil andImageStr:@"joymakeHead.jpg" andHighLightImageStr:@"joymakeHead.jpg" action:nil bundle:nil];
     [self setRightNavItemWithTitle:nil andImageStr:@"lw_qr_code.png" andHighLightImageStr:@"lw_qr_code.png" action:nil bundle:nil];
 }
 
