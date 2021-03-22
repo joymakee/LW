@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>0</key>
+	<string>Client发出的请求执行成功</string>
+	<key>10003</key>
+	<string>产品标识码无效</string>
+	<key>10010</key>
+	<string>数据点未定义</string>
+	<key>10011</key>
+	<string>数据点异常</string>
+	<key>5001</key>
+	<string>body json invalid</string>
+	<key>5300</key>
+	<string>Data Not Exist</string>
+	<key>5501</key>
+	<string>No Client config</string>
+	<key>5502</key>
+	<string>No Server Data</string>
+	<key>5601</key>
+	<string>Gizwits_appid Already Exist</string>
+	<key>5700</key>
+	<string>Param Error</string>
+	<key>5701</key>
+	<string>Auth_Key Invalid</string>
+	<key>5702</key>
+	<string>Appid or User-Token Error</string>
+	<key>5703</key>
+	<string>Type Param Error</string>
+	<key>5704</key>
+	<string>Id Param Error</string>
+	<key>5705</key>
+	<string>ApiKey or SecretKey Param Invalid</string>
+	<key>5706</key>
+	<string>ChannelId Param Error</string>
+	<key>5900</key>
+	<string>Push Error</string>
+	<key>8001</key>
+	<string>Client发给Daemon的json格式错误</string>
+	<key>8002</key>
+	<string>Client与Daemon之间如果没有通过握手认证,任何数据交互都无效</string>
+	<key>8003</key>
+	<string>Client版本号无效</string>
+	<key>8004</key>
+	<string>udp端口绑定失败</string>
+	<key>8005</key>
+	<string>Daemon系统错误</string>
+	<key>8006</key>
+	<string>Client发出的数据请求,Json格式正确,但参数无效；APP传入参数无效</string>
+	<key>8007</key>
+	<string>appid长度错误</string>
+	<key>8008</key>
+	<string>日志路径无效</string>
+	<key>8009</key>
+	<string>日志级别无效</string>
+	<key>8021</key>
+	<string>设备配置信息发送失败</string>
+	<key>8022</key>
+	<string>设备正在配置</string>
+	<key>8023</key>
+	<string>设备配置超时</string>
+	<key>8024</key>
+	<string>设备did无效</string>
+	<key>8025</key>
+	<string>设备mac无效</string>
+	<key>8026</key>
+	<string>子设备did无效</string>
+	<key>8027</key>
+	<string>设备passcode无效</string>
+	<key>8028</key>
+	<string>不是中控设备</string>
+	<key>8029</key>
+	<string>设备未订阅</string>
+	<key>8030</key>
+	<string>设备未响应</string>
+	<key>8031</key>
+	<string>设备未就绪</string>
+	<key>8032</key>
+	<string>设备未绑定</string>
+	<key>8033</key>
+	<string>设备控制指令中包含无效指令</string>
+	<key>8034</key>
+	<string>设备控制指令执行失败</string>
+	<key>8035</key>
+	<string>设备状态查询失败</string>
+	<key>8036</key>
+	<string>设备控制指令参数类型错误</string>
+	<key>8037</key>
+	<string>设备控制指令参数值不在有效范围内</string>
+	<key>8038</key>
+	<string>设备控制指令中包含不可写指令</string>
+	<key>8039</key>
+	<string>设备绑定失败</string>
+	<key>8040</key>
+	<string>设备解绑失败</string>
+	<key>8041</key>
+	<string>域名解析失败</string>
+	<key>8042</key>
+	<string>m2m连接成功</string>
+	<key>8043</key>
+	<string>socket设置非阻塞失败</string>
+	<key>8044</key>
+	<string>连接超时</string>
+	<key>8045</key>
+	<string>连接被拒绝</string>
+	<key>8046</key>
+	<string>连接错误</string>
+	<key>8047</key>
+	<string>连接被关闭</string>
+	<key>8048</key>
+	<string>ssl握手失败</string>
+	<key>8049</key>
+	<string>设备登录验证失败</string>
+	<key>8050</key>
+	<string>当前外网不可达</string>
+	<key>8096</key>
+	<string>http应答格式错误</string>
+	<key>8097</key>
+	<string>http应答参数错误</string>
+	<key>8098</key>
+	<string>http服务无响应</string>
+	<key>8099</key>
+	<string>http请求失败</string>
+	<key>8100</key>
+	<string>其他错误</string>
+	<key>8101</key>
+	<string>Daemon内存分配失败</string>
+	<key>8102</key>
+	<string>Daemon内部线程创建失败</string>
+	<key>8150</key>
+	<string>用户ID无效</string>
+	<key>8151</key>
+	<string>用户token无效</string>
+	<key>8152</key>
+	<string>组ID无效</string>
+	<key>8153</key>
+	<string>组名称无效</string>
+	<key>8154</key>
+	<string>组类型无效</string>
+	<key>8155</key>
+	<string>组设备删除失败</string>
+	<key>8156</key>
+	<string>组设备添加失败</string>
+	<key>8157</key>
+	<string>组设备获取失败</string>
+	<key>8201</key>
+	<string>配置文件还未下载</string>
+	<key>8202</key>
+	<string>配置文件服务不可用</string>
+	<key>8203</key>
+	<string>配置文件解析失败</string>
+	<key>8300</key>
+	<string>SDK 未初始化</string>
+	<key>8304</key>
+	<string>daemon程序执行失败</string>
+	<key>8305</key>
+	<string>尝试运行daemon时发生异常</string>
+	<key>8306</key>
+	<string>APPID为空</string>
+	<key>8307</key>
+	<string>不支持的API</string>
+	<key>8308</key>
+	<string>Client如果等不到Daemon的回复,就向APP返回操作超时</string>
+	<key>8309</key>
+	<string>Daemon版本号无效</string>
+	<key>8310</key>
+	<string>手机没有连接软AP热点</string>
+	<key>8311</key>
+	<string>手机热点和要配置的路由ssid不匹配</string>
+	<key>8312</key>
+	<string>设备不在softap模式</string>
+	<key>8313</key>
+	<string>设备配置时无可用wifi</string>
+	<key>8314</key>
+	<string>设备上报透传数据的标识</string>
+	<key>8315</key>
+	<string>正在下载设备的产品定义</string>
+	<key>8316</key>
+	<string>SDK启动成功</string>
+	<key>9001</key>
+	<string>mac already registered!</string>
+	<key>9002</key>
+	<string>product_key invalid</string>
+	<key>9003</key>
+	<string>appid invalid</string>
+	<key>9004</key>
+	<string>token invalid</string>
+	<key>9005</key>
+	<string>user not exist</string>
+	<key>9006</key>
+	<string>token expired</string>
+	<key>9007</key>
+	<string>m2m_id invalid</string>
+	<key>9008</key>
+	<string>server error</string>
+	<key>9009</key>
+	<string>code expired</string>
+	<key>9010</key>
+	<string>code invalid</string>
+	<key>9011</key>
+	<string>sandbox scale quota exhausted!</string>
+	<key>9012</key>
+	<string>production scale quota exhausted!</string>
+	<key>9013</key>
+	<string>product has no request scale!</string>
+	<key>9014</key>
+	<string>device not found!</string>
+	<key>9015</key>
+	<string>form invalid!</string>
+	<key>9016</key>
+	<string>did or passcode invalid!</string>
+	<key>9017</key>
+	<string>device not bound!</string>
+	<key>9018</key>
+	<string>phone unavailable!</string>
+	<key>9019</key>
+	<string>username unavailable!</string>
+	<key>9020</key>
+	<string>username or password error!</string>
+	<key>9021</key>
+	<string>send command failed!</string>
+	<key>9022</key>
+	<string>email unavailable!</string>
+	<key>9023</key>
+	<string>device is disabled!</string>
+	<key>9024</key>
+	<string>fail to notify m2m!</string>
+	<key>9025</key>
+	<string>attr invalid!</string>
+	<key>9026</key>
+	<string>user invalid!</string>
+	<key>9027</key>
+	<string>firmware not found!</string>
+	<key>9028</key>
+	<string>JD product info not found!</string>
+	<key>9029</key>
+	<string>datapoint data not found!</string>
+	<key>9030</key>
+	<string>scheduler not found!</string>
+	<key>9031</key>
+	<string>qq oauth key invalid!</string>
+	<key>9032</key>
+	<string>ota upgrade service OK, but in idle or disable!</string>
+	<key>9033</key>
+	<string>bt firmware unverified, except verify device!</string>
+	<key>9034</key>
+	<string>bt firmware is OK, but nothing to upgrade!</string>
+	<key>9035</key>
+	<string>Save kairosdb error!</string>
+	<key>9036</key>
+	<string>event not defined!</string>
+	<key>9037</key>
+	<string>send sms failed!</string>
+	<key>9038</key>
+	<string>signature invalid!</string>
+	<key>9039</key>
+	<string>Not allowed to call deprecated API!</string>
+	<key>9040</key>
+	<string>bad qrcode content!</string>
+	<key>9041</key>
+	<string>request was throttled</string>
+	<key>9042</key>
+	<string>device offline!</string>
+	<key>9043</key>
+	<string>X-Gizwits-Timestamp invalid!</string>
+	<key>9044</key>
+	<string>X-Gizwits-Signature invalid!</string>
+	<key>9045</key>
+	<string>API deprecated!</string>
+	<key>9999</key>
+	<string>reserved</string>
+</dict>
+</plist>

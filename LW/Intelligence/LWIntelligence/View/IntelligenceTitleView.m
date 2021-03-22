@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hdLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tpLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 
@@ -21,10 +22,13 @@
 
 -(void)setWeatherModel:(LWWeatherModel *)weather{
 
-    self.weatherImageView.image = [UIImage imageNamed:weather.img];
-    self.tpLabel.text = [NSString stringWithFormat:@" 🌡️%@℃ ☁️%@ ",weather.temperature,weather.info];
-    self.hdLabel.text = [NSString stringWithFormat:@" 💦%@%% 🌪%@ ",weather.humidity,weather.power ];
-    self.cityLabel.text = [NSString stringWithFormat:@" %@ ",weather.city_name];
+    self.tpLabel.text = [NSString stringWithFormat:@" 🌡️%@℃ ☁️%@ ",weather.temperature,weather.weather];
+    self.hdLabel.text = [NSString stringWithFormat:@" 💦%@%% 🌪%@ ",weather.humidity,weather.wind_strength ];
+    self.cityLabel.text = [NSString stringWithFormat:@" %@ ",weather.city];
+    self.titleLabel.font = [UIFont fontWithName:@"iconfont" size:30];
+    self.titleLabel.text = weather.weatherStr;
+    self.titleLabel.textColor = LW_RADOM_COLOR;
+    
     [self initBaseInfo];
 }
 
@@ -43,12 +47,12 @@
 }
 
 - (void)initBaseInfo{
-    self.cityLabel.layer.masksToBounds = self.tpLabel.layer.masksToBounds = self.hdLabel.layer.masksToBounds = YES;
-    self.cityLabel.layer.borderColor =self.tpLabel.layer.borderColor = self.hdLabel.layer.borderColor = [UIColor colorWithRed:0.2 green:0.6 blue:0.2 alpha:0.6].CGColor;
-    self.tpLabel.layer.borderWidth = self.hdLabel.layer.borderWidth = 1;
-    self.tpLabel.layer.cornerRadius = self.hdLabel.layer.cornerRadius= 6;
-    self.cityLabel.layer.borderWidth = 1;
-    self.cityLabel.layer.cornerRadius = 10;
+//    self.cityLabel.layer.masksToBounds = self.tpLabel.layer.masksToBounds = self.hdLabel.layer.masksToBounds = YES;
+//    self.cityLabel.layer.borderColor =self.tpLabel.layer.borderColor = self.hdLabel.layer.borderColor = [UIColor colorWithRed:0.2 green:0.6 blue:0.2 alpha:0.6].CGColor;
+//    self.tpLabel.layer.borderWidth = self.hdLabel.layer.borderWidth = 1;
+//    self.tpLabel.layer.cornerRadius = self.hdLabel.layer.cornerRadius= 6;
+//    self.cityLabel.layer.borderWidth = 1;
+//    self.cityLabel.layer.cornerRadius = 10;
 }
 
 @end

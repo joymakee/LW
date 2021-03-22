@@ -14,6 +14,8 @@
 #import <JoyKit/JoyKit.h>
 #import "ServerClientConfig.h"
 #import "CALayer+ScanCode.h"
+#import "GizCenter+Device.h"
+
 extern NSInteger messageCount;
 extern NSString  *KMESSAGE_COUNT_CHANGE;
 
@@ -94,6 +96,8 @@ extern NSString  *KMESSAGE_COUNT_CHANGE;
 
 - (void)scanResultHandler:(NSString *)scanStr{
     if(scanStr.length){
+        [[GizCenter shareInstance] bindDeviceByQRContent:scanStr];
+        
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         [[ServerClientConfig shareinstance] cacheServiceIP:scanStr]?[JoyAlert showWithMessage:[NSString stringWithFormat:@"设置服务器地址:%@成功",scanStr]]:[JoyAlert showWithMessage:[NSString stringWithFormat:@"%@",scanStr]];
     }else{

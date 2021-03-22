@@ -12,9 +12,9 @@
 #import "LWWeatherModel.h"
 #import <MJProperty.h>
 
-static const NSString *weahTherAppKey = @"06423a901d5349ffa9dc23031e460f00";
+static const NSString *weahTherAppKey = @"08ff760c70775f9e7378ae039bd9436a";
 
-#define KgetAvatarWeather(cityName) [NSString stringWithFormat:@"http://api.avatardata.cn/Weather/Query?key=%@&cityname=%@",weahTherAppKey,cityName]
+#define KgetAvatarWeather(cityName) [NSString stringWithFormat:@"http://v.juhe.cn/weather/index?dtype=&format=2&key=%@&cityname=%@",weahTherAppKey,cityName]
 
 
 
@@ -68,14 +68,10 @@ static const NSString *weahTherAppKey = @"06423a901d5349ffa9dc23031e460f00";
     weatherStr = [weatherStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ];
     [self.netManager GET:weatherStr parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if([responseObject[@"result"] isKindOfClass:[NSDictionary class]]){
-        NSDictionary *weatherDic =  responseObject[@"result"][@"realtime"];
         LWWeatherModel *weatherModel = [[LWWeatherModel alloc] init];
-        NSDictionary *windDic = weatherDic[@"wind"];
-        NSDictionary *weather = weatherDic[@"weather"];
-        [weatherModel setValuesForKeysWithDictionary:windDic];
-        [weatherModel setValuesForKeysWithDictionary:weather];
-        [weatherModel setValuesForKeysWithDictionary:weatherDic];
-        block?block(weatherModel):nil;
+            [weatherModel setValuesForKeysWithDictionary:responseObject[@"result"][@"sk"]];
+            [weatherModel setValuesForKeysWithDictionary:responseObject[@"result"][@"today"]];
+            block?block(weatherModel):nil;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"");

@@ -13,6 +13,8 @@
 #import "LWShareManager.h"
 #import "LWTabbarVC.h"
 #import <LocalAuthentication/LocalAuthentication.h>
+#import "UIView+Toast.h"
+#import "GizCenter.h"
 
 @interface LoginPresenter ()
 
@@ -27,7 +29,7 @@
     }).cellTextEiditEnd(^(NSIndexPath *indexPath, NSString *content, NSString *key) {
         [[LWUser shareInstance] setValue:content forKey:key];
     });
-    if ([LWUser shareInstance].userName) {
+    if ([LWUser shareInstance].token) {
         [self deviceLogin];
     }
 }
@@ -35,11 +37,94 @@
 #pragma mark  登录
 - (void)loginAction{
     if([LWUser shareInstance].userName.length && [LWUser shareInstance].password.length){
-        [self.interactor loginWithPhone:[LWUser shareInstance].userName password:[LWUser shareInstance].password success:^(NSDictionary *dict) {
+        @LwWeak(self);
+        [[GizCenter shareInstance] loginWithPhone:[LWUser shareInstance].userName password:[LWUser shareInstance].password success:^(NSDictionary *dict) {
+            [self.rootView makeToast:@"Login Success"];
             [UIApplication sharedApplication].keyWindow.rootViewController = [[LWTabbarVC alloc]init];
         } failure:^(NSError *error) {
+            [self.rootView makeToast:error.description];
         }];
+    }else{
+        [self.rootView makeToast:@"请输入手机号和密码"];
     }
+}
+
+- (void)registAction{
+    if([LWUser shareInstance].userName.length ==11 && [LWUser shareInstance].password.length>=6){
+        @LwWeak(self);
+        [[GizCenter shareInstance] requestSendPhoneSMSCodeWithPhone:[LWUser shareInstance].userName success:^{
+            [self registPhone];
+        } failure:^(NSError *error) {
+            [self registPhone];
+        }];
+    }else{
+        [self.rootView makeToast:@"请输入注册手机号和密码"];
+    }
+}
+
+-(void)registPhone{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"注册账号" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.borderStyle = UITextBorderStyleNone;
+        [textField setTextMaxNum:6];
+        textField.textColor = JOY_RandomColor;
+        textField.placeholder = @"请输入验证码";
+    }];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:nil]];
+    
+    @LwWeak(self);
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if(alert.textFields.firstObject.text.length>=4){
+            [[GizCenter shareInstance] registUserPhone:[LWUser shareInstance].userName password:[LWUser shareInstance].password verifyCode:alert.textFields.firstObject.text success:^{
+                [self.rootView makeToast:@"注册成功"];
+                [self loginAction];
+            } failure:^(NSError *error) {
+                [self.rootView makeToast:error.description];
+            }];
+        }
+    }]];
+
+    [self.currentVC presentViewController:alert animated:true completion:nil];
+}
+
+- (void)registPasswordAction{
+    if([LWUser shareInstance].userName.length ==11 && [LWUser shareInstance].password.length>=6){
+        @LwWeak(self);
+        [[GizCenter shareInstance] requestSendPhoneSMSCodeWithPhone:[LWUser shareInstance].userName success:^{
+            [self reSetPasswordAction];
+        } failure:^(NSError *error) {
+            [self reSetPasswordAction];
+        }];
+    }else{
+        [self.rootView makeToast:@"重置密码请输入手机号和新密码"];
+    }
+}
+
+-(void)reSetPasswordAction{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"重置密码" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.borderStyle = UITextBorderStyleNone;
+        [textField setTextMaxNum:6];
+        textField.textColor = JOY_RandomColor;
+        textField.placeholder = @"请输入验证码";
+    }];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:nil]];
+    
+    @LwWeak(self);
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if(alert.textFields.firstObject.text.length>=4){
+            [[GizCenter shareInstance] resetPasswordWithPassword:[LWUser shareInstance].password verifyCode:alert.textFields.firstObject.text phone:[LWUser shareInstance].userName success:^{
+                [self.rootView makeToast:@"修改成功"];
+                [self loginAction];
+            } failure:^(NSError *error) {
+                [self.rootView makeToast:error.description];
+            }];
+        }
+    }]];
+
+    [self.currentVC presentViewController:alert animated:true completion:nil];
 }
 
 #pragma mark 指纹识别

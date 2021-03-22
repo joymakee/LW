@@ -24,7 +24,7 @@
 -(JoyUISegementView *)segmentView{
     if (!_segmentView) {
         _segmentView = [[JoyUISegementView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W, 40)];
-        _segmentView.setSegmentItems(@[@"电视",@"每日一笑",@"休闲",@"新闻",@""]).setSelectColor([UIColor whiteColor]).setDeselectColor([UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.8]).setBottomSliderColor([UIColor colorWithRed:0.3 green:0.3 blue:0.7 alpha:0.7]);
+        _segmentView.setSegmentItems(@[@"电视",@"每日一笑",@"休闲",@"新闻"]).setSelectColor([UIColor colorWithRed:0.8 green:0.6 blue:0.5 alpha:0.7]).setDeselectColor([UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.8]).setBottomSliderColor([UIColor clearColor]);
     }
     return _segmentView;
 }

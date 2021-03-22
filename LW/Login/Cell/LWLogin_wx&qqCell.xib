@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,44 +12,49 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LWLogin_wx&amp;qqCell" rowHeight="61" id="KGk-i7-Jjw" customClass="LWLogin_wx_qqCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="60.5"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="micro_messenger.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ly1-fW-O00" customClass="LWImageView">
-                        <rect key="frame" x="226" y="19.5" width="22" height="22"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZf-3N-UOo">
+                        <rect key="frame" x="36" y="16" width="30" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="Ly1-fW-O00" secondAttribute="height" id="7Yc-vq-zgn"/>
+                            <constraint firstAttribute="width" constant="30" id="0P2-JI-SYK"/>
+                            <constraint firstAttribute="height" constant="30" id="cO2-ke-P03"/>
                         </constraints>
-                    </imageView>
-                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qq.png" translatesAutoresizingMaskIntoConstraints="NO" id="ObU-cy-iIT" customClass="LWImageView">
-                        <rect key="frame" x="268" y="19.5" width="22" height="22"/>
+                        <state key="normal" title="\ue631"/>
+                        <connections>
+                            <action selector="registAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="332-Lg-kqd"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20C-Sb-fkf">
+                        <rect key="frame" x="86" y="15" width="30" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="ObU-cy-iIT" secondAttribute="height" id="dRx-RJ-6Zd"/>
-                            <constraint firstAttribute="height" constant="22" id="kBH-0c-XeB"/>
+                            <constraint firstAttribute="width" constant="30" id="hl8-2p-MwO"/>
+                            <constraint firstAttribute="height" constant="30" id="r1E-6C-8Qr"/>
                         </constraints>
-                    </imageView>
+                        <state key="normal" title="\ue631"/>
+                        <connections>
+                            <action selector="resetPasswordAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bwn-EA-hN1"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="ObU-cy-iIT" firstAttribute="top" secondItem="Ly1-fW-O00" secondAttribute="top" id="7kR-Fk-nmr"/>
-                    <constraint firstItem="ObU-cy-iIT" firstAttribute="bottom" secondItem="Ly1-fW-O00" secondAttribute="bottom" id="TaT-XH-bZv"/>
-                    <constraint firstItem="ObU-cy-iIT" firstAttribute="leading" secondItem="Ly1-fW-O00" secondAttribute="trailing" constant="20" id="by3-dR-Pgq"/>
-                    <constraint firstAttribute="trailing" secondItem="ObU-cy-iIT" secondAttribute="trailing" constant="30" id="f5H-oZ-2Ba"/>
-                    <constraint firstItem="ObU-cy-iIT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ivI-by-Y06"/>
-                    <constraint firstItem="ObU-cy-iIT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ouo-4C-XXC"/>
+                    <constraint firstItem="20C-Sb-fkf" firstAttribute="leading" secondItem="EZf-3N-UOo" secondAttribute="trailing" constant="20" id="3mK-8n-YbA"/>
+                    <constraint firstItem="20C-Sb-fkf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ab0-dL-ZbP"/>
+                    <constraint firstItem="EZf-3N-UOo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="Ie2-F5-dqc"/>
+                    <constraint firstItem="EZf-3N-UOo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="OfN-Fc-63z"/>
+                    <constraint firstItem="20C-Sb-fkf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="iYf-1n-cGH"/>
+                    <constraint firstItem="EZf-3N-UOo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="of7-dK-c3a"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
-                <outlet property="qqImageView" destination="ObU-cy-iIT" id="bJw-1P-FQY"/>
-                <outlet property="wxImageView" destination="Ly1-fW-O00" id="Q4o-WH-PEp"/>
+                <outlet property="registBtn" destination="EZf-3N-UOo" id="ype-n4-WR5"/>
+                <outlet property="resetPasswordBtn" destination="20C-Sb-fkf" id="mGP-Il-yUB"/>
             </connections>
-            <point key="canvasLocation" x="-74" y="4"/>
+            <point key="canvasLocation" x="-75.200000000000003" y="3.1484257871064472"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="micro_messenger.png" width="89" height="73"/>
-        <image name="qq.png" width="64" height="64"/>
-    </resources>
 </document>

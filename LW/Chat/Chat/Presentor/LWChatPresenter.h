@@ -6,12 +6,12 @@
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
-#import "BasePresentor.h"
+#import "LWChatPresenter.h"
 #import <JoyKit/JoyKit.h>
 
 @class LWChatInteractor;
 @class LWChatView;
-@interface LWChatPresenter : BasePresentor
+@interface LWChatPresenter : JoyPresenterBase
 @property (nonatomic,strong)LWChatInteractor *chatInteractor;
 @property (nonatomic,strong)LWChatView *chatView;
 

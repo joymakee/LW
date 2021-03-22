@@ -75,18 +75,25 @@
                    make.leading.mas_equalTo(15);
                    make.height.width.mas_equalTo(50);
                    make.centerY.mas_equalTo(self.backView);
-                   make.top.mas_equalTo(5);
+                   make.top.mas_greaterThanOrEqualTo(5);
                    );
     
     MAS_CONSTRAINT(self.titleLabel,
                    make.leading.mas_equalTo(self.iconLabel.mas_trailing).mas_offset(15);
                    make.trailing.mas_equalTo(-15);
                    make.centerY.mas_equalTo(weakSelf.backView.mas_centerY);
+                   make.top.mas_equalTo(5);
                    );
 }
 - (void)setCellWithModel:(JoyImageCellBaseModel *)model{
     self.model = model;
     self.titleLabel.text = model.title;
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.titleLabel.text];
+
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle setLineSpacing:8];//调整行间距
+        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [self.titleLabel.text length])];
+    self.titleLabel.attributedText = attributedString;
     if (model.titleColor) {
         self.titleLabel.textColor = KJoyHexColor(model.titleColor,1);
     }

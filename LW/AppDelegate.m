@@ -9,11 +9,12 @@
 #import "AppDelegate.h"
 #import "LoginVC.h"
 #import <JoyRequest/Joy_NetCacheTool.h>
-#import <GizWifiSDK/GizWifiSDK.h>
 #import "LWUser.h"
 #import <JoyKit/JoyRouter.h>
 #import "LWTabbarVC.h"
 #import <Availability.h>
+#import "GizCenter.h"
+
 //#undef  __AVAILABILITY_INTERNAL_WEAK_IMPORT
 #define __AVAILABILITY_INTERNAL_WEAK_IMPORT \
 __attribute__((weak_import,deprecated("API newer than Deployment Target.")))
@@ -22,7 +23,8 @@ extern  NSString * const lw_meal_key;
 extern  NSString * const selectMealKey ;
 extern  NSString * const deSelectMealKey;
 
-@interface AppDelegate ()<GizWifiSDKDelegate>
+
+@interface AppDelegate ()
 
 @end
 
@@ -31,14 +33,11 @@ extern  NSString * const deSelectMealKey;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window.backgroundColor = [UIColor whiteColor];
-    [[JoyRouter sharedInstance]configScheme:@"joylw"];
-    [GizWifiSDK sharedInstance].delegate = self;
-    [GizWifiSDK startWithAppID:@"0fdee57c9dc24613b8f21000de4d29ec"];
-    [GizWifiSDK setLogLevel:GizLogPrintI];
-    [[LWUser shareInstance] setValueWithCache];
     [self.window makeKeyWindow];
-
-    if([[LWUser shareInstance].password length]){
+    [[JoyRouter sharedInstance]configScheme:@"joylw"];
+    [[GizCenter shareInstance] configGizPara];
+    [[LWUser shareInstance] setValueWithCache];
+    if([[LWUser shareInstance].token length]){
         [[JoyRouter sharedInstance] openNativeWithUrl:[NSURL URLWithString:@"joylw://tabBar/tabBar"]];
     }else{
         LoginVC *vc = [[LoginVC alloc]init];
@@ -52,24 +51,6 @@ extern  NSString * const deSelectMealKey;
     });
 
     return YES;
-}
-
-// 实现系统事件通知回调
-- (void)wifiSDK:(GizWifiSDK *)wifiSDK didNotifyEvent:(GizEventType)eventType eventSource:(id)eventSource eventID:(GizWifiErrorCode)eventID eventMessage: (NSString *)eventMessage {
-    if(eventType == GizEventSDK) {
-        // SDK发生异常的通知
-        NSLog(@"SDK event happened: [%@] = %@", @(eventID), eventMessage);
-    } else if(eventType == GizEventDevice) {
-        // 设备连接断开时可能产生的通知
-        GizWifiDevice* mDevice = (GizWifiDevice*)eventSource;
-        NSLog(@"device mac %@ disconnect caused by %@", mDevice.macAddress, eventMessage);
-    } else if(eventType == GizEventM2MService) {
-        // M2M服务返回的异常通知
-        NSLog(@"M2M domain %@ exception happened: [%@] = %@", (NSString*)eventSource, @(eventID), eventMessage);
-    } else if(eventType == GizEventToken) {
-        // token失效通知
-        NSLog(@"token %@ expired: %@", (NSString*)eventSource, eventMessage);
-    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

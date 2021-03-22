@@ -9,12 +9,9 @@
 #import "LoginInteracter.h"
 #import <JoyKit/JoyKit.h>
 #import <JoyKit/NSDate+JoyExtention.h>
-#import <GizWifiSDK/GizWifiSDK.h>
 #import "LWUser.h"
-@interface LoginInteracter ()<GizWifiSDKDelegate>
-@property (nonatomic,copy)DICTBLOCK successBlock;
-@property (nonatomic,copy)ERRORBLOCK failureBlock;
 
+@interface LoginInteracter ()
 @end
 
 @implementation LoginInteracter
@@ -37,7 +34,7 @@
     JoySectionBaseModel *loginHeadSectionModel = [JoySectionBaseModel sectionWithHeaderModel:nil footerModel:nil cellModels:@[headCellModel] sectionH:20 sectionTitle:nil];
     
     JoyTextCellBaseModel *accountModel = [[JoyTextCellBaseModel alloc]init];
-    accountModel.placeHolder = @"邮箱/手机号";
+    accountModel.placeHolder = @"手机号";
     accountModel.title = [LWUser shareInstance].userName;
     accountModel.textFieldModel = normalModel;
     accountModel.cellName = @"LWTextFieldCell";
@@ -47,12 +44,13 @@
     accountModel.cellType = ECellXibType;
     
     JoyTextCellBaseModel *passwordModel = [[JoyTextCellBaseModel alloc]init];
-    passwordModel.placeHolder = @"请输入密码";
+    passwordModel.placeHolder = @"请输入6-12位字符密码";
     passwordModel.textFieldModel = normalModel;
     passwordModel.changeKey = @"password";
     passwordModel.cellName = @"LWTextFieldCell";
     passwordModel.borderStyle = UITextBorderStyleRoundedRect;
-    passwordModel.keyboardType = UIKeyboardTypePhonePad;
+    passwordModel.keyboardType = UIKeyboardTypeDefault;
+    passwordModel.secureTextEntry = true;
     passwordModel.cellType = ECellXibType;
     
     JoyTextCellBaseModel *loginAuthCellModel = [[JoyTextCellBaseModel alloc]init];
@@ -63,35 +61,6 @@
     [self.dataArrayM addObject:topicSectionModel];
     [self.dataArrayM addObject:loginHeadSectionModel];
     [self.dataArrayM addObject:loginSectionModel];
-}
-
-//登录接口
-- (void)loginWithPhone:(NSString *)phone password:(NSString *)password success:(DICTBLOCK)success failure:(ERRORBLOCK)failure{
-    [GizWifiSDK sharedInstance].delegate = self;
-    self.successBlock = success;
-    self.failureBlock = failure;
-    [[GizWifiSDK sharedInstance] userLogin:phone password:password];
-}
-
-// 登录回调
-- (void)wifiSDK:(GizWifiSDK *)wifiSDK didUserLogin:(NSError *)result uid:(NSString *)uid token:(NSString *)token {
-    if(result.code == GIZ_SDK_SUCCESS) {
-        [LWUser shareInstance].uid = uid;
-        [LWUser shareInstance].token = token;
-        [[GizWifiSDK sharedInstance] getUserInfo:token];//获取用户信息
-    } else {
-        self.failureBlock?self.failureBlock(result):nil;
-    }
-}
-
-//获取用户信息回调
-- (void)wifiSDK:(GizWifiSDK *)wifiSDK didGetUserInfo:(NSError *)result userInfo:(GizUserInfo*)userInfo{
-    [[LWUser shareInstance] setValuesForKeysWithDictionary:userInfo.mj_keyValues];
-    if (userInfo.birthday){
-        [LWUser shareInstance].birthday = [userInfo.birthday timeStringformat:@"yyyy-MM-dd"];
-    }
-    [[LWUser shareInstance] cacheUserInfo];
-    self.successBlock?self.successBlock(@{}):nil;
 }
 
 

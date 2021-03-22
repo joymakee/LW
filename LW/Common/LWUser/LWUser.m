@@ -42,14 +42,11 @@
 - (void)setValueWithCache{
     NSDictionary *dict = [Joy_NetCacheTool scbuDictCacheForKey:LW_USER_CACHE_KEY];
     [self setValuesForKeysWithDictionary:dict];
-//    if (dict) {
-//        self.userName = [dict objectForKey:@"userName"];
-//        self.password = [dict objectForKey:@"password"];
-//    }
 }
 
 -(void)loginOut{
     self.password = nil;
+    self.token = nil;
     [self cacheUserInfo];
 }
 

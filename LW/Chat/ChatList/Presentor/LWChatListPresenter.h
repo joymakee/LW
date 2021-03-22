@@ -6,11 +6,12 @@
 //  Copyright © 2017年 joymake. All rights reserved.
 //
 
-#import "BasePresentor.h"
+#import "LWChatListPresenter.h"
+#import <JoyKit/JoyPresenterBase.h>
 
 @class LWChatListInteractor;
 @class JoyTableAutoLayoutView;
-@interface LWChatListPresenter : BasePresentor
+@interface LWChatListPresenter : JoyPresenterBase
 @property (nonatomic,strong)LWChatListInteractor *chatInteractor;
 @property (nonatomic,strong)JoyTableAutoLayoutView *chatView;
 

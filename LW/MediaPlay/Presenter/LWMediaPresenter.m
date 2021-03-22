@@ -81,7 +81,7 @@
     @LwWeak(self);
     [self.interactor getNewsSuccess:^{
         @LwStrong(self);
-        self.mediaListView.setDataSource(self.interactor.newsArrayM).reloadTable().joyEndFooterRefreshblock();
+        self.mediaListView.reloadTable().joyEndFooterRefreshblock();
     } failure:^(NSError *error) {
         @LwStrong(self);
         self.mediaListView.joyEndFooterRefreshblock();

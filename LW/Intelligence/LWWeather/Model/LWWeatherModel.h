@@ -9,15 +9,16 @@
 #import <Foundation/Foundation.h>
 
 @interface LWWeatherModel : NSObject
-@property (nonatomic,copy)NSString *city_name;   //湿度
-@property (nonatomic,copy)NSString *time;   //湿度
-@property (nonatomic,copy)NSString *week;   //湿度
+@property (nonatomic,copy)NSString *city;           //城市
 @property (nonatomic,copy)NSString *temperature;    //温度
-@property (nonatomic,copy)NSString *img;        //？
-@property (nonatomic,copy)NSString *info;       //白天天气
-@property (nonatomic,copy)NSString *humidity;   //湿度
-@property (nonatomic,copy)NSString *direct;     //风向
-@property (nonatomic,copy)NSString *power;      //风级
-@property (nonatomic,copy)NSString *windspeed;  //风速
+@property (nonatomic,copy)NSString *weather;        //白天天气
+@property (nonatomic,copy)NSString *wind;           //风级
+
+@property (nonatomic,copy)NSString *weatherStr;            //？
+@property (nonatomic,strong)NSDictionary *weather_id;//天气
+
+@property (nonatomic,copy)NSString *humidity;       //湿度
+@property (nonatomic,copy)NSString *wind_direction;     //风向
+@property (nonatomic,copy)NSString *wind_strength;  //风速
 
 @end

@@ -6,12 +6,13 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "BasePresentor.h"
+#import "IntelligenceControlPresentor.h"
 #import <JoyTableAutoLayoutView.h>
 #import "IntelligenceControlnteractor.h"
 #import "IntelligencePresentor.h"
+#import <JoyKit/JoyPresenterBase.h>
 
-@interface IntelligenceControlPresentor : BasePresentor<IntelligenceDelegate>
+@interface IntelligenceControlPresentor : JoyPresenterBase<IntelligenceDelegate>
 @property (nonatomic,strong)JoyTableAutoLayoutView *intelligenceTableView;
 @property (nonatomic,strong)IntelligenceControlnteractor *intelligenceControlnteractor;
 

@@ -13,8 +13,10 @@ pod 'JoyKit'
 pod 'JoyRequest'
 pod 'MJExtension'
 pod 'GizWifiSDK' , '~> 2.04.04'
+pod 'Toast'
+pod 'JRDB'
 end
 
-target:today do
-  platform :ios,'9.0'
-end
+#target:today do
+#  platform :ios,'9.0'
+#end

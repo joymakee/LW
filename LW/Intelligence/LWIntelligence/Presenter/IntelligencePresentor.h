@@ -6,7 +6,8 @@
 //  Copyright © 2016年 joymake. All rights reserved.
 //
 
-#import "BasePresentor.h"
+#import "intelligencePresentor.h"
+#import <JoyKit/JoyPresenterBase.h>
 
 @protocol IntelligenceDelegate <NSObject>
 
@@ -17,7 +18,7 @@
 @end
 
 @class Intelligencelnteractor,CommonImageCollectView,IntelligenceTitleView,JoyLocationManager;
-@interface IntelligencePresentor : BasePresentor
+@interface IntelligencePresentor : JoyPresenterBase
 
 @property (nonatomic,weak) id <IntelligenceDelegate>delegate;
 

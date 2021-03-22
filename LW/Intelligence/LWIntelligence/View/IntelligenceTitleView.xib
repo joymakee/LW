@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,57 +13,52 @@
             <rect key="frame" x="0.0" y="0.0" width="299" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1.png" translatesAutoresizingMaskIntoConstraints="NO" id="TCV-71-nKP" userLabel="WeatherImageView" customClass="LWImageView">
-                    <rect key="frame" x="127.5" y="0.0" width="44" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="TCV-71-nKP" secondAttribute="height" multiplier="1:1" id="Hsc-f5-Shh"/>
-                    </constraints>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4U2-NL-TUv">
-                    <rect key="frame" x="269" y="22.5" width="0.0" height="0.0"/>
-                    <color key="backgroundColor" red="0.65735933700798665" green="0.86562288717308056" blue="0.89308593749999998" alpha="0.32261954697986578" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="269" y="22" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
-                    <color key="textColor" red="0.32205078124999997" green="0.16698827256082779" blue="0.27357956524559951" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jST-Nk-Mlw">
                     <rect key="frame" x="10" y="39" width="0.0" height="0.0"/>
-                    <color key="backgroundColor" red="0.82832031250000004" green="0.62327676145528255" blue="0.22363105059265548" alpha="0.40992030201342283" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                    <color key="textColor" red="0.86921875000000004" green="0.17003956754171301" blue="0.37935682560532075" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdG-u5-Ddv">
                     <rect key="frame" x="10" y="34" width="0.0" height="0.0"/>
-                    <color key="backgroundColor" red="0.82832031250000004" green="0.62327676145528255" blue="0.22363105059265548" alpha="0.40992030201342283" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                    <color key="textColor" red="0.86921875000000004" green="0.17003956754171301" blue="0.37935682560532075" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8G-SG-Kgt">
+                    <rect key="frame" x="100" y="0.0" width="99" height="44"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="jST-Nk-Mlw" firstAttribute="top" secondItem="JdG-u5-Ddv" secondAttribute="bottom" constant="5" id="3oY-lP-NXT"/>
-                <constraint firstItem="TCV-71-nKP" firstAttribute="centerX" secondItem="LkY-Tm-Fnf" secondAttribute="centerX" id="J6r-bv-UxK"/>
+                <constraint firstAttribute="bottom" secondItem="l8G-SG-Kgt" secondAttribute="bottom" id="9qO-8e-Bu9"/>
                 <constraint firstAttribute="bottom" secondItem="jST-Nk-Mlw" secondAttribute="bottom" constant="5" id="Nw1-Lr-Inu"/>
-                <constraint firstItem="TCV-71-nKP" firstAttribute="top" secondItem="LkY-Tm-Fnf" secondAttribute="top" id="icV-Go-9JZ"/>
+                <constraint firstItem="l8G-SG-Kgt" firstAttribute="top" secondItem="LkY-Tm-Fnf" secondAttribute="top" id="a7f-vP-WCr"/>
+                <constraint firstAttribute="trailing" secondItem="l8G-SG-Kgt" secondAttribute="trailing" constant="100" id="kIs-Sa-DmI"/>
                 <constraint firstItem="4U2-NL-TUv" firstAttribute="centerY" secondItem="LkY-Tm-Fnf" secondAttribute="centerY" id="lvW-hB-sXQ"/>
                 <constraint firstItem="JdG-u5-Ddv" firstAttribute="leading" secondItem="LkY-Tm-Fnf" secondAttribute="leading" constant="10" id="oFI-Fw-uep"/>
                 <constraint firstItem="jST-Nk-Mlw" firstAttribute="leading" secondItem="LkY-Tm-Fnf" secondAttribute="leading" constant="10" id="u46-7p-akX"/>
-                <constraint firstAttribute="bottom" secondItem="TCV-71-nKP" secondAttribute="bottom" id="wl8-69-QOk"/>
+                <constraint firstItem="l8G-SG-Kgt" firstAttribute="leading" secondItem="LkY-Tm-Fnf" secondAttribute="leading" constant="100" id="yqG-ye-oOx"/>
                 <constraint firstAttribute="trailing" secondItem="4U2-NL-TUv" secondAttribute="trailing" constant="30" id="yqt-f4-aIs"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="cityLabel" destination="4U2-NL-TUv" id="oy7-Hn-p8m"/>
                 <outlet property="hdLabel" destination="jST-Nk-Mlw" id="xMq-G3-cqN"/>
+                <outlet property="titleLabel" destination="l8G-SG-Kgt" id="soq-2f-kF1"/>
                 <outlet property="tpLabel" destination="JdG-u5-Ddv" id="fxU-IZ-u9p"/>
-                <outlet property="weatherImageView" destination="TCV-71-nKP" id="Pgm-eX-YxA"/>
             </connections>
             <point key="canvasLocation" x="-299" y="-238"/>
         </view>
     </objects>
-    <resources>
-        <image name="1.png" width="180" height="180"/>
-    </resources>
 </document>

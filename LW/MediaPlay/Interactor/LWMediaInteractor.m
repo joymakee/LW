@@ -103,7 +103,7 @@
         [_relaxationArrayM addObject:cellModel];
         
         JoyImageCellBaseModel *eatModel = [[JoyImageCellBaseModel alloc]init];
-        eatModel.title =@"吃什么";
+        eatModel.title =@"干饭人";
         eatModel.subTitle = @"\ue611";
         eatModel.cellName =@"LWIconTextCell";
         eatModel.cellType = ECellCodeType;

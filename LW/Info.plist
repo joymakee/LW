@@ -85,6 +85,8 @@
 	<string>BluetoothDescription</string>
 	<key>NSCameraUsageDescription</key>
 	<string>CameraDescription</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>开启后,您可以使用人脸快捷登录账号</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>visit your sport data </string>
 	<key>NSHealthUpdateUsageDescription</key>

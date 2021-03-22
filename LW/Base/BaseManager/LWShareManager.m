@@ -9,7 +9,6 @@
 #define KTENCENT_APPID @"1106126975"
 #import "LWShareManager.h"
 #import "UIImage+Extension.h"
-#import "LWCommentVC.h"
 
 @interface LWShareManager ()
 
